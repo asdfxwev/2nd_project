@@ -1,0 +1,16 @@
+.right_container {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* text-align: right; */
+}
+
+.menu_container div {
+    display: grid;
+    place-content: center;
+}
+
+.main_container {
+    display: flex;
+}

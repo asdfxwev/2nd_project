@@ -1,0 +1,27 @@
+.searchMenu {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 3rem;
+    height: 23.625rem;
+    line-height: 23.625rem;
+    background-color: #b3ffff;
+    /* opacity: 0; */
+    transition: all 1s;
+}
+
+.headerSearchInput {
+    width: 600px;
+    height: 45px;
+    border: none;
+    padding: 5px;
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.header_Search {
+    height: 45px;
+    width: 45px;
+    border: 1px solid;
+    border-radius: 5px;
+}

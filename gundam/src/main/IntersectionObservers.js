@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
-import './IntersectionObserver.css';
+import './IntersectionObservers.css';
 
-export default function IntersectionObserver() {
+export default function IntersectionObservers() {
     const intersectionImage1 = [
         { id: 'vertical1', name: './image/vertical1.png' },
         { id: 'vertical2', name: './image/vertical2.png' },
@@ -25,28 +25,52 @@ export default function IntersectionObserver() {
         event.target.classList.remove('scaleUp');
     };
 
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+    /* javascript */
+    // Intersection Observer 생성
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
+                    // 화면에 들어옴
+                    entry.target.classList.add("show");
                 } else {
-                    entry.target.classList.remove('show');
+                    // 화면에서 나감
+                    entry.target.classList.remove("show");
                 }
             });
-        });
+        },
+        // 화면에서 해당 요소가 10% 이상 보일 경우 화면에 들어온 것으로 판단함
+        { threshold: 0.1 }
+    );
 
-        const images = document.querySelectorAll('.verticalImage');
-        images.forEach((img) => {
-            observer.observe(img);
-        });
+    // 관찰 대상 설정
+    const targetElements = document.querySelectorAll(".verticalImage");
+    targetElements.forEach((element) => {
+        observer.observe(element);
+    });
 
-        return () => {
-            images.forEach((img) => {
-                observer.unobserve(img);
-            });
-        };
-    }, []);
+    // useEffect(() => {
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach(entry => {
+    //             if (entry.isIntersecting) {
+    //                 entry.target.classList.add('show');
+    //             } else {
+    //                 entry.target.classList.remove('show');
+    //             }
+    //         });
+    //     });
+
+    //     const images = document.querySelectorAll('.verticalImage');
+    //     images.forEach((img) => {
+    //         observer.observe(img);
+    //     });
+
+    //     return () => {
+    //         images.forEach((img) => {
+    //             observer.unobserve(img);
+    //         });
+    //     };
+    // }, []);
 
     return (
         <div style={{ height: '100vh', backgroundColor: 'red' }}>

@@ -25,52 +25,31 @@ export default function IntersectionObservers() {
         event.target.classList.remove('scaleUp');
     };
 
-    /* javascript */
-    // Intersection Observer 생성
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // 화면에 들어옴
-                    entry.target.classList.add("show");
+                    entry.target.classList.add('show');
                 } else {
-                    // 화면에서 나감
-                    entry.target.classList.remove("show");
+                    entry.target.classList.remove('show');
                 }
             });
-        },
-        // 화면에서 해당 요소가 10% 이상 보일 경우 화면에 들어온 것으로 판단함
-        { threshold: 0.1 }
-    );
+        });
 
-    // 관찰 대상 설정
-    const targetElements = document.querySelectorAll(".verticalImage");
-    targetElements.forEach((element) => {
-        observer.observe(element);
-    });
+        const images = document.querySelectorAll('.verticalImage');
+        images.forEach((img) => {
+            observer.observe(img);
+        });
 
-    // useEffect(() => {
-    //     const observer = new IntersectionObserver((entries) => {
-    //         entries.forEach(entry => {
-    //             if (entry.isIntersecting) {
-    //                 entry.target.classList.add('show');
-    //             } else {
-    //                 entry.target.classList.remove('show');
-    //             }
-    //         });
-    //     });
+        return () => {
+            images.forEach((img) => {
+                observer.observe(img);
+            });
+        };
+    }, []);
 
-    //     const images = document.querySelectorAll('.verticalImage');
-    //     images.forEach((img) => {
-    //         observer.observe(img);
-    //     });
 
-    //     return () => {
-    //         images.forEach((img) => {
-    //             observer.unobserve(img);
-    //         });
-    //     };
-    // }, []);
+
 
     return (
         <div style={{ height: '100vh', backgroundColor: 'red' }}>
@@ -92,3 +71,47 @@ export default function IntersectionObservers() {
         </div>
     )
 }
+
+
+
+
+
+// useEffect(() => {
+//     const observer = new IntersectionObserver((entries) => {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting) {
+//                 entry.target.classList.add('show');
+//             } else {
+//                 entry.target.classList.remove('show');
+//             }
+//         });
+//     });
+
+//     const images = document.querySelectorAll('.verticalImage');
+//     images.forEach((img) => {
+//         observer.observe(img);
+//     });
+
+//     return () => {
+//         images.forEach((img) => {
+//             observer.unobserve(img);
+//         });
+//     };
+// }, []);
+
+
+// const observer = new IntersectionObserver((entries) => {
+//     entries.forEach(entry => {
+//         if (entry.isIntersecting) {
+//             entry.target.classList.add('show');
+//         } else {
+//             entry.target.classList.remove('show');
+//         }
+//     });
+// }, { threshold: 0.1 }
+// );
+
+// const images = document.querySelectorAll('.verticalImage');
+// images.forEach((img) => {
+//     observer.observe(img);
+// });

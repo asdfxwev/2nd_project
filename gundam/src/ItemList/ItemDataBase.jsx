@@ -2,7 +2,7 @@
 
 // 상품 정보
 const itemDetails = [
-    { id: 1, name: '건담1호기', price: '99,000원', comment: '', detail: '' },
+    { id: 1, name: '건담1호기', price: '99,000원', comment: '스게에', detail: '비싸요' },
     { id: 2, name: '건담2호기', price: '109,000원', comment: '', detail: '' },
     { id: 3, name: '건담3호기', price: '119,000원', comment: '', detail: '' },
     { id: 4, name: '건담4호기', price: '99,000원', comment: '', detail: '' },

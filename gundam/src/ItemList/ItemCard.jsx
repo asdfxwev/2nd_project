@@ -1,12 +1,18 @@
 import React from 'react';
 import './ItemCard.css';
 
-const ItemCard = ({ product }) => {
+const ItemCard = ({ Item }) => {
     return (
-        <div className="item-card">
-            <img src={product.image} alt={product.name} />
-            <h2>{product.name}</h2>
-            <p>{product.price}</p>
+        <div>
+            <div className="item-card">
+                <img src={Item.image} alt={Item.name} />
+            </div>
+            <div>
+                <p className='item_comment'>{Item.comment}</p>
+                <h2>{Item.name}</h2>
+                <p className='item_p'>{Item.price}</p>
+                <p className='item_p'>{Item.detail}</p>
+            </div>
         </div>
     );
 };

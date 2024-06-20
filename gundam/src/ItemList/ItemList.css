@@ -1,7 +1,12 @@
 .item-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, auto);
     gap: 16px;
     padding: 20px;
+}
+
+.item-choose {
+    display: grid;
+    grid-area: 1/1/6/1;
 }

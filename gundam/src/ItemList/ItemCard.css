@@ -1,0 +1,23 @@
+.item-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.item-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+}
+
+.item-card h2 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+.item-card p {
+    font-size: 1.2em;
+    color: #333;
+}

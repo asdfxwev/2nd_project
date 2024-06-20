@@ -1,7 +1,15 @@
-export default function ItemList () {
+import React from 'react';
+import ItemCard from './ItemCard';
+import './ItemList.css';
+
+const ItemList = ({ items }) => {
     return (
-        <div className="ItemList" style={{height:'100vh', width:'100vw'}}>
-                asdf
+        <div className="item-list">
+            {items.map(item => (
+                <ItemCard key={item.id} product={item} />
+            ))}
         </div>
-    )
-}
+    );
+};
+
+export default ItemList;

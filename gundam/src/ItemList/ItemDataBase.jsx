@@ -1,10 +1,4 @@
-const importAll = (i) => {
-    let images = {};
-    i.keys().forEach((item) => { images[item.replace('./', '')] = i(item); });
-    return images;
-};
-
-const images = importAll(require.context('./image', false, /\.(png|jpe?g|svg)$/));
+// src/ItemList/ItemDataBase.jsx
 
 // 상품 정보
 const itemDetails = [
@@ -31,9 +25,10 @@ const itemDetails = [
     // 추가 아이템 정보를 여기에 늘리면 됨.
 ];
 
+// 이미지를 public 폴더에서 불러오기 위해 경로를 생성합니다.
 const ItemDataBase = itemDetails.map((item, index) => ({
     ...item,
-    image: images[`gundam${String(index + 1).padStart(2, '0')}.jpg`]
+    image: `${process.env.PUBLIC_URL}/image/gundam${String(index + 1).padStart(2, '0')}.jpg`
 }));
 
 export default ItemDataBase;

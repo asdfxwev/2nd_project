@@ -1,0 +1,49 @@
+.BrandFigure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.FigureContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.FigureList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.Figures {
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+}
+
+.category {
+    transition: width 0.3s ease-in-out;
+    height: 80vh;
+    width: 16vw;
+}
+
+.hovered {
+    width: 40vw;
+}
+
+.shrink {
+    width: calc((80vw - 40vw) / 4); /* Divide remaining space among other images */
+}
+
+.FigureList img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+}

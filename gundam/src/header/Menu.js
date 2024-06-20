@@ -18,6 +18,7 @@ export default function Menu() {
         }
     };
 
+
     const brand1 = [
         { id: 'brand1', name: 'HG' },
         { id: 'brand2', name: 'RG' },
@@ -116,6 +117,7 @@ export default function Menu() {
         { id: 'brand14', name: '그 외' },
     ]
 
+
     return (
         <>
             <div className='h_main_container'>
@@ -132,6 +134,7 @@ export default function Menu() {
                     <div className="h_right h_shopping"><a href="/">장바구니</a></div>
                     <div className="h_right h_search" onClick={() => Menu('headerSearch')}><NavLink to='/'>검색</NavLink></div>
                 </div>
+
                 <Routes>
                     {visibleMenu === 'headerMenu' && (
                         <Route path='/' element={<HeaderMenu1 brand1={brand1} art1={art1} />} />
@@ -146,7 +149,7 @@ export default function Menu() {
                         <Route path='/' element={<HeaderMenu4 brand4={brand4} art4={art4} brand14={brand14} />} />
                     )}
                     {visibleMenu === 'headerSearch' && (
-                        <Route path='/' element={<HeaderSearch brand4={brand4} art4={art4} brand14={brand14} />} />
+                        <Route path='/' element={<HeaderSearch />} />
                     )}
                 </Routes>
             </div>

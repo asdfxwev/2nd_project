@@ -1,16 +1,58 @@
-.tabButton {
-    display: flex;
+.tabButtonContainer {
+    margin: 3rem;
 }
 
-.tabButton li {
+.tabButtonList {
+    display: flex;
+    justify-content: center;
+}
 
+.tabButton {
+    margin: 0px 10px;
+    font-size: 1.5rem;
+}
+
+.tabImageContainer {
+    height: 70vh;
 }
 
 .tabImageList {
     display: flex;
+    width: calc(100vw - 16px);
 }
 
 .tagImageFlex {
     display: flex;
     flex-direction: column;
+}
+
+.tabImg {
+    width: calc(25vw - 5px);
+}
+
+.reservationBuy {
+    text-align: left;
+}
+
+.revBuy {
+    color: white;
+    background-color: skyblue;
+}
+
+.productExplanation {
+    text-align: left;
+    color: gray;
+}
+
+.productName {
+    text-align: left;
+}
+
+.productPrice {
+    text-align: left;
+    font-weight: bold;
+}
+
+.tabImageFlex p {
+    margin-top: 10px;
 }

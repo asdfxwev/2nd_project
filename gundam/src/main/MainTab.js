@@ -53,10 +53,10 @@ export default function MainTab() {
             <div className="tabImageContainer">
                 <ul className='tabImageList'>
                     {tabImage1.map((image, i) => <li className="tabImage"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p>예약구매</p><p>{image.explanation}</p><p>{image.realName}</p><p><span>{image.price}</span><span>{image.won}</span></p></div></li>)}
-                    {tabImage2.map((image, i) => <li className="tabImage nonVisible"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p></p></div></li>)}
-                    {tabImage3.map((image, i) => <li className="tabImage nonVisible"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p></p></div></li>)}
-                    {tabImage4.map((image, i) => <li className="tabImage nonVisible"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p></p></div></li>)}
-                    {tabImage5.map((image, i) => <li className="tabImage nonVisible"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p></p></div></li>)}
+                    {tabImage2.map((image, i) => <li className="tabImage nonVisible"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p>{image.explanation}</p><p>{image.realName}</p><p><span>{image.price}</span><span>{image.won}</span></p></div></li>)}
+                    {tabImage3.map((image, i) => <li className="tabImage nonVisible"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p>{image.explanation}</p><p>{image.realName}</p><p><span>{image.price}</span><span>{image.won}</span></p></div></li>)}
+                    {tabImage4.map((image, i) => <li className="tabImage nonVisible"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p>{image.explanation}</p><p>{image.realName}</p><p><span>{image.price}</span><span>{image.won}</span></p></div></li>)}
+                    {tabImage5.map((image, i) => <li className="tabImage nonVisible"><div className="tabImageFlex"><img alt={i} src={image.name} className={image.id} /><p>{image.explanation}</p><p>{image.realName}</p><p><span>{image.price}</span><span>{image.won}</span></p></div></li>)}
                 </ul>
             </div>
         </section>

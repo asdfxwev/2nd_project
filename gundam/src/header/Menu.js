@@ -120,33 +120,33 @@ export default function Menu() {
         <>
             <div className='h_main_container'>
                 <div className="h_menu_container">
-                    <div className="h_menu" onClick={() => Menu('headerMenu')}><NavLink to='/headerMenu'>건프라</NavLink></div>
-                    <div className="h_menu" onClick={() => Menu('headerMenu1')}><NavLink to='/headerMenu1'>애니프라</NavLink></div>
-                    <div className="h_menu" onClick={() => Menu('headerMenu2')}><NavLink to='/headerMenu2'>피규어</NavLink></div>
-                    <div className="h_menu" onClick={() => Menu('etc')}><NavLink to='/etc'>기타</NavLink></div>
+                    <div className="h_menu" onClick={() => Menu('headerMenu')}><NavLink to='/'>건프라</NavLink></div>
+                    <div className="h_menu" onClick={() => Menu('headerMenu1')}><NavLink to='/'>애니프라</NavLink></div>
+                    <div className="h_menu" onClick={() => Menu('headerMenu2')}><NavLink to='/'>피규어</NavLink></div>
+                    <div className="h_menu" onClick={() => Menu('etc')}><NavLink to='/'>기타</NavLink></div>
                 </div>
 
                 <div className="h_right_container">
                     <div className="h_right h_login"><a href="/">로그인</a></div>
                     <div className="h_right h_mypage"><a href="/">마이페이지</a></div>
                     <div className="h_right h_shopping"><a href="/">장바구니</a></div>
-                    <div className="h_right h_search" onClick={() => Menu('headerSearch')}><NavLink to='/HeaderSearch'>검색</NavLink></div>
+                    <div className="h_right h_search" onClick={() => Menu('headerSearch')}><NavLink to='/'>검색</NavLink></div>
                 </div>
                 <Routes>
                     {visibleMenu === 'headerMenu' && (
-                        <Route path='/headerMenu' element={<HeaderMenu1 brand1={brand1} art1={art1} />} />
+                        <Route path='/' element={<HeaderMenu1 brand1={brand1} art1={art1} />} />
                     )}
                     {visibleMenu === 'headerMenu1' && (
-                        <Route path='/headerMenu1' element={<HeaderMenu2 brand2={brand2} art2={art2} />} />
+                        <Route path='/' element={<HeaderMenu2 brand2={brand2} art2={art2} />} />
                     )}
                     {visibleMenu === 'headerMenu2' && (
-                        <Route path='/headerMenu2' element={<HeaderMenu3 brand3={brand3} art3={art3} brand13={brand13} art13={art13} />} />
+                        <Route path='/' element={<HeaderMenu3 brand3={brand3} art3={art3} brand13={brand13} art13={art13} />} />
                     )}
                     {visibleMenu === 'etc' && (
-                        <Route path='/etc' element={<HeaderMenu4 brand4={brand4} art4={art4} brand14={brand14} />} />
+                        <Route path='/' element={<HeaderMenu4 brand4={brand4} art4={art4} brand14={brand14} />} />
                     )}
                     {visibleMenu === 'headerSearch' && (
-                        <Route path='/headerSearch' element={<HeaderSearch brand4={brand4} art4={art4} brand14={brand14} />} />
+                        <Route path='/' element={<HeaderSearch brand4={brand4} art4={art4} brand14={brand14} />} />
                     )}
                 </Routes>
             </div>

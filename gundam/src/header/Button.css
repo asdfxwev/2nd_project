@@ -7,7 +7,7 @@
 }
 
 .logo {
-    position: fixed;
+    /* position: fixed; */
     display: block;
     z-index: 2;
 }

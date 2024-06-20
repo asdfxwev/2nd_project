@@ -1,17 +1,18 @@
 import React from 'react';
 import './ItemCard.css';
+import ItemDataBase from './ItemDataBase'
 
-const ItemCard = ({ Item }) => {
+const ItemCard = ({ item }) => { 
     return (
         <div>
             <div className="item-card">
-                <img src={Item.image} alt={Item.name} />
+                <img src={item.image} alt={item.name} />
             </div>
             <div>
-                <p className='item_comment'>{Item.comment}</p>
-                <h2>{Item.name}</h2>
-                <p className='item_p'>{Item.price}</p>
-                <p className='item_p'>{Item.detail}</p>
+                <p className='item_comment'>{item.comment}</p>
+                <h2>{item.name}</h2>
+                <p className='item_p'>{item.price}</p>
+                <p className='item_p'>{item.detail}</p>
             </div>
         </div>
     );

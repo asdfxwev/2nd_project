@@ -1,5 +1,3 @@
-// src/ItemList/ItemDataBase.jsx
-
 // 상품 정보
 const itemDetails = [
     { id: 1, name: '건담1호기', price: '99,000원', comment: '스게에', detail: '비싸요' },
@@ -25,7 +23,6 @@ const itemDetails = [
     // 추가 아이템 정보를 여기에 늘리면 됨.
 ];
 
-// 이미지를 public 폴더에서 불러오기 위해 경로를 생성합니다.
 const ItemDataBase = itemDetails.map((item, index) => ({
     ...item,
     image: `${process.env.PUBLIC_URL}/image/gundam${String(index + 1).padStart(2, '0')}.jpg`

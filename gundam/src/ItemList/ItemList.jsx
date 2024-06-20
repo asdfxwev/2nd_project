@@ -1,18 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './ItemList.css'
+import ItemCard from './ItemCard'; 
+import './ItemList.css';
+import ItemDataBase from './ItemDataBase';
 
-const ItemList = ({ items }) => {
+const ItemList = () => { 
+
     return (
-        <div>
-            <h2>Item List</h2>
-            <ul>
-                {items.map(item => (
-                    <li key={item.id}>
-                        <Link to={`/ItemDetail/${item.id}`}>{item.name}</Link>
-                    </li>
-                ))}
-            </ul>
+        <div className="item-list">
+            {ItemDataBase.map(item => (
+                <ItemCard key={item.id} item={item} />
+            ))}
         </div>
     );
 };

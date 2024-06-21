@@ -24,26 +24,52 @@ html {
     align-items: center;
     justify-content: center;
     padding: 15px;
-    background-color: #111;
+    background-color: #faf7f7;
     
 }
 
 .imd{
-    width: 100vh;
+    width: 55vh;
     position: absolute;
-    left:65vh;
-    
+    left:230px;
+    animation: moveLeftToRight 4s ;
+}
+
+@keyframes moveLeftToRight {
+    from {
+        left: -530px;
+    }
+    to {
+        left: 230px;
+    }
+}
+
+.imc {
+    width: 55vh;
+    position: absolute;
+    right: 230px;
+    animation: moveRightToLeft 4s ;
+}
+
+@keyframes moveRightToLeft {
+    from {
+        right: -530px;
+    }
+    to {
+        right: 230px;
+    }
 }
 
 .wrap-login {
-    width: 390px;
-    background-color: #333;
+    width: 45vh;
+    height: 70vh;
+    background-color: #ccc;
     border-radius: 10px;
     overflow: hidden;
     padding: 77px 55px 33px 55px;
     box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    left: 160vh;
+    /* position: relative; */
+    /* left: 160vh; */
 }
 
 .login-form {
@@ -57,6 +83,7 @@ html {
     color: azure;
     line-height: 1.2;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .login-form-title img {

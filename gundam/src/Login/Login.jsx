@@ -10,14 +10,15 @@ function Login() {
     return (
     <div className="container">
         <div className="container-login">
-        <img className='imd' src='./image/KakaoTalk_20240615_155520356_04.jpg' alt="Gundam Logo" />
+        <img className='imd' src='./image/gamn.png' alt="Gundam Logo" />
+        <img className='imc' src='./image/gamm.png' alt="Gundam Logo" />
             
             <div className="wrap-login">
                 <form className="login-form">
-                    <span className="login-form-title"> Bem vindo </span>
+                    <span className="login-form-title"> 출격 준비</span>
 
                     <span className="login-form-title">
-                        <img src={jpIMG} alt="Jovem Programador" />
+                        {/* <img src={jpIMG} alt="Jovem Programador" /> */}
                     </span>
 
                     <div className="wrap-input">

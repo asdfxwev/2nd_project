@@ -7,7 +7,7 @@
 header {
     display: flex;
     flex-direction: column;
-    height: 7rem;
+    height: 3rem;
     position: fixed;
     width: calc(100vw - 16px);
     transition: all .5s;
@@ -27,6 +27,7 @@ header {
 .h_menu_container {
     display: flex;
     font-size: 2rem;
+    transition-duration: 1s;
 }
 
 .h_right_container {
@@ -34,15 +35,26 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-duration: .5s;
 }
 
 .h_menu_container div {
     display: grid;
+    transition-duration: .5s;
     place-content: center;
 }
 
 .h_main_container {
     display: flex;
+    color: white;
+}
+
+.h_main_container a{
+    color: white;
+}
+
+.smallHeadMenu a{
+    color: black;
 }
 
 .h_menu {
@@ -51,6 +63,7 @@ header {
 
 .h_right {
     margin-right: 30px;
+    transition-duration: .5s;
 }
 
 .detailMenu {
@@ -60,9 +73,17 @@ header {
     text-align: center;
     position: absolute;
     top: 3rem;
-    background-color: #b3ffff;
+    background-color: #fff;
     /* opacity: 0; */
-    transition: all 1s;
+    transition-duration: .5s;
+}
+
+
+.detailMenu div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .op {
@@ -316,33 +337,58 @@ header {
     background: url(../../public/image/header8.jpg) center/100% 100% no-repeat;
 }
 
-.detailMenu div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
 .h_color {
     font-size: .625rem;
 }
 
-.active {
+/* .active {
     border-bottom: 3px solid;
+} */
+
+.smallHeadMenu {
+    background-color: white;
+    color: black;
+    position: fixed;
+    top: 3rem;
+    width: calc(100vw - 16px);
 }
 
-.smallMenu .h_menu {
+.smallHeadMenu .h_menu {
+    font-size: 1rem;
+}
+
+.smallHeadMenu .h_right {
     font-size: 0.8rem;
 }
 
-.smallMenu .h_right {
-    font-size: 0.8rem;
+.smallHeadMenu .h_menu_container {
+    padding: 5px 0;
+
 }
 
-.smallMenu .h_menu_container {
+.smallHeadMenu .h_right_container {
+    margin-left: auto;
     padding: 5px 0;
 }
 
-.smallMenu .h_right_container {
-    padding: 5px 0;
+a {
+    text-decoration: none;
+}
+.Every {
+    position: fixed;
+    width: calc(100vw - 16px);
+    height: 4rem;
+    z-index: 3;
+}
+
+.smallThing {
+    background-color: white;
+    transition-duration: .5s;
+    height: 3rem;
+}
+
+.smallThing .logo{
+    width: 8rem;
+    height: 3rem;
+    transition-duration: .5s;
 }

@@ -136,12 +136,13 @@ export default function Menu() {
 
     return (
         <>
-            <div className={`h_main_container ${smallTopMenu ? 'smallMenu' : ''}`}>                    <div className="h_menu_container">
-                <div className="h_menu" onClick={() => Menu('headerMenu')}><NavLink to='/'>건프라</NavLink></div>
-                <div className="h_menu" onClick={() => Menu('headerMenu1')}><NavLink to='/'>애니프라</NavLink></div>
-                <div className="h_menu" onClick={() => Menu('headerMenu2')}><NavLink to='/'>피규어</NavLink></div>
-                <div className="h_menu" onClick={() => Menu('etc')}><NavLink to='/'>기타</NavLink></div>
-            </div>
+            <div className={`h_main_container ${smallTopMenu ? 'smallHeadMenu' : ''}`}>
+                <div className="h_menu_container">
+                    <div className="h_menu" style={{color:'white'}} onClick={() => Menu('headerMenu')}><NavLink to='/'>건프라</NavLink></div>
+                    <div className="h_menu" style={{color:'white'}} onClick={() => Menu('headerMenu1')}><NavLink to='/'>애니프라</NavLink></div>
+                    <div className="h_menu" style={{color:'white'}} onClick={() => Menu('headerMenu2')}><NavLink to='/'>피규어</NavLink></div>
+                    <div className="h_menu" style={{color:'white'}} onClick={() => Menu('etc')}><NavLink to='/'>기타</NavLink></div>
+                </div>
 
                 <div className="h_right_container">
                     <div className="h_right h_login"><a href="/"><FontAwesomeIcon icon={faSignInAlt} /> 로그인</a></div>

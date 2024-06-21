@@ -7,8 +7,8 @@
 header {
     display: flex;
     flex-direction: column;
-    height: 3rem;
-    position: fixed;
+    height: 7rem;
+    /* position: fixed; */
     width: calc(100vw - 16px);
     transition: all .5s;
     top: 4rem;

@@ -29,9 +29,12 @@ export default function Button() {
         <div ref={topRef} className='as'>
             <h1 className="logo"><a href="/">logo</a></h1>
             {showButton && (
-                <img src='./image/topbtn.png' alt='topBtn' className='topBtn' onClick={scrollTop} style={{ transition: 'all 1s', cursor:"pointer" }} />
+                <img src='./image/topbtn.png'
+                    alt='topBtn' className='topBtn'
+                    onClick={scrollTop}
+                    style={{ transition: 'all 1s', cursor: "pointer" }} />
             )}
-            <hr/>
+            <hr />
         </div>
     );
 }

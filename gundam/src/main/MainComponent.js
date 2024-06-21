@@ -1,7 +1,8 @@
 import IntersectionObservers from './IntersectionObservers'
 import ProjectImg from './ProductImg'
 import Slider from './Slider';
-import MainTab from './MainTab'
+import MainTab from './MainTab';
+import BrandFigure from './BrandFigure';
 
 export default function MainComponent () {
 
@@ -10,6 +11,7 @@ export default function MainComponent () {
             <Slider />
             <MainTab />
             <IntersectionObservers />
+            <BrandFigure />
             <ProjectImg />
         </main>
     )

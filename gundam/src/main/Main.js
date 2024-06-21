@@ -4,6 +4,7 @@ import ItemList from '../ItemList/ItemList';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import ItemDataBase from '../ItemList/ItemDataBase'
 import React,{useState, useEffect} from 'react'
+import Login from '../Login/Login'
 
 export default function Main() {
     const [items, setItems] = useState([]);
@@ -19,6 +20,7 @@ export default function Main() {
                 <Route path="/" element={<MainComponent />} />
                 <Route path="/ItemList" element={<ItemList />} />
                 <Route path="/ItemDetail" element={<ItemDetail />} />
+                <Route path="/Login" element={<Login/>} />
             </Routes>
         </>
     )

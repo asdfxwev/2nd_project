@@ -1,37 +1,31 @@
-.tabImageContainer {
+.intersectionImageContainer {
     display: flex;
     overflow: hidden;
     height: 50vh;
 }
 
 .verticalImage {
-    transition-duration: 1s;
-    width: 100%;
-    height: 100%;
+    transition: all 1s;
+    width: 45vh;
+    height: 45vh;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.tabImageList {
-    width: 25vw;
-    border: 0px solid white;
+.intersectionImageList {
+    width: 45vh;
+    margin: 2.5vh;
     box-sizing: border-box;
     border-radius: 100%;
-    height: 20wh;
+    height: 45vh;
     overflow: hidden;
-    margin: 20px;
 }
 
 .scaleUp {
     scale: 1.1;
 }
 
-.verticalImage {
-    /* transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; */
-    transition-duration: 1s;
-    /* opacity: 0; */
-    transform: translateY(20px);
-}
-
-.verticalImage .show {
+.verticalImage.show {
     opacity: 1;
     transform: translateY(0);
 }

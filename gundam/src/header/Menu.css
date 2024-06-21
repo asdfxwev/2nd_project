@@ -1,9 +1,8 @@
-.right_container {
+/* .right_container {
     margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* text-align: right; */
 }
 
 .menu_container div {
@@ -13,4 +12,45 @@
 
 .main_container {
     display: flex;
+}
+
+.h_menu{
+    transition-duration: 1s;
+}
+
+.detailMenu.show {
+    display: flex;
+} */
+
+.h_main_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.h_menu_container, .h_right_container {
+    display: flex;
+}
+
+.h_menu {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.detailMenu {
+    display: none;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+.detailMenu a {
+    padding: 5px 0;
+}
+
+.detailMenu.show {
+    display: flex;
+}
+
+.h_right a {
+    margin: 0 10px;
 }

@@ -3,12 +3,15 @@ import HeaderMenu1 from "./HeaderMenu1";
 import HeaderMenu2 from "./HeaderMenu2";
 import HeaderMenu3 from "./HeaderMenu3";
 import HeaderMenu4 from "./HeaderMenu4";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import HeaderSearch from './HeaderSearch';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt, faUser, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function Menu() {
     const [visibleMenu, setVisibleMenu] = useState(null);
+    const [smallTopMenu, setSmallTopMenu] = useState(null);
 
     const Menu = (menu) => {
         if (visibleMenu === menu) {
@@ -17,6 +20,21 @@ export default function Menu() {
             setVisibleMenu(menu);
         }
     };
+
+    useEffect(() => {
+        function scroll() {
+            if (window.scrollY > window.innerHeight * .3) {
+                setSmallTopMenu(true)
+            } else {
+                setSmallTopMenu(false)
+            }
+        }
+        window.addEventListener('scroll', scroll);
+
+        return () => {
+            window.removeEventListener('scroll', scroll)
+        }
+    }, [])
 
     const brand1 = [
         { id: 'brand1', name: 'HG' },
@@ -99,7 +117,7 @@ export default function Menu() {
         { id: 'brand2', name: '건담데칼' },
         { id: 'brand3', name: '건담마커' },
         { id: 'brand4', name: '그 외' },
-    ]
+    ];
 
     const art4 = [
         { id: 'art1', name: '포켓몬 스케일 월드' },
@@ -107,49 +125,41 @@ export default function Menu() {
         { id: 'art3', name: '식물대도감' },
         { id: 'art4', name: '식품완구' },
         { id: 'art5', name: '그 외' },
-    ]
+    ];
 
     const brand14 = [
         { id: 'brand11', name: '깜짝에그' },
         { id: 'brand12', name: '카드게임' },
-        { id: 'brand13', name: '데스트 용품' },
+        { id: 'brand13', name: '데스크 용품' },
         { id: 'brand14', name: '그 외' },
-    ]
+    ];
 
     return (
         <>
-            <div className='h_main_container'>
-                <div className="h_menu_container">
-                    <div className="h_menu" onClick={() => Menu('headerMenu')}><NavLink to='/'>건프라</NavLink></div>
-                    <div className="h_menu" onClick={() => Menu('headerMenu1')}><NavLink to='/'>애니프라</NavLink></div>
-                    <div className="h_menu" onClick={() => Menu('headerMenu2')}><NavLink to='/'>피규어</NavLink></div>
-                    <div className="h_menu" onClick={() => Menu('etc')}><NavLink to='/'>기타</NavLink></div>
-                </div>
+            <div className={`h_main_container ${smallTopMenu ? 'smallMenu' : ''}`}>                    <div className="h_menu_container">
+                <div className="h_menu" onClick={() => Menu('headerMenu')}><NavLink to='/'>건프라</NavLink></div>
+                <div className="h_menu" onClick={() => Menu('headerMenu1')}><NavLink to='/'>애니프라</NavLink></div>
+                <div className="h_menu" onClick={() => Menu('headerMenu2')}><NavLink to='/'>피규어</NavLink></div>
+                <div className="h_menu" onClick={() => Menu('etc')}><NavLink to='/'>기타</NavLink></div>
+            </div>
 
                 <div className="h_right_container">
-                    <div className="h_right h_login"><a href="/">로그인</a></div>
-                    <div className="h_right h_mypage"><a href="/">마이페이지</a></div>
-                    <div className="h_right h_shopping"><a href="/">장바구니</a></div>
-                    <div className="h_right h_search" onClick={() => Menu('headerSearch')}><NavLink to='/'>검색</NavLink></div>
+                    <div className="h_right h_login"><a href="/"><FontAwesomeIcon icon={faSignInAlt} /> 로그인</a></div>
+                    <div className="h_right h_mypage"><a href="/"><FontAwesomeIcon icon={faUser} /> 마이페이지</a></div>
+                    <div className="h_right h_shopping"><a href="/"><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</a></div>
+                    <div className="h_right h_search" onClick={() => Menu('headerSearch')}><NavLink to='/'><FontAwesomeIcon icon={faSearch} /> 검색</NavLink></div>
                 </div>
-                <Routes>
-                    {visibleMenu === 'headerMenu' && (
-                        <Route path='/' element={<HeaderMenu1 brand1={brand1} art1={art1} />} />
-                    )}
-                    {visibleMenu === 'headerMenu1' && (
-                        <Route path='/' element={<HeaderMenu2 brand2={brand2} art2={art2} />} />
-                    )}
-                    {visibleMenu === 'headerMenu2' && (
-                        <Route path='/' element={<HeaderMenu3 brand3={brand3} art3={art3} brand13={brand13} art13={art13} />} />
-                    )}
-                    {visibleMenu === 'etc' && (
-                        <Route path='/' element={<HeaderMenu4 brand4={brand4} art4={art4} brand14={brand14} />} />
-                    )}
-                    {visibleMenu === 'headerSearch' && (
-                        <Route path='/' element={<HeaderSearch brand4={brand4} art4={art4} brand14={brand14} />} />
-                    )}
-                </Routes>
             </div>
+
+            <Routes>
+                <Route path='/' element={<div />} />
+            </Routes>
+
+            {visibleMenu === 'headerMenu' && <HeaderMenu1 brand1={brand1} art1={art1} />}
+            {visibleMenu === 'headerMenu1' && <HeaderMenu2 brand2={brand2} art2={art2} />}
+            {visibleMenu === 'headerMenu2' && <HeaderMenu3 brand3={brand3} art3={art3} brand13={brand13} art13={art13} />}
+            {visibleMenu === 'etc' && <HeaderMenu4 brand4={brand4} art4={art4} brand14={brand14} />}
+            {visibleMenu === 'headerSearch' && <HeaderSearch />}
         </>
     );
 }

@@ -8,7 +8,7 @@ header {
     display: flex;
     flex-direction: column;
     height: 7rem;
-    /* position: fixed; */
+    position: fixed;
     width: calc(100vw - 16px);
     transition: all .5s;
     top: 4rem;
@@ -51,37 +51,6 @@ header {
 
 .h_right {
     margin-right: 30px;
-}
-
-.h_login>a::before {
-    content: "\f090";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}
-
-.h_mypage>a::before {
-    content: "\f007";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}
-
-.h_shopping>a::before {
-    content: "\f07a";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}
-
-.h_search>a::before {
-    content: "\f002";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}
-
-.h_list::before {
-    content: "\f0c9";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    cursor: pointer;
 }
 
 .detailMenu {
@@ -359,5 +328,21 @@ header {
 }
 
 .active {
-    border-bottom: 3px solid ;
+    border-bottom: 3px solid;
+}
+
+.smallMenu .h_menu {
+    font-size: 0.8rem;
+}
+
+.smallMenu .h_right {
+    font-size: 0.8rem;
+}
+
+.smallMenu .h_menu_container {
+    padding: 5px 0;
+}
+
+.smallMenu .h_right_container {
+    padding: 5px 0;
 }

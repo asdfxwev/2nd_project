@@ -1,0 +1,25 @@
+.item-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #f9f9f9;
+}
+
+.item-card img {
+    width: 100%;
+    height: auto;
+}
+
+.item-card h2 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+.item_p {
+    color:black;
+    padding: 16px;
+}
+.item_comment {
+    color:gray;
+    padding: 16px;
+}

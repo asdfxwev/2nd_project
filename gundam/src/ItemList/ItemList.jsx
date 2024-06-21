@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
+import TuneIcon from '@mui/icons-material/Tune';
 
 const ItemList = () => {
     const [filtersVisible, setFiltersVisible] = useState(true);
@@ -14,6 +15,16 @@ const ItemList = () => {
 
     const toggleFiltersVisible = () => {
         setFiltersVisible(!filtersVisible);
+    };
+
+    const toggleSectionVisibility = (category) => {
+        toggleSectionVisibility(prevFilters => ({
+            ...prevFilters,
+            [category]: {
+                ...prevFilters[category],
+                visible: !prevFilters[category].visible
+            }
+        }));
     };
 
     const resetFilters = () => {
@@ -38,8 +49,8 @@ const ItemList = () => {
     return (
         <div className="item-list">
             <div className='item-choose'>
-                <div className='item-size-80' onClick={toggleFiltersVisible}>
-                    {filtersVisible ? '필터 숨기기' : '필터 보이기'}
+                <div className='item-size-100' onClick={toggleFiltersVisible}>
+                <TuneIcon/>{filtersVisible ? '필터 숨기기' : '필터 보이기'}
                 </div>
                 <div>
                     선택된 필터: <button onClick={resetFilters}>초기화</button>
@@ -47,10 +58,18 @@ const ItemList = () => {
                 {filtersVisible && (
                     <div>
                         <div className='filter-section'>
-                            <h3>상품정보</h3>
-                            <div><label><input type='checkbox' checked={!!selectedFilters.상품정보['세일 상품만']} onChange={() => handleCheckboxChange('상품정보', '세일 상품만')}></input>세일 상품만</label></div>
-                            <div><label><input type='checkbox' checked={!!selectedFilters.상품정보['품절상품 제외']} onChange={() => handleCheckboxChange('상품정보', '품절상품 제외')}></input>품절상품 제외</label></div>
-                            <div><label><input type='checkbox' checked={!!selectedFilters.상품정보['예약종료상품 제외']} onChange={() => handleCheckboxChange('상품정보', '예약종료상품 제외')}></input>예약종료상품 제외</label></div>
+                            <h3>상품정보
+                                <span className='toggle-section' onClick={() => toggleSectionVisibility('상품정보')}>
+                                {selectedFilters.상품정보.visible ? '-': '+'}
+                                </span>
+                            </h3>
+                            {selectedFilters.상품정보.visible && (
+                                <div>
+                                    <label>
+                                        <input type="checkbox" checked={!!selectedFilters.상품정보} id="" />
+                                    </label>
+                                </div>
+                            )}
                         </div>
                         <div className='filter-section'>
                             <h3>가격대별</h3>

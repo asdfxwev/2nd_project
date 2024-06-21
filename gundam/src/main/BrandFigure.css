@@ -26,7 +26,8 @@
 .Figures {
     overflow: hidden;
     transition: width .5s ease-in-out;
-    height: 80vh;
+    /* height: 80vh; */
+    height: 100%;
 }
 
 .category {

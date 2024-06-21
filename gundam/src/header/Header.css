@@ -53,37 +53,6 @@ header {
     margin-right: 30px;
 }
 
-.h_login>a::before {
-    content: "\f090";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}
-
-.h_mypage>a::before {
-    content: "\f007";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}
-
-.h_shopping>a::before {
-    content: "\f07a";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}
-
-.h_search>a::before {
-    content: "\f002";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}
-
-.h_list::before {
-    content: "\f0c9";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    cursor: pointer;
-}
-
 .detailMenu {
     display: grid;
     grid-template: repeat(9, 1fr) / repeat(6, 1fr) .5fr 1fr .5fr;
@@ -359,5 +328,21 @@ header {
 }
 
 .active {
-    border-bottom: 3px solid ;
+    border-bottom: 3px solid;
+}
+
+.smallMenu .h_menu {
+    font-size: 0.8rem;
+}
+
+.smallMenu .h_right {
+    font-size: 0.8rem;
+}
+
+.smallMenu .h_menu_container {
+    padding: 5px 0;
+}
+
+.smallMenu .h_right_container {
+    padding: 5px 0;
 }

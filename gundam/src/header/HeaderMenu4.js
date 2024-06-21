@@ -1,10 +1,13 @@
 // import './Header.css'
+import HeaderMenuSmallTop from "./HeaderMenuSmallTop"
+import './HeaderMenu.css'
 
 
 export default function HeaderMenu4(props) {
+    const menuSmallTop = HeaderMenuSmallTop();
 
     return (
-        <div className="detailMenu">
+        <div className={`detailMenu ${menuSmallTop ? 'smallMenu' : ''}`}>
             <div className="reservation"><a href="/">예약</a></div>
             <div className="popular"><a href="/">인기</a></div>
             <div className="every"><a href="/">전체상품</a></div>

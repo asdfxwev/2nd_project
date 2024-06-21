@@ -4,7 +4,7 @@ import ItemList from '../ItemList/ItemList';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import ItemDataBase from '../ItemList/ItemDataBase'
 import React,{useState, useEffect} from 'react'
-import Login from '../Login/Login'
+import Login from '../Login/Login';
 
 export default function Main() {
     const [items, setItems] = useState([]);

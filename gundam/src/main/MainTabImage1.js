@@ -1,4 +1,4 @@
-export default function MainTabImage1 () {
+export default function MainTabImage1() {
 
     const tabImage1 = [
         { id: 'tabImage1', name: './image/tabImage1.jpg', price: '70,200', won: '원', realName: '슈퍼 미니프라 특급무장 라이너보이', explanation: '구급전대 고고파이브' },
@@ -9,7 +9,16 @@ export default function MainTabImage1 () {
 
     return (
         <>
-        {tabImage1.map((image, i) => <li className="tabImage"><div className="tabImageFlex"><img alt={i} src={image.name} className="tabImg" /><p className='reservationBuy'><span className="revBuy">예약구매</span></p><p className="productExplanation">{image.explanation}</p><p className="productName">{image.realName}</p><p className="productPrice"><span>{image.price}</span><span>{image.won}</span></p></div></li>)}
+            {tabImage1.map((image, i) =>
+                <li className="tabImage">
+                    <div className="tabImageFlex">
+                        <img alt={i} src={image.name} className="tabImg" />
+                        <p className='reservationBuy'><span className="revBuy">예약구매</span></p>
+                        <p className="productExplanation">{image.explanation}</p>
+                        <p className="productName">{image.realName}</p>
+                        <p className="productPrice"><span>{image.price}</span><span>{image.won}</span></p>
+                    </div>
+                </li>)}
         </>
     )
 }

@@ -1,15 +1,16 @@
 import React from 'react';
 import './Footer.css'; // 스타일을 위한 CSS 파일
 
+
 // import gun_img from './public/image/Gundam_Logo_3.jpg';
 
 function Footer() {
     return (
         <div className="footer">
             <div className='footer_top'>
-                 <button>  <a href="#home">고객센터</a></button> 
-                 <button> <a href="#about">공지사항</a></button>
-                
+                <button>  <a href="#home">고객센터</a></button>
+                <button> <a href="#about">공지사항</a></button>
+
 
             </div>
             <div className='footer_bottom'>
@@ -19,12 +20,15 @@ function Footer() {
                     이메일문의: as@bandainamcoasia.com | 반다이남코코리아몰: mall@bandainamcoasia.com <br />
                     반다이남코코리아몰의 모든 콘텐츠는 무단 도용 시 법적인 제재를 받을 수 있습니다. <br /><br />
 
-                    Bandainamcokorea ALL RIGHTS RESERVED. </pre>
+                    Bandainamcokorea ALL RIGHTS RESERVED.
+                </pre>
+
                 <pre>
                     <p>고객센터 : 1544-4607 
-                    <br />
+                        <br />
 
-                    전화문의-평일 9:00 ~ 18:00 / 점심시간 12:30 ~ 13:30 <br /> ( 토,일및법정공휴일휴무 )</p> <br />
+                        전화문의-평일 9:00 ~ 18:00 / 점심시간 12:30 ~ 13:30 <br /> ( 토,일및법정공휴일휴무 )</p> <br />
+                    
 
 
                 </pre>

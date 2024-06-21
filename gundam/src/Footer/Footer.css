@@ -3,7 +3,7 @@
     color: white;
     text-align: center;
     padding: 1px 0;
-    width: 100%;
+    width: calc(100vw-16px);
     height: 10vh;
 }
 .footer_top a{
@@ -11,10 +11,15 @@
 }
 
 .footer_bottom {
+    width: calc(100vw-16px);
+
     background-color: #222;
     color: #666565;
     display: flex;
     height: 35vh;
+    justify-content: space-between;
+    /* justify-content: space-evenly; */
+    
     /* font-size: 2vh; */
 }
 
@@ -22,17 +27,22 @@
     box-sizing: border-box;
     font: inherit;
     display: flex;
+    text-align: left;
+    margin-right: 50vh;
+    
     
 }
 p{
     text-align: right;
-    font-size: 1.5em;
+    margin-right: 4vw;
+    
 }
 
 
 .footer_bottom p {
     display: flex;
-    /* margin-left: 45vh; */
+    font-size: px;
+
 
 }
 
@@ -42,15 +52,6 @@ p{
     width: 22vh;
     margin-left: 5vh;
     margin-top: 3vh;
-}
-
-
-
-
-
-.footer .container {
-    max-width: 1100px;
-    margin: 0 auto;
 }
 
 .footer div a {

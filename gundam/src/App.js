@@ -5,6 +5,9 @@ import ItemList from './ItemList/ItemList';
 import ItemDetail from './ItemDetail/ItemDetail';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Footer from './Footer/Footer';
+
+
 
 function App() {
   return (

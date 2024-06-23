@@ -9,6 +9,19 @@
 
 .logo {
     /* position: fixed; */
-    display: block;
-    z-index: 2;
+    display: inline-block;
+    background: url(../../public/image/logo1.jpg) center/100% 100% no-repeat;
+    text-indent: -9999em;
+    width: 10rem;
+    align-content: center;
+    height: 4rem;
+}
+
+.logo>a {
+    top: 0;
+    align-content: center;
+}
+
+.noPosition {
+    position: inherit !important;
 }

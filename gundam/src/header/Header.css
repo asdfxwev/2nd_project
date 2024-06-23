@@ -7,21 +7,18 @@
 header {
     display: flex;
     flex-direction: column;
-    height: 7rem;
-    /* position: fixed; */
+    /* height: 7rem; */
     width: calc(100vw - 16px);
     transition: all .5s;
-    top: 4rem;
     z-index: 2;
 }
 
-.logo {
-    display: block;
-    background: url(../../public/image/logo1.jpg) center/100% 100% no-repeat;
-    text-indent: -9999em;
-    width: 10rem;
-    margin-left: 2rem;
-    height: 4rem;
+.h_main_container {
+    display: flex;
+    color: white;
+    z-index: 2;
+    position: fixed;
+    top: 4rem;
 }
 
 .h_menu_container {
@@ -44,9 +41,10 @@ header {
     place-content: center;
 }
 
-.h_main_container {
-    display: flex;
-    color: white;
+.h_menu_container .h_menu.blackText,
+.h_right_container .h_right.blackText {
+    color: black;
+    margin-left: auto;
 }
 
 .h_main_container a{
@@ -59,6 +57,7 @@ header {
 
 .h_menu {
     margin-left: 50px;
+    cursor: pointer;
 }
 
 .h_right {
@@ -72,10 +71,10 @@ header {
     width: 100%;
     text-align: center;
     position: absolute;
-    top: 3rem;
+    top: 7rem;
     background-color: #fff;
-    /* opacity: 0; */
     transition-duration: .5s;
+    z-index: 2;
 }
 
 
@@ -289,49 +288,49 @@ header {
     transform: scale(1.1);
 }
 
-.img1 a {
+.img1 {
     width: 90%;
     height: 90%;
     background: url(../../public/image/header1.png) center/100% 100% no-repeat;
 }
 
-.img2>a {
+.img2 {
     width: 90%;
     height: 90%;
     background: url(../../public/image/header2.jpg) center/100% 100% no-repeat;
 }
 
-.img3>a {
+.img3 {
     width: 90%;
     height: 90%;
     background: url(../../public/image/header3.jpg) center/100% 100% no-repeat;
 }
 
-.img4>a {
+.img4 {
     width: 90%;
     height: 90%;
     background: url(../../public/image/header4.jpg) center/100% 100% no-repeat;
 }
 
-.img5>a {
+.img5 {
     width: 90%;
     height: 90%;
     background: url(../../public/image/header5.jpg) center/100% 100% no-repeat;
 }
 
-.img6>a {
+.img6 {
     width: 90%;
     height: 90%;
     background: url(../../public/image/header6.jpg) center/100% 100% no-repeat;
 }
 
-.img7>a {
+.img7 {
     width: 90%;
     height: 90%;
     background: url(../../public/image/header7.jpg) center/100% 100% no-repeat;
 }
 
-.img8>a {
+.img8 {
     width: 90%;
     height: 90%;
     background: url(../../public/image/header8.jpg) center/100% 100% no-repeat;
@@ -351,6 +350,7 @@ header {
     position: fixed;
     top: 3rem;
     width: calc(100vw - 16px);
+    z-index: 1000;
 }
 
 .smallHeadMenu .h_menu {
@@ -364,6 +364,10 @@ header {
 .smallHeadMenu .h_menu_container {
     padding: 5px 0;
 
+}
+
+.noPosition {
+    position: inherit !important;
 }
 
 .smallHeadMenu .h_right_container {

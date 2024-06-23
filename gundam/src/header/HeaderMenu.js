@@ -23,30 +23,81 @@
 //         </div>
 //     )
 // }
+// import React from 'react';
+// import HeaderMenuSmallTop from "./HeaderMenuSmallTop"
+// import './HeaderMenu.css'
+// import { Link, Routes, Route } from 'react-router-dom';
+// import './Header.css'
+// import ItemList from './../ItemList/ItemList';
+
+
+// const HeaderMenu = ({ data }) => {
+//     const menuSmallTop = HeaderMenuSmallTop();
+
+//     return (
+//         <>
+//             {data.map((menu, index) => (
+//                 <div className={`detailMenu ${menuSmallTop ? 'smallMenu' : ''}`}>
+//                     {menu.menu.map((menu) => (
+//                         <div className={menu.id}><Link to='/ItemList'>{menu.name}</Link></div>
+//                     ))}
+
+//                     {menu.items.map((item, idx) => (
+//                         <div key={idx} className={item.id}><Link to='/ItemList'>{item.name}</Link></div>
+//                     ))}
+//                     {menu.itemss.map((item, idx) => (
+//                         <div key={idx} className={item.id}><Link to='/ItemList'>{item.name}</Link></div>
+//                     ))}
+//                     {menu.itemsss && menu.itemsss.map((item, idex) => (
+//                         <div key={idex} className={item.id}><Link to='/ItemList'>{item.name}</Link></div>
+//                     ))}
+//                     {menu.itemssss && menu.itemssss.map((item, idex) => (
+//                         <div key={idex} className={item.id}><Link to='/ItemList'>{item.name}</Link></div>
+//                     ))}
+//                     {menu.image.map((image, i) => (
+//                         <div key={i} className={image.id}><Link to='/ItemList'>{image.name}</Link></div>
+//                     ))}
+//                 </div>
+//             ))}
+//         </>
+//     );
+// };
+
+// export default HeaderMenu;
+
+
+
+
+
+
 import React from 'react';
-import HeaderMenuSmallTop from "./HeaderMenuSmallTop"
+import './HeaderMenu.css';
+import { Link } from 'react-router-dom';
 
-
-const HeaderMenu = ({ data }) => {
-    const menuSmallTop = HeaderMenuSmallTop();
-
+const HeaderMenu = ({ data, smallTopMenu, onLinkClick }) => {
     return (
         <>
-            {data.map((section, index) => (
-                <div className={`detailMenu ${menuSmallTop ? 'smallMenu' : ''}`}>
-                    <div className="reservation" > <a href="/">예약</a></ div>
-                    <div className="popular"><a href="/">인기</a></div>
-                    <div className="every"><a href="/">전체상품</a></div>
-                    <div className="brand"><a href="/">브랜드별</a></div>
-                    <div className="art"><a href="/">작품별</a></div>
-                    {section.items.map((item, idx) => (
-                        <div key={idx} className={`brand${idx+1}`}><a href="/">{item.name}</a></div>
-                        // <div key={idx} className={`brand${idx+1}`}><a href="/">{item.name}</a></div>
+            {data.map((menu, index) => (
+                <div key={index} className={`detailMenu ${smallTopMenu ? 'smallMenu' : ''}`}>
+                    {menu.menu.map((item, idx) => (
+                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
                     ))}
-                    <div className={index}><a href="/"></a></div>
-                    <div className={index+1}><a href="/">HG 블랙 나이트 스쿼드 루드라 (그리핀 알바레스트 전용기)</a></div>
-                    <div className={index}><a href="/"></a></div>
-                    <div className={index+1}><a href="/">건프라가이드 바로가기</a></div>
+
+                    {menu.items.map((item, idx) => (
+                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                    ))}
+                    {menu.itemss.map((item, idx) => (
+                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                    ))}
+                    {menu.itemsss && menu.itemsss.map((item, idx) => (
+                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                    ))}
+                    {menu.itemssss && menu.itemssss.map((item, idx) => (
+                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                    ))}
+                    {menu.image.map((image, idx) => (
+                        <div key={idx} className={image.id}><Link to='/ItemList' onClick={onLinkClick}>{image.name}</Link></div>
+                    ))}
                 </div>
             ))}
         </>

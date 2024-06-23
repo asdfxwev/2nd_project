@@ -44,7 +44,6 @@ header {
 .h_menu_container .h_menu.blackText,
 .h_right_container .h_right.blackText {
     color: black;
-    margin-left: auto;
 }
 
 .h_main_container a{

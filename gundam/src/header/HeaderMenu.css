@@ -1,7 +1,11 @@
 .detailMenu.smallMenu {
-    top: .9rem;
+    top: 5rem;
 }
 
 .detailMenu a{
     color: black;
+}
+
+.noPosition {
+    position: inherit !important;
 }

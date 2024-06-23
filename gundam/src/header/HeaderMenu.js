@@ -72,13 +72,18 @@
 
 import React from 'react';
 import './HeaderMenu.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const HeaderMenu = ({ data, smallTopMenu, onLinkClick }) => {
+
+const HeaderMenu = ({ data, smallTopMenu, onLinkClick, menuAnimating, menuClosing }) => {
+    const location = useLocation();
+
+    const isMainPage = location.pathname !== '/';
+
     return (
         <>
             {data.map((menu, index) => (
-                <div key={index} className={`detailMenu ${smallTopMenu ? 'smallMenu' : ''}`}>
+                <div key={index} className={`detailMenu ${smallTopMenu ? 'smallMenu' : ''} ${isMainPage ? 'noPosition' : ''} ${menuAnimating ? 'menuAnimation' : ''} ${menuClosing ? 'menuClosing' : ''}`}>
                     {menu.menu.map((item, idx) => (
                         <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
                     ))}

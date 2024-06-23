@@ -1,4 +1,5 @@
 import IntersectionObservers from './IntersectionObservers'
+import IntersectionObserverss from './IntersectionObserverss'
 import ProjectImg from './ProductImg'
 import Slider from './Slider';
 import MainTab from './MainTab';
@@ -10,6 +11,7 @@ export default function MainComponent () {
     return (
         <main style={{height:'700vh'}}>
             <Slider />
+            <IntersectionObserverss />
             <MainTab />
             <IntersectionObservers />
             <BrandFigure />

@@ -84,6 +84,8 @@ import { faSignInAlt, faUser, faShoppingCart, faSearch } from '@fortawesome/free
 export default function Menu() {
     const [visibleMenu, setVisibleMenu] = useState(null);
     const [smallTopMenu, setSmallTopMenu] = useState(false);
+    const [menuAnimating, setMenuAnimating] = useState(false); // 메뉴 애니메이션 상태 추가
+    const [menuClosing, setMenuClosing] = useState(false); // 메뉴 닫기 애니메이션 상태 추가
     const location = useLocation();
 
     const scroll = () => {
@@ -96,9 +98,16 @@ export default function Menu() {
 
     const MenuToggle = (menu) => {
         if (visibleMenu === menu) {
-            setVisibleMenu(null);
+            setMenuClosing(true); // 메뉴 닫기 애니메이션 상태 설정
+            setTimeout(() => {
+                setVisibleMenu(null);
+                setMenuAnimating(false);
+                setMenuClosing(false); // 애니메이션 상태 초기화
+            }, 500); // 애니메이션 지속 시간과 동일하게 설정
         } else {
             setVisibleMenu(menu);
+            setMenuAnimating(true);
+            setMenuClosing(false);
         }
         scroll();
     };
@@ -112,8 +121,13 @@ export default function Menu() {
     }, []);
 
     const handleLinkClick = () => {
-        setVisibleMenu(null);
-    }
+        setMenuClosing(true);
+        setTimeout(() => {
+            setVisibleMenu(null);
+            setMenuAnimating(false);
+            setMenuClosing(false);
+        }, 500); // 애니메이션 지속 시간과 동일하게 설정
+    };
 
     const isMainPage = location.pathname !== '/';
 
@@ -135,10 +149,11 @@ export default function Menu() {
                 </div>
             </div>
 
-            {visibleMenu === 'headerMenu' && <HeaderMenu data={HeaderMenuData.headerMenu} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} />}
-            {visibleMenu === 'headerMenu1' && <HeaderMenu data={HeaderMenuData.headerMenu1} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} />}
-            {visibleMenu === 'headerMenu2' && <HeaderMenu data={HeaderMenuData.headerMenu2} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} />}
-            {visibleMenu === 'etc' && <HeaderMenu data={HeaderMenuData.etc} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} />}
+            {/* 메뉴 애니메이션 상태에 따른 클래스 추가 */}
+            {visibleMenu === 'headerMenu' && <HeaderMenu data={HeaderMenuData.headerMenu} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
+            {visibleMenu === 'headerMenu1' && <HeaderMenu data={HeaderMenuData.headerMenu1} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
+            {visibleMenu === 'headerMenu2' && <HeaderMenu data={HeaderMenuData.headerMenu2} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
+            {visibleMenu === 'etc' && <HeaderMenu data={HeaderMenuData.etc} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
             {visibleMenu === 'headerSearch' && <HeaderSearch onLinkClick={handleLinkClick} />}
         </>
     );

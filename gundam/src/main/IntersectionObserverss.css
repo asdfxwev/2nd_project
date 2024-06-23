@@ -1,0 +1,43 @@
+.isc {
+    display: flex;
+    height: 100vh;
+    background-color: red;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.intersectionImageContainer {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.verticalImage {
+    transition: all 1s;
+    width: 326px;
+    height: 326px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.intersectionImageList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 326px;
+    box-sizing: border-box;
+    border-radius: 100%;
+    height: 326px;
+    /* overflow-x: visible; */
+    /* overflow: hidden; */
+}
+
+
+
+.scaleUp {
+    scale: 1.1;
+}
+
+.verticalImage.show {
+    opacity: 1;
+    transform: translateY(0);
+}

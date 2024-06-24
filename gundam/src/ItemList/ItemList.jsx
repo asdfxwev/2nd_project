@@ -3,6 +3,7 @@ import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
+import {Link} from 'react-router-dom';
 
 const ItemList = () => {
     const [filtersVisible, setFiltersVisible] = useState(true);
@@ -45,6 +46,17 @@ const ItemList = () => {
         }
     };
 
+    const [currentPage, setCurrentPage] = useState(1);  //현재 페이지 상태
+
+    const handlePageClick = (pageNumber) => {
+        setCurrentPage(pageNumber); //여기에 필요에 따라 다른 로직 추가
+    };
+
+    const itemsPerPage = 5;    // 아이템 목록 페이지당 보여줄 아이템 수
+
+    const totalNumberOfPages = Math.ceil(ItemDataBase.length/itemsPerPage); // 아이템 데이터베이스 전체 길이 기반으로 총 페이지 수 계산
+
+
     const toggleSection = (category) => {
         setSelectedFilters(prevFilters => ({
             ...prevFilters,
@@ -55,7 +67,7 @@ const ItemList = () => {
         }));
     };
 
-    const resetFilters = () => {
+    const resetFilters = () => {    // 초기화 누를때
         setSelectedFilters({
             상품정보: { visible: true, someFilter: false },
             가격대별: {
@@ -101,7 +113,7 @@ const ItemList = () => {
 
     return (
         <div>
-            <div className=''><h1>건프라</h1></div>
+            <div className='item-size-200'><h1>건프라</h1></div>
             <div className='item-size-150' onClick={toggleFiltersVisible}>
                 <TuneIcon />{filtersVisible ? '필터 숨기기' : '필터 보이기'}
             </div>
@@ -189,6 +201,20 @@ const ItemList = () => {
                 {ItemDataBase.map(item => (
                     <ItemCard key={item.id} item={item} />
                 ))}
+            </div>
+            <div className='pagination-container'>
+                <div className='pagination'>
+                    {Array.from({length: totalNumberOfPages}).map((_, index) => (
+                        <Link
+                            key={index}
+                            to={`/ItemList?page=${index+1}`}
+                            className={`page-link ${currentPage === index+1 ? 'active' : ''}${currentPage !== index +1 ? 'disabled' : ''}`}
+                            onClick={() => handlePageClick(index + 1)}
+                        >
+                            {index + 1}
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
     );

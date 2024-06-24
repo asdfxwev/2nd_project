@@ -1,13 +1,17 @@
 .item-card {
-    border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
-    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
 }
 
 .item-card img {
     width: 100%;
-    height: auto;
+    height: 250px;
+}
+
+.item-card .item-details {
+    padding-top: 20px;
 }
 
 .item-card h2 {
@@ -15,12 +19,69 @@
     margin: 0.5em 0;
 }
 
-.item_p {
-    color:black;
-    padding: 16px;
-}
-.item_comment {
-    color:gray;
-    padding: 16px;
+.item_name {
+    color: black;
+    padding: 8px;
+    text-align: left;
 }
 
+.item_p {
+    color: gray;
+    padding: 8px;
+    text-align: left;
+}
+
+.sx {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%) translateY(50px);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.item-card:hover .sx {
+    transform: translateX(-50%) translateY(0);
+    bottom: 43%;
+    opacity: 1;
+}
+
+.shopping-cart-icon {
+    margin: 10px;
+    font-size: 1.5em;
+}
+
+.item-card:hover .shopping-cart-icon {
+    font-size: 2em;
+}
+
+.shopping-cart-icon:hover {
+    color: red;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+.pagination {
+    display: flex;
+    gap: 10px;
+}
+
+.page-link {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: #f0f0f0;
+}

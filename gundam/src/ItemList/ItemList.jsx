@@ -101,7 +101,7 @@ const ItemList = () => {
 
     return (
         <div>
-            <div className=''><h1>건프라</h1></div>
+            <div className='item-size-200'><h1>건프라</h1></div>
             <div className='item-size-150' onClick={toggleFiltersVisible}>
                 <TuneIcon />{filtersVisible ? '필터 숨기기' : '필터 보이기'}
             </div>

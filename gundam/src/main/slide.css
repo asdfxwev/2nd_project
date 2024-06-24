@@ -1,52 +1,51 @@
-.main_container>.slide_container img {
-    width: calc(100vw - 16px);
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    transition: transform 1s ease-in-out;
-    position: relative;
-}
-
 .main_container {
     overflow: hidden;
 }
 
 .slide_container {
-    display: flex;
-    transition: transform 1s ease-in-out;
-    width: 100%;
-    
-}
-
-.slide_list {
-    position: absolute;
-
-}
-
-.slide_container {
-    list-style: none;
-    top: 0;
-    position: absolute;
+    position: relative;
+    width: calc(100vw - 17px);
     height: 100vh;
 }
 
+.slide_list {
+    display: flex;
+    transition: transform 0.7s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+    min-width: 100%;
+    height: 100%;
+}
+
+.slides img {
+    width: calc(100vw - 17px);
+
+}
 
 .nonVisible {
     display: none;
 }
 
-.main_container button {
-    border: none;
-
-    /* position: absolute; */
-    /* top: 50%; */
-
-    opacity: .2;
-    transition: opacity .3s ease-in-out;
-    z-index: 1;
-    background: none;
+.backBtn, .forwardBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-.main_container button:hover {
+.backBtn:hover, .forwardBtn:hover {
     opacity: 1;
+}
+
+.backBtn {
+    right: 90%;
+}
+
+.forwardBtn {
+    left: 90%;
 }

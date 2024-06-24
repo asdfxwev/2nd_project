@@ -1,4 +1,4 @@
-.main_container>.slide_container img {
+/* .main_container>.slide_container img {
     width: calc(100vw - 16px);
     width: 100vw;
     height: 100vh;
@@ -8,7 +8,6 @@
 
 .main_container {
     overflow: hidden;
-    /* position: relative; */
 }
 
 .slide_container {
@@ -35,8 +34,6 @@
 .main_container button {
     border: none;
 
-    /* position: absolute; */
-    /* top: 50%; */
 
     opacity: .2;
     transition: opacity .3s ease-in-out;
@@ -50,4 +47,4 @@
 
 .sc-fqkvVR {
     display: none;
-}
+} */

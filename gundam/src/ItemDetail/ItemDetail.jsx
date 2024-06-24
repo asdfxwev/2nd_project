@@ -1,18 +1,17 @@
-import React, { useState, useParams } from 'react';
+import React, { useState } from 'react';
 import './ItemDetail.css'
 import ItemDataBase from '../ItemList/ItemDataBase';
+import { useParams } from 'react-router-dom';
 
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 
 export default function ItemDetail() {
-    // const { id } = useParams();
-
+    const { id } = useParams();
+    
     const selectedItem = ItemDataBase.find(item => item.id === parseInt(id));
-    // const selectedItem = ItemDataBase.find(item => item.id === 2);
-    // 2 대신 ItemList 화면에서 클릭한 데이터타겟의 id값을 가지고 와야함.
-
+    
     const [mainImage, setMainImage] = useState(selectedItem.src[0]);
 
     const handleImageClick = (src) => {
@@ -21,8 +20,24 @@ export default function ItemDetail() {
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
 
+    const minus = () => {
+        if (count > 1){
+            setCount(e => e - 1);
+        } else {
+            alert(`수량은 1개 이상 선택 가능합니다.`);
+        }
+    };
+    
+    const plus = () => {
+        if (count >= 3){
+            alert(`수량은 3개 까지 선택 가능합니다.`);
+        } else {
+            setCount(e => e + 1);
+        }
+    };
+    
     return (
         <div className="item_detail_main">
             <div className='detail_left_box'>
@@ -49,19 +64,22 @@ export default function ItemDetail() {
                     </div>
                     <div className='item_name'><h2>{selectedItem.name}</h2></div>
                     <div className='item_price'><h3>{selectedItem.price}</h3></div>
-                    <div className='item_info'>
+                    {/* <div className='item_info'> */}
                         <div className='info_left_box'>상품정보</div>
                         <div className='info_right_box'>{selectedItem.comment}</div>
-                    </div>
+                    {/* </div> */}
                     <div className='item_count'>
-                        <div className='left_box'>구매수량</div>
-                        <div className='right_box'>
-                            <button onClick={() => setCount(c => c - 1)}>-</button>
+                        <div className='count_left_box'>구매수량</div>
+                        <div className='count_right_box'>
+                            <button onClick={minus}>-</button>
                             <div className='count_num'>{count}</div>
-                            <button onClick={() => setCount(c => c + 1)}>+</button>
+                            <button onClick={plus}>+</button>
                         </div>
                     </div>
-                    <div className='item_totar_price'>총금액</div>
+                    <div className='item_totar_price'>
+                        <p>총금액</p>
+                        <p>{count*selectedItem.price}원</p>  {/* 총금액 계산 안됨. */}
+                    </div>
                     <div className='item_btn'>
                         <button className='submit_btn'>구매하기</button>
                     </div>

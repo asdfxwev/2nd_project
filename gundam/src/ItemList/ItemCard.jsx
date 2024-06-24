@@ -1,15 +1,17 @@
 import React from 'react';
 import './ItemCard.css';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const ItemCard = ({ item }) => {
     return (
-        <div className="item-card">
-            <img src={item.image} alt={item.name} />
-            <div className='sx'>
-                <FavoriteIcon className="favorite-icon" />
-                <ShoppingCartIcon className="shopping-cart-icon" />
+        <div>
+            <div className="item-card">
+                <img src={item.image} alt={item.name} />
+                <div className='sx'>
+                    {/* <FavoriteIcon className="favorite-icon" /> */}
+                    <ShoppingCartIcon className="shopping-cart-icon" />
+                </div>
             </div>
             <div>
                 <p className='item_comment'>{item.comment}</p>

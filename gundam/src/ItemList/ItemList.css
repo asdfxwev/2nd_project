@@ -1,14 +1,23 @@
 .item-list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, auto);
     gap: 16px;
     padding: 20px;
 }
 
+.itemcard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 16px; 
+}
+
+.itemcard > * {
+    width: calc((100% - 3 * 16px) / 4); 
+}
+
 .item-choose {
     display: grid;
-    grid-area: 1/1/6/2;
+    grid-area: 1 / 1 / 6 / 2;
     text-align: left;
     gap: 10px;
 }
@@ -16,15 +25,40 @@
 .item-size-100 {
     width: 100px;
     height: 10px;
-
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
 }
 
 .filter-section {
     margin-bottom: 20px;
+    transition: max-height 1s ease-out;
+    max-height: 2000px;
+    overflow: hidden;
+}
+
+.filter-section.open {
+    max-height: 0;
+    margin-bottom: 0;
 }
 
 .filter-section h3 {
     margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.filter-section h3 .toggle-section {
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+    user-select: none;
+    transition: transform 1s ease;
+}
+.filter-section.closed h3 .toggle-section {
+    transform: rotate(-90deg);
 }
 
 .filter-section div {

@@ -30,3 +30,7 @@
 .h_right a {
     margin: 0 10px;
 }
+
+.h_search {
+    cursor: pointer;
+}

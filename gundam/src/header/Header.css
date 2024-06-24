@@ -820,3 +820,7 @@ a {
     text-decoration: none;
     transition: font-size 0.5s;
 }
+
+.h_search {
+    cursor: pointer;
+}

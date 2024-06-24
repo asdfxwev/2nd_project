@@ -38,14 +38,13 @@ export default function Button() {
     return (
         <div ref={topRef}>
             <div className={`Every ${menuSmallTop ? 'smallThing' : ''} ${isMainPage ? 'noPosition' : ''}`}>
-            <Link to='/'><h1 className="logo">logo</h1></Link>
+            <a href='/'><h1 className="logo">logo</h1></a>
                 {showButton && (
                     <img src='./image/topbtn.png'
                         alt='topBtn' className='topBtn'
                         onClick={scrollTop}
                         style={{ transition: 'all 1s', cursor: "pointer" }} />
                 )}
-                <hr />
             </div>
 
 

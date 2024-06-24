@@ -1,26 +1,23 @@
-import './MainTab.css'
-import { Routes, Route, NavLink } from 'react-router-dom';
-import MainTabImage1 from './MainTabImage1';
-import MainTabImage2 from './MainTabImage2';
-import MainTabImage3 from './MainTabImage3';
-import MainTabImage4 from './MainTabImage4';
-import MainTabImage5 from './MainTabImage5';
+import './MainTab.css';
+import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import MainTabImage from './MainTabImage';
+import MainTabImageData from './MainTabImageData'
 
 export default function MainTab() {
+
 
     const [visibleTabMenu, setVisibleTabMenu] = useState(null);
 
     const TabMenu = (TabMenu) => {
         if (visibleTabMenu !== TabMenu) {
             setVisibleTabMenu(TabMenu);
-        } 
-    }
+        }
+    };
 
     useEffect(() => {
         setVisibleTabMenu('MainTabImage1');
     }, []);
-
 
     return (
         <section style={{ height: '100vh' }}>
@@ -45,25 +42,9 @@ export default function MainTab() {
             </div>
             <div className="tabImageContainer">
                 <ul className='tabImageList'>
-                    <Routes>
-                        {visibleTabMenu === 'MainTabImage1' && (
-                            <Route path='/' element={<MainTabImage1 />} />
-                        )}
-                        {visibleTabMenu === 'MainTabImage2' && (
-                            <Route path='/' element={<MainTabImage2 />} />
-                        )}
-                        {visibleTabMenu === 'MainTabImage3' && (
-                            <Route path='/' element={<MainTabImage3 />} />
-                        )}
-                        {visibleTabMenu === 'MainTabImage4' && (
-                            <Route path='/' element={<MainTabImage4 />} />
-                        )}
-                        {visibleTabMenu === 'MainTabImage5' && (
-                            <Route path='/' element={<MainTabImage5 />} />
-                        )}
-                    </Routes>
+                    {visibleTabMenu && <MainTabImage images={MainTabImageData[visibleTabMenu]} />}
                 </ul>
             </div>
         </section>
-    )
+    );
 }

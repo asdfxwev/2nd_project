@@ -1,165 +1,160 @@
+// import './Header.css';
+// import HeaderMenu from './HeaderMenu';
+// import HeaderMenuData from './HeaderMenuData';
+// import { useState, useEffect } from 'react';
+// import { useLocation, Routes, Route } from 'react-router-dom';
+// import HeaderSearch from './HeaderSearch';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faSignInAlt, faUser, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
+// import ItemList from '../ItemList/ItemList';
+
+// export default function Menu() {
+//     const [visibleMenu, setVisibleMenu] = useState(null);
+//     const [smallTopMenu, setSmallTopMenu] = useState(false);
+//     const location = useLocation();
+
+//     const scroll = () => {
+//         if (window.scrollY > window.innerHeight * 0.3) {
+//             setSmallTopMenu(true);
+//         } else {
+//             setSmallTopMenu(false);
+//         }
+//     };
+
+//     const MenuToggle = (menu) => {
+//         if (visibleMenu === menu) {
+//             setVisibleMenu(null);
+//         } else {
+//             setVisibleMenu(menu);
+//         }
+//         scroll();
+//     };
+
+//     useEffect(() => {
+//         window.addEventListener('scroll', scroll);
+
+//         return () => {
+//             window.removeEventListener('scroll', scroll);
+//         };
+//     }, []);
+
+//     const handleLinkClick = () =>{
+//         setVisibleMenu(null);
+//     }
+
+//     const isMainPage = location.pathname !== '/';
+
+//     return (
+//         <>
+//             <div className={`h_main_container ${smallTopMenu ? 'smallHeadMenu' : ''} ${isMainPage ? 'noPosition' : ''}`}>
+//                 <div className="h_menu_container">
+//                     <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerMenu')}>건프라</div>
+//                     <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerMenu1')}>애니프라</div>
+//                     <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerMenu2')}>피규어</div>
+//                     <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('etc')}>기타</div>
+//                 </div>
+
+//                 <div className="h_right_container">
+//                     <div className={`h_right h_login ${smallTopMenu ? 'blackText' : ''}`}><a href="/"><FontAwesomeIcon icon={faSignInAlt} /> 로그인</a></div>
+//                     <div className={`h_right h_mypage ${smallTopMenu ? 'blackText' : ''}`}><a href="/"><FontAwesomeIcon icon={faUser} /> 마이페이지</a></div>
+//                     <div className={`h_right h_shopping ${smallTopMenu ? 'blackText' : ''}`}><a href="/"><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</a></div>
+//                     <div className={`h_right h_search ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerSearch')}><FontAwesomeIcon icon={faSearch} /> 검색</div>
+//                 </div>
+//             </div>
+
+//             {visibleMenu === 'headerMenu' && <HeaderMenu data={HeaderMenuData.headerMenu} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} />}
+//             {visibleMenu === 'headerMenu1' && <HeaderMenu data={HeaderMenuData.headerMenu1} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} />}
+//             {visibleMenu === 'headerMenu2' && <HeaderMenu data={HeaderMenuData.headerMenu2} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} />}
+//             {visibleMenu === 'etc' && <HeaderMenu data={HeaderMenuData.etc} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} />}
+//             {visibleMenu === 'headerSearch' && <HeaderSearch onLinkClick={handleLinkClick} />}
+//         </>
+//     );
+// }
+
+
 import './Header.css';
-import HeaderMenu1 from "./HeaderMenu1";
-import HeaderMenu2 from "./HeaderMenu2";
-import HeaderMenu3 from "./HeaderMenu3";
-import HeaderMenu4 from "./HeaderMenu4";
+import HeaderMenu from './HeaderMenu';
+import HeaderMenuData from './HeaderMenuData';
 import { useState, useEffect } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import HeaderSearch from './HeaderSearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faUser, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function Menu() {
     const [visibleMenu, setVisibleMenu] = useState(null);
-    const [smallTopMenu, setSmallTopMenu] = useState(null);
+    const [smallTopMenu, setSmallTopMenu] = useState(false);
+    const [menuAnimating, setMenuAnimating] = useState(false); // 메뉴 애니메이션 상태 추가
+    const [menuClosing, setMenuClosing] = useState(false); // 메뉴 닫기 애니메이션 상태 추가
+    const location = useLocation();
 
-    const Menu = (menu) => {
-        if (visibleMenu === menu) {
-            setVisibleMenu(null);
+    const scroll = () => {
+        if (window.scrollY > window.innerHeight * 0.3) {
+            setSmallTopMenu(true);
         } else {
-            setVisibleMenu(menu);
+            setSmallTopMenu(false);
         }
     };
 
-    useEffect(() => {
-        function scroll() {
-            if (window.scrollY > window.innerHeight * .3) {
-                setSmallTopMenu(true)
-            } else {
-                setSmallTopMenu(false)
-            }
+    const MenuToggle = (menu) => {
+        if (visibleMenu === menu) {
+            setMenuClosing(true); // 메뉴 닫기 애니메이션 상태 설정
+            setTimeout(() => {
+                setVisibleMenu(null);
+                setMenuAnimating(false);
+                setMenuClosing(false); // 애니메이션 상태 초기화
+            }, 500); // 애니메이션 지속 시간과 동일하게 설정
+        } else {
+            setVisibleMenu(menu);
+            setMenuAnimating(true);
+            setMenuClosing(false);
         }
+        scroll();
+    };
+
+    useEffect(() => {
         window.addEventListener('scroll', scroll);
 
         return () => {
-            window.removeEventListener('scroll', scroll)
-        }
-    }, [])
+            window.removeEventListener('scroll', scroll);
+        };
+    }, []);
 
-    const brand1 = [
-        { id: 'brand1', name: 'HG' },
-        { id: 'brand2', name: 'RG' },
-        { id: 'brand3', name: 'MG' },
-        { id: 'brand4', name: 'PG' },
-        { id: 'brand5', name: 'RE/100' },
-    ];
+    const handleLinkClick = () => {
+        setMenuClosing(true);
+        setTimeout(() => {
+            setVisibleMenu(null);
+            setMenuAnimating(false);
+            setMenuClosing(false);
+        }, 500); // 애니메이션 지속 시간과 동일하게 설정
+    };
 
-    const art1 = [
-        { id: 'art1', name: '기동전사건담 수성의 마녀' },
-        { id: 'art2', name: '기동전사건담' },
-        { id: 'art3', name: '기동전사건담 역습의 샤아' },
-        { id: 'art4', name: '기동전사건담 UC' },
-        { id: 'art5', name: '기동전사건담 SEED' },
-    ];
-
-    const brand2 = [
-        { id: 'brand1', name: '엔트리 그레이드' },
-        { id: 'brand2', name: 'HG' },
-        { id: 'brand3', name: 'RG' },
-        { id: 'brand4', name: 'Figure-rise시리즈' },
-        { id: 'brand5', name: 'Figure-rise LABO' },
-        { id: 'brand6', name: '포켓프라' },
-        { id: 'brand7', name: '30MINUTES MISSIONS' },
-    ];
-
-    const art2 = [
-        { id: 'art1', name: '드래곤볼' },
-        { id: 'art2', name: '원피스' },
-        { id: 'art3', name: '에반게리온' },
-        { id: 'art4', name: '다이나믹 캐릭터즈' },
-        { id: 'art5', name: '가면라이더' },
-        { id: 'art6', name: '울트라맨' },
-        { id: 'art7', name: '포켓몬스터' },
-    ];
-
-    const brand3 = [
-        { id: 'brand1', name: 'ROBOT혼 시리즈' },
-        { id: 'brand2', name: 'S.H.Figuarts 시리즈' },
-        { id: 'brand3', name: 'Figuarts ZERO' },
-        { id: 'brand4', name: '피규아트 미니' },
-        { id: 'brand5', name: 'METAL BUILD' },
-        { id: 'brand6', name: '초합금 시리즈' },
-        { id: 'brand7', name: '30MINUTES MISSIONS' },
-    ];
-
-    const art3 = [
-        { id: 'art1', name: '기동전사 건담' },
-        { id: 'art2', name: '에반게리온' },
-        { id: 'art3', name: '다이나믹 캐릭터즈' },
-        { id: 'art4', name: '드래곤볼' },
-        { id: 'art5', name: '원피스' },
-        { id: 'art6', name: '울트라맨' },
-        { id: 'art7', name: '귀멸의 칼날' },
-    ];
-
-    const brand13 = [
-        { id: 'brand11', name: 'ESPRESTO' },
-        { id: 'brand12', name: 'EXQ' },
-        { id: 'brand13', name: 'GLITTER&GLAMOURS' },
-        { id: 'brand14', name: 'GRANDISTA' },
-        { id: 'brand15', name: 'KING OF ARTIST' },
-        { id: 'brand16', name: 'QPOSKET' },
-        { id: 'brand17', name: '그 외' },
-    ];
-
-    const art13 = [
-        { id: 'art11', name: '드래곤볼' },
-        { id: 'art12', name: '원피스' },
-        { id: 'art13', name: '귀멸의 칼날' },
-        { id: 'art14', name: '나루토' },
-        { id: 'art15', name: '나의 히어로 아카데미아' },
-        { id: 'art16', name: '건담' },
-        { id: 'art17', name: '그 외' },
-    ];
-
-    const brand4 = [
-        { id: 'brand1', name: '프라모델 제작 공구' },
-        { id: 'brand2', name: '건담데칼' },
-        { id: 'brand3', name: '건담마커' },
-        { id: 'brand4', name: '그 외' },
-    ];
-
-    const art4 = [
-        { id: 'art1', name: '포켓몬 스케일 월드' },
-        { id: 'art2', name: 'SMP' },
-        { id: 'art3', name: '식물대도감' },
-        { id: 'art4', name: '식품완구' },
-        { id: 'art5', name: '그 외' },
-    ];
-
-    const brand14 = [
-        { id: 'brand11', name: '깜짝에그' },
-        { id: 'brand12', name: '카드게임' },
-        { id: 'brand13', name: '데스크 용품' },
-        { id: 'brand14', name: '그 외' },
-    ];
+    const isMainPage = location.pathname !== '/';
 
     return (
         <>
-            <div className={`h_main_container ${smallTopMenu ? 'smallMenu' : ''}`}>                    <div className="h_menu_container">
-                <div className="h_menu" onClick={() => Menu('headerMenu')}><NavLink to='/'>건프라</NavLink></div>
-                <div className="h_menu" onClick={() => Menu('headerMenu1')}><NavLink to='/'>애니프라</NavLink></div>
-                <div className="h_menu" onClick={() => Menu('headerMenu2')}><NavLink to='/'>피규어</NavLink></div>
-                <div className="h_menu" onClick={() => Menu('etc')}><NavLink to='/'>기타</NavLink></div>
-            </div>
+            <div className={`h_main_container ${smallTopMenu ? 'smallHeadMenu' : ''} ${isMainPage ? 'noPosition' : ''}`}>
+                <div className="h_menu_container">
+                    <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerMenu')}>건프라</div>
+                    <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerMenu1')}>애니프라</div>
+                    <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerMenu2')}>피규어</div>
+                    <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('etc')}>기타</div>
+                </div>
 
                 <div className="h_right_container">
-                    <div className="h_right h_login"><a href="/"><FontAwesomeIcon icon={faSignInAlt} /> 로그인</a></div>
-                    <div className="h_right h_mypage"><a href="/"><FontAwesomeIcon icon={faUser} /> 마이페이지</a></div>
-                    <div className="h_right h_shopping"><a href="/"><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</a></div>
-                    <div className="h_right h_search" onClick={() => Menu('headerSearch')}><NavLink to='/'><FontAwesomeIcon icon={faSearch} /> 검색</NavLink></div>
+                    <div className={`h_right h_login ${smallTopMenu ? 'blackText' : ''} `}><Link to='Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faSignInAlt} /> 로그인</Link></div>
+                    <div className={`h_right h_mypage ${smallTopMenu ? 'blackText' : ''} `}><Link to='Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faUser}  /> 마이페이지</Link></div>
+                    <div className={`h_right h_shopping ${smallTopMenu ? 'blackText' : ''} `}><Link to='Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</Link></div>
+                    <div className={`h_right h_search ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerSearch')}><FontAwesomeIcon icon={faSearch} /> 검색</div>
                 </div>
             </div>
 
-            <Routes>
-                <Route path='/' element={<div />} />
-            </Routes>
-
-            {visibleMenu === 'headerMenu' && <HeaderMenu1 brand1={brand1} art1={art1} />}
-            {visibleMenu === 'headerMenu1' && <HeaderMenu2 brand2={brand2} art2={art2} />}
-            {visibleMenu === 'headerMenu2' && <HeaderMenu3 brand3={brand3} art3={art3} brand13={brand13} art13={art13} />}
-            {visibleMenu === 'etc' && <HeaderMenu4 brand4={brand4} art4={art4} brand14={brand14} />}
-            {visibleMenu === 'headerSearch' && <HeaderSearch />}
+            {/* 메뉴 애니메이션 상태에 따른 클래스 추가 */}
+            {visibleMenu === 'headerMenu' && <HeaderMenu data={HeaderMenuData.headerMenu} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
+            {visibleMenu === 'headerMenu1' && <HeaderMenu data={HeaderMenuData.headerMenu1} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
+            {visibleMenu === 'headerMenu2' && <HeaderMenu data={HeaderMenuData.headerMenu2} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
+            {visibleMenu === 'etc' && <HeaderMenu data={HeaderMenuData.etc} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
+            {visibleMenu === 'headerSearch' && <HeaderSearch onLinkClick={handleLinkClick} />}
         </>
     );
 }

@@ -1,7 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
+import HeaderMenuSmallTop from "./HeaderMenuSmallTop"
 import './Button.css';
+import { Link, Routes, Route, useLocation } from 'react-router-dom';
+import Main from '../main/Main';
+import App from './../App';
+import MainComponent from '../main/MainComponent';
 
 export default function Button() {
+    const menuSmallTop = HeaderMenuSmallTop();
+    const location = useLocation();
+
     const topRef = useRef(null);
     const [showButton, setShowButton] = useState(false);
 
@@ -25,16 +33,22 @@ export default function Button() {
         };
     }, []);
 
+    const isMainPage = location.pathname !== '/';
+
     return (
-        <div ref={topRef} className='as'>
-            <h1 className="logo"><a href="/">logo</a></h1>
-            {showButton && (
-                <img src='./image/topbtn.png'
-                    alt='topBtn' className='topBtn'
-                    onClick={scrollTop}
-                    style={{ transition: 'all 1s', cursor: "pointer" }} />
-            )}
-            <hr />
+        <div ref={topRef}>
+            <div className={`Every ${menuSmallTop ? 'smallThing' : ''} ${isMainPage ? 'noPosition' : ''}`}>
+            <Link to='/'><h1 className="logo">logo</h1></Link>
+                {showButton && (
+                    <img src='./image/topbtn.png'
+                        alt='topBtn' className='topBtn'
+                        onClick={scrollTop}
+                        style={{ transition: 'all 1s', cursor: "pointer" }} />
+                )}
+                <hr />
+            </div>
+
+
         </div>
     );
 }

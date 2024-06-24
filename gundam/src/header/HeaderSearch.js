@@ -1,12 +1,18 @@
 import './HeaderSearch.css'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useLocation } from 'react-router-dom';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function HeaderSearch() {
+export default function HeaderSearch({menuAnimating, menuClosing, smallTopMenu}) {
 
     const [content, setContent]  = useState('');
+    const location = useLocation();
+
+    const isMainPage = location.pathname !== '/';
+
+
 
     function onChangeContent (e) {
         setContent(e.target.value);
@@ -24,10 +30,10 @@ export default function HeaderSearch() {
     }
 
     return (
-        <div className="searchMenu">
-            <form className="headerForm">
-                <input className="headerSearchInput" type="text" value={content} onChange={onChangeContent} onKeyDown={onKeyDownContent} placeholder='검색어를 입력해라' />
-                <button className="header_Search" onClick={onSubmit}><FontAwesomeIcon icon={faSearch} /></button>
+        <div className={`searchMenu ${isMainPage ? 'absolute' : ''} ${menuAnimating ? 'menuAnimation' : ''} ${menuClosing ? 'menuClosing' : ''} ${smallTopMenu ? 'smallMenu' : ''}`}>
+            <form className={`headerForm ${menuAnimating ? 'menuAnimation' : ''} ${menuClosing ? 'menuClosing' : ''} ${smallTopMenu ? 'smallMenu' : ''}`}>
+                <input className={`headerSearchInput ${menuAnimating ? 'searchMenuAnimation' : ''} ${menuClosing ? 'searchMenuClosing' : ''}`} type="text" value={content} onChange={onChangeContent} onKeyDown={onKeyDownContent} placeholder='검색어를 입력해라' />
+                <button className={`header_Search ${menuAnimating ? 'searchMenuAnimation' : ''} ${menuClosing ? 'searchMenuClosing' : ''}`} onClick={onSubmit}><FontAwesomeIcon icon={faSearch} /></button>
             </form>
         </div>
     )

@@ -9,3 +9,30 @@
 .absolute {
     position: absolute !important;
 }
+
+.menuAnimation {
+    animation: menuFontSize 0.5s ease-in-out forwards;
+}
+
+.menuClosing {
+    animation: menuFontSizeShrink 0.5s ease-in-out forwards;
+}
+
+@keyframes menuFontSize {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 414px;
+    }
+}
+
+@keyframes menuFontSizeShrink {
+    from {
+        height: 414px;
+    }
+    to {
+        height: 0px;
+
+    }
+}

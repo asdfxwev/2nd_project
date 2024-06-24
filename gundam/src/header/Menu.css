@@ -34,3 +34,7 @@
 .h_search {
     cursor: pointer;
 }
+
+.isLoginPage {
+    display: none;
+}

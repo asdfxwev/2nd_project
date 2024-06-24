@@ -1,25 +1,39 @@
-.intersectionImageContainer {
+.isc {
     display: flex;
-    overflow: hidden;
-    height: 50vh;
+    height: 100vh;
+    /* background-color: red; */
+    white-space: nowrap;
+    overflow-x: auto;
+    margin-left: 400px;
+}
+
+.intersectionImageContainer {
+    display: inline-flex;
+    flex-direction: row;
+    white-space: nowrap;
+    overflow-x: auto;
+    height: 450px;
+}
+
+.intersectionImageList {
+    display: flex;
+    height: 420px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    white-space: nowrap;
 }
 
 .verticalImage {
     transition: all 1s;
-    width: 45vh;
-    height: 45vh;
+    width: 330px;
+    height: 330px;
     opacity: 0;
     transform: translateY(20px);
+    margin: 33px;
 }
 
-.intersectionImageList {
-    width: 45vh;
-    margin: 2.5vh;
-    box-sizing: border-box;
-    border-radius: 100%;
-    height: 45vh;
-    overflow: hidden;
-}
+
 
 .scaleUp {
     scale: 1.1;
@@ -28,4 +42,15 @@
 .verticalImage.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+.intersectionImageContainer::-webkit-scrollbar-track {
+    background: #0ff; /* 스크롤바 트랙의 배경색 설정 */
+    border-radius: 10px; /* 스크롤바 트랙의 모서리를 둥글게 설정 */
+}
+
+.intersectionImageContainer::-webkit-scrollbar-thumb {
+    background: #e89a3e; /* 스크롤바 막대 색상 */
+    border: 2px solid #9b6a2f; /* 스크롤바 막대 테두리 설정  */
+    border-radius: 12px
 }

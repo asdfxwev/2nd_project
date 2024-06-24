@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './slider.css';
+// import './slider.css';
 import ImageSlider, { Slide } from "react-auto-image-slider";
 // import { Slide } from 'react-slideshow-image';
 import { useRef } from 'react';

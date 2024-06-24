@@ -93,3 +93,38 @@
     cursor: pointer;
     margin-left: 10px;
 }
+/* ItemList.css */
+
+.pagination {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+.page-link {
+    margin: 0 10px 50px;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: #f0f0f0;
+}
+
+.page-link.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff; 
+}
+
+.page-link.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #f0f0f0; 
+    color: #999; 
+    border-color: #ccc; 
+}

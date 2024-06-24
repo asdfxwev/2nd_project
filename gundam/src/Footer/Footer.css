@@ -3,63 +3,56 @@
     color: white;
     text-align: center;
     padding: 1px 0;
-    width: calc(100vw-16px);
+    width: 100%; /* Updated to use full width */
     height: 10vh;
 }
-.footer_top a{
+
+.footer_top a {
     font-size: 3vh;
 }
 
 .footer_bottom {
-    width: calc(100vw-16px);
-
+    width: 100%; 
     background-color: #222;
     color: #666565;
     display: flex;
-    height: 35vh;
+    flex-wrap: wrap; 
+    height: auto; 
+    padding: 10px; 
     justify-content: space-between;
-    /* justify-content: space-evenly; */
-    
-    /* font-size: 2vh; */
+    overflow: hidden; 
+    box-sizing: border-box; 
 }
 
 .footer_bottom .footer_p {
     box-sizing: border-box;
     font: inherit;
-    display: flex;
     text-align: left;
-    margin-right: 50vh;
-    
-    
+    font-size: 1vw;
+    flex: 1 1 30%;
+    margin: 0; 
+    word-break: break-word;
 }
-p{
-    text-align: right;
-    margin-right: 4vw;
-    
-}
-
 
 .footer_bottom p {
-    display: flex;
-    font-size: px;
-
-
+    text-align: right;
+    margin: 0; 
+    flex: 1 1 30%; 
+    font-size: 1vw;
+    word-break: break-word; 
 }
 
-
-.footer_bottom .img {   /*이미지 크기 및 위치설정    */
-    height: 9vh;
-    width: 22vh;
-    margin-left: 5vh;
-    margin-top: 3vh;
+.footer_bottom .img {
+    height: 4vw;
+    margin: 1vw 3vw; 
+    flex: 0 1 auto; 
 }
 
 .footer div a {
-    color: rgb(253, 252, 252);
-    background-color: #333;
+    /* color: rgb(253, 252, 252); */
+    /* background-color: #333; */
     text-decoration: none;
-    margin: 1 1vh;
-    /* margin-left: 12vh; */
+    margin: 1vh 1vh;
 }
 
 .footer nav a:hover {

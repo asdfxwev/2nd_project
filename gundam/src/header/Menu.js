@@ -145,7 +145,7 @@ export default function Menu() {
                     <div className={`h_right h_login ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faSignInAlt} /> 로그인</a></div>
                     <div className={`h_right h_mypage ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faUser}  /> 마이페이지</a></div>
                     <div className={`h_right h_shopping ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</a></div>
-                    <div className={`h_right h_search ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerSearch')}><FontAwesomeIcon icon={faSearch} /> 검색</div>
+                    <div className={`h_right h_search ${smallTopMenu ? 'blackText' : ''} ${menuAnimating ? 'menuAnimation' : ''} ${menuClosing ? 'menuClosing' : ''}`} onClick={() => MenuToggle('headerSearch')}><FontAwesomeIcon icon={faSearch} /> 검색</div>
                 </div>
             </div>
 

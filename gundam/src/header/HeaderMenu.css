@@ -6,6 +6,6 @@
     color: black;
 }
 
-.noPosition {
-    position: inherit !important;
+.absolute {
+    position: absolute !important;
 }

@@ -51,7 +51,7 @@ export default function IntersectionObservers() {
     return (
         <div className="isc" >
             <div className="intersectionImageContainer">
-                <div className="intersectionImageList vertical1">
+                <div className="intersectionImageList">
                     {intersectionImage1.map((image) =>
                         <img  key={image.id} className="verticalImage" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} src={image.name} alt={image.id} />
                     )}

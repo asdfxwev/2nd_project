@@ -1,12 +1,19 @@
 import React from 'react';
 import './Footer.css'; // 스타일을 위한 CSS 파일
+import { useLocation } from 'react-router-dom';
 
 
 // import gun_img from './public/image/Gundam_Logo_3.jpg';
 
 function Footer() {
+
+    const location = useLocation();
+    const isLoginPage = location.pathname === '/Login';
+
+
+
     return (
-        <div className="footer">
+        <div className={`footer  ${isLoginPage ? 'isLoginPage' : ''}`}>
             {/* <div className='footer_top'>
 
 

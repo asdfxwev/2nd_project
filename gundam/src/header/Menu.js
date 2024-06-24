@@ -130,10 +130,11 @@ export default function Menu() {
     };
 
     const isMainPage = location.pathname !== '/';
+    const isLoginPage = location.pathname === '/Login';
 
     return (
         <>
-            <div className={`h_main_container ${smallTopMenu ? 'smallHeadMenu' : ''} ${isMainPage ? 'noPosition' : ''}`}>
+            <div className={`h_main_container ${smallTopMenu ? 'smallHeadMenu' : ''} ${isMainPage ? 'noPosition' : ''} ${isLoginPage ? 'isLoginPage' : ''}`}>
                 <div className="h_menu_container">
                     <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerMenu')}>건프라</div>
                     <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerMenu1')}>애니프라</div>
@@ -142,10 +143,10 @@ export default function Menu() {
                 </div>
 
                 <div className="h_right_container">
-                    <div className={`h_right h_login ${smallTopMenu ? 'blackText' : ''} `}><Link to='Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faSignInAlt} /> 로그인</Link></div>
-                    <div className={`h_right h_mypage ${smallTopMenu ? 'blackText' : ''} `}><Link to='Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faUser}  /> 마이페이지</Link></div>
-                    <div className={`h_right h_shopping ${smallTopMenu ? 'blackText' : ''} `}><Link to='Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</Link></div>
-                    <div className={`h_right h_search ${smallTopMenu ? 'blackText' : ''}`} onClick={() => MenuToggle('headerSearch')}><FontAwesomeIcon icon={faSearch} /> 검색</div>
+                    <div className={`h_right h_login ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faSignInAlt} /> 로그인</a></div>
+                    <div className={`h_right h_mypage ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faUser}  /> 마이페이지</a></div>
+                    <div className={`h_right h_shopping ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</a></div>
+                    <div className={`h_right h_search ${smallTopMenu ? 'blackText' : ''} `}  onClick={() => MenuToggle('headerSearch')} ><FontAwesomeIcon icon={faSearch} /> 검색</div>
                 </div>
             </div>
 
@@ -154,7 +155,7 @@ export default function Menu() {
             {visibleMenu === 'headerMenu1' && <HeaderMenu data={HeaderMenuData.headerMenu1} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
             {visibleMenu === 'headerMenu2' && <HeaderMenu data={HeaderMenuData.headerMenu2} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
             {visibleMenu === 'etc' && <HeaderMenu data={HeaderMenuData.etc} smallTopMenu={smallTopMenu} onLinkClick={handleLinkClick} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
-            {visibleMenu === 'headerSearch' && <HeaderSearch onLinkClick={handleLinkClick} />}
+            {visibleMenu === 'headerSearch' && <HeaderSearch onLinkClick={handleLinkClick} smallTopMenu={smallTopMenu} menuAnimating={menuAnimating} menuClosing={menuClosing} />}
         </>
     );
 }

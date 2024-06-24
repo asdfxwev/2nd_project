@@ -11,7 +11,7 @@ export default function MainComponent () {
     return (
         <main style={{height:'700vh'}}>
             <Slider />
-            <IntersectionObserverss />
+            {/* <IntersectionObserverss /> */}
             <MainTab />
             <IntersectionObservers />
             <BrandFigure />

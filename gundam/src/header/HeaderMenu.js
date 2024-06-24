@@ -83,9 +83,9 @@ const HeaderMenu = ({ data, smallTopMenu, onLinkClick, menuAnimating, menuClosin
     return (
         <>
             {data.map((menu, index) => (
-                <div key={index} className={`detailMenu ${smallTopMenu ? 'smallMenu' : ''} ${isMainPage ? 'noPosition' : ''} ${menuAnimating ? 'menuAnimation' : ''} ${menuClosing ? 'menuClosing' : ''}`}>
+                <div key={index} className={`detailMenu ${smallTopMenu ? 'smallMenu' : ''} ${isMainPage ? 'absolute' : ''} ${menuAnimating ? 'menuAnimation' : ''} ${menuClosing ? 'menuClosing' : ''}`}>
                     {menu.menu.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><a href='/ItemList' onClick={onLinkClick}>{item.name}</a></div>
                     ))}
 
                     {menu.items.map((item, idx) => (

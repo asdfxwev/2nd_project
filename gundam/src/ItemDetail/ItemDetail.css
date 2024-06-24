@@ -1,53 +1,129 @@
-.item_detail_main{
-    /* width: calc(100vw - 16px); */
-    width: 100vw;
-    height: 80vh;
-    display: flex;
-    /* top: 4rem; */
-    margin: 20px;
-    justify-content: center;
+*{
+    box-sizing: border-box;
 }
 
+.item_detail_main{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+/* ============== Left Box Start ============= */
 .detail_left_box{
     float: left;
     height: 100%;
 }
 
+.item_detail_img{
+    width: 600px;
+    height: 600px;
+}
+
+.detail_img{
+    margin: 10px;
+    border-bottom: solid 1px grey;
+
+}
+
+.detail_img_list{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
 .detail_slide_img{
     width: 130px;
     height: 130px;
-    margin: 5px;
-    /* justify-content: space-between; */
 }
+/* ============== Left Box End ================ */
 
-/* .detail_right_box{*/
-    /* width: 30%; */
-    /* display: flex;
-    flex-direction: column;
-    text-align: left;
-    justify-items: center;
-    /* justify-content: center; */
-/* } */
-
+/* ============== Right Box Start ============= */
 .detail_right_box{
     float: right;
     display: flex;
     height: 100%;
-    
+    width: 350px;
 }
 
 .right_inner{
-    padding: 20px;
+    /* padding: 20px; */
+    margin: 10px;
     height: 100%;
+    justify-items: center;
+    text-align: left;
     /* display: grid;
     grid-area: 1,1,8,3; */
 }
 
-.detail_right_box > .right_inner div {
+.detail_right_box > .right_inner div{
     width: 300px;
     height: 40px;
+    line-height: 40px;
 }
 
+.font_medium{
+    font-size: 15px;
+    font-weight: 500;
+    /* display: block; */
+}
+
+.detail_top{
+    text-align: right;
+    margin-top: 5px;
+}
+
+.item_info{
+    display: flex;
+    width: 100%;
+    /* height: 100px !important; */
+    height: 100px;
+    /* margin-top: 5px; */
+}
+
+.info_left_box{
+    /* width: 100px !important; */
+    width: 100px;
+    /* height: 100px !important; */
+    text-align: left;
+}
+
+.info_right_box{
+    /* width: 200px !important; */
+    width: 200px;
+    text-align: left;
+}
+
+.item_count{
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    text-align: center;
+}
+
+.count_right_box{
+    /* width: 200px !important; */
+    width: 200px;
+    text-align: right;
+}
+
+.right_box .count_num{
+    /* width: 30px !important;
+    height: 30px !important; */
+    width: 30px;
+    height: 30px;
+    border: solid 1px black;
+}
+
+.right_box button{
+    width: 30px;
+    height: 30px;
+    border: solid 1px black;
+}
+
+.item_price{
+    margin-top: 20px;
+}
 
 .item_btn{
     bottom: 0%;
@@ -63,3 +139,4 @@
     color: white;
     font-size: 16px;
 }
+/* ============== Right Box End ================ */

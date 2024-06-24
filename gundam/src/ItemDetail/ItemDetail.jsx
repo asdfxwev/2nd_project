@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useParams } from 'react';
 import './ItemDetail.css'
 import ItemDataBase from '../ItemList/ItemDataBase';
 
-export default function ItemDetail() {
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
 
-    const selectedItem = ItemDataBase.find(item => item.id === 2);
+export default function ItemDetail() {
+    // const { id } = useParams();
+
+    const selectedItem = ItemDataBase.find(item => item.id === parseInt(id));
+    // const selectedItem = ItemDataBase.find(item => item.id === 2);
     // 2 대신 ItemList 화면에서 클릭한 데이터타겟의 id값을 가지고 와야함.
 
     const [mainImage, setMainImage] = useState(selectedItem.src[0]);
@@ -12,6 +18,10 @@ export default function ItemDetail() {
     const handleImageClick = (src) => {
         setMainImage(src);
     };
+
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
+    const [count, setCount] = useState(0);
 
     return (
         <div className="item_detail_main">
@@ -34,11 +44,23 @@ export default function ItemDetail() {
             </div>
             <div className='detail_right_box'>
                 <div className='right_inner'>
-                    <div className='detail_top'>좋아요아이콘용</div>
-                    <div className='item_name'>{selectedItem.name}</div>
-                    <div className='item_price'>{selectedItem.price}</div>
-                    <div className='item_info'>{selectedItem.comment}</div>
-                    <div className='item_count'>구매수량</div>
+                    <div className='detail_top'>
+                        <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                    </div>
+                    <div className='item_name'><h2>{selectedItem.name}</h2></div>
+                    <div className='item_price'><h3>{selectedItem.price}</h3></div>
+                    <div className='item_info'>
+                        <div className='info_left_box'>상품정보</div>
+                        <div className='info_right_box'>{selectedItem.comment}</div>
+                    </div>
+                    <div className='item_count'>
+                        <div className='left_box'>구매수량</div>
+                        <div className='right_box'>
+                            <button onClick={() => setCount(c => c - 1)}>-</button>
+                            <div className='count_num'>{count}</div>
+                            <button onClick={() => setCount(c => c + 1)}>+</button>
+                        </div>
+                    </div>
                     <div className='item_totar_price'>총금액</div>
                     <div className='item_btn'>
                         <button className='submit_btn'>구매하기</button>

@@ -1,25 +1,39 @@
-.intersectionImageContainer {
+.isc {
     display: flex;
-    overflow: hidden;
     height: 50vh;
+    white-space: nowrap;
+    overflow-x: auto;
+    margin: 0px 300px;
+}
+
+.intersectionImageContainer {
+    display: inline-flex;
+    flex-direction: row;
+    white-space: nowrap;
+    overflow-x: auto;
+    height: 450px;
+}
+
+.intersectionImageList {
+    display: flex;
+    overflow: visible;
+    height: 420px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    white-space: nowrap;
 }
 
 .verticalImage {
     transition: all 1s;
-    width: 45vh;
-    height: 45vh;
+    width: 330px;
+    height: 330px;
     opacity: 0;
     transform: translateY(20px);
+    margin: 33px;
 }
 
-.intersectionImageList {
-    width: 45vh;
-    margin: 2.5vh;
-    box-sizing: border-box;
-    border-radius: 100%;
-    height: 45vh;
-    overflow: hidden;
-}
+
 
 .scaleUp {
     scale: 1.1;
@@ -28,4 +42,26 @@
 .verticalImage.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+.isc::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.isc::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.isc::-webkit-scrollbar-thumb {
+    background-color: #F90;
+    background-image: -webkit-linear-gradient(45deg,
+            rgba(255, 255, 255, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, .2) 50%,
+            rgba(255, 255, 255, .2) 75%,
+            transparent 75%,
+            transparent)
 }

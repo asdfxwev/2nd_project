@@ -14,30 +14,22 @@ export default function SlideScroll() {
     ];
 
     return (
-        <section style={{ backgroundColor: 'yellow', height: '100vh' }}>
-            <div className="slideScrollContainer">
+        <section className='slideScrollContainers' >
+            <div className="slideScrollContainer">건담 만드는 사람들
                 <div className="slideScrollList">
                     <Slider
                         width="500px"
                         duration={20}
                         blurBorders={true}
-                        blurBoderColor={'#0ff'}>
+                        blurBoderColor={'none'}
+                        className="slideScroll"
+                        >
                         {slideScroll.map((scroll) =>
                             <Slider.Slide>
                                 <img className="slide" src={scroll.name} alt={scroll.id} />
                             </Slider.Slide>
                         )}
                     </Slider>
-
-                    {/* <Slider
-                        width="500px"
-                        duration={20}
-                        blurBorders={true}
-                        blurBoderColor={'#0ff'}>
-                            <Slider.Slide>
-                                <span>1</span>
-                            </Slider.Slide>
-                    </Slider> */}
                 </div>
             </div>
         </section >

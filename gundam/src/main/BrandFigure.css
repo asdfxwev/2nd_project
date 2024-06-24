@@ -26,8 +26,8 @@
 .Figures {
     overflow: hidden;
     transition: width .5s ease-in-out;
-    /* height: 80vh; */
-    height: 100%;
+    height: 80vh;
+    /* height: 100%; */
 }
 
 .category {
@@ -46,6 +46,7 @@
 
 .FigureList img {
     display: block;
+    /* height: 80vh; */
     height: 100%;
-    object-fit: cover;
+    object-fit: none;
 }

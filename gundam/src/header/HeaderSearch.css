@@ -1,13 +1,14 @@
 .searchMenu {
     width: 100%;
     text-align: center;
-    position: absolute;
-    top: 3rem;
+    position: fixed;
+    top: 7rem;
     height: 23.625rem;
     line-height: 23.625rem;
     background-color: #b3ffff;
     /* opacity: 0; */
     transition: all 1s;
+    z-index: 5;
 }
 
 .headerSearchInput {
@@ -24,4 +25,66 @@
     width: 45px;
     border: 1px solid;
     border-radius: 5px;
+}
+
+.menuAnimation {
+    animation: menuFontSize 0.5s ease-in-out forwards;
+}
+
+.menuClosing {
+    animation: menuFontSizeShrink 0.5s ease-in-out forwards;
+}
+
+@keyframes menuFontSize {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 414px;
+    }
+}
+
+@keyframes menuFontSizeShrink {
+    from {
+        height: 414px;
+    }
+    to {
+        height: 0px;
+
+    }
+}
+
+.searchMenuAnimation {
+    animation: searchMenu 0.5s ease-in-out forwards;
+}
+
+.searchMenuClosing {
+    animation: searchMenuClosing 0.5s ease-in-out forwards;
+}
+
+.smallMenu {
+    top: 5rem;
+}
+
+@keyframes searchMenu {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+
+
+    }
+}
+
+@keyframes searchMenuClosing {
+    from {
+        opacity: 1;
+
+    }
+    to {
+        opacity: 0;
+
+
+    }
 }

@@ -7,7 +7,6 @@
 header {
     display: flex;
     flex-direction: column;
-    /* height: 7rem; */
     width: calc(100vw - 16px);
     transition: all .5s;
     z-index: 2;
@@ -19,6 +18,7 @@ header {
     z-index: 2;
     position: fixed;
     top: 4rem;
+    width: 100%;
 }
 
 .h_menu_container {
@@ -31,7 +31,7 @@ header {
     margin-left: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     transition-duration: .5s;
 }
 
@@ -69,29 +69,18 @@ header {
     grid-template: repeat(9, 1fr) / repeat(6, 1fr) .5fr 1fr .5fr;
     width: 100%;
     text-align: center;
-    position: absolute;
+    position: fixed;
     top: 7rem;
     background-color: #fff;
     transition-duration: .5s;
     z-index: 2;
 }
 
-
 .detailMenu div {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-}
-
-.op {
-    top: 6.5rem;
-    opacity: 1;
-    background-color: skyblue;
-    color: white;
-    display: grid;
-    transition: all 1s;
-    z-index: 2;
 }
 
 .reservation {
@@ -186,7 +175,7 @@ header {
 }
 
 .brand17 {
-    grid-area: 9 / 4 / 10 /5;
+    grid-area: 9 / 4 / 10 / 5;
 }
 
 .art1 {
@@ -214,7 +203,7 @@ header {
 }
 
 .art7 {
-    grid-area: 9 / 3 / 10 /4;
+    grid-area: 9 / 3 / 10 / 4;
 }
 
 .art11 {
@@ -242,7 +231,7 @@ header {
 }
 
 .art17 {
-    grid-area: 9 / 5 / 10 /6;
+    grid-area: 9 / 5 / 10 / 6;
 }
 
 .img1,
@@ -339,17 +328,13 @@ header {
     font-size: .625rem;
 }
 
-/* .active {
-    border-bottom: 3px solid;
-} */
-
 .smallHeadMenu {
     background-color: white;
     color: black;
     position: fixed;
     top: 3rem;
-    width: calc(100vw - 16px);
-    z-index: 1000;
+    width: 100%;
+    z-index: 1;
 }
 
 .smallHeadMenu .h_menu {
@@ -362,21 +347,23 @@ header {
 
 .smallHeadMenu .h_menu_container {
     padding: 5px 0;
-
 }
 
 .noPosition {
     position: inherit !important;
+    color: black !important;
 }
 
 .smallHeadMenu .h_right_container {
     margin-left: auto;
     padding: 5px 0;
+    justify-content: flex-end;
 }
 
 a {
     text-decoration: none;
 }
+
 .Every {
     position: fixed;
     width: calc(100vw - 16px);
@@ -390,8 +377,48 @@ a {
     height: 3rem;
 }
 
-.smallThing .logo{
+.smallThing .logo {
     width: 8rem;
-    height: 3rem;
+    height: 5rem;
     transition-duration: .5s;
+}
+
+.menuAnimation {
+    animation: menuFontSize 0.5s ease-in-out forwards;
+}
+
+.menuClosing {
+    animation: menuFontSizeShrink 0.5s ease-in-out forwards;
+}
+
+@keyframes menuFontSize {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 414px;
+    }
+}
+
+@keyframes menuFontSizeShrink {
+    from {
+        height: 414px;
+    }
+    to {
+        height: 0px;
+
+    }
+}
+
+.menuItem a {
+    text-decoration: none;
+    transition: font-size 0.5s;
+}
+
+.h_search {
+    cursor: pointer;
+}
+
+.isLoginPage {
+    display: none;
 }

@@ -22,7 +22,7 @@ export default function BrandFigure() {
     };
 
     return (
-        <section style={{ height: '100vh' }} className="BrandFigure">
+        <section className="BrandFigure">
             <h2>브랜드별 피규어</h2>
             <div className="FigureContainer">
                 <ul className="FigureList">

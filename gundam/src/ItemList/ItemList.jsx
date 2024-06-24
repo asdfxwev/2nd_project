@@ -67,7 +67,7 @@ const ItemList = () => {
         }));
     };
 
-    const resetFilters = () => {
+    const resetFilters = () => {    // 초기화 누를때
         setSelectedFilters({
             상품정보: { visible: true, someFilter: false },
             가격대별: {

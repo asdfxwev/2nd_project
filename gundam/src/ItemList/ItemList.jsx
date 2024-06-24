@@ -102,7 +102,7 @@ const ItemList = () => {
     return (
         <div>
             <div className=''><h1>건프라</h1></div>
-            <div className='item-size-100' onClick={toggleFiltersVisible}>
+            <div className='item-size-150' onClick={toggleFiltersVisible}>
                 <TuneIcon />{filtersVisible ? '필터 숨기기' : '필터 보이기'}
             </div>
             <div className="item-list">
@@ -163,18 +163,6 @@ const ItemList = () => {
                                 <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['FULL MECHANICS']} onChange={() => handleCheckboxChange('브랜드별', 'FULL MECHANICS')}></input>FULL MECHANICS</label></div>
                                 <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HG']} onChange={() => handleCheckboxChange('브랜드별', 'HG')}></input>HG</label></div>
                                 <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HGMC']} onChange={() => handleCheckboxChange('브랜드별', 'HGMC')}></input>HGMC</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HGUC']} onChange={() => handleCheckboxChange('브랜드별', 'HGUC')}></input>HGUC</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['1/100']} onChange={() => handleCheckboxChange('브랜드별', '1/100')}></input>1/100</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HG']} onChange={() => handleCheckboxChange('브랜드별', 'HG')}></input>HG</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HGMC']} onChange={() => handleCheckboxChange('브랜드별', 'HGMC')}></input>HGMC</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HGUC']} onChange={() => handleCheckboxChange('브랜드별', 'HGUC')}></input>HGUC</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['FG']} onChange={() => handleCheckboxChange('브랜드별', 'FG')}></input>FG</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['1/100']} onChange={() => handleCheckboxChange('브랜드별', '1/100')}></input>1/100</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HG']} onChange={() => handleCheckboxChange('브랜드별', 'HG')}></input>HG</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HGMC']} onChange={() => handleCheckboxChange('브랜드별', 'HGMC')}></input>HGMC</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HGUC']} onChange={() => handleCheckboxChange('브랜드별', 'HGUC')}></input>HGUC</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['FG']} onChange={() => handleCheckboxChange('브랜드별', 'FG')}></input>FG</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['1/100']} onChange={() => handleCheckboxChange('브랜드별', '1/100')}></input>1/100</label></div>
                             </div>
                             )}
                             </div>
@@ -187,46 +175,6 @@ const ItemList = () => {
                                 </h3>
                                 {selectedFilters.작품별.visible && (
                                     <div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
                                 <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
                                 <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
                                 <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>

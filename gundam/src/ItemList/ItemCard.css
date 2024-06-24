@@ -21,13 +21,13 @@
 
 .item_name {
     color: black;
-    padding: 16px;
+    padding: 8px;
     text-align: left;
 }
 
 .item_p {
     color: gray;
-    padding: 16px;
+    padding: 8px;
     text-align: left;
 }
 
@@ -45,7 +45,7 @@
 
 .item-card:hover .sx {
     transform: translateX(-50%) translateY(0);
-    bottom: 45%;
+    bottom: 43%;
     opacity: 1;
 }
 

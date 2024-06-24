@@ -3,33 +3,30 @@
     width: 100vw;
     height: 100vh;
     top: 0;
-    transition: transform 1s ease-in-out;
     position: relative;
 }
 
 .main_container {
     overflow: hidden;
+    /* position: relative; */
 }
 
 .slide_container {
     display: flex;
     transition: transform 1s ease-in-out;
     width: 100%;
-    
 }
 
-.slide_list {
-    position: absolute;
-
-}
-
-.slide_container {
+.slide_container li {
     list-style: none;
     top: 0;
     position: absolute;
-    height: 100vh;
 }
 
+.slide_container li img {
+    transition: transform 1s ease-in-out;
+
+}
 
 .nonVisible {
     display: none;
@@ -49,4 +46,8 @@
 
 .main_container button:hover {
     opacity: 1;
+}
+
+.sc-fqkvVR {
+    display: none;
 }

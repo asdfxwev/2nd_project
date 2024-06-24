@@ -1,5 +1,12 @@
+.slideScrollContainers {
+    height: 800px;
+}
+
 .slide{
     width: 400px;
     border: 10px solid white;
 }
 
+/* .slideScrollList {
+    margin-top: ;
+} */

@@ -76,7 +76,7 @@ import './Header.css';
 import HeaderMenu from './HeaderMenu';
 import HeaderMenuData from './HeaderMenuData';
 import { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import HeaderSearch from './HeaderSearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faUser, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';

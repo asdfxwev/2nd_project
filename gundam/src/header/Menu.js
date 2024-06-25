@@ -131,7 +131,12 @@ export default function Menu() {
 
     const isMainPage = location.pathname !== '/';
     const isLoginPage = location.pathname === '/Login';
+    const isSignupPage = location.pathname === '/Login/Join'; // Check for Signup page
 
+    // Return null if on Login or Signup page
+    if (isLoginPage || isSignupPage) {
+        return null;
+    }
     return (
         <>
             <div className={`h_main_container ${smallTopMenu ? 'smallHeadMenu' : ''} ${isMainPage ? 'noPosition' : ''} ${isLoginPage ? 'isLoginPage' : ''}`}>

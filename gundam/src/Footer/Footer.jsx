@@ -9,7 +9,12 @@ function Footer() {
 
     const location = useLocation();
     const isLoginPage = location.pathname === '/Login';
+    const isSignupPage = location.pathname === '/Login/Join'; // Check for Signup page
 
+    // Return null if on Login or Signup page
+    if (isLoginPage || isSignupPage) {
+        return null;
+    }
 
 
     return (

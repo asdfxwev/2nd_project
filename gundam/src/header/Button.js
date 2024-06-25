@@ -35,7 +35,12 @@ export default function Button() {
 
     const isMainPage = location.pathname !== '/';
     const isLoginPage = location.pathname === '/Login';
+    const isSignupPage = location.pathname === '/Login/Join'; // Check for Signup page
 
+    // Return null if on Login or Signup page
+    if (isLoginPage || isSignupPage) {
+        return null;
+    }
     return (
         <div ref={topRef}>
             <div className={`Every ${menuSmallTop ? 'smallThing' : ''} ${isMainPage ? 'noPosition' : ''} ${isLoginPage ? 'isLoginPage' : ''}`}>

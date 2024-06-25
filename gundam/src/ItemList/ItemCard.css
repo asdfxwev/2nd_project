@@ -16,7 +16,6 @@
 
 .item-card h2 {
     font-size: 1.5em;
-    margin: 0.5em 0;
 }
 
 .item_name {
@@ -45,7 +44,7 @@
 
 .item-card:hover .sx {
     transform: translateX(-50%) translateY(0);
-    bottom: 43%;
+    bottom: 40%;
     opacity: 1;
 }
 

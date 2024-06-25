@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 
 const ItemList = () => {
     const [filtersVisible, setFiltersVisible] = useState(true);
+    const [itemListClass, setItemListClass] = useState('item-list');    // item-list를 위한 state
     const [selectedFilters, setSelectedFilters] = useState({
         상품정보: { visible: true, someFilter: false },
         가격대별: {
@@ -41,6 +42,7 @@ const ItemList = () => {
 
     const toggleFiltersVisible = () => {
         setFiltersVisible(!filtersVisible);
+        setItemListClass(filtersVisible ? 'item-list-hidden' : 'item-list')
         if (!filtersVisible) {
             resetFilters();
         }
@@ -117,8 +119,8 @@ const ItemList = () => {
             <div className='item-size-150' onClick={toggleFiltersVisible}>
                 <TuneIcon />{filtersVisible ? '필터 숨기기' : '필터 보이기'}
             </div>
-            <div className="item-list">
-                <div className='item-choose'>
+                <div className={itemListClass}>
+                <div className={`item-choose`}>
                     {filtersVisible && (
                         <div>
                             <div className='filter-section'>

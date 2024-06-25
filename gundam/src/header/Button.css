@@ -1,3 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+.Every {
+    position: fixed;
+    width: calc(100vw - 16px);
+    height: 4rem;
+    z-index: 3;
+}
+
 .topBtn{
     position: fixed;
     right: 50px;
@@ -14,13 +28,30 @@
     width: 10rem;
     align-content: center;
     height: 7rem;
-}
-
-.logo>a {
-    top: 0;
-    align-content: center;
+    z-index: 3;
 }
 
 .noPosition {
+    color: black !important;
     position: inherit !important;
+}
+
+.noPosition .logo {
+    position: absolute;
+}
+
+.smallThing {
+    background-color: white;
+    transition-duration: .5s;
+    height: 3rem;
+}
+
+.smallThing .logo {
+    width: 8rem;
+    height: 5rem;
+    transition-duration: .5s;
+}
+
+.isLoginPage {
+    display: none;
 }

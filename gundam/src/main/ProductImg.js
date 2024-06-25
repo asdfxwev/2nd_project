@@ -26,7 +26,7 @@ export default function ProjectImg() {
 
     return (
         <div>
-            <div>당신을 위한 최고의 선택!!!</div>
+            <h2 className="bestChoice">당신을 위한 최고의 선택!!!</h2>
             <div className="mainGridArea">
                 {projImg.map((img) => (
                     <a href='/ItemList/ItemDetail' key={img.id} className={`${img.class} gridTemplate`} >

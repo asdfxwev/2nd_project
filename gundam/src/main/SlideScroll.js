@@ -15,7 +15,8 @@ export default function SlideScroll() {
 
     return (
         <section className='slideScrollContainers' >
-            <div className="slideScrollContainer">건담 만드는 사람들
+            <div className="slideScrollContainer">
+                <h2 className="gundamPerson">우리의 보물을 만들어지는 과정!</h2>
                 <div className="slideScrollList">
                     <Slider
                         width="500px"
@@ -23,7 +24,7 @@ export default function SlideScroll() {
                         blurBorders={true}
                         blurBoderColor={'none'}
                         className="slideScroll"
-                        >
+                    >
                         {slideScroll.map((scroll) =>
                             <Slider.Slide>
                                 <img className="slide" src={scroll.name} alt={scroll.id} />

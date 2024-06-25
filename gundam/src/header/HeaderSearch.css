@@ -62,9 +62,7 @@
     animation: searchMenuClosing 0.5s ease-in-out forwards;
 }
 
-.smallMenu {
-    top: 5rem;
-}
+
 
 @keyframes searchMenu {
     from {

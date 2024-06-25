@@ -45,9 +45,6 @@ const ItemList = () => {
     const toggleFiltersVisible = () => {
         setFiltersVisible(!filtersVisible);
         setItemListClass(filtersVisible ? 'item-list-hidden' : 'item-list')
-        if (!filtersVisible) {
-            resetFilters();
-        }
     };
 
     // 필터 버튼 클릭시 제거

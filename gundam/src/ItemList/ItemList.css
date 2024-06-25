@@ -15,6 +15,12 @@
     display: none;
 }
 
+.filter-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
 .item-choose {
     display: grid;
     grid-area: 1 / 1 / 6 / 1;

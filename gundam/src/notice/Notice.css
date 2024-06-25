@@ -1,0 +1,4 @@
+.noticeGrid {
+    display: grid;
+    grid-template:repeat(1fr 10) / repeat(1fr 5fr 1fr);
+}

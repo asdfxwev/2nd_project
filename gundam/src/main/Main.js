@@ -5,7 +5,7 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import ItemDataBase from '../ItemList/ItemDataBase';
 import React,{useState, useEffect} from 'react';
 import Login from '../Login/Login';
-import Join from '../join/Join';
+import Join from '../join/join';
 
 export default function Main() {
     const [items, setItems] = useState([]);

@@ -1,23 +1,23 @@
 .item-list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
+    gap: 20px;
     padding: 20px;
 }
 
-.itemcard {
+.item-list-hidden {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 16px; 
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    padding: 20px;
 }
-
-.itemcard > * {
-    width: calc((100% - 3 * 16px) / 4); 
+.item-list-hidden .item-choose {
+    display: none;
 }
 
 .item-choose {
     display: grid;
-    grid-area: 1 / 1 / 6 / 2;
+    grid-area: 1 / 1 / 6 / 1;
     text-align: left;
     gap: 10px;
 }
@@ -41,18 +41,16 @@
 }
 
 .filter-section {
-    margin-bottom: 20px;
-    transition: max-height 1s ease-out;
+    transition: max-height 1s ease-out, visibility 1s ease-in-out;
     max-height: 2000px;
-    visibility: visible;
-    transition: all 1s ease-in-out;
+    margin-bottom: 20px;
+    overflow: hidden;
 }
 
-.filter-section.open {
+.filter-section.closed {
     max-height: 0;
-    margin-bottom: 0;
-    visibility: hidden;
-    transition: all 1s ease-in-out;
+    opacity: 0;
+    display: none;
 }
 
 .filter-section h3 {
@@ -93,7 +91,6 @@
     cursor: pointer;
     margin-left: 10px;
 }
-/* ItemList.css */
 
 .pagination {
     display: flex;

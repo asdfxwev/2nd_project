@@ -1,6 +1,4 @@
-
-
-export const userdata ={
+{
   "users": [
     {
       "id": "2f7d",
@@ -34,6 +32,17 @@ export const userdata ={
       "phoneNumber": "01072815068",
       "securityQuestion": "첫 번째 반려동물의 이름은?",
       "securityAnswer": "루이"
+    },
+    {
+      "id": "b38e",
+      "name": "ㅁㄴㅇㄹ",
+      "email": "asdff@asdf",
+      "password": "asdfasdf",
+      "confirmPassword": "asdfasdf",
+      "address": "qr3tebh",
+      "phoneNumber": "25634513251",
+      "securityQuestion": "태어난 도시의 이름은?",
+      "securityAnswer": "sj"
     }
   ]
 }

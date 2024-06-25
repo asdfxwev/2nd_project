@@ -1,7 +1,6 @@
 .Notice {
     width: 60vw;
     margin: auto;
-    /* height: 200vh; */
 }
 
 .h2Notice {
@@ -18,11 +17,12 @@
     transition-duration: 1s;
     max-height: 0;
     opacity: 0;
-    height: 500px;
     border-bottom: 1px solid gray;
 }
 
 .noticeBlockData {
+    transition-duration: 1s;
+    height: 200px;
     max-height: 200px;
     opacity: 1;
     align-items: center;

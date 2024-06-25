@@ -18,7 +18,7 @@ export default function NoticeDelivery({ noticeNum }) {
                         <div onClick={() => onNoticeTitle(notice.id)} style={{ width: '1100px', cursor: 'pointer' }}>{notice.title}</div>
                         <div style={{ height: '50px', width: '220px' }}>{notice.date}</div>
                     </div>
-                    <div className={`noticeData ${visibleNotice === notice.id ? 'noticeBlockData' : ''}`}>{notice.data}</div>
+                    <div className={`noticeData ${visibleNotice !== notice.id ? '' : 'noticeBlockData'}`}>{notice.data}</div>
                 </>
             ))}
         </>

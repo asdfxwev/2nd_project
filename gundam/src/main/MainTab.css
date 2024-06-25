@@ -12,6 +12,14 @@
     font-size: 1.5rem;
 }
 
+.tabButton a {
+    color: black;
+}
+
+.tabButtonList .as a{
+    color: red;
+}
+
 .tabImageContainer {
     height: 70vh;
 }

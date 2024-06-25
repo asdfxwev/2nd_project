@@ -152,7 +152,7 @@ const ItemList = () => {
                                                 .filter(filter => filter !== 'visible' && selectedFilters[section][filter])
                                                 .map(filter => (
                                                     <span key={filter}>
-                                                        <button onClick={() => removeFilter(section, filter)}>{filter} x</button>
+                                                        <button onClick={() => removeFilter(section, filter)} >{filter} x</button>
                                                     </span>
                                                 ))}
                                         </div>

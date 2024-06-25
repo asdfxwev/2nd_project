@@ -31,9 +31,30 @@
 }
 
 .category {
-    transition: width .5s ease-in-out;
+    transition: width .5s ease-in-out ;
     height: 80vh;
     width: 16vw;
+    transform: translateY(0);
+}
+
+.category1 {
+    transition: all .5s;
+}
+
+.category2 {
+    transition: all 1s;
+}
+
+.category3 {
+    transition: all 1.5s;
+}
+
+.category4 {
+    transition: all 2s;
+}
+
+.category5 {
+    transition: all 2.5s;
 }
 
 .hovered {
@@ -49,4 +70,9 @@
     /* height: 80vh; */
     height: 100%;
     object-fit: none;
+}
+
+
+.category.show {
+    transform: translateY(200px);
 }

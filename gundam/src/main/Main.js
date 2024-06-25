@@ -19,7 +19,7 @@ export default function Main() {
             <Routes>
                 <Route path="/" element={<MainComponent />} />
                 <Route path="/ItemList" element={<ItemList />} />
-                <Route path="/ItemDetail" element={<ItemDetail />} />
+                <Route path="/ItemDetail/:id" element={<ItemDetail />} />
                 <Route path="/Login" element={<Login/>} />
             </Routes>
         </>

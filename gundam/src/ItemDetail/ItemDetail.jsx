@@ -20,6 +20,9 @@ export default function ItemDetail() {
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+    const total_price = selectedItem.price;
+
+
     const [count, setCount] = useState(1);
 
     const minus = () => {
@@ -28,6 +31,8 @@ export default function ItemDetail() {
         } else {
             alert(`수량은 1개 이상 선택 가능합니다.`);
         }
+
+
     };
     
     const plus = () => {
@@ -37,6 +42,10 @@ export default function ItemDetail() {
             setCount(e => e + 1);
         }
     };
+
+    const formatNumber = (number) => {
+        return number.toLocaleString('en-US');
+    }
     
     return (
         <div className="item_detail_main">
@@ -63,22 +72,22 @@ export default function ItemDetail() {
                         <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
                     </div>
                     <div className='item_name'><h2>{selectedItem.name}</h2></div>
-                    <div className='item_price'><h3>{selectedItem.price}</h3></div>
-                    {/* <div className='item_info'> */}
-                        <div className='info_left_box'>상품정보</div>
+                    <div className='underline'><span className='item_price'>{formatNumber(selectedItem.price)}</span>원</div>
+                    <div className='item_info underline'>
+                        <div className='info_left_box font_medium'>상품정보</div>
                         <div className='info_right_box'>{selectedItem.comment}</div>
-                    {/* </div> */}
-                    <div className='item_count'>
-                        <div className='count_left_box'>구매수량</div>
+                    </div>
+                    <div className='item_count underline'>
+                        <div className='count_left_box font_medium'>구매수량</div>
                         <div className='count_right_box'>
                             <button onClick={minus}>-</button>
                             <div className='count_num'>{count}</div>
                             <button onClick={plus}>+</button>
                         </div>
                     </div>
-                    <div className='item_totar_price'>
-                        <p>총금액</p>
-                        <p>{count*selectedItem.price}원</p>  {/* 총금액 계산 안됨. */}
+                    <div className='item_total_price font_medium'>
+                        <p className='total_price_title '>총금액</p>
+                        <p className='total_price'><span className='t_price'>{formatNumber(total_price)}</span>원</p>  {/* 총금액 계산 안됨. */}
                     </div>
                     <div className='item_btn'>
                         <button className='submit_btn'>구매하기</button>

@@ -1,4 +1,68 @@
-.noticeGrid {
-    display: grid;
-    grid-template:repeat(1fr 10) / repeat(1fr 5fr 1fr);
+.Notice {
+    width: 60vw;
+    margin: auto;
+    /* height: 200vh; */
+}
+
+.h2Notice {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 3rem;
+}
+
+.titleData li {
+    margin-right: 10px;
+}
+
+.noticeData {
+    transition-duration: 1s;
+    max-height: 0;
+    opacity: 0;
+}
+
+.noticeBlockData {
+    max-height: 200px;
+    opacity: 1;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.noticeTitleGrid,
+.noticeGrid,
+.noticeDeliveryGrid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noticeGrid>div,
+.noticeTitleGrid>div,
+.noticeDeliveryGrid>div,
+.noticeData {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.noticeTitleGrid {
+    border-bottom: 1px solid gray;
+    border-top: 2px solid;
+}
+
+.noticeGrid,
+.noticeDeliveryGrid {
+    border-bottom: 1px solid gray;
+}
+
+.noticeNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+}
+
+.noticeNumber li {
+    margin: 0px 10px;
+    font-size: 1.2rem;
 }

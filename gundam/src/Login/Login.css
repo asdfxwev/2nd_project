@@ -14,6 +14,7 @@ html {
 .container {
     width: 100%;
     margin: 0 auto;
+    
 }
 
 .container-login {
@@ -79,7 +80,7 @@ html {
     width: 100%;
 }
 
-.login-form-title {
+/* .login-form-title {
     font-family: Nunito, sans-serif;
     display: block;
     
@@ -88,7 +89,7 @@ html {
     line-height: 1.2;
     text-align: center;
     margin-bottom: 50px;
-}
+} */
 
 .login-form-title img {
     width: 90px;
@@ -161,6 +162,13 @@ html {
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
+}
+
+.img {
+    height: 9vw;
+    margin: 1vw 3vw; 
+    flex: 0 1 auto; 
+    
 }
 
 .input:focus {

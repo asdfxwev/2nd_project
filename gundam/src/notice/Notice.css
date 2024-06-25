@@ -18,6 +18,8 @@
     transition-duration: 1s;
     max-height: 0;
     opacity: 0;
+    height: 500px;
+    border-bottom: 1px solid gray;
 }
 
 .noticeBlockData {
@@ -65,4 +67,12 @@
 .noticeNumber li {
     margin: 0px 10px;
     font-size: 1.2rem;
+}
+
+.noticeNumber a {
+    color: black;
+}
+
+.selected {
+    font-weight: bold;
 }

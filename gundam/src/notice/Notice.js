@@ -1,5 +1,8 @@
-import NoticeData from "../notice/NoticeData";
-import { useState } from 'react'
+import NoticeData from "./NoticeData";
+import NoticeDelivery from './NoticeDelivery';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faChevronLeft, faAngleRight, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import './Notice.css';
 
@@ -7,13 +10,26 @@ import './Notice.css';
 export default function Notice() {
 
     const [visibleNotice, setVisibleNotice] = useState(null);
+    const [visibleNoticeMenu, setVisibleNoticeMenu] = useState(null);
+    const [selectedPage, setSelectedPage] = useState('item1');
 
+    function onNoticeMenu (onNoticeMenu) {
+        if (visibleNoticeMenu !== onNoticeMenu) {
+            setVisibleNoticeMenu(onNoticeMenu)
+            setSelectedPage(onNoticeMenu);
+        }
+    }
 
     const data = NoticeData
 
     function onNoticeTitle(noticeId) {
         setVisibleNotice(noticeId === visibleNotice ? null : noticeId)
     }
+
+    useEffect(() => {
+        setVisibleNoticeMenu('item1');
+    }, []);
+
     console.log(data);
     console.log(data.item);
     return (
@@ -32,32 +48,24 @@ export default function Notice() {
                             <div onClick={() => onNoticeTitle(notice.id)} style={{ transitionDuration: '1s', height:'50px', width: '1100px', cursor: 'pointer' }}>{notice.title}</div>
                             <div style={{ height: '50px', width: '220px' }}>{notice.date}</div>
                         </div>
-                        <div style={{height:'50px', width:'1540px'}} className={`noticeData ${visibleNotice === notice.id ? 'noticeBlockData' : ''}`}>{notice.data}</div>
-                    </>
-                ))}
-                {data.item1.map((notice) => (
-                    <>
-                        <div className="noticeDeliveryGrid">
-                            <div style={{ height:'50px', width: '220px' }}>{notice.notice}</div>
-                            <div onClick={() => onNoticeTitle(notice.id)} style={{ width: '1100px', cursor:'pointer' }}>{notice.title}</div>
-                            <div style={{ height:'50px', width: '220px' }}>{notice.date}</div>
-                        </div>
                         <div className={`noticeData ${visibleNotice === notice.id ? 'noticeBlockData' : ''}`}>{notice.data}</div>
                     </>
                 ))}
+                {visibleNoticeMenu &&<NoticeDelivery noticeNum = {data[visibleNoticeMenu]} />}
+
                 <ul className="noticeNumber">
                     <li><FontAwesomeIcon icon={faAnglesLeft} /></li>
                     <li><FontAwesomeIcon icon={faChevronLeft} /></li>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
+                    <li className={selectedPage === 'item1' ? 'selected' : ''} onClick={() => onNoticeMenu('item1')}><Link to='/Notice'>1</Link></li>
+                    <li className={selectedPage === 'item2' ? 'selected' : ''} onClick={() => onNoticeMenu('item2')}><Link to='/Notice'>2</Link></li>
+                    <li className={selectedPage === 'item3' ? 'selected' : ''} onClick={() => onNoticeMenu('item3')}><Link to='/Notice'>3</Link></li>
+                    <li className={selectedPage === 'item4' ? 'selected' : ''} onClick={() => onNoticeMenu('item4')}><Link to='/Notice'>4</Link></li>
+                    <li className={selectedPage === 'item5' ? 'selected' : ''} onClick={() => onNoticeMenu('item5')}><Link to='/Notice'>5</Link></li>
+                    <li className={selectedPage === 'item6' ? 'selected' : ''} onClick={() => onNoticeMenu('item6')}><Link to='/Notice'>6</Link></li>
+                    <li className={selectedPage === 'item7' ? 'selected' : ''} onClick={() => onNoticeMenu('item7')}><Link to='/Notice'>7</Link></li>
+                    <li className={selectedPage === 'item8' ? 'selected' : ''} onClick={() => onNoticeMenu('item8')}><Link to='/Notice'>8</Link></li>
+                    <li className={selectedPage === 'item9' ? 'selected' : ''} onClick={() => onNoticeMenu('item9')}><Link to='/Notice'>9</Link></li>
+                    <li className={selectedPage === 'item10' ? 'selected' : ''} onClick={() => onNoticeMenu('item10')}><Link to='/Notice'>10</Link></li>
                     <li><FontAwesomeIcon icon={faAngleRight} /></li>
                     <li><FontAwesomeIcon icon={faAnglesRight} /></li>
                 </ul>

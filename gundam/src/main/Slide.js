@@ -546,13 +546,13 @@ export default function Slider() {
         { id: 'slideImage1', name: './image/slide1.jpg', alts: 'img1' },
         { id: 'slideImage2', name: './image/slide2.jpg', alts: 'img2' },
         { id: 'slideImage3', name: './image/slide3.jpg', alts: 'img3' },
-        { id: 'slideImage4', name: './image/slide4.jpg', alts: 'img4' },
-        { id: 'slideImage5', name: './image/slide5.jpg', alts: 'img5' },
-        { id: 'slideImage6', name: './image/slide6.jpg', alts: 'img6' },
-        { id: 'slideImage7', name: './image/slide7.jpg', alts: 'img7' },
-        { id: 'slideImage8', name: './image/slide8.jpg', alts: 'img8' },
-        { id: 'slideImage9', name: './image/slide9.jpg', alts: 'img9' },
-        { id: 'slideImage10', name: './image/slide10.jpg', alts: 'img10' },
+        // { id: 'slideImage4', name: './image/slide4.jpg', alts: 'img4' },
+        // { id: 'slideImage5', name: './image/slide5.jpg', alts: 'img5' },
+        // { id: 'slideImage6', name: './image/slide6.jpg', alts: 'img6' },
+        // { id: 'slideImage7', name: './image/slide7.jpg', alts: 'img7' },
+        // { id: 'slideImage8', name: './image/slide8.jpg', alts: 'img8' },
+        // { id: 'slideImage9', name: './image/slide9.jpg', alts: 'img9' },
+        // { id: 'slideImage10', name: './image/slide10.jpg', alts: 'img10' },
     ];
 
     const [slideIdx, setSlideIdx] = useState(1);
@@ -582,7 +582,7 @@ export default function Slider() {
         if (!isHovered) {
             autoSlideRef.current = setInterval(() => {
                 setIsTransitioning(true);
-                setSlideIdx((prevIdx) => prevIdx + 1);
+                setSlideIdx((prevIdx) => (prevIdx + 1));
             }, 2000);
             return () => clearInterval(autoSlideRef.current);
         }
@@ -623,8 +623,10 @@ export default function Slider() {
     const handleMouseLeave = () => {
         setIsHovered(false);
         setIsTransitioning(true);
-        setSlideIdx((prevIdx) => prevIdx + 1);
     };
+
+    console.log(slideIdx);
+    // console.log(slideImages.length);
 
     return (
         <section style={{ height: '100vh' }}>

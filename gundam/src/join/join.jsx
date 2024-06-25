@@ -1,11 +1,50 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 import './SignupForm.css';
+import { useNavigate } from 'react-router-dom';
+
+// const handleSubmit = async (values) => {
+//     const { name,email, password,confirmPassword,address, phoneNumber,securityQuestion,securityAnswer} = values;
+//     const formData = {name,email, password,confirmPassword,address, phoneNumber,securityQuestion,securityAnswer };
+
+//     try {
+//       const response = await axios.post('http://localhost:3001/users', formData);
+//       console.log(response.data);
+//       // 회원가입 성공 처리
+
+//     } catch (error) {
+//       console.error('Error:', error.response ? error.response.data : error.message);
+//       // 회원가입 실패 처리
+//     }
+// };
 
 const SignupForm = () => {
+    const navigate = useNavigate();
+    const handleSubmit = async (values) => {
+        const { name, email, password, confirmPassword, address, phoneNumber, securityQuestion, securityAnswer } = values;
+        const formData = { name, email, password, confirmPassword, address, phoneNumber, securityQuestion, securityAnswer };
+
+        try {
+            const response = await axios.post('http://localhost:3001/users', formData);
+            console.log(response.data);
+            // 회원가입 성공 처리
+            navigate('/Login');
+        } catch (error) {
+            console.error('Error:', error.response ? error.response.data : error.message);
+            // 회원가입 실패 처리
+        }
+    };
+
+
+
+
+
+
     const formik = useFormik({
         initialValues: {
+            name: '',
             email: '',
             password: '',
             confirmPassword: '',
@@ -15,6 +54,9 @@ const SignupForm = () => {
             securityAnswer: ''
         },
         validationSchema: Yup.object({
+            name: Yup.string()
+                .required('이름을 입력해주세요.'),
+
             email: Yup.string()
                 .email('올바른 이메일 주소를 입력하세요.')
                 .required('이메일 주소는 필수 항목입니다.'),
@@ -34,13 +76,25 @@ const SignupForm = () => {
             securityAnswer: Yup.string()
                 .required('비밀번호 찾기 답변을 입력하세요.')
         }),
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        },
+        onSubmit: handleSubmit,
     });
 
     return (
         <form onSubmit={formik.handleSubmit} className="signup-form">
+            <div className="form-group">
+                <label htmlFor="name">이름</label>
+                <input
+                    id="name"
+                    name="name"
+                    type="name"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
+                />
+                {formik.touched.name && formik.errors.name ? (
+                    <div className="error">{formik.errors.name}</div>
+                ) : null}
+            </div>
             <div className="form-group">
                 <label htmlFor="email">이메일</label>
                 <input

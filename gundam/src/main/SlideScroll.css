@@ -1,4 +1,5 @@
 .slideScrollContainers {
+    margin-top: 200px;
     height: 800px;
 }
 
@@ -7,6 +8,6 @@
     border: 10px solid white;
 }
 
-/* .slideScrollList {
-    margin-top: ;
-} */
+.gundamPerson {
+    font-size: 3rem;
+}

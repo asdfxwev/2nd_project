@@ -12,10 +12,14 @@ function Login() {
         <div className="container-login">
         <img className='imd' src='./image/gamn.png' alt="Gundam Logo" />
         <img className='imc' src='./image/gamm.png' alt="Gundam Logo" />
+        
             
             <div className="wrap-login">
                 <form className="login-form">
-                    <span className="login-form-title"> 출격 준비</span>
+                <img className='img' src='./image/logo.png'    alt="Gundam Logo" />
+                
+                    
+                    {/* <span className="login-form-title"> 출격 준비</span> */}
 
                     <span className="login-form-title">
                         {/* <img src={jpIMG} alt="Jovem Programador" /> */}
@@ -46,9 +50,17 @@ function Login() {
                     </div>
 
                     <div className="text-center">
-                        <span className="txt1">Não possui conta? </span>
+                        <span className="txt1">계정이 없으신가요? </span>
+                        <a className="txt2" href="./join/join.jsx">
+                            계정만들기
+                        </a>
+                    </div>
+                    <div>
+                    <a className="txt2" href="#">
+                            아이디찾기
+                        </a> &nbsp;  
                         <a className="txt2" href="#">
-                            Criar conta
+                            비번찾기
                         </a>
                     </div>
                 </form>

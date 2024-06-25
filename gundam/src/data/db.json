@@ -1,6 +1,14 @@
 {
   "users": [
     {
+      "email": "user1@example.com",
+      "password": "password1"
+    },
+    {
+      "email": "user2@example.com",
+      "password": "password2"
+    },
+    {
       "id": "2f7d",
       "name": "전용덕",
       "email": "dydejr852@naver.com",
@@ -34,15 +42,26 @@
       "securityAnswer": "루이"
     },
     {
-      "id": "b38e",
-      "name": "ㅁㄴㅇㄹ",
-      "email": "asdff@asdf",
-      "password": "asdfasdf",
-      "confirmPassword": "asdfasdf",
-      "address": "qr3tebh",
-      "phoneNumber": "25634513251",
+      "id": "86a2",
+      "name": "김성규",
+      "email": "dydejr852@naver.con",
+      "password": "231456789",
+      "confirmPassword": "123456789",
+      "address": "ㅀㅀㅀㅀㅀㄹㅇㄹㅇㄹㅇㄹ",
+      "phoneNumber": "01072815068",
       "securityQuestion": "태어난 도시의 이름은?",
-      "securityAnswer": "sj"
+      "securityAnswer": "루이"
+    },
+    {
+      "id": "6a23",
+      "name": "김성규",
+      "email": "doja120@naver.com",
+      "password": "123456789",
+      "confirmPassword": "123456789",
+      "address": "ㅀㅀㅀㅀㅀㄹㅇㄹㅇㄹㅇㄹ",
+      "phoneNumber": "01072815068",
+      "securityQuestion": "태어난 도시의 이름은?",
+      "securityAnswer": "루이"
     }
   ]
 }

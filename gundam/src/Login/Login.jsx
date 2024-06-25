@@ -1,37 +1,34 @@
 import { useState } from "react";
-import {userdata} from '../data/db.js';
-import jpIMG from "./jp.svg";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import dbData from '../data/db.json';
+const importedUsers = dbData.users; // 중복 제거 후 사용
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState('');
-    const users = userdata.users;
-    console.log(`** users.length=${users.length}`)
+    console.log(`** users.length=${importedUsers.length}`)
+
     const navigate = useNavigate();
     let result = null;
 
-    const onLogin = ()=>{
-        // 로그인 성공시 홈으로
-        // 실패했을때는 안내 메시지 
-        result = users.find((user) => {
+    const onLogin = (event) => {
+        event.preventDefault(); // 페이지 새로고침 방지
+        result = importedUsers.find((user) => {
             return user.email === email && user.password === password;
-          });  //find 끝
-        if (result !== null){
-            
+        });
+        if (result !== null) {
             const loginInfo = {
-                name:result.name,
-                email:result.email
+                name: result.name,
+                email: result.email
             }
-            localStorage.setItem("loginInfo", JSON.stringify(loginInfo) );
+            localStorage.setItem("loginInfo", JSON.stringify(loginInfo));
             navigate('/');
-        }else{
+        } else {
             alert('로그인실패')
         }
-
-
-    }  //onLogin
+    }
+ //onLogin
 
 
     return (

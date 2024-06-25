@@ -29,7 +29,7 @@ export default function ProjectImg() {
             <div>당신을 위한 최고의 선택!!!</div>
             <div className="mainGridArea">
                 {projImg.map((img) => (
-                    <a href='/' key={img.id} className={`${img.class} gridTemplate`} >
+                    <a href='/ItemList/ItemDetail' key={img.id} className={`${img.class} gridTemplate`} >
                         <div>
                             <img className="gridTemplates" src={img.src} alt={img.alt} />
                         </div>

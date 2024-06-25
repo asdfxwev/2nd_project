@@ -11,7 +11,7 @@ const ItemCard = ({ item }) => {
 
     return (
         <div className="item-card">
-            <Link to={`/ItemDetail/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to={`/ItemList/ItemDetail/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div>
                     <img src={item.image} alt={item.name} />
                     <div className='sx'>

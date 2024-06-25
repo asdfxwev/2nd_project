@@ -30,10 +30,6 @@ const ItemList = () => {
             'FIGURE-RISE MECHANICS': false,
             'FIGURE-RISE STANDARD': false,
             'FIGURE-RISE': false,
-            'FULL MECHANICS': false,
-            'HG': false,
-            'HGMC': false,
-            'HGUC': false
         },
         item: {
             visible: true,
@@ -81,7 +77,7 @@ const ItemList = () => {
         }));
     };
 
-    const resetFilters = () => {    // 초기화 누를때
+    const resetFilters = () => {    // 초기화
         setSelectedFilters({
             information: {
                 visible: true,
@@ -132,11 +128,12 @@ const ItemList = () => {
     };
 
     return (
-        <div>
+        <div className='item-first'>
             <div className='item-size-200'><h1>건프라</h1></div>
             <div className='item-size-150' onClick={toggleFiltersVisible}>
                 <TuneIcon />{filtersVisible ? '필터 숨기기' : '필터 보이기'}
             </div>
+            {/* 필터 카테고리 */}
             <div className={itemListClass}>
                 <div className={`item-choose`}>
                     {filtersVisible && (
@@ -205,9 +202,6 @@ const ItemList = () => {
                                         <div><label><input type='checkbox' checked={!!selectedFilters.brand['FIGURE-RISE MECHANICS']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE MECHANICS')}></input>FIGURE-RISE MECHANICS</label></div>
                                         <div><label><input type='checkbox' checked={!!selectedFilters.brand['FIGURE-RISE STANDARD']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE STANDARD')}></input>FIGURE-RISE STANDARD</label></div>
                                         <div><label><input type='checkbox' checked={!!selectedFilters.brand['FIGURE-RISE']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE')}></input>FIGURE-RISE</label></div>
-                                        <div><label><input type='checkbox' checked={!!selectedFilters.brand['FULL MECHANICS']} onChange={() => handleCheckboxChange('brand', 'FULL MECHANICS')}></input>FULL MECHANICS</label></div>
-                                        <div><label><input type='checkbox' checked={!!selectedFilters.brand['HG']} onChange={() => handleCheckboxChange('brand', 'HG')}></input>HG</label></div>
-                                        <div><label><input type='checkbox' checked={!!selectedFilters.brand['HGMC']} onChange={() => handleCheckboxChange('brand', 'HGMC')}></input>HGMC</label></div>
                                     </div>
                                 )}
                             </div>
@@ -231,10 +225,12 @@ const ItemList = () => {
                         </div>
                     )}
                 </div>
+                {/* 아이템 카드 */}
                 {ItemDataBase.map(item => (
                     <ItemCard key={item.id} item={item} />
                 ))}
             </div>
+            {/* 페이지 네이션 */}
             <div className='pagination-container'>
                 <div className='pagination'>
                     {Array.from({ length: totalNumberOfPages }).map((_, index) => (

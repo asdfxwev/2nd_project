@@ -124,3 +124,7 @@ export default function ItemDetail() {
         </div>
     )
 }
+
+
+
+// '/image/gundam02.jpg', '/image/gundam02_1.jpg','/image/gundam02_2.jpg','/image/gundam02_3.jpg','/image/gundam02_4.jpg','/image/gundam02_5.jpg'

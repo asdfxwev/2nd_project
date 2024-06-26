@@ -22,6 +22,7 @@ const ItemCard = ({ item }) => {
                     <p className='item_p'>{item.comment}</p>
                     <h2 className='item_name'>{item.name}</h2>
                     <p className='item_p'>{formatPrice(item.price)} 원</p>
+                    <p className='item_p'>{item.brand}</p>
                 </div>
             </Link>
         </div>

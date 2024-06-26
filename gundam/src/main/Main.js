@@ -30,8 +30,8 @@ export default function Main() {
                 <Route path="/ItemList/ItemDetail/:id" element={<ItemDetail />} />
                 <Route path="/Login" element={<Login/>} />
                 <Route path="/Login/Join" element={<Join/>} />
-                <Route path="/Notice" element={<Notice />} />
-                {/* <Route path="/Notice" element={<Notice1 />} /> */}
+                {/* <Route path="/Notice" element={<Notice />} /> */}
+                <Route path="/Notice" element={<Notice1 />} />
 
             </Routes>
         </>

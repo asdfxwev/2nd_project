@@ -62,6 +62,17 @@
       "phoneNumber": "01072815068",
       "securityQuestion": "태어난 도시의 이름은?",
       "securityAnswer": "루이"
+    },
+    {
+      "id": "3067",
+      "name": "asdf",
+      "email": "asdf@asdf",
+      "password": "asdfasdf",
+      "confirmPassword": "asdfasdf",
+      "address": "asdf",
+      "phoneNumber": "02315641561",
+      "securityQuestion": "태어난 도시의 이름은?",
+      "securityAnswer": "as"
     }
   ]
 }

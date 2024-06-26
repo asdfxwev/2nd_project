@@ -1,5 +1,6 @@
 // import './MainTabImage.css';
 
+
 const MainTabImage = ({ images }) => {
     return (
         <>

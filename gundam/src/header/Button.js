@@ -35,9 +35,8 @@ export default function Button() {
 
     const isMainPage = location.pathname !== '/';
     const isLoginPage = location.pathname === '/Login';
-    const isSignupPage = location.pathname === '/Login/Join'; // Check for Signup page
+    const isSignupPage = location.pathname === '/Login/Join'; 
 
-    // Return null if on Login or Signup page
     if (isLoginPage || isSignupPage) {
         return null;
     }

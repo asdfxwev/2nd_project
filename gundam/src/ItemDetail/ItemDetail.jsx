@@ -103,6 +103,7 @@ export default function ItemDetail() {
                     <div className='item_info underline'>
                         <div className='info_left_box font_medium'>상품정보</div>
                         <div className='info_right_box'>{selectedItem.comment}</div>
+                        <div className='info_right_box'>{selectedItem.detail}</div>
                     </div>
                     <div className='item_count underline'>
                         <div className='count_left_box font_medium'>구매수량</div>
@@ -124,7 +125,3 @@ export default function ItemDetail() {
         </div>
     )
 }
-
-
-
-// '/image/gundam02.jpg', '/image/gundam02_1.jpg','/image/gundam02_2.jpg','/image/gundam02_3.jpg','/image/gundam02_4.jpg','/image/gundam02_5.jpg'

@@ -73,7 +73,8 @@
 //         </div>
 //     );
 // }
-
+import { faCableCar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import React, { useRef, useState, useEffect } from 'react';
 import HeaderMenuSmallTop from "./HeaderMenuSmallTop";
@@ -131,10 +132,12 @@ export default function Button() {
             <div className={`Every ${menuSmallTop ? 'smallThing' : ''} ${isMainPage ? 'noPosition' : ''}`}>
                 <a href='/'><h1 className="logo">logo</h1></a>
                 {showButton && (
-                    <img src='./image/topbtn.png'
+                    <FontAwesomeIcon icon={faCableCar}
+                    // <img src='./image/topbtn.png'
                         alt='topBtn' className='topBtn'
                         onClick={scrollTop}
-                        style={{ bottom: `${bottomOffset}px`, transition: 'all 0.3s', cursor: 'pointer' }} />
+                        style={{ bottom: `${bottomOffset}px`, transition: 'all 0.3s', cursor: 'pointer' }} 
+                        />
                 )}
             </div>
         </div>

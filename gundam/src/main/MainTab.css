@@ -64,3 +64,11 @@
 .tabImageFlex p {
     margin-top: 10px;
 }
+
+.tabImage a {
+    color: black;
+}
+
+.tabImage {
+    margin: 0px 10px;
+}

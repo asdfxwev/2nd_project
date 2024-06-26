@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ItemCard from './ItemCard';
 import './ItemList.css';
-import ItemDataBase from './ItemDataBase';
+import ItemDataBaseOp from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -151,7 +151,7 @@ const ItemList = () => {
     };
 
     useEffect(() => {
-        const filteredItems = ItemDataBase.filter(item => {
+        const filteredItems = ItemDataBaseOp.filter(item => {
             let show = true;
 
             if (selectedFilters.information['세일상품만'] && !item.isOnSale) show = false;

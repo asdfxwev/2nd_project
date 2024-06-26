@@ -50,22 +50,21 @@ export default function Notice() {
                 <li><FontAwesomeIcon icon={faAnglesLeft} /></li>
                 <li><FontAwesomeIcon icon={faChevronLeft} /></li>
                 {Array.from({ length: totalNumberOfPages }).map((_, index) => (
-                    <li
-                        key={index}
-                        className={currentPage === index + 1  ? 'selected' : ''}
-                        onClick={() => onPageClick(`item${index + 1}`)}
+                    <NavLink
+                        to={`/Notice?page${index + 1}`}
+                        onClick={() => onPageClick(index + 1)}
                     >
-                        <NavLink
-                            to={`/Notice?page${index + 1}`}
-                            onClick={() => onPageClick(index + 1)}
+                        <li
+                            key={index}
+                            className={currentPage === index + 1 ? 'selected' : ''}
                         >
                             {index + 1}
-                        </NavLink>
-                    </li>
+                        </li>
+                    </NavLink>
                 ))}
                 <li><FontAwesomeIcon icon={faAngleRight} /></li>
                 <li><FontAwesomeIcon icon={faAnglesRight} /></li>
             </ul>
-        </div>
+        </div >
     )
 }

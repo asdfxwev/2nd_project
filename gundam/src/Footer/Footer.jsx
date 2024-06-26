@@ -35,7 +35,7 @@ function Footer() {
 
                         전화문의-평일 9:00 ~ 18:00 / 점심시간 12:30 ~ 13:30 <br /> ( 토,일및법정공휴일휴무 )</p> <br />
 
-                    <button>  <a href="#home">고객센터</a></button>
+                    <button>  <a href="/Csc">고객센터</a></button>
                     <button> <a href="/Notice?pageitem1">공지사항</a></button>
 
 

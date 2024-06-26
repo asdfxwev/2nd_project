@@ -10,7 +10,7 @@ import SlideScroll from './SlideScroll';
 export default function MainComponent () {
 
     return (
-        <main style={{height:'700vh'}}>
+        <main style={{height:'6433px'}}>
             <Slide />
             {/* <Slider /> */}
             {/* <IntersectionObserverss /> */}

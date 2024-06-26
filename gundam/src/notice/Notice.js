@@ -17,6 +17,7 @@ export default function Notice() {
         if (visibleNoticeMenu !== onNoticeMenu) {
             setVisibleNoticeMenu(onNoticeMenu)
             setSelectedPage(onNoticeMenu);
+            window.scrollTo(0,0);
         } 
     }
 

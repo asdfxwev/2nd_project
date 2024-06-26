@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ItemDetail.css'
 import ItemDataBase from '../ItemList/ItemDataBase';
 import { useParams } from 'react-router-dom';
@@ -20,19 +20,21 @@ export default function ItemDetail() {
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-    const total_price = selectedItem.price;
-
+    const [totalprice,setTotalPrice] = useState(selectedItem.price);
 
     const [count, setCount] = useState(1);
+
+    useEffect(() => {
+        setTotalPrice(count * selectedItem.price);
+    }, [count]);
 
     const minus = () => {
         if (count > 1){
             setCount(e => e - 1);
+            // setTotalPrice(count * selectedItem.price);
         } else {
             alert(`수량은 1개 이상 선택 가능합니다.`);
         }
-
-
     };
     
     const plus = () => {
@@ -40,6 +42,7 @@ export default function ItemDetail() {
             alert(`수량은 3개 까지 선택 가능합니다.`);
         } else {
             setCount(e => e + 1);
+            // setTotalPrice(count * selectedItem.price);
         }
     };
 
@@ -65,6 +68,30 @@ export default function ItemDetail() {
                         />
                     ))}
                 </div>
+
+                {/* tab */}
+                <h2 id="DETAIL">상품 상세</h2>
+
+                <div className="tab">
+                    <div className="tab_inner">
+                        <a href="#DETAIL" >상세보기</a>
+                        <a href="#REVIEW_TAB" >상품리뷰(<span >0</span>)</a>
+                        <a href="#QNA" >Q&amp;A</a>
+                        <a href="#SERVICE" >배송/교환/반품</a>
+                    </div>
+                </div>
+                {/* // tab */}
+                
+                <div class="section_img line_top">
+                    <div className='detail_item_name'>MG WING GUNDAM<br />ZERO EW Ver.Ka</div>
+                    <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
+                </div>
+                
+                {/* 스티키 작업 중.. */}
+                {/* 이미지들 다운받아서 화면에 뿌려줄것.. */}
+
+                <div className='testdiv'></div>
+
             </div>
             <div className='detail_right_box'>
                 <div className='right_inner'>
@@ -87,7 +114,7 @@ export default function ItemDetail() {
                     </div>
                     <div className='item_total_price font_medium'>
                         <p className='total_price_title '>총금액</p>
-                        <p className='total_price'><span className='t_price'>{formatNumber(total_price)}</span>원</p>  {/* 총금액 계산 안됨. */}
+                        <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>  {/* 총금액 계산 안됨. */}
                     </div>
                     <div className='item_btn'>
                         <button className='submit_btn'>구매하기</button>

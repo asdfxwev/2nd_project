@@ -28,8 +28,8 @@ export default function ProjectImg() {
         <div>
             <h2 className="bestChoice">당신을 위한 최고의 선택!!!</h2>
             <div className="mainGridArea">
-                {projImg.map((img) => (
-                    <a href='/ItemList/ItemDetail' key={img.id} className={`${img.class} gridTemplate`} >
+                {projImg.map((img, i) => (
+                    <a href={`/ItemList/ItemDetail/${i+1}`} key={img.id} className={`${img.class} gridTemplate`} >
                         <div>
                             <img className="gridTemplates" src={img.src} alt={img.alt} />
                         </div>

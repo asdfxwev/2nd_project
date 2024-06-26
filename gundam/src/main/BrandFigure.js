@@ -82,13 +82,15 @@ export default function BrandFigure() {
             <h2>브랜드별 피규어</h2>
             <div className="FigureContainer">
                 <ul className="FigureList">
-                    {BrandFigure.map((figure) => (
+                    {BrandFigure.map((figure, i) => (
                         <li key={figure.id} className="Figures">
-                            <img onMouseOver={() => onFigureMouseOver(figure.id)} onMouseOut={onFigureMouseOut}
-                                className={`${figure.style} ${hoveredId === figure.id ? 'hovered' : ''} ${hoveredId && hoveredId !== figure.id ? 'shrink' : ''}`}
-                                src={figure.name}
-                                alt={figure.id}
-                            />
+                            <a href={`/ItemList/ItemDetail/${20 - i}`}>
+                                <img onMouseOver={() => onFigureMouseOver(figure.id)} onMouseOut={onFigureMouseOut}
+                                    className={`${figure.style} ${hoveredId === figure.id ? 'hovered' : ''} ${hoveredId && hoveredId !== figure.id ? 'shrink' : ''}`}
+                                    src={figure.name}
+                                    alt={figure.id}
+                                />
+                            </a>
                         </li>
                     ))}
                 </ul>

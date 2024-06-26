@@ -51,10 +51,10 @@
 .footer div a {
     /* color: rgb(253, 252, 252); */
     /* background-color: #333; */
-    text-decoration: none;
+    color: black;
     margin: 1vh 1vh;
 }
 
-.footer nav a:hover {
+.footer div a:hover {
     text-decoration: underline;
 }

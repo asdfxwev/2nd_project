@@ -40,7 +40,7 @@ function Login() {
 
                 <div className="wrap-login">
                     <form className="login-form">
-                        <img className='img' src='./image/logo.png' alt="Gundam Logo" />
+                        <a href="/"><img className='img' src='./image/logo.png' alt="Gundam Logo" /></a>
 
 
                         {/* <span className="login-form-title"> 출격 준비</span> */}

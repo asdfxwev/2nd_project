@@ -13,22 +13,6 @@ export default function Notice() {
     const [visibleNotice, setVisibleNotice] = useState(null);
     const [visibleNoticeMenu, setVisibleNoticeMenu] = useState(null);
     const [selectedPage, setSelectedPage] = useState('item1');
-    const [contentInfo, setContentInfo] = useState([]);
-
-    async function handlePostInfo() {
-        const result = await axios({
-            url: `${REACT_APP_API_URL}/posts`,
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        setContentInfo(result.data.reverse())
-    }
-    console.log('process.env.REACT_APP_temp1',process.env.REACT_APP_API_TEMP1);
-    useEffect(() => {
-        handlePostInfo()
-    }, [])
 
     function onNoticeMenu(onNoticeMenu) {
         if (visibleNoticeMenu !== onNoticeMenu) {
@@ -51,7 +35,6 @@ export default function Notice() {
                 <div style={{ width: '220px' }}>날짜</div>
             </div>
 
-            <NoticeDelivery1 noticeNum={contentInfo} />
 
             <ul className="noticeNumber">
                 <li><FontAwesomeIcon icon={faAnglesLeft} /></li>

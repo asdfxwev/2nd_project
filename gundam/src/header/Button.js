@@ -9,7 +9,7 @@ import MainComponent from '../main/MainComponent';
 export default function Button() {
     const menuSmallTop = HeaderMenuSmallTop();
     const location = useLocation();
-
+    const [bottomOffset, setBottomOffset] = useState(30);
     const topRef = useRef(null);
     const [showButton, setShowButton] = useState(false);
 
@@ -18,9 +18,18 @@ export default function Button() {
     }
 
     useEffect(() => {
+        const footer = document.querySelectorAll('.footer'); // 푸터 요소 선택
+        console.log(footer);
+        // console.log(footer.innerHeight);
+        // const footerRect = footer.(); // 푸터의 위치 및 크기 정보 가져오기
         function handleScroll() {
             if (window.scrollY > window.innerHeight * .5) {
                 setShowButton(true);
+                if (window.innerHeight * .1 < window.innerHeight) {
+                    setBottomOffset(window.innerHeight + 20);
+                } else {
+                    setBottomOffset(20);
+                }
             } else {
                 setShowButton(false);
             }
@@ -35,7 +44,7 @@ export default function Button() {
 
     const isMainPage = location.pathname !== '/';
     const isLoginPage = location.pathname === '/Login';
-    const isSignupPage = location.pathname === '/Login/Join'; 
+    const isSignupPage = location.pathname === '/Login/Join';
 
     if (isLoginPage || isSignupPage) {
         return null;

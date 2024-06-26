@@ -50,7 +50,7 @@
 
 .item-card:hover .sx {
     transform: translateX(-50%) translateY(0);
-    bottom: 40%;
+    bottom: 35%;
     opacity: 1;
 }
 
@@ -70,7 +70,7 @@
 .pagination-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 .pagination {

@@ -20,18 +20,10 @@ export default function Notice() {
         } 
     }
 
-    const data = NoticeData
-
-    function onNoticeTitle(noticeId) {
-        setVisibleNotice(noticeId === visibleNotice ? null : noticeId)
-    }
-
     useEffect(() => {
         setVisibleNoticeMenu('item1');
     }, []);
 
-    console.log(data);
-    console.log(data.item);
     return (
             <div className="Notice">
                 <h2 className="h2Notice">공지사항</h2>
@@ -41,7 +33,7 @@ export default function Notice() {
                     <div style={{ width: '220px' }}>날짜</div>
                 </div>
 
-                {visibleNoticeMenu &&<NoticeDelivery noticeNum = {data[visibleNoticeMenu]} />}
+                {visibleNoticeMenu &&<NoticeDelivery noticeNum = {NoticeData[visibleNoticeMenu]} />}
 
                 <ul className="noticeNumber">
                     <li><FontAwesomeIcon icon={faAnglesLeft} /></li>

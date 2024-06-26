@@ -156,16 +156,12 @@ export default function Menu() {
     console.log(loginInfo.name);
 
     const isMainPage = location.pathname !== '/';
-    const isLoginPage = location.pathname === '/Login';
-    const isSignupPage = location.pathname === '/Login/Join'; // Check for Signup page
+    if (location.pathname.includes('Login')) return null;
 
-    // Return null if on Login or Signup page
-    if (isLoginPage || isSignupPage) {
-        return null;
-    }
+
     return (
         <>
-            <div className={`h_main_container ${smallTopMenu ? 'smallHeadMenu' : ''} ${isMainPage ? 'noPosition' : ''} ${isLoginPage ? 'isLoginPage' : ''}`}>
+            <div className={`h_main_container ${smallTopMenu ? 'smallHeadMenu' : ''} ${isMainPage ? 'noPosition' : ''} `}>
                 <div className="h_menu_container">
                     <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => Menu('headerMenu')}>건프라</div>
                     <div className={`h_menu ${smallTopMenu ? 'blackText' : ''}`} onClick={() => Menu('headerMenu1')}>애니프라</div>

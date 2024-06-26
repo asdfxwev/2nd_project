@@ -60,10 +60,8 @@ const ItemList = () => {
 
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
+        window.scrollTo(0,0)
     };
-
-    const itemsPerPage = 20;
-    const totalNumberOfPages = Math.ceil(ItemDataBase.length / itemsPerPage);
 
     const toggleSection = (category) => {
         setSelectedFilters(prevFilters => ({
@@ -172,10 +170,17 @@ const ItemList = () => {
     
         return show;
     });
-    
+
+    // 현재 페이지에 표시할 아이템 수
+    const itemsPerPage = 20;
+    const totalNumberOfPages = Math.ceil(filteredItems.length / itemsPerPage);
 
     // 현재 페이지에 표시할 아이템
-    const paginatedItems = filteredItems.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const startIndex = (currentPage - 1)* itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
+    const paginatedItems = filteredItems.slice(startIndex, endIndex);
+
+
 
     return (
         <div className='item-first'>
@@ -286,7 +291,7 @@ const ItemList = () => {
                         <Link
                             key={index}
                             to={`/ItemList?page=${index + 1}`}
-                            className={`page-link ${currentPage === index + 1 ? 'active' : ''}${currentPage !== index + 1 ? 'disabled' : ''}`}
+                            className={`page-link ${currentPage === index + 1 ? 'active' : ''}`}
                             onClick={() => handlePageClick(index + 1)}
                         >
                             {index + 1}

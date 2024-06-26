@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const ItemList = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [filtersVisible, setFiltersVisible] = useState(true);
     const [itemListClass, setItemListClass] = useState('item-list');
     const [selectedFilters, setSelectedFilters] = useState({
@@ -57,11 +59,23 @@ const ItemList = () => {
     };
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [paginatedItems, setPaginatedItems] = useState([]);
+    const itemsPerPage = 20;
 
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
-        window.scrollTo(0,0)
+        navigate(`/ItemList?page=${pageNumber}`);
+        window.scrollTo(0, 0);
     };
+
+    const totalNumberOfPages = Math.ceil(ItemDataBase.length / itemsPerPage);
+
+
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        setCurrentPage(page);
+    }, [location]);
 
     const toggleSection = (category) => {
         setSelectedFilters(prevFilters => ({
@@ -133,53 +147,43 @@ const ItemList = () => {
             }));
         }
     };
-    
-    
 
-    // 필터링된 아이템 목록
-    const filteredItems = ItemDataBase.filter(item => {
-        let show = true;
-    
-        // 정보 필터
-        if (selectedFilters.information['세일상품만'] && !item.isOnSale) show = false;
-        if (selectedFilters.information['품절상품 제외'] && item.isSoldOut) show = false;
-        if (selectedFilters.information['예약종료상품 제외'] && item.isReservationEnded) show = false;
-    
-        // 가격 필터
-        if (selectedFilters.price['전체'] && item.price >= 0) show = true;
-        if (selectedFilters.price['10,000원 미만'] && item.price >= 10000) show = false;
-        if (selectedFilters.price['10,000원 이상 ~ 50,000원 미만'] && (item.price < 10000 || item.price >= 50000)) show = false;
-        if (selectedFilters.price['50,000원 이상 ~ 100,000원 미만'] && (item.price < 50000 || item.price >= 100000)) show = false;
-        if (selectedFilters.price['100,000원 이상'] && item.price < 100000) show = false;
-    
-        // 브랜드 필터
-        const brandFilters = ['1/100', 'FG', 'FIGURE-RISE MECHANICS', 'FIGURE-RISE STANDARD', 'FIGURE-RISE'];
-        if (!brandFilters.some(brand => selectedFilters.brand[brand] && item.brand === brand)) {
-            if (brandFilters.some(brand => selectedFilters.brand[brand])) {
-                show = false;
+    useEffect(() => {
+        const filteredItems = ItemDataBase.filter(item => {
+            let show = true;
+
+            if (selectedFilters.information['세일상품만'] && !item.isOnSale) show = false;
+            if (selectedFilters.information['품절상품 제외'] && item.isSoldOut) show = false;
+            if (selectedFilters.information['예약종료상품 제외'] && item.isReservationEnded) show = false;
+
+            if (selectedFilters.price['전체'] && item.price >= 0) show = true;
+            if (selectedFilters.price['10,000원 미만'] && item.price >= 10000) show = false;
+            if (selectedFilters.price['10,000원 이상 ~ 50,000원 미만'] && (item.price < 10000 || item.price >= 50000)) show = false;
+            if (selectedFilters.price['50,000원 이상 ~ 100,000원 미만'] && (item.price < 50000 || item.price >= 100000)) show = false;
+            if (selectedFilters.price['100,000원 이상'] && item.price < 100000) show = false;
+
+            const brandFilters = ['1/100', 'FG', 'FIGURE-RISE MECHANICS', 'FIGURE-RISE STANDARD', 'FIGURE-RISE'];
+            if (!brandFilters.some(brand => selectedFilters.brand[brand] && item.brand === brand)) {
+                if (brandFilters.some(brand => selectedFilters.brand[brand])) {
+                    show = false;
+                }
             }
-        }
-    
-        // 작품 필터
-        const itemFilters = ['건담 무사', '건담 브레이커 배틀로그', '기동전사 건담 수성의 마녀', '기동전사 건담 복수의 레퀴엠', '신기동전사 건담W'];
-        if (!itemFilters.some(comment => selectedFilters.item[comment] && item.comment === comment)) {
-            if (itemFilters.some(comment => selectedFilters.item[comment])) {
-                show = false;
+
+            const itemFilters = ['건담 무사', '건담 브레이커 배틀로그', '기동전사 건담 수성의 마녀', '기동전사 건담 복수의 레퀴엠', '신기동전사 건담W'];
+            if (!itemFilters.some(comment => selectedFilters.item[comment] && item.comment === comment)) {
+                if (itemFilters.some(comment => selectedFilters.item[comment])) {
+                    show = false;
+                }
             }
-        }
-    
-        return show;
-    });
 
-    // 현재 페이지에 표시할 아이템 수
-    const itemsPerPage = 20;
-    const totalNumberOfPages = Math.ceil(filteredItems.length / itemsPerPage);
+            return show;
+        });
 
-    // 현재 페이지에 표시할 아이템
-    const startIndex = (currentPage - 1)* itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
-    const paginatedItems = filteredItems.slice(startIndex, endIndex);
-
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
+        const paginatedItems = filteredItems.slice(startIndex, endIndex);
+        setPaginatedItems(paginatedItems);
+    }, [currentPage, selectedFilters, itemsPerPage]);
 
 
     return (
@@ -304,3 +308,4 @@ const ItemList = () => {
 };
 
 export default ItemList;
+

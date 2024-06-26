@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ItemDetail.css'
 import ItemDataBase from '../ItemList/ItemDataBase';
+import SectionImg from './SectionImg';
+import ItemDetailInfo from './ItemDetailInfo';
 import { useParams } from 'react-router-dom';
 
 import Checkbox from '@mui/material/Checkbox';
@@ -31,7 +33,6 @@ export default function ItemDetail() {
     const minus = () => {
         if (count > 1){
             setCount(e => e - 1);
-            // setTotalPrice(count * selectedItem.price);
         } else {
             alert(`수량은 1개 이상 선택 가능합니다.`);
         }
@@ -42,13 +43,12 @@ export default function ItemDetail() {
             alert(`수량은 3개 까지 선택 가능합니다.`);
         } else {
             setCount(e => e + 1);
-            // setTotalPrice(count * selectedItem.price);
         }
     };
 
     const formatNumber = (number) => {
         return number.toLocaleString('en-US');
-    }
+    };
     
     return (
         <div className="item_detail_main">
@@ -82,15 +82,14 @@ export default function ItemDetail() {
                 </div>
                 {/* // tab */}
                 
-                <div class="section_img line_top">
+                <div className="section_img">
                     <div className='detail_item_name'>MG WING GUNDAM<br />ZERO EW Ver.Ka</div>
                     <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
+                    
+                    <SectionImg key={selectedItem.id} item={selectedItem} />
+                    <ItemDetailInfo key={selectedItem.id} item={selectedItem} />
+                    
                 </div>
-                
-                {/* 스티키 작업 중.. */}
-                {/* 이미지들 다운받아서 화면에 뿌려줄것.. */}
-
-                <div className='testdiv'></div>
 
             </div>
             <div className='detail_right_box'>
@@ -102,8 +101,10 @@ export default function ItemDetail() {
                     <div className='underline'><span className='item_price'>{formatNumber(selectedItem.price)}</span>원</div>
                     <div className='item_info underline'>
                         <div className='info_left_box font_medium'>상품정보</div>
-                        <div className='info_right_box'>{selectedItem.comment}</div>
-                        <div className='info_right_box'>{selectedItem.detail}</div>
+                        <div className='info_right_box'>
+                            <p className='info_comment'>- {selectedItem.comment}</p>
+                            <p>{selectedItem.detail}</p>
+                        </div>
                     </div>
                     <div className='item_count underline'>
                         <div className='count_left_box font_medium'>구매수량</div>

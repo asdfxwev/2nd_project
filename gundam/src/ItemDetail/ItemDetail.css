@@ -1,7 +1,3 @@
-*{
-    box-sizing: border-box;
-}
-
 .item_detail_main{
     width: 100%;
     display: flex;
@@ -13,30 +9,95 @@
 .detail_left_box{
     float: left;
     height: 100%;
+    width: 800px;
 }
 
 .item_detail_img{
-    width: 600px;
-    height: 450px;
+    width: 100%;
+    height: 550px;
 }
 
 .detail_img{
     margin: 10px;
-    border-bottom: solid 1px rgb(202, 200, 200);
+    border-bottom: solid 1px rgb(200, 200, 200);
 
 }
 
 .detail_img_list{
     display: flex;
-    justify-content: space-between;
     margin: 10px;
 }
 
 .detail_slide_img{
-    width: 130px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+    border: solid 1px rgb(200, 200, 200);
 }
+
+.detail_slide_img:hover{
+    transform: scale(1.2);
+    border: solid 1px skyblue;
+}
+
+/* ==================== tab =================== */
+.tab{
+    width: 100%;
+    position: sticky;
+    top: 0;
+}
+
+.tab_inner{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px rgb(200, 200, 200);
+    margin: 10px;
+    background-color: white;
+}
+
+.tab_inner a {
+    color: black;
+    font-size: 18px;
+    width: 130px;
+    height: 60px;
+    font-weight: 700;
+    align-content: center;
+}
+
+.tab_inner a:hover {
+    border-bottom: solid 2px red;
+}
+
+#DETAIL{
+    font-size: 0;
+}
+/* ================= tab End ================== */
+
+/* =============== section img ================ */
+.detail_item_name{
+    font-size: 40px;
+    font-weight: 900;
+    font-style: italic;
+    margin-top: 100px;
+}
+
+.detail_item_subname{
+    font: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px 0px;
+}
+
+.sectionimg{
+    width: 100%;
+    padding: 10px;
+}
+/* ============= section img End ============== */
+
 /* ============== Left Box End ================ */
+
+
+
 
 /* ============== Right Box Start ============= */
 .detail_right_box{
@@ -58,7 +119,7 @@
 }
 
 .underline{
-    border-bottom: solid 1px rgb(202, 200, 200);
+    border-bottom: solid 1px rgb(200, 200, 200);
     margin: 10px;
     padding: 10px;
 }
@@ -70,14 +131,11 @@
 
 .detail_top{
     text-align: right;
-    /* margin-top: 5px; */
 }
 
 .item_info{
     display: flex;
-    /* width: 100%; */
     height: 100px;
-    /* margin-top: 5px; */
 }
 
 .info_left_box{
@@ -90,6 +148,14 @@
     height: 100px !important;
     font-size: 14px;
     text-align: left;
+}
+
+.info_right_box p{
+    line-height: normal;
+}
+
+.info_comment{
+    /* font-style: ; */
 }
 
 .item_count{
@@ -173,65 +239,45 @@
 /* ============== Right Box End ================ */
 
 
-/* ==================== tab ==================== */
-.tab{
-    width: 100%;
-    position: sticky;
-    top: 0;
+
+/* ============== ItemDetailInfo =============== */
+.info_bottom_box{
+    display: grid;
+    /* grid-template: repeat(5, 1fr) 2fr repeat(2, 1fr) / repeat(4, 1fr); */
+    grid-template: repeat(8, 1fr) / repeat(4, 1fr);
+    height: 600px;
+    align-items: center;
+    font-size: 12px;
+    margin: 10px;
+    border: solid 1px gray;
 }
 
-.tab_inner{
-    display: flex;
-    justify-content: space-between;
-    border: solid 1px rgb(202, 200, 200);
-    margin: 10px;
+.info_bottom_box div{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    border: solid 1px gray;
+    background-color: rgb(200, 200, 200);
+}
+
+.info_bottom_box div:nth-of-type(even){
+    padding: 5px;
+    text-align: left;
+    width: 225px;
     background-color: white;
 }
-
-.tab_inner a {
-    color: black;
-    font-size: 18px;
-    width: 130px;
-    height: 60px;
-    font-weight: 700;
-    align-content: center;
+.info_bottom_box div:nth-of-type(add){
+    width: 175px;
 }
 
-.tab_inner a:hover {
-    border-bottom: solid 2px red;
+.company{
+    grid-area: 4/2/5/5;
+    width: 100% !important;
 }
 
-#DETAIL{
-    font-size: 0;
-}
-/* ================= tab End =================== */
-
-.detail_item_name{
-    font-size: 40px;
-    font-weight: 900;
-    font-style: italic;
-    margin-top: 100px;
+.kc_check{
+    grid-area: 8/2/9/5;
+    width: 100% !important;
 }
 
-.detail_item_subname{
-    font: inherit;
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 20px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.testdiv{
-    height: 1000px;
-}
+/* ============ ItemDetailInfo end ============= */

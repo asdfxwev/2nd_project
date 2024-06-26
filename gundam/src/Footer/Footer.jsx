@@ -8,17 +8,13 @@ import { useLocation } from 'react-router-dom';
 function Footer() {
 
     const location = useLocation();
-    const isLoginPage = location.pathname === '/Login';
-    const isSignupPage = location.pathname === '/Login/Join'; // Check for Signup page
+    if (location.pathname.includes('Login')) return null;
 
     // Return null if on Login or Signup page
-    if (isLoginPage || isSignupPage) {
-        return null;
-    }
 
 
     return (
-        <div className={`footer  ${isLoginPage ? 'isLoginPage' : ''}`}>
+        <div className={`footer`}>
             {/* <div className='footer_top'>
 
 

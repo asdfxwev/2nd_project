@@ -5,7 +5,7 @@
     overflow-x: auto;
     margin: 0px 300px;
     position: relative;
-    overflow-y: hidden
+    /* overflow-y: hidden */
 }
 
 .intersectionImageContainer {

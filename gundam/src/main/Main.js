@@ -6,6 +6,7 @@ import ItemDataBase from '../ItemList/ItemDataBase';
 import React,{useState, useEffect} from 'react';
 import Login from '../Login/Login';
 import Join from '../join/join';
+import Findingid from '../Login/Findingid';
 
 export default function Main() {
     const [items, setItems] = useState([]);
@@ -23,6 +24,7 @@ export default function Main() {
                 <Route path="/ItemDetail/:id" element={<ItemDetail />} />
                 <Route path="/Login" element={<Login/>} />
                 <Route path="/Join" element={<Join/>} />
+                <Route path="/Login/Findingid" element={<Findingid/>} />
             </Routes>
         </>
     )

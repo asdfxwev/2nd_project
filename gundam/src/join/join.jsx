@@ -1,45 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import './SignupForm.css';
 import { useNavigate } from 'react-router-dom';
-
-// const handleSubmit = async (values) => {
-//     const { name,email, password,confirmPassword,address, phoneNumber,securityQuestion,securityAnswer} = values;
-//     const formData = {name,email, password,confirmPassword,address, phoneNumber,securityQuestion,securityAnswer };
-
-//     try {
-//       const response = await axios.post('http://localhost:3001/users', formData);
-//       console.log(response.data);
-//       // 회원가입 성공 처리
-
-//     } catch (error) {
-//       console.error('Error:', error.response ? error.response.data : error.message);
-//       // 회원가입 실패 처리
-//     }
-// };
+// import AddressSearch from './AddressSearch';
 
 const SignupForm = () => {
+
     const navigate = useNavigate();
+
     const handleSubmit = async (values) => {
-        const { name, email, password, confirmPassword, address, phoneNumber, securityQuestion, securityAnswer } = values;
-        const formData = { name, email, password, confirmPassword, address, phoneNumber, securityQuestion, securityAnswer };
+
+        const { name, email, password, confirmPassword, address, dtl_address, phoneNumber, securityQuestion, securityAnswer } = values;
+        const combinedAddress = `${address} ${dtl_address}`; // address와 dtl_address 값을 공백으로 구분하여 연결
+        const formData = { name, email, password, address: combinedAddress, phoneNumber, securityQuestion, securityAnswer };
 
         try {
             const response = await axios.post('http://localhost:3001/users', formData);
             console.log(response.data);
-            // 회원가입 성공 처리
             navigate('/Login');
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
-            // 회원가입 실패 처리
         }
     };
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+        script.onload = () => {
+            const addressKakao = document.getElementById("address_kakao");
+            if (addressKakao) {
+                addressKakao.addEventListener("click", function () {
+                    new window.daum.Postcode({
+                        oncomplete: function (data) {
+                            // formik.setFieldValue를 사용하여 주소 필드 업데이트
+                            formik.setFieldValue('address', data.address);
+                            document.querySelector("input[name='address']").focus();
+                        }
+                    }).open();
+                });
+            }
+        };
 
+        document.body.appendChild(script);
 
-
-
+        // 스크립트 제거를 위한 정리 함수
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
 
     const formik = useFormik({
@@ -49,38 +58,29 @@ const SignupForm = () => {
             password: '',
             confirmPassword: '',
             address: '',
+            dtl_address: '',
             phoneNumber: '',
             securityQuestion: '',
             securityAnswer: ''
         },
         validationSchema: Yup.object({
-            name: Yup.string()
-                .required('이름을 입력해주세요.'),
-
-            email: Yup.string()
-                .email('올바른 이메일 주소를 입력하세요.')
-                .required('이메일 주소는 필수 항목입니다.'),
-            password: Yup.string()
-                .min(8, '비밀번호는 최소 8자 이상이어야 합니다.')
-                .required('비밀번호는 필수 항목입니다.'),
-            confirmPassword: Yup.string()
-                .oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다.')
-                .required('비밀번호 확인은 필수 항목입니다.'),
-            address: Yup.string()
-                .required('주소는 필수 항목입니다.'),
-            phoneNumber: Yup.string()
-                .matches(/^[0-9]{10,11}$/, '유효한 핸드폰 번호를 입력하세요.')
-                .required('핸드폰 번호는 필수 항목입니다.'),
-            securityQuestion: Yup.string()
-                .required('비밀번호 찾기 질문을 선택하세요.'),
-            securityAnswer: Yup.string()
-                .required('비밀번호 찾기 답변을 입력하세요.')
+            name: Yup.string().required('이름을 입력해주세요.'),
+            email: Yup.string().email('올바른 이메일 주소를 입력하세요.').required('이메일 주소는 필수 항목입니다.'),
+            password: Yup.string().min(8, '비밀번호는 최소 8자 이상이어야 합니다.').required('비밀번호는 필수 항목입니다.'),
+            confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다.').required('비밀번호 확인은 필수 항목입니다.'),
+            address: Yup.string().required('주소는 필수 항목입니다.'),
+            dtl_address: Yup.string(),
+            phoneNumber: Yup.string().matches(/^[0-9]{10,11}$/, '유효한 핸드폰 번호를 입력하세요.').required('핸드폰 번호는 필수 항목입니다.'),
+            securityQuestion: Yup.string().required('비밀번호 찾기 질문을 선택하세요.'),
+            securityAnswer: Yup.string().required('비밀번호 찾기 답변을 입력하세요.')
         }),
-        onSubmit: handleSubmit,
+        onSubmit: handleSubmit
     });
 
     return (
+
         <form onSubmit={formik.handleSubmit} className="signup-form">
+
             <div className="form-group">
                 <label htmlFor="name">이름</label>
                 <input
@@ -142,18 +142,33 @@ const SignupForm = () => {
 
             <div className="form-group">
                 <label htmlFor="address">주소</label>
+                {/* <AddressSearch setAddress={(address) => formik.setFieldValue('address', address)} /> */}
                 <input
-                    id="address"
+                    id="address_kakao"
                     name="address"
                     type="text"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.address}
                 />
+                <input
+                    id="del_address_kakao"
+                    name="dtl_address"
+                    type="text"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.dtl_address}
+                />
+
+
                 {formik.touched.address && formik.errors.address ? (
                     <div className="error">{formik.errors.address}</div>
                 ) : null}
+
             </div>
+
+
+
 
             <div className="form-group">
                 <label htmlFor="phoneNumber">핸드폰 번호</label>
@@ -170,40 +185,7 @@ const SignupForm = () => {
                 ) : null}
             </div>
 
-            <div className="form-group">
-                <label htmlFor="securityQuestion">비밀번호 찾기 질문</label>
-                <select
-                    id="securityQuestion"
-                    name="securityQuestion"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.securityQuestion}
-                >
-                    <option value="">질문을 선택하세요</option>
-                    <option value="첫 번째 반려동물의 이름은?">첫 번째 반려동물의 이름은?</option>
-                    <option value="태어난 도시의 이름은?">태어난 도시의 이름은?</option>
-                    <option value="가장 친한 친구의 이름은?">가장 친한 친구의 이름은?</option>
-                </select>
-                {formik.touched.securityQuestion && formik.errors.securityQuestion ? (
-                    <div className="error">{formik.errors.securityQuestion}</div>
-                ) : null}
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="securityAnswer">비밀번호 찾기 답변</label>
-                <input
-                    id="securityAnswer"
-                    name="securityAnswer"
-                    type="text"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.securityAnswer}
-                />
-                {formik.touched.securityAnswer && formik.errors.securityAnswer ? (
-                    <div className="error">{formik.errors.securityAnswer}</div>
-                ) : null}
-            </div>
-
+            
             <button type="submit" className="submit-button">회원가입</button>
         </form>
     );

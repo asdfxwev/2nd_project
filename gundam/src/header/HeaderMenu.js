@@ -28,7 +28,7 @@
 // import './HeaderMenu.css'
 // import { Link, Routes, Route } from 'react-router-dom';
 // import './Header.css'
-// import ItemList from './../ItemList/ItemList';
+// import ItemList?page=1 from './../ItemList?page=1/ItemList?page=1';
 
 
 // const HeaderMenu = ({ data }) => {
@@ -39,23 +39,23 @@
 //             {data.map((menu, index) => (
 //                 <div className={`detailMenu ${menuSmallTop ? 'smallMenu' : ''}`}>
 //                     {menu.menu.map((menu) => (
-//                         <div className={menu.id}><Link to='/ItemList'>{menu.name}</Link></div>
+//                         <div className={menu.id}><Link to='/ItemList?page=1'>{menu.name}</Link></div>
 //                     ))}
 
 //                     {menu.items.map((item, idx) => (
-//                         <div key={idx} className={item.id}><Link to='/ItemList'>{item.name}</Link></div>
+//                         <div key={idx} className={item.id}><Link to='/ItemList?page=1'>{item.name}</Link></div>
 //                     ))}
 //                     {menu.itemss.map((item, idx) => (
-//                         <div key={idx} className={item.id}><Link to='/ItemList'>{item.name}</Link></div>
+//                         <div key={idx} className={item.id}><Link to='/ItemList?page=1'>{item.name}</Link></div>
 //                     ))}
 //                     {menu.itemsss && menu.itemsss.map((item, idex) => (
-//                         <div key={idex} className={item.id}><Link to='/ItemList'>{item.name}</Link></div>
+//                         <div key={idex} className={item.id}><Link to='/ItemList?page=1'>{item.name}</Link></div>
 //                     ))}
 //                     {menu.itemssss && menu.itemssss.map((item, idex) => (
-//                         <div key={idex} className={item.id}><Link to='/ItemList'>{item.name}</Link></div>
+//                         <div key={idex} className={item.id}><Link to='/ItemList?page=1'>{item.name}</Link></div>
 //                     ))}
 //                     {menu.image.map((image, i) => (
-//                         <div key={i} className={image.id}><Link to='/ItemList'>{image.name}</Link></div>
+//                         <div key={i} className={image.id}><Link to='/ItemList?page=1'>{image.name}</Link></div>
 //                     ))}
 //                 </div>
 //             ))}
@@ -85,23 +85,23 @@ const HeaderMenu = ({ data, smallTopMenu, onLinkClick, menuAnimating, menuClosin
             {data.map((menu, index) => (
                 <div key={index} className={`detailMenu ${smallTopMenu ? 'smallMenu' : ''} ${isMainPage ? 'absolute' : ''} ${menuAnimating ? 'menuAnimation' : ''} ${menuClosing ? 'menuClosing' : ''}`}>
                     {menu.menu.map((item, idx) => (
-                        <div key={idx} className={item.id}><a href='/ItemList' onClick={onLinkClick}>{item.name}</a></div>
+                        <div key={idx} className={item.id}><a href='/ItemList?page=1' onClick={onLinkClick}>{item.name}</a></div>
                     ))}
 
                     {menu.items.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{item.name}</Link></div>
                     ))}
                     {menu.itemss.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{item.name}</Link></div>
                     ))}
                     {menu.itemsss && menu.itemsss.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{item.name}</Link></div>
                     ))}
                     {menu.itemssss && menu.itemssss.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{item.name}</Link></div>
                     ))}
                     {menu.image.map((image, idx) => (
-                        <div key={idx} className={image.id}><Link to='/ItemList' onClick={onLinkClick}>{image.name}</Link></div>
+                        <div key={idx} className={image.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{image.name}</Link></div>
                     ))}
                 </div>
             ))}

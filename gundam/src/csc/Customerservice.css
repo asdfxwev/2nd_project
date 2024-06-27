@@ -1,8 +1,17 @@
 .cscContainer {
     display: flex;
     flex-direction: row;
-    width: 1280px;
+    width: calc(100vw - 17px);
     margin: auto;
+}
+
+.cscSection {
+    width: 20%;
+    text-align: center;
+}
+
+.cscMain {
+    width: 80%;
 }
 
 .CscBtnMenu {
@@ -11,8 +20,18 @@
 
 .CscMenu {
     display: flex;
+    margin: 30px 0px;
+}
+
+.CscMenu li {
+    margin: 0px 30px;
 }
 
 .CscListTitle {
     display: flex;
+}
+
+.Cscblock{
+    display: block;
+    height: 300px;
 }

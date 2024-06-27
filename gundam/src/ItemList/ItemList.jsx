@@ -190,21 +190,80 @@ const ItemList = () => {
         setPaginatedItems(paginatedItems);
     }, [currentPage, selectedFilters, itemsPerPage]);
 
-    console.log(paginatedItems);
+    // 검색창
+    const [inputValue, setInputValue] = useState('');
+    const [selectedOption, setSelectedOption] = useState('건프라');
+    const [searchResult, setSearchResult] = useState([]);
+
+    // 처음 로딩시 전체 나오게 하기
+    useEffect(()=> {
+        setSelectedOption('전체');
+        setSearchResult(ItemDataBase);
+    },[]);
+
+    // h1창 이름 변경
+    const handleSearchChange = (event) => {
+        setInputValue(event.target.value);
+    }
+
+    // 버튼 클릭시
+    const handleSearchClick = () => {
+        if (!validateSearchInput(inputValue)) {
+            alert('존재하지 않는 검색어 입니다. 다시한번 검색어를 확인해 주세요.');
+            return;
+        }
+        setSelectedOption(inputValue);
+
+        const searchResult = ItemDataBase.filter(item => item.tag.includes(inputValue));
+        setSearchResult(searchResult);
+        setCurrentPage(1);
+    };
+
+    // 검색창에서 enter 시(keyDown 사용 시 한글로 입력하면 alert가 2번 뜸, 그래서 keyup으로 바꿈, 추가: if (event.isComposing || event.keyCode === 229)return; 이거 추가 시 keydown도 가능)
+    const handleKeyup = (event) => {
+        if (event.isComposing || event.keyCode === 229)return;
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            if (!validateSearchInput(inputValue)) {
+                alert('존재하지 않는 검색어 입니다. 다시한번 검색어를 확인해 주세요.');
+                return;
+            }
+            handleSearchClick();
+        }
+    }
+
+    // 다른거 검색 못하게 막는 용도
+    const validateSearchInput = (input) => {
+        const optionValues = ['건프라', '원피스', '나루토', '블리치', '에반게리온', '포켓몬'];  
+        return optionValues.includes(input);
+    }
+
+    // 선택된 필터와 검색 결과를 기반으로 아이템을 필터링
+    useEffect(() => {
+        const filteredItems = searchResult.filter(item => {
+            return true;
+        });
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
+        const paginatedItems = filteredItems.slice(startIndex, endIndex);
+        setPaginatedItems(paginatedItems);
+    }, [currentPage, searchResult, itemsPerPage]);
+
     return (
         <div className='item-first'>
-            <div className='item-size-200'><h1>건프라</h1></div>
+            <div className='item-size-200'><h1>{selectedOption}</h1></div>
             <div className='search-bar'> 
                 <label className='search-bar'>찾는 제품이 있나요?</label>
-                <input className='search-bar-input' type="text" list='figure-option' placeholder='검색어를 입력해주세요.'/>
-                <button className='button-class'><FontAwesomeIcon icon={faSearch}/></button>
+                <input className='search-bar-input' type="text" list='figure-option' placeholder='검색어를 입력해주세요.' onChange={handleSearchChange} onKeyDown={handleKeyup}/>
+                <button className='button-class' onClick={handleSearchClick}><FontAwesomeIcon icon={faSearch}/></button>
                 <datalist id='figure-option'>
                     <option value="건프라"/>
                     <option value="원피스"/>
                     <option value="나루토"/>
                     <option value="블리치"/>
                     <option value="에반게리온"/>
-                    <option value="료이키 텐카이"/>
+                    <option value="포켓몬"/>
                 </datalist>
             </div>
             <div className='item-size-150' onClick={toggleFiltersVisible}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ItemDetail.css'
+import './ItemDetail.css';
 import ItemDataBase from '../ItemList/ItemDataBase';
 import SectionImg from './SectionImg';
 import ItemDetailInfo from './ItemDetailInfo';
@@ -47,7 +47,7 @@ export default function ItemDetail() {
     };
 
     const formatNumber = (number) => {
-        return number.toLocaleString('en-US');
+        return number.toLocaleString('ko-KR');
     };
     
     return (

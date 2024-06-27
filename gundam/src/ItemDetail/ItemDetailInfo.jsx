@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import './ItemDetail.css';
-// import ItemDataBase from "../ItemList/ItemDataBase";
+// import '../header/Header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
 
 const ItemDetailInfo = ({ item }) => {
-    return(
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const accordion = () => {
+        setIsOpen(!isOpen);
+    };
+
+    console.log({isOpen});
+
+    return (
         <div className="detail_info_box">
             <div className="info_top_box">
-                <div className="left">상품상세정보</div>
-                <div classNames="right">
-                    {/* <button className="drop_btn" onClick={accordion}>드롭다운버튼</button> */}
+                <div className="info_top_left">상품상세정보</div>
+                <div className="info_top_right">
+                    {/* <FontAwesomeIcon icon={faAngleUp} onClick={accordion} /> */}
+                    <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} onClick={accordion} />
                 </div>
             </div>
-            <div className="info_bottom_box">
+            {/* <div className="info_bottom_box nonVisbele"> */}
+            <div className={`info_bottom_box ${isOpen ? '' : 'nonVisbele'}`}>
                 <div>제품명</div>
                 <div>{item.name}</div>
                 <div>판매코드</div>

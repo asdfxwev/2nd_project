@@ -5,7 +5,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const ItemCard = ({ item }) => {
 
-    console.log({item});
     const formatPrice = (price) => {
         return new Intl.NumberFormat('ko-KR').format(price);
     };

@@ -1,0 +1,16 @@
+.cscContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.CscBtnMenu {
+    display: flex;
+}
+
+.CscMenu {
+    display: flex;
+}
+
+.CscListTitle {
+    display: flex;
+}

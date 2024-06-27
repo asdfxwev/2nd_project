@@ -180,12 +180,15 @@ const ItemList = () => {
         });
 
         const startIndex = (currentPage - 1) * itemsPerPage;
+        console.log(startIndex);
         const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
+        console.log(endIndex);
+
         const paginatedItems = filteredItems.slice(startIndex, endIndex);
         setPaginatedItems(paginatedItems);
     }, [currentPage, selectedFilters, itemsPerPage]);
 
-
+    console.log(paginatedItems);
     return (
         <div className='item-first'>
             <div className='item-size-200'><h1>건프라</h1></div>

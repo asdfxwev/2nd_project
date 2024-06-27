@@ -22,7 +22,7 @@ function Login() {
                 name: result.name,
                 email: result.email
             }
-            sessionStorage.setItem("loginInfo", JSON.stringify(loginInfo));
+            localStorage.setItem("loginInfo", JSON.stringify(loginInfo));
             navigate('/');
         } else {
             alert('로그인실패')

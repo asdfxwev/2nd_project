@@ -57,3 +57,7 @@
 .isLoginPage {
     display: none;
 }
+
+.nonVisible {
+    display: none;
+}

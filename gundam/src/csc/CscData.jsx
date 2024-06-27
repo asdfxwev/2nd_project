@@ -43,3 +43,5 @@ const CscData = [
     { classification: '상품 관련', id: '42', category: 'product', title: '예약 상품의 출고 일정이 변동 되거나, 예약 주문이 취소 될 수 있나요?', detail: '예약 상품의 출고 일정은 변동될 수 있으며, 이에 따라 예약 주문이 취소될 수 있습니다. 변경 사항 발생 시 안내드리겠습니다.' },
     { classification: '상품 관련', id: '43', category: 'product', title: '사은품을 별도로 구매할 수 있나요?', detail: '사은품은 별도로 구매할 수 없으며, 프로모션 기간 내 해당 상품 구매 시에만 제공됩니다.' },
 ];
+
+export default CscData;

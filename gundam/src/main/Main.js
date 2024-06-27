@@ -8,8 +8,10 @@ import Login from '../Login/Login';
 import Join from '../join/join';
 import Findingid from '../Login/Findingid';
 import Notice from '../notice/Notice';
-import Customerservice from '../csc/Customerservice'
+import Customerservice from '../csc/Customerservice';
 import NoticeDelivery from '../notice/NoticeDelivery';
+import Inquiry from '../csc/Inquiry';
+import InquiryWrite from '../csc/InquiryWrite';
 
 
 
@@ -36,6 +38,8 @@ export default function Main() {
                 <Route path="/Notice/*" element={<NoticeDelivery />} />
                 {/* <Route path="/Notice" element={<Notice />} /> */}
                 <Route path="/Csc" element={<Customerservice />} />
+                <Route path="/Inquiry" element={<Inquiry />} />
+                <Route path="/InquiryWrite" element={<InquiryWrite />} />
             </Routes>
         </>
     )

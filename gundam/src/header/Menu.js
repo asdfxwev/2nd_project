@@ -153,7 +153,7 @@ export default function Menu() {
         window.scrollTo(0,0)
     };
 
-    console.log(loginInfo.name);
+    // console.log(loginInfo.name);
 
     const isMainPage = location.pathname !== '/';
     if (location.pathname.includes('Login')) return null;

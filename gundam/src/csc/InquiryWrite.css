@@ -1,0 +1,4 @@
+.inquiryGrid {
+    display: grid;
+    grid-template: repeat(5, 1fr) / 1fr 3fr
+}

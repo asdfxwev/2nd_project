@@ -84,9 +84,9 @@ const itemDetails = [
 ];
 
 // 이미지 출력
-const ItemDataBase = itemDetails.map((item, index) => ({
+const ItemDataBaseOp = itemDetails.map((item, index) => ({
     ...item,
-    image: `${process.env.PUBLIC_URL}/image/gundam${String(index + 1).padStart(2, '0')}.jpg`
+    image: `${process.env.PUBLIC_URL}/image/onepiece${String(index + 1).padStart(2, '0')}.jpg`
 }));;
 
-export default ItemDataBase;
+export default ItemDataBaseOp;

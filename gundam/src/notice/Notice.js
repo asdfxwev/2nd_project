@@ -1,52 +1,34 @@
 import NoticeData from "./NoticeData";
-import { NavLink, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './Notice.css';
 import NoticeDelivery from "./NoticeDelivery";
 
-
-
 export default function Notice() {
-
     const [currentPage, setCurrentPage] = useState(1);
     const [paginatedItems, setPaginatedItems] = useState([]);
-    const location = useLocation();
     const navigate = useNavigate();
-    // const { pageX } = useParams();
-
-    const handleGoBack = () => {
-        window.history.back();
-    };
+    const location = useLocation();
 
     const itemsPerPage = 15;
-
     const totalNumberOfPages = Math.ceil(NoticeData.length / itemsPerPage);
-
-    // useEffect(() => {
-    //     const pageNumber = parseInt(pageX) || 1; // Default to page 1 if pageX is not provided or invalid
-    //     setCurrentPage(pageNumber);
-    // }, [pageX]);
-
-    function onPageClick(pageNum) {
-        //setCurrentPage(pageNum);
-        navigate(`/Notice?page=${pageNum}`)
-    }
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
         const page = parseInt(query.get('page')) || 1;
-        console.log('a');
         setCurrentPage(page);
-    }, [location]);
+    }, [location.search]);
 
     useEffect(() => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, NoticeData.length);
         const paginatedItems = NoticeData.slice(startIndex, endIndex);
         setPaginatedItems(paginatedItems);
-    }, [currentPage])
+    }, [currentPage]);
 
-    // console.log(paginatedItems);
+    function onPageClick(pageNum) {
+        navigate(`/Notice?page=${pageNum}`);
+    }
 
     return (
         <div className="Notice">
@@ -61,7 +43,6 @@ export default function Notice() {
                 <NoticeDelivery key={noticeNum.id} noticeNum={noticeNum} />
             ))}
 
-
             <ul className="noticeNumber">
                 {Array.from({ length: totalNumberOfPages }).map((_, index) => (
                     <NavLink
@@ -70,7 +51,6 @@ export default function Notice() {
                         onClick={() => onPageClick(index + 1)}
                     >
                         <li
-                            key={index}
                             className={currentPage === index + 1 ? 'selected' : ''}
                         >
                             {index + 1}
@@ -78,6 +58,6 @@ export default function Notice() {
                     </NavLink>
                 ))}
             </ul>
-        </div >
-    )
+        </div>
+    );
 }

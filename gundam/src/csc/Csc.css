@@ -1,33 +1,49 @@
-.cscAnimation {
-    animation: cscMenu 0.5s ease-in-out forwards;
+.CscListTitles {
+    border-top: 1px solid gray;
 }
 
-.CscListTitle {
-    
+.CscListTitles>div:nth-child(2) {
+    cursor: pointer;
+}
+
+.CscMenu a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.cscPageNation {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.cscPageNation a {
+    margin: 0px 20px;
+    font-size: 1.5rem;
+}
+
+.cscAnimation {
+    animation: cscMenu 0.5s ease-in-out forwards;
 }
 
 .cscClosing {
     animation: cscMenuShrink 0.5s ease-in-out forwards;
 }
 
-.CscMenu a {
-    color: black;
-    font-size: 2rem;
-}
-
-@keyframes menuMenu {
+@keyframes cscMenu {
     from {
         height: 0px;
     }
+
     to {
         height: 300px;
     }
 }
 
-@keyframes menuMenuShrink {
+@keyframes cscMenuShrink {
     from {
         height: 300px;
     }
+
     to {
         height: 0px;
 

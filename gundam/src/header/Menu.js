@@ -134,7 +134,7 @@ export default function Menu() {
     };
 
     if (!isLoggedIn) {
-        const loginCheck = JSON.parse(sessionStorage.getItem("loginInfo"));
+        const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
         console.log(loginCheck);
         if (loginCheck !== null) {
             setIsLoggedIn(true);
@@ -146,7 +146,7 @@ export default function Menu() {
 
 
     const onLogout = () => {
-        sessionStorage.clear();
+        localStorage.clear();
         setIsLoggedIn(false);
         navigate("/");
         setLoginInfo('');

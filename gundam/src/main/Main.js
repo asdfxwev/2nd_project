@@ -7,7 +7,7 @@ import React,{useState, useEffect} from 'react';
 import Login from '../Login/Login';
 import Join from '../join/join';
 import Notice from '../notice/Notice';
-import Notice1 from '../notice/Notice1';
+import Customerservice from '../csc/Customerservice'
 
 
 
@@ -30,9 +30,9 @@ export default function Main() {
                 <Route path="/ItemList/ItemDetail/:id" element={<ItemDetail />} />
                 <Route path="/Login" element={<Login/>} />
                 <Route path="/Login/Join" element={<Join/>} />
+                {/* <Route path="/Notice" element={<Notice />} /> */}
                 <Route path="/Notice" element={<Notice />} />
-                {/* <Route path="/Notice" element={<Notice1 />} /> */}
-
+                <Route path="/Csc" element={<Customerservice />} />
             </Routes>
         </>
     )

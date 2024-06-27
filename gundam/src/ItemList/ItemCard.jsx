@@ -11,7 +11,7 @@ const ItemCard = ({ item }) => {
 
     return (
         <div className="item-card">
-            <Link to={`/ItemDetail/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to={`/ItemList/ItemDetail/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div>
                     <img src={item.image} alt={item.name} />
                     <div className='sx'>
@@ -22,7 +22,7 @@ const ItemCard = ({ item }) => {
                     <p className='item_p'>{item.comment}</p>
                     <h2 className='item_name'>{item.name}</h2>
                     <p className='item_p'>{formatPrice(item.price)} 원</p>
-                    <p className='item_p'>{item.detail}</p>
+                    <p className='item_p'>{item.brand}</p>
                 </div>
             </Link>
         </div>

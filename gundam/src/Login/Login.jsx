@@ -43,7 +43,7 @@ function Login() {
 
                 <div className="wrap-login">
                     <form className="login-form">
-                        <img className='img' src='./image/logo.png' alt="Gundam Logo" />
+                        <a href="/"><img className='img' src='./image/logo.png' alt="Gundam Logo" /></a>
 
 
                         {/* <span className="login-form-title"> 출격 준비</span> */}
@@ -79,7 +79,7 @@ function Login() {
 
                         <div className="text-center">
                             <span className="txt1">계정이 없으신가요? </span>
-                            <a className="txt2" href="./Join">
+                            <a className="txt2" href="/Login/Join">
                                 계정만들기
                             </a>
                         </div>

@@ -21,10 +21,12 @@ export default function Main() {
             <Routes>
                 <Route path="/" element={<MainComponent />} />
                 <Route path="/ItemList" element={<ItemList />} />
-                <Route path="/ItemDetail/:id" element={<ItemDetail />} />
+                <Route path="/ItemList/ItemDetail/:id" element={<ItemDetail />} />
                 <Route path="/Login" element={<Login/>} />
-                <Route path="/Join" element={<Join/>} />
-                <Route path="/Login/Findingid" element={<Findingid/>} />
+                <Route path="/Login/Join" element={<Join/>} />
+                {/* <Route path="/Notice" element={<Notice />} /> */}
+                <Route path="/Notice" element={<Notice />} />
+                <Route path="/Csc" element={<Customerservice />} />
             </Routes>
         </>
     )

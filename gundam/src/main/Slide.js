@@ -577,16 +577,18 @@ export default function Slider() {
             slideRef.current.removeEventListener('transitionend', handleTransitionEnd);
         };
     }, [slideIdx, slideImages.length]);
+    console.log('TransitionEnds',slideIdx);
 
     useEffect(() => {
         if (!isHovered) {
             autoSlideRef.current = setInterval(() => {
                 setIsTransitioning(true);
-                setSlideIdx((prevIdx) => prevIdx + 1);
-            }, 2000);
+                setSlideIdx((prevIdx) => (prevIdx + 1) %(slideImages.length + 2));
+            }, 4000);
             return () => clearInterval(autoSlideRef.current);
         }
     }, [isHovered]);
+    console.log('hover',slideIdx);
 
     useEffect(() => {
         if (!isTransitioning) {
@@ -602,7 +604,7 @@ export default function Slider() {
         setIsThrottled(true);
         clearInterval(autoSlideRef.current);
         setIsTransitioning(true);
-        setSlideIdx((prevIdx) => prevIdx + 1);
+        setSlideIdx((prevIdx) => (prevIdx + 1) % (slideImages.length + 2));
         setTimeout(() => setIsThrottled(false), 2000);
     };
 
@@ -611,7 +613,7 @@ export default function Slider() {
         setIsThrottled(true);
         clearInterval(autoSlideRef.current);
         setIsTransitioning(true);
-        setSlideIdx((prevIdx) => prevIdx - 1);
+        setSlideIdx((prevIdx) => (prevIdx - 1) % (slideImages.length + 2));
         setTimeout(() => setIsThrottled(false), 2000);
     };
 
@@ -623,11 +625,13 @@ export default function Slider() {
     const handleMouseLeave = () => {
         setIsHovered(false);
         setIsTransitioning(true);
-        setSlideIdx((prevIdx) => prevIdx + 1);
     };
 
+    // console.log(slideIdx);
+    // console.log(slideImages.length);
+
     return (
-        <section style={{ height: '100vh' }}>
+        <section style={{ height: '919px' }}>
             <div
                 className="main_container"
                 onMouseEnter={handleMouseEnter}

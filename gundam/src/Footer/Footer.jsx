@@ -8,12 +8,13 @@ import { useLocation } from 'react-router-dom';
 function Footer() {
 
     const location = useLocation();
-    const isLoginPage = location.pathname === '/Login';
+    if (location.pathname.includes('Login')) return null;
 
+    // Return null if on Login or Signup page
 
 
     return (
-        <div className={`footer  ${isLoginPage ? 'isLoginPage' : ''}`}>
+        <div className={`footer`}>
             {/* <div className='footer_top'>
 
 
@@ -34,8 +35,8 @@ function Footer() {
 
                         전화문의-평일 9:00 ~ 18:00 / 점심시간 12:30 ~ 13:30 <br /> ( 토,일및법정공휴일휴무 )</p> <br />
 
-                    <button>  <a href="#home">고객센터</a></button>
-                    <button> <a href="#about">공지사항</a></button>
+                    <button>  <a href="/Csc?page=1&category=ALL">고객센터</a></button>
+                    <button> <a href="/Notice?page=1">공지사항</a></button>
 
 
                 </pre>

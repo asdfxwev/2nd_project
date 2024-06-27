@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
-import {Link} from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const ItemList = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [filtersVisible, setFiltersVisible] = useState(true);
+    const [itemListClass, setItemListClass] = useState('item-list');
     const [selectedFilters, setSelectedFilters] = useState({
-        상품정보: { visible: true, someFilter: false },
-        가격대별: {
+        information: {
+            visible: true,
+            '세일상품만': false,
+            '품절상품 제외': false,
+            '예약종료상품 제외': false
+        },
+        price: {
             visible: true,
             '전체': false,
             '10,000원 미만': false,
@@ -17,19 +27,15 @@ const ItemList = () => {
             '50,000원 이상 ~ 100,000원 미만': false,
             '100,000원 이상': false
         },
-        브랜드별: {
+        brand: {
             visible: true,
             '1/100': false,
             'FG': false,
             'FIGURE-RISE MECHANICS': false,
             'FIGURE-RISE STANDARD': false,
             'FIGURE-RISE': false,
-            'FULL MECHANICS': false,
-            'HG': false,
-            'HGMC': false,
-            'HGUC': false
         },
-        작품별: {
+        item: {
             visible: true,
             '건담 무사': false,
             '건담 브레이커 배틀로그': false,
@@ -41,21 +47,37 @@ const ItemList = () => {
 
     const toggleFiltersVisible = () => {
         setFiltersVisible(!filtersVisible);
-        if (!filtersVisible) {
-            resetFilters();
-        }
+        setItemListClass(filtersVisible ? 'item-list-hidden' : 'item-list');
     };
 
-    const [currentPage, setCurrentPage] = useState(1);  //현재 페이지 상태
+    const removeFilter = (section, filter) => {
+        setSelectedFilters(prevFilters => ({
+            ...prevFilters,
+            [section]: {
+                ...prevFilters[section],
+                [filter]: false
+            }
+        }));
+    };
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [paginatedItems, setPaginatedItems] = useState([]);
+    const itemsPerPage = 20;
 
     const handlePageClick = (pageNumber) => {
-        setCurrentPage(pageNumber); //여기에 필요에 따라 다른 로직 추가
+        setCurrentPage(pageNumber);
+        navigate(`/ItemList?page=${pageNumber}`);
+        window.scrollTo(0, 0);
     };
 
-    const itemsPerPage = 5;    // 아이템 목록 페이지당 보여줄 아이템 수
+    const totalNumberOfPages = Math.ceil(ItemDataBase.length / itemsPerPage);
 
-    const totalNumberOfPages = Math.ceil(ItemDataBase.length/itemsPerPage); // 아이템 데이터베이스 전체 길이 기반으로 총 페이지 수 계산
 
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        setCurrentPage(page);
+    }, [location]);
 
     const toggleSection = (category) => {
         setSelectedFilters(prevFilters => ({
@@ -67,10 +89,15 @@ const ItemList = () => {
         }));
     };
 
-    const resetFilters = () => {    // 초기화 누를때
+    const resetFilters = () => {
         setSelectedFilters({
-            상품정보: { visible: true, someFilter: false },
-            가격대별: {
+            information: {
+                visible: true,
+                '세일상품만': false,
+                '품절상품 제외': false,
+                '예약종료상품 제외': false
+            },
+            price: {
                 visible: true,
                 '전체': false,
                 '10,000원 미만': false,
@@ -78,19 +105,15 @@ const ItemList = () => {
                 '50,000원 이상 ~ 100,000원 미만': false,
                 '100,000원 이상': false
             },
-            브랜드별: {
+            brand: {
                 visible: true,
                 '1/100': false,
                 'FG': false,
                 'FIGURE-RISE MECHANICS': false,
                 'FIGURE-RISE STANDARD': false,
                 'FIGURE-RISE': false,
-                'FULL MECHANICS': false,
-                'HG': false,
-                'HGMC': false,
-                'HGUC': false
             },
-            작품별: {
+            item: {
                 visible: true,
                 '건담 무사': false,
                 '건담 브레이커 배틀로그': false,
@@ -101,114 +124,255 @@ const ItemList = () => {
         });
     };
 
-    const handleCheckboxChange = (category, filter) => {
-        setSelectedFilters(prevFilters => ({
-            ...prevFilters,
-            [category]: {
-                ...prevFilters[category],
-                [filter]: !prevFilters[category][filter]
-            }
-        }));
+    const handleCheckboxChange = (section, filter) => {
+        if (section === 'price') {
+            setSelectedFilters(prevFilters => ({
+                ...prevFilters,
+                [section]: {
+                    ...Object.keys(prevFilters[section]).reduce((acc, key) => {
+                        if (key === 'visible') {
+                            acc[key] = prevFilters[section][key];
+                        } else {
+                            acc[key] = key === filter ? !prevFilters[section][filter] : false;
+                        }
+                        return acc;
+                    }, {})
+                }
+            }));
+        } else {
+            setSelectedFilters(prevFilters => ({
+                ...prevFilters,
+                [section]: {
+                    ...prevFilters[section],
+                    [filter]: !prevFilters[section][filter]
+                }
+            }));
+        }
     };
 
+    useEffect(() => {
+        const filteredItems = ItemDataBase.filter(item => {
+            let show = true;
+
+            if (selectedFilters.information['세일상품만'] && !item.isOnSale) show = false;
+            if (selectedFilters.information['품절상품 제외'] && item.isSoldOut) show = false;
+            if (selectedFilters.information['예약종료상품 제외'] && item.isReservationEnded) show = false;
+
+            if (selectedFilters.price['전체'] && item.price >= 0) show = true;
+            if (selectedFilters.price['10,000원 미만'] && item.price >= 10000) show = false;
+            if (selectedFilters.price['10,000원 이상 ~ 50,000원 미만'] && (item.price < 10000 || item.price >= 50000)) show = false;
+            if (selectedFilters.price['50,000원 이상 ~ 100,000원 미만'] && (item.price < 50000 || item.price >= 100000)) show = false;
+            if (selectedFilters.price['100,000원 이상'] && item.price < 100000) show = false;
+
+            const brandFilters = ['1/100', 'FG', 'FIGURE-RISE MECHANICS', 'FIGURE-RISE STANDARD', 'FIGURE-RISE'];
+            if (!brandFilters.some(brand => selectedFilters.brand[brand] && item.brand === brand)) {
+                if (brandFilters.some(brand => selectedFilters.brand[brand])) {
+                    show = false;
+                }
+            }
+
+            const itemFilters = ['건담 무사', '건담 브레이커 배틀로그', '기동전사 건담 수성의 마녀', '기동전사 건담 복수의 레퀴엠', '신기동전사 건담W'];
+            if (!itemFilters.some(comment => selectedFilters.item[comment] && item.comment === comment)) {
+                if (itemFilters.some(comment => selectedFilters.item[comment])) {
+                    show = false;
+                }
+            }
+
+            return show;
+        });
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        console.log(startIndex);
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
+        console.log(endIndex);
+
+        const paginatedItems = filteredItems.slice(startIndex, endIndex);
+        setPaginatedItems(paginatedItems);
+    }, [currentPage, selectedFilters, itemsPerPage]);
+
+    // 검색창
+    const [inputValue, setInputValue] = useState('');
+    const [selectedOption, setSelectedOption] = useState('건프라');
+    const [searchResult, setSearchResult] = useState([]);
+
+    // 처음 로딩시 전체 나오게 하기
+    useEffect(()=> {
+        setSelectedOption('전체');
+        setSearchResult(ItemDataBase);
+    },[]);
+
+    // h1창 이름 변경
+    const handleSearchChange = (event) => {
+        setInputValue(event.target.value);
+    }
+
+    // 버튼 클릭시
+    const handleSearchClick = () => {
+        if (!validateSearchInput(inputValue)) {
+            alert('존재하지 않는 검색어 입니다. 다시한번 검색어를 확인해 주세요.');
+            return;
+        }
+        setSelectedOption(inputValue);
+
+        const searchResult = ItemDataBase.filter(item => item.tag.includes(inputValue));
+        setSearchResult(searchResult);
+        setCurrentPage(1);
+    };
+
+    // 검색창에서 enter 시(keyDown 사용 시 한글로 입력하면 alert가 2번 뜸, 그래서 keyup으로 바꿈, 추가: if (event.isComposing || event.keyCode === 229)return; 이거 추가 시 keydown도 가능)
+    const handleKeyup = (event) => {
+        if (event.isComposing || event.keyCode === 229)return;
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            if (!validateSearchInput(inputValue)) {
+                alert('존재하지 않는 검색어 입니다. 다시한번 검색어를 확인해 주세요.');
+                return;
+            }
+            handleSearchClick();
+        }
+    }
+
+    // 다른거 검색 못하게 막는 용도
+    const validateSearchInput = (input) => {
+        const optionValues = ['건프라', '원피스', '나루토', '블리치', '에반게리온', '포켓몬'];  
+        return optionValues.includes(input);
+    }
+
+    // 선택된 필터와 검색 결과를 기반으로 아이템을 필터링
+    useEffect(() => {
+        const filteredItems = searchResult.filter(item => {
+            return true;
+        });
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
+        const paginatedItems = filteredItems.slice(startIndex, endIndex);
+        setPaginatedItems(paginatedItems);
+    }, [currentPage, searchResult, itemsPerPage]);
+
     return (
-        <div>
-            <div className='item-size-200'><h1>건프라</h1></div>
+        <div className='item-first'>
+            <div className='item-size-200'><h1>{selectedOption}</h1></div>
+            <div className='search-bar'> 
+                <label className='search-bar'>찾는 제품이 있나요?</label>
+                <input className='search-bar-input' type="text" list='figure-option' placeholder='검색어를 입력해주세요.' onChange={handleSearchChange} onKeyDown={handleKeyup}/>
+                <button className='button-class' onClick={handleSearchClick}><FontAwesomeIcon icon={faSearch}/></button>
+                <datalist id='figure-option'>
+                    <option value="건프라"/>
+                    <option value="원피스"/>
+                    <option value="나루토"/>
+                    <option value="블리치"/>
+                    <option value="에반게리온"/>
+                    <option value="포켓몬"/>
+                </datalist>
+            </div>
             <div className='item-size-150' onClick={toggleFiltersVisible}>
                 <TuneIcon />{filtersVisible ? '필터 숨기기' : '필터 보이기'}
             </div>
-            <div className="item-list">
-                <div className='item-choose'>
+            <div className={itemListClass}>
+                <div className={`item-choose`}>
                     {filtersVisible && (
                         <div>
                             <div className='filter-section'>
-                                <div>
+                                <div className='filter-flex'>
                                     선택된 필터: <button onClick={resetFilters}>초기화</button>
+                                </div>
+                                <div>
+                                    {Object.keys(selectedFilters).map(section => (
+                                        <div key={section}>
+                                            {Object.keys(selectedFilters[section])
+                                                .filter(filter => filter !== 'visible' && selectedFilters[section][filter])
+                                                .map(filter => (
+                                                    <span key={filter}>
+                                                        <button onClick={() => removeFilter(section, filter)}>{filter} x</button>
+                                                    </span>
+                                                ))}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                             <div className='filter-section'>
-                                <h3 className={selectedFilters.상품정보.visible ? '' : 'open'} onClick={() => toggleSection('상품정보')}>
+                                <h3 className={selectedFilters.information.visible ? '' : 'open'} onClick={() => toggleSection('information')}>
                                     상품정보
                                     <span className='toggle-section'>
-                                        {selectedFilters.상품정보.visible ? '-' : '+'}
+                                        {selectedFilters.information.visible ? '-' : '+'}
                                     </span>
                                 </h3>
-                            {selectedFilters.상품정보.visible && (
-                                <div>
-                                <div><label><input type="checkbox" checked={selectedFilters.상품정보['세일상품만']} onChange={() => handleCheckboxChange('상품정보', '세일상품만')} />세일상품만</label></div>
-                                <div><label><input type="checkbox" checked={selectedFilters.상품정보['품절상품 제외']} onChange={() => handleCheckboxChange('상품정보', '품절상품 제외')} />품절상품 제외</label></div>
-                                <div><label><input type="checkbox" checked={selectedFilters.상품정보['예약종료상품 제외']} onChange={() => handleCheckboxChange('상품정보', '예약종료상품 제외')} />예약종료상품 제외</label></div>
-                            </div>
-                            )}
+                                {selectedFilters.information.visible && (
+                                    <div>
+                                        <div><label><input type="checkbox" checked={selectedFilters.information['세일상품만']} onChange={() => handleCheckboxChange('information', '세일상품만')} />세일상품만</label></div>
+                                        <div><label><input type="checkbox" checked={selectedFilters.information['품절상품 제외']} onChange={() => handleCheckboxChange('information', '품절상품 제외')} />품절상품 제외</label></div>
+                                        <div><label><input type="checkbox" checked={selectedFilters.information['예약종료상품 제외']} onChange={() => handleCheckboxChange('information', '예약종료상품 제외')} />예약종료상품 제외</label></div>
+                                    </div>
+                                )}
                             </div>
                             <div className='filter-section'>
-                        <h3 className={selectedFilters.가격대별.visible ? '' : 'open'} onClick={() => toggleSection('가격대별')}>
-                            가격대별
-                            <span className='toggle-section'>
-                                {selectedFilters.가격대별.visible ? '-' : '+'}
-                            </span>
-                        </h3>
-                        {selectedFilters.가격대별.visible && (
-                            <div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.가격대별['전체']} onChange={() => handleCheckboxChange('가격대별', '전체')}></input>전체</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.가격대별['10,000원 미만']} onChange={() => handleCheckboxChange('가격대별', '10,000원 미만')}></input>10,000원 미만</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.가격대별['10,000원 이상 ~ 50,000원 미만']} onChange={() => handleCheckboxChange('가격대별', '10,000원 이상 ~ 50,000원 미만')}></input>10,000원 이상 ~ 50,000원 미만</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.가격대별['50,000원 이상 ~ 100,000원 미만']} onChange={() => handleCheckboxChange('가격대별', '50,000원 이상 ~ 100,000원 미만')}></input>50,000원 이상 ~ 100,000원 미만</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.가격대별['100,000원 이상']} onChange={() => handleCheckboxChange('가격대별', '100,000원 이상')}></input>100,000원 이상</label></div>
+                                <h3 className={selectedFilters.price.visible ? '' : 'open'} onClick={() => toggleSection('price')}>
+                                    가격대별
+                                    <span className='toggle-section'>
+                                        {selectedFilters.price.visible ? '-' : '+'}
+                                    </span>
+                                </h3>
+                                {selectedFilters.price.visible && (
+                                    <div>
+                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['전체']} onChange={() => handleCheckboxChange('price', '전체')}></input>전체</label></div>
+                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['10,000원 미만']} onChange={() => handleCheckboxChange('price', '10,000원 미만')}></input>10,000원 미만</label></div>
+                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['10,000원 이상 ~ 50,000원 미만']} onChange={() => handleCheckboxChange('price', '10,000원 이상 ~ 50,000원 미만')}></input>10,000원 이상 ~ 50,000원 미만</label></div>
+                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['50,000원 이상 ~ 100,000원 미만']} onChange={() => handleCheckboxChange('price', '50,000원 이상 ~ 100,000원 미만')}></input>50,000원 이상 ~ 100,000원 미만</label></div>
+                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['100,000원 이상']} onChange={() => handleCheckboxChange('price', '100,000원 이상')}></input>100,000원 이상</label></div>
+                                    </div>
+                                )}
                             </div>
-                        )}
-                    </div>
                             <div className='filter-section'>
-                                <h3 className={selectedFilters.브랜드별.visible ? '' : 'open'} onClick={() => toggleSection('브랜드별')}>
+                                <h3 className={selectedFilters.brand.visible ? '' : 'open'} onClick={() => toggleSection('brand')}>
                                     브랜드별
-                                <span className='toggle-section'>
-                                {selectedFilters.브랜드별.visible ? '-' : '+'}
-                            </span>
+                                    <span className='toggle-section'>
+                                        {selectedFilters.brand.visible ? '-' : '+'}
+                                    </span>
                                 </h3>
-                                {selectedFilters.브랜드별.visible && (
+                                {selectedFilters.brand.visible && (
                                     <div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['1/100']} onChange={() => handleCheckboxChange('브랜드별', '1/100')}></input>1/100</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['FG']} onChange={() => handleCheckboxChange('브랜드별', 'FG')}></input>FG</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['FIGURE-RISE MECHANICS']} onChange={() => handleCheckboxChange('브랜드별', 'FIGURE-RISE MECHANICS')}></input>FIGURE-RISE MECHANICS</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['FIGURE-RISE STANDARD']} onChange={() => handleCheckboxChange('브랜드별', 'FIGURE-RISE STANDARD')}></input>FIGURE-RISE STANDARD</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['FIGURE-RISE']} onChange={() => handleCheckboxChange('브랜드별', 'FIGURE-RISE')}></input>FIGURE-RISE</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['FULL MECHANICS']} onChange={() => handleCheckboxChange('브랜드별', 'FULL MECHANICS')}></input>FULL MECHANICS</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HG']} onChange={() => handleCheckboxChange('브랜드별', 'HG')}></input>HG</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.브랜드별['HGMC']} onChange={() => handleCheckboxChange('브랜드별', 'HGMC')}></input>HGMC</label></div>
-                            </div>
-                            )}
+                                        <div><label><input type='checkbox' checked={selectedFilters.brand['1/100']} onChange={() => handleCheckboxChange('brand', '1/100')}></input>1/100</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.brand['FG']} onChange={() => handleCheckboxChange('brand', 'FG')}></input>FG</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE MECHANICS']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE MECHANICS')}></input>FIGURE-RISE MECHANICS</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE STANDARD']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE STANDARD')}></input>FIGURE-RISE STANDARD</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE')}></input>FIGURE-RISE</label></div>
+                                    </div>
+                                )}
                             </div>
                             <div className='filter-section'>
-                                <h3 className={selectedFilters.작품별.visible ? '' : 'open'} onClick={() => toggleSection('작품별')}>
+                                <h3 className={selectedFilters.item.visible ? '' : 'open'} onClick={() => toggleSection('item')}>
                                     작품별
-                                <span className='toggle-section'>
-                                {selectedFilters.작품별.visible ? '-' : '+'}
-                                </span>
+                                    <span className='toggle-section'>
+                                        {selectedFilters.item.visible ? '-' : '+'}
+                                    </span>
                                 </h3>
-                                {selectedFilters.작품별.visible && (
+                                {selectedFilters.item.visible && (
                                     <div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 무사']} onChange={() => handleCheckboxChange('작품별', '건담 무사')}></input>건담 무사</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('작품별', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('작품별', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                <div><label><input type='checkbox' checked={!!selectedFilters.작품별['신기동전사 건담W']} onChange={() => handleCheckboxChange('작품별', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.item['건담 무사']} onChange={() => handleCheckboxChange('item', '건담 무사')}></input>건담 무사</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.item['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('item', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.item['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('item', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.item['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('item', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.item['신기동전사 건담W']} onChange={() => handleCheckboxChange('item', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
+                                    </div>
+                                )}
                             </div>
-                        )}
-                        </div>
                         </div>
                     )}
                 </div>
-                {ItemDataBase.map(item => (
+                {/* 아이템 카드 */}
+                {paginatedItems.map(item => (
                     <ItemCard key={item.id} item={item} />
                 ))}
             </div>
+            {/* 페이지 네이션 */}
             <div className='pagination-container'>
                 <div className='pagination'>
-                    {Array.from({length: totalNumberOfPages}).map((_, index) => (
+                    {Array.from({ length: totalNumberOfPages }).map((_, index) => (
                         <Link
                             key={index}
-                            to={`/ItemList?page=${index+1}`}
-                            className={`page-link ${currentPage === index+1 ? 'active' : ''}${currentPage !== index +1 ? 'disabled' : ''}`}
+                            to={`/ItemList?page=${index + 1}`}
+                            className={`page-link ${currentPage === index + 1 ? 'active' : ''}`}
                             onClick={() => handlePageClick(index + 1)}
                         >
                             {index + 1}
@@ -221,3 +385,4 @@ const ItemList = () => {
 };
 
 export default ItemList;
+

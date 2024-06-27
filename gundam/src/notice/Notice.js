@@ -26,9 +26,9 @@ export default function Notice() {
         setPaginatedItems(paginatedItems);
     }, [currentPage]);
 
-    function onPageClick(pageNum) {
-        navigate(`/Notice?page=${pageNum}`);
-    }
+    // function onPageClick(pageNum) {
+    //     navigate(`/Notice?page=${pageNum}`);
+    // }
 
     return (
         <div className="Notice">
@@ -48,7 +48,7 @@ export default function Notice() {
                     <NavLink
                         key={index}
                         to={`/Notice?page=${index + 1}`}
-                        onClick={() => onPageClick(index + 1)}
+                        // onClick={() => onPageClick(index + 1)}
                     >
                         <li
                             className={currentPage === index + 1 ? 'selected' : ''}

@@ -30,9 +30,9 @@ export default function Customerservice() {
         setPaginatedItems(filteredData.slice(startIndex, endIndex));
     }, [location]);
 
-    function onPageClick(pageNum) {
-        navigate(`?page=${pageNum}&category=${currentCategory}`);
-    }
+    // function onPageClick(pageNum) {
+    //     navigate(`?page=${pageNum}&category=${currentCategory}`);
+    // }
 
     const totalNumberOfPages = Math.ceil(
         (currentCategory === 'ALL' ? CscData : CscData.filter(item => item.classification === currentCategory)).length / itemsPerPage
@@ -76,7 +76,7 @@ export default function Customerservice() {
                             <Link
                                 key={index}
                                 to={`?page=${index + 1}&category=${currentCategory}`}
-                                onClick={() => onPageClick(index + 1)}
+                                // onClick={() => onPageClick(index + 1)}
                             >
                                 {index + 1}
                             </Link>

@@ -63,6 +63,8 @@
 
 .shrink {
     width: calc((80vw - 40vw) / 4); 
+    opacity: .5;
+
 }
 
 .FigureList img {

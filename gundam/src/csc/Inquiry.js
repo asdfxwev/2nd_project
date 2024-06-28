@@ -17,7 +17,7 @@ export default function Customerservice() {
 
     const itemsPerPage = 10;
 
-    
+
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
@@ -25,7 +25,7 @@ export default function Customerservice() {
         const category = query.get('category') || 'ALL';
         setCurrentPage(page);
         setCurrentCategory(category);
-        
+
         const filteredData = category === 'ALL' ? CscData : CscData.filter(item => item.classification === category);
         const startIndex = (page - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
@@ -45,13 +45,11 @@ export default function Customerservice() {
                 <h2 className="cscTitle">1:1문의</h2>
                 <div>
                     <div className="CscListTitle">
-                        <div style={{ width: '100px'}}>유형</div>
-                        <div style={{ width: '200px'}}>제목</div>
-                        <div style={{ width: '400px'}}>내용</div>
+                        <div style={{ width: '100px' }}>유형</div>
+                        <div style={{ width: '200px' }}>제목</div>
+                        <div style={{ width: '400px' }}>내용</div>
                     </div>
-                    <div className="CscList">
-                        <InquiryList />
-                    </div>
+                    <InquiryList />
                     <div>
                         <Link to='/Csc/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>

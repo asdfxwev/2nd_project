@@ -44,14 +44,14 @@ export default function InquiryList() {
     }, []);
 
     return (
-        <div style={{display:'flex'}} className="inquiry-list-container">
+        <>
             {inquiries.map((inquiry, index) => (
-                <React.Fragment key={index}>
+                <div className="CscList">
                     <div style={{ width: '100px' }}>{inquiry.inquiryType}</div>
                     <div style={{ width: '200px' }}>{inquiry.subject}</div>
                     <div style={{ width: '400px' }}>{inquiry.message}</div>
-                </React.Fragment>
+                </div>
             ))}
-        </div>
+        </>
     );
 }

@@ -1,10 +1,15 @@
-.Notice {
-    /* width: 60vw; */
-    margin: auto;
+.cscNoticeContiner {
+    display: flex;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.cscNoticeMain {
+    width: 1100px;
 }
 
 .h2Notice {
-    margin-top: 100px;
+    /* margin-top: 100px; */
     margin-bottom: 50px;
     font-size: 3rem;
 }

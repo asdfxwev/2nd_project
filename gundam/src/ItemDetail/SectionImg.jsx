@@ -5,7 +5,7 @@ import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const SectionImg = ( {item} ) => {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     const accordion = () => {
         setIsOpen(!isOpen);
@@ -28,10 +28,10 @@ const SectionImg = ( {item} ) => {
                 <div className="info_top_box">
                     <div className="info_top_left">상품상세정보</div>
                     <div className="info_top_right">
-                        <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} onClick={accordion} />
+                        <FontAwesomeIcon className="iconsize" icon={isOpen ? faAngleUp : faAngleDown} onClick={accordion} />
                     </div>
                 </div>
-                <div className={`info_bottom_box ${isOpen ? '' : 'nonVisbele'}`}>
+                <div className={`info_bottom_box ${isOpen ? '' : 'nonVisible'}`}>
                     <div>제품명</div>
                     <div>{item.name}</div>
                     <div>판매코드</div>

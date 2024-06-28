@@ -225,27 +225,27 @@ const handleCheckboxChange = (section, filter) => {
             // 작품별 필터링
             if (
                 selectedFilters.item['건담 무사'] &&
-                item.item !== '건담 무사'
+                item.comment !== '건담 무사'
             )
                 show = false;
             if (
                 selectedFilters.item['건담 브레이커 배틀로그'] &&
-                item.item !== '건담 브레이커 배틀로그'
+                item.comment !== '건담 브레이커 배틀로그'
             )
                 show = false;
             if (
                 selectedFilters.item['기동전사 건담 수성의 마녀'] &&
-                item.item !== '기동전사 건담 수성의 마녀'
+                item.comment !== '기동전사 건담 수성의 마녀'
             )
                 show = false;
             if (
                 selectedFilters.item['기동전사 건담 복수의 레퀴엠'] &&
-                item.item !== '기동전사 건담 복수의 레퀴엠'
+                item.comment !== '기동전사 건담 복수의 레퀴엠'
             )
                 show = false;
             if (
                 selectedFilters.item['신기동전사 건담W'] &&
-                item.item !== '신기동전사 건담W'
+                item.comment !== '신기동전사 건담W'
             )
                 show = false;
 

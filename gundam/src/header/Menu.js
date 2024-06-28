@@ -61,7 +61,6 @@ export default function Menu() {
 
     if (!isLoggedIn) {
         const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
-        console.log(loginCheck);
         if (loginCheck !== null) {
             setIsLoggedIn(true);
             setLoginInfo(loginCheck);

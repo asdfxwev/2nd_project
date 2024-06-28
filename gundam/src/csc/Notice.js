@@ -1,7 +1,6 @@
 import NoticeData from "./NoticeData";
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import './Customerservice.css';
 import './Notice.css';
 import NoticeDelivery from "./NoticeDelivery";
 import CscLeft from "./CscLeft";
@@ -28,16 +27,10 @@ export default function Notice() {
         setPaginatedItems(paginatedItems);
     }, [currentPage]);
 
-    // function onPageClick(pageNum) {
-    //     navigate(`/Notice?page=${pageNum}`);
-    // }
-
     return (
-        <section className="CscContiner">
-            <div className="cscSection">
-                <CscLeft />
-            </div>
-            <div className="CscMain">
+        <section className="cscNoticeContiner">
+            <CscLeft />
+            <div className="cscNoticeMain">
                 <h2 className="h2Notice" style={{ textAlign: 'center' }}>공지사항</h2>
 
                 <div style={{ height: '50px' }} className="noticeTitleGrid">

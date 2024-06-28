@@ -24,8 +24,6 @@ function Login() {
             const loginInfo = {
                 name: result.name,
                 email: result.email,
-                inquiry: [
-                ]
             }
             localStorage.setItem("loginInfo", JSON.stringify(loginInfo));
             navigate('/');

@@ -38,9 +38,7 @@ export default function Customerservice() {
 
     return (
         <section className="cscContainer">
-            <div className="cscSection">
                 <CscLeft />
-            </div>
             <div className="cscMain">
                 <h2 className="cscTitle"></h2>
                 <div>

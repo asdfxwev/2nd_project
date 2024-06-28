@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import dbData from '../data/db.json';
+import "./Findingid";
+import IdFindingModal from './Idfindingid';
+import SecurityModal from './Security';
 const importedUsers = dbData.users; // 중복 제거 후 사용
 
 function Login() {
@@ -17,7 +20,7 @@ function Login() {
         result = importedUsers.find((user) => {
             return user.email === email && user.password === password;
         });
-        if (result !== null) {
+        if (result != null) {
             const loginInfo = {
                 name: result.name,
                 email: result.email
@@ -28,7 +31,7 @@ function Login() {
             alert('로그인실패')
         }
     }
- //onLogin
+    //onLogin
 
 
     return (
@@ -81,12 +84,9 @@ function Login() {
                             </a>
                         </div>
                         <div>
-                            <a className="txt2" href="#">
-                                아이디찾기
-                            </a> &nbsp;
-                            <a className="txt2" href="#">
-                                비번찾기
-                            </a>
+                            <IdFindingModal href="./Login/Findingid" />
+                            &nbsp;
+                            <SecurityModal href="./Login/Security" />
                         </div>
                     </form>
                 </div>

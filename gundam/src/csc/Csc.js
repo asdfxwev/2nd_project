@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import './Csc.css';
+import './Csc.css';
 
 export default function Csc({ item }) {
 
@@ -25,12 +25,12 @@ export default function Csc({ item }) {
 
     return (
         <>
-            <div className="CscListTitle">
-                <div style={{ width: '100px' }}>{item.classification}</div>
-                <div style={{ width: '800px' }} onClick={() => onNoticeTitle(item.id)}>{item.title}</div>
+            <div className="CscListTitles">
+                <div style={{ width: '100px'}}>{item.classification}</div>
+                <div style={{ width: '800px'}} onClick={() => onNoticeTitle(item.id)}>{item.title}</div>
             </div>
 
-            <div className={`nonVisible ${visibleNotice !== item.id ? '' : 'Cscblock'} 
+            <div  className={`nonVisible ${visibleNotice !== item.id ? '' : 'Cscblock'} 
                 ${cscAnimating ? 'menuAnimation' : ''} ${cscClosing ? 'cscClosing' : ''}`}>
                 {item.detail}
             </div>

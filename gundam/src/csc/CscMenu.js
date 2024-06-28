@@ -45,11 +45,11 @@ export default function CscMenu({ setItem, menuItem, currentCategory, navigate }
 
     return (
         <>
-            <li className={currentCategory === 'ALL' ? 'selected' : ''} onClick={() => handleCategoryClick('ALL')}>
+            <li className={currentCategory === 'ALL' ? 'cscSelect' : ''} onClick={() => handleCategoryClick('ALL')}>
                 <Link to={`?page=1&category=ALL`}>ALL</Link>
             </li>
             {menuItem.map((item, i) => (
-                <li key={i} className={currentCategory === item ? 'selected' : ''} onClick={() => handleCategoryClick(item)}>
+                <li key={i} className={currentCategory === item ? 'cscSelect' : ''} onClick={() => handleCategoryClick(item)}>
                     <Link to={`?page=1&category=${item}`}>
                         {item}
                     </Link>

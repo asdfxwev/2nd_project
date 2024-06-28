@@ -37,9 +37,9 @@ export default function Main() {
                 <Route path="/Notice" element={<Notice />} />
                 <Route path="/Notice/*" element={<NoticeDelivery />} />
                 {/* <Route path="/Notice" element={<Notice />} /> */}
-                <Route path="/Csc" element={<Customerservice />} />
-                <Route path="/Inquiry" element={<Inquiry />} />
-                <Route path="/InquiryWrite" element={<InquiryWrite />} />
+                <Route path="/Csc/" element={<Customerservice />} />
+                <Route path="/Csc/Inquiry" element={<Inquiry />} />
+                <Route path="/Csc/Inquiry/InquiryWrite" element={<InquiryWrite />} />
             </Routes>
         </>
     )

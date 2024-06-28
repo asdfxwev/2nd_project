@@ -11,16 +11,15 @@ export default function () {
     }, []);
 
     return (
-        <div className="inquiry-list-container">
-            <h2>Inquiries</h2>
-            <ul>
-                {inquiries.map((inquiry, index) => (
-                    <li key={index}>
-                        <h3>{inquiry.subject}</h3>
-                        <p>{inquiry.message}</p>
-                    </li>
-                ))}
-            </ul>
+        <div style={{display:'flex'}} className="inquiry-list-container">
+            {/* <h2>Inquiries</h2> */}
+            {inquiries.map((inquiry, index) => (
+                <>
+                    <div style={{ width: '100px' }}>{inquiry.inquiryType}</div>
+                    <div style={{ width: '200px' }}>{inquiry.subject}</div>
+                    <div style={{ width: '400px' }}>{inquiry.message}</div>
+                </>
+            ))}
         </div>
     );
 }

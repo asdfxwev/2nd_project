@@ -52,15 +52,15 @@ export default function Customerservice() {
                 <h2 className="cscTitle">1:1문의</h2>
                 <div>
                     <div className="CscListTitle">
-                        <div style={{ width: '100px'}}>제목</div>
-                        <div style={{ width: '500px'}}>문의유형</div>
-                        <div style={{ width: '100px'}}>상태</div>
+                        <div style={{ width: '100px'}}>유형</div>
+                        <div style={{ width: '200px'}}>제목</div>
+                        <div style={{ width: '400px'}}>내용</div>
                     </div>
                     <div className="CscList">
                         <InquiryList />
                     </div>
                     <div>
-                        <a href='/'>문의작성</a>
+                        <Link to='/Csc/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>
                 </div>
             </div>

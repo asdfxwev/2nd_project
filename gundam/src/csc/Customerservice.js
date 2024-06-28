@@ -4,6 +4,7 @@ import CscData from "./CscData";
 import Csc from './Csc';
 import CscMenu from './CscMenu';
 import './Customerservice.css';
+import InquiryWrite from './InquiryWrite';
 
 export default function Customerservice() {
     const [item, setItem] = useState(CscData);
@@ -41,7 +42,7 @@ export default function Customerservice() {
                 <ul>
                     <li>자주묻는질문</li>
                     <li>고객센터</li>
-                    <li>1:1 문의</li>
+                    <li><Link to={`/Csc/Inquiry`} >1:1 문의</Link></li>
                     <li>건프라 가이드</li>
                     <li>완구 설명서</li>
                     <li>A/S안내</li>

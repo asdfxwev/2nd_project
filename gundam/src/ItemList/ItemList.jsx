@@ -3,20 +3,20 @@ import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
-import { Link, useLocation,useHistory} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const ItemList = () => {
     const location = useLocation();
-        const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const [paginatedItems, setPaginatedItems] = useState([]);
     const itemsPerPage = 20;
     const [filtersVisible, setFiltersVisible] = useState(true);
     const [itemListClass, setItemListClass] = useState('item-list');
     const [searchResult, setSearchResult] = useState([]);
     const [inputValue, setInputValue] = useState('');
-    const [selectedOption, setSelectedOption] = useState('전체');
+    const [selectedOption, setSelectedOption] = useState('전체');    
     const [selectedFilters, setSelectedFilters] = useState({
         information: {
             visible: true,
@@ -83,120 +83,120 @@ const ItemList = () => {
         }));
     };
 
-const resetFilters = () => {
-    setSelectedFilters({
-        information: {
-            visible: true,
-            '세일상품만': false,
-            '품절상품 제외': false,
-            '예약종료상품 제외': false
-        },
-        price: {
-            visible: true,
-            '전체': false,
-            '10,000원 미만': false,
-            '10,000원 이상 ~ 50,000원 미만': false,
-            '50,000원 이상 ~ 100,000원 미만': false,
-            '100,000원 이상': false
-        },
-        brand: {
-            visible: true,
-            '1/100': false,
-            'FG': false,
-            'FIGURE-RISE MECHANICS': false,
-            'FIGURE-RISE STANDARD': false,
-            'FIGURE-RISE': false,
-            '포켓프라': false,
-            '포켓몬프라': false,
-        },
-        item: {
-            visible: true,
-            '건담 무사': false,
-            '건담 브레이커 배틀로그': false,
-            '기동전사 건담 수성의 마녀': false,
-            '기동전사 건담 복수의 레퀴엠': false,
-            '신기동전사 건담W': false
+    const resetFilters = () => {
+        setSelectedFilters({
+            information: {
+                visible: true,
+                '세일상품만': false,
+                '품절상품 제외': false,
+                '예약종료상품 제외': false
+            },
+            price: {
+                visible: true,
+                '전체': false,
+                '10,000원 미만': false,
+                '10,000원 이상 ~ 50,000원 미만': false,
+                '50,000원 이상 ~ 100,000원 미만': false,
+                '100,000원 이상': false
+            },
+            brand: {
+                visible: true,
+                '1/100': false,
+                'FG': false,
+                'FIGURE-RISE MECHANICS': false,
+                'FIGURE-RISE STANDARD': false,
+                'FIGURE-RISE': false,
+                '포켓프라': false,
+                '포켓몬프라': false,
+            },
+            item: {
+                visible: true,
+                '건담 무사': false,
+                '건담 브레이커 배틀로그': false,
+                '기동전사 건담 수성의 마녀': false,
+                '기동전사 건담 복수의 레퀴엠': false,
+                '신기동전사 건담W': false
+            }
+        });
+
+        setInputValue('');
+        setSelectedOption('전체');
+        setSearchResult(ItemDataBase);
+    };
+
+
+
+    const handleCheckboxChange = (section, filter) => {
+        if (section === 'price') {
+            setSelectedFilters(prevFilters => ({
+                ...prevFilters,
+                [section]: {
+                    ...Object.keys(prevFilters[section]).reduce((acc, key) => {
+                        if (key === 'visible') {
+                            acc[key] = prevFilters[section][key];
+                        } else {
+                            acc[key] = key === filter ? !prevFilters[section][filter] : false;
+                        }
+                        return acc;
+                    }, {})
+                }
+            }));
+        } else {
+            setSelectedFilters(prevFilters => ({
+                ...prevFilters,
+                [section]: {
+                    ...prevFilters[section],
+                    [filter]: !prevFilters[section][filter]
+                }
+            }));
         }
-    });
-
-    setInputValue('');
-    setSelectedOption('전체');
-    setSearchResult(ItemDataBase);
-};
-
-
-
-const handleCheckboxChange = (section, filter) => {
-    if (section === 'price') {
-        setSelectedFilters(prevFilters => ({
-            ...prevFilters,
-            [section]: {
-                ...Object.keys(prevFilters[section]).reduce((acc, key) => {
-                    if (key === 'visible') {
-                        acc[key] = prevFilters[section][key];
-                    } else {
-                        acc[key] = key === filter ? !prevFilters[section][filter] : false;
-                    }
-                    return acc;
-                }, {})
-            }
-        }));
-    } else {
-        setSelectedFilters(prevFilters => ({
-            ...prevFilters,
-            [section]: {
-                ...prevFilters[section],
-                [filter]: !prevFilters[section][filter]
-            }
-        }));
-    }
-};
+    };
 
 
     // 검색 후 결과를 필터링하여 보여주는 부분
     useEffect(() => {
         const filteredItems = ItemDataBase.filter(item => {
             let show = true;
-    
+
             // 정보 필터링
-            if (selectedFilters.information['세일상품만'] && !item.isOnSale) show = false;
+            if (selectedFilters.information['세일상품만'] && item.isOnSale) show = false;
             if (selectedFilters.information['품절상품 제외'] && item.isSoldOut) show = false;
             if (selectedFilters.information['예약종료상품 제외'] && item.isReservationEnd) show = false;
-    
+
             // 가격대별 필터링
             if (selectedFilters.price['10,000원 미만'] && (item.price >= 10000 || item.price < 0)) show = false;
             if (selectedFilters.price['10,000원 이상 ~ 50,000원 미만'] && (item.price < 10000 || item.price >= 50000)) show = false;
             if (selectedFilters.price['50,000원 이상 ~ 100,000원 미만'] && (item.price < 50000 || item.price >= 100000)) show = false;
             if (selectedFilters.price['100,000원 이상'] && (item.price < 100000 || item.price > 0)) show = false;
-    
+
             // 브랜드별 필터링
             const brandFilters = ['1/100', 'FG', 'FIGURE-RISE MECHANICS', 'FIGURE-RISE STANDARD', 'FIGURE-RISE', '포켓프라', '포켓몬프라'];
             if (!brandFilters.some(brand => selectedFilters.brand[brand] && item.brand === brand)) {
                 if (brandFilters.some(brand => selectedFilters.brand[brand])) show = false;
             }
-    
+
             // 작품별 필터링
             const itemFilters = ['건담 무사', '건담 브레이커 배틀로그', '기동전사 건담 수성의 마녀', '기동전사 건담 복수의 레퀴엠', '신기동전사 건담W'];
             if (!itemFilters.some(comment => selectedFilters.item[comment] && item.comment === comment)) {
                 if (itemFilters.some(comment => selectedFilters.item[comment])) show = false;
             }
-    
+
             // 태그 필터링
             if (selectedFilters.item[inputValue] && item.tag !== inputValue) show = false;
-    
+
             return show;
         });
-    
+
         setSearchResult(filteredItems);
     }, [selectedFilters, inputValue]);
-    
+
 
     useEffect(() => {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         setPaginatedItems(searchResult.slice(startIndex, endIndex));
     }, [currentPage, searchResult]);
-    
+
 
     // 처음 로딩시 전체 나오게 하기
     useEffect(() => {
@@ -215,12 +215,12 @@ const handleCheckboxChange = (section, filter) => {
             alert('존재하지 않는 검색어입니다. 다시 한번 검색어를 확인해 주세요.');
             return;
         }
-    
+
         const searchResults = ItemDataBase.filter(item => item.tag === inputValue);
         setSearchResult(searchResults);
         setSelectedOption(inputValue);
         setCurrentPage(1);
-    
+
         // 기존 item 필터를 초기화하고 새로운 검색어 필터를 추가
         setSelectedFilters(prevFilters => ({
             ...prevFilters,
@@ -233,8 +233,6 @@ const handleCheckboxChange = (section, filter) => {
             }
         }));
     };
-    
-    
 
     // 검색창에서 enter 시(keyDown 사용 시 한글로 입력하면 alert가 2번 뜸, 그래서 keyup으로 바꿈, 추가: if (event.isComposing || event.keyCode === 229)return; 이거 추가 시 keydown도 가능)
     const handleKeyup = (event) => {
@@ -268,11 +266,11 @@ const handleCheckboxChange = (section, filter) => {
     }, [currentPage, searchResult, itemsPerPage, selectedFilters]);
 
     // 검색 후 뒤로 돌아갈 때 이전 페이지 정보 복구
-    useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        const page = parseInt(query.get('page')) || 1;
-        setCurrentPage(page);
-    }, [location.search]);
+    // useEffect(() => {
+    //     const query = new URLSearchParams(location.search);
+    //     const page = parseInt(query.get('page')) || 1;
+    //     setCurrentPage(page);
+    // }, [location.search]);
 
     return (
         <div className='item-first'>
@@ -411,4 +409,3 @@ const handleCheckboxChange = (section, filter) => {
 };
 
 export default ItemList;
-

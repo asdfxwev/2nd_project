@@ -54,6 +54,7 @@
 /* ==================== tab =================== */
 .tab {
     width: 100%;
+    height: 60px;
     position: sticky;
     top: 0;
     text-align: center;
@@ -63,7 +64,7 @@
     display: flex;
     justify-content: space-between;
     border: solid 1px rgb(200, 200, 200);
-    margin: 10px 0;
+    /* margin: 10px 0; */
     background-color: white;
 }
 
@@ -109,6 +110,14 @@
 }
 
 /* ============= section img End ============== */
+
+/* =============== section img ================ */
+.review_list{
+    width: 100%;
+    height: 800px;
+}
+/* ============= section img End ============== */
+
 
 /* ============== Left Box End ================ */
 
@@ -258,6 +267,7 @@
 .info_top_box {
     display: flex;
     margin-top: 20px;
+    padding-top: 60px;
     height: 60px;
     align-items: center;
     border-bottom: solid 2px black;

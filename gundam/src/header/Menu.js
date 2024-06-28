@@ -19,7 +19,7 @@ export default function Menu() {
     const [loginInfo, setLoginInfo] = useState("");
 
     const scroll = () => {
-        if (window.scrollY > window.innerHeight * 0.3) {
+        if (window.scrollY > window.innerHeight * 0.3  && location.pathname === '/' ) {
             setSmallTopMenu(true);
         } else {
             setSmallTopMenu(false);

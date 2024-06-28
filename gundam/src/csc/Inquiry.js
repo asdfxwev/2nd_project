@@ -1,11 +1,11 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import CscData from "./CscData";
+import InquiryList from './InquiryList';
 import Csc from './Csc';
 import CscMenu from './CscMenu';
-import CscLeft from './CscLeft'
 import './Customerservice.css';
-import InquiryWrite from './InquiryWrite';
+import CscLeft from './CscLeft';
 
 export default function Customerservice() {
     const [item, setItem] = useState(CscData);
@@ -31,7 +31,7 @@ export default function Customerservice() {
         const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
         setPaginatedItems(filteredData.slice(startIndex, endIndex));
     }, [location]);
-    
+
     const totalNumberOfPages = Math.ceil(
         (currentCategory === 'ALL' ? CscData : CscData.filter(item => item.classification === currentCategory)).length / itemsPerPage
     );
@@ -42,35 +42,18 @@ export default function Customerservice() {
                 <CscLeft />
             </div>
             <div className="cscMain">
-                <h2 className="cscTitle"></h2>
+                <h2 className="cscTitle">1:1문의</h2>
                 <div>
-                    <ul className="CscMenu">
-                        <CscMenu 
-                            menuItem={[...new Set(CscData.map((val) => val.classification))]} 
-                            setItem={setItem} 
-                            currentCategory={currentCategory} 
-                            navigate={navigate} 
-                        />
-                    </ul>
                     <div className="CscListTitle">
-                        <div style={{ width: '100px'}}>분류</div>
-                        <div style={{ width: '800px'}}>제목</div>
+                        <div style={{ width: '100px'}}>유형</div>
+                        <div style={{ width: '200px'}}>제목</div>
+                        <div style={{ width: '400px'}}>내용</div>
                     </div>
                     <div className="CscList">
-                        {paginatedItems.map(item => (
-                            <Csc key={item.id} item={item} />
-                        ))}
+                        <InquiryList />
                     </div>
-                    <div className="cscPageNation">
-                        {Array.from({ length: totalNumberOfPages }).map((_, index) => (
-                            <Link
-                                key={index}
-                                to={`?page=${index + 1}&category=${currentCategory}`}
-                                // onClick={() => onPageClick(index + 1)}
-                            >
-                                {index + 1}
-                            </Link>
-                        ))}
+                    <div>
+                        <Link to='/Csc/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>
                 </div>
             </div>

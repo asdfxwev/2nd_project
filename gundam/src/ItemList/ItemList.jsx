@@ -186,68 +186,19 @@ const handleCheckboxChange = (section, filter) => {
                 show = false;
 
             // 브랜드별 필터링
-            if (
-                selectedFilters.brand['1/100'] &&
-                item.brand !== '1/100'
-            )
-                show = false;
-            if (
-                selectedFilters.brand['FG'] &&
-                item.brand !== 'FG'
-            )
-                show = false;
-            if (
-                selectedFilters.brand['FIGURE-RISE MECHANICS'] &&
-                item.brand !== 'FIGURE-RISE MECHANICS'
-            )
-                show = false;
-            if (
-                selectedFilters.brand['FIGURE-RISE STANDARD'] &&
-                item.brand !== 'FIGURE-RISE STANDARD'
-            )
-                show = false;
-            if (
-                selectedFilters.brand['FIGURE-RISE'] &&
-                item.brand !== 'FIGURE-RISE'
-            )
-                show = false;
-            if (
-                selectedFilters.brand['포켓프라'] &&
-                item.brand !== '포켓프라'
-            )
-                show = false;
-            if (
-                selectedFilters.brand['포켓몬프라'] &&
-                item.brand !== '포켓몬프라'
-            )
-                show = false;
+            const brandFilters = ['1/100', 'FG', 'FIGURE-RISE MECHANICS', 'FIGURE-RISE STANDARD', 'FIGURE-RISE', '포켓프라', '포켓몬프라'];
+            if (!brandFilters.some(brand => selectedFilters.brand[brand] && item.brand === brand)) {
+                if (brandFilters.some(brand => selectedFilters.brand[brand])) {
+                    show = false;
+                }
+            }
 
-            // 작품별 필터링
-            if (
-                selectedFilters.item['건담 무사'] &&
-                item.comment !== '건담 무사'
-            )
-                show = false;
-            if (
-                selectedFilters.item['건담 브레이커 배틀로그'] &&
-                item.comment !== '건담 브레이커 배틀로그'
-            )
-                show = false;
-            if (
-                selectedFilters.item['기동전사 건담 수성의 마녀'] &&
-                item.comment !== '기동전사 건담 수성의 마녀'
-            )
-                show = false;
-            if (
-                selectedFilters.item['기동전사 건담 복수의 레퀴엠'] &&
-                item.comment !== '기동전사 건담 복수의 레퀴엠'
-            )
-                show = false;
-            if (
-                selectedFilters.item['신기동전사 건담W'] &&
-                item.comment !== '신기동전사 건담W'
-            )
-                show = false;
+            const itemFilters = ['건담 무사', '건담 브레이커 배틀로그', '기동전사 건담 수성의 마녀', '기동전사 건담 복수의 레퀴엠', '신기동전사 건담W'];
+            if (!itemFilters.some(comment => selectedFilters.item[comment] && item.comment === comment)) {
+                if (itemFilters.some(comment => selectedFilters.item[comment])) {
+                    show = false;
+                }
+            }
 
             return show;
         });

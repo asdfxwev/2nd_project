@@ -3,15 +3,17 @@ import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faL, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const ItemList = () => {
-    const navigate = useNavigate();
     const location = useLocation();
     const [filtersVisible, setFiltersVisible] = useState(true);
     const [itemListClass, setItemListClass] = useState('item-list');
+    const [searchResult, setSearchResult] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+    const [selectedOption, setSelectedOption] = useState('전체');
     const [selectedFilters, setSelectedFilters] = useState({
         information: {
             visible: true,
@@ -60,24 +62,17 @@ const ItemList = () => {
         }));
     };
 
+
     const [currentPage, setCurrentPage] = useState(1);
     const [paginatedItems, setPaginatedItems] = useState([]);
     const itemsPerPage = 20;
 
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
-        navigate(`/ItemList?page=${pageNumber}`);
         window.scrollTo(0, 0);
     };
 
-    const totalNumberOfPages = Math.ceil(ItemDataBase.length / itemsPerPage);
-
-
-    useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        const page = parseInt(query.get('page')) || 1;
-        setCurrentPage(page);
-    }, [location]);
+    const totalNumberOfPages = Math.ceil(searchResult.length / itemsPerPage);
 
     const toggleSection = (category) => {
         setSelectedFilters(prevFilters => ({
@@ -90,14 +85,17 @@ const ItemList = () => {
     };
 
     const resetFilters = () => {
-        setSelectedFilters({
+        setSelectedFilters(prevFilters => ({
+            ...prevFilters,
             information: {
+                ...prevFilters.information,
                 visible: true,
                 '세일상품만': false,
                 '품절상품 제외': false,
                 '예약종료상품 제외': false
             },
             price: {
+                ...prevFilters.price,
                 visible: true,
                 '전체': false,
                 '10,000원 미만': false,
@@ -106,14 +104,18 @@ const ItemList = () => {
                 '100,000원 이상': false
             },
             brand: {
+                ...prevFilters.brand,
                 visible: true,
                 '1/100': false,
                 'FG': false,
                 'FIGURE-RISE MECHANICS': false,
                 'FIGURE-RISE STANDARD': false,
                 'FIGURE-RISE': false,
+                '포켓프라': false,
+                '포켓몬프라': false,
             },
             item: {
+                ...prevFilters.item,
                 visible: true,
                 '건담 무사': false,
                 '건담 브레이커 배틀로그': false,
@@ -121,8 +123,9 @@ const ItemList = () => {
                 '기동전사 건담 복수의 레퀴엠': false,
                 '신기동전사 건담W': false
             }
-        });
+        }));
     };
+
 
     const handleCheckboxChange = (section, filter) => {
         if (section === 'price') {
@@ -150,8 +153,9 @@ const ItemList = () => {
         }
     };
 
+    // 검색 후 결과를 필터링하여 보여주는 부분
     useEffect(() => {
-        const filteredItems = ItemDataBase.filter(item => {
+        const filteredItems = searchResult.filter(item => {
             let show = true;
 
             if (selectedFilters.information['세일상품만'] && !item.isOnSale) show = false;
@@ -164,7 +168,7 @@ const ItemList = () => {
             if (selectedFilters.price['50,000원 이상 ~ 100,000원 미만'] && (item.price < 50000 || item.price >= 100000)) show = false;
             if (selectedFilters.price['100,000원 이상'] && item.price < 100000) show = false;
 
-            const brandFilters = ['1/100', 'FG', 'FIGURE-RISE MECHANICS', 'FIGURE-RISE STANDARD', 'FIGURE-RISE'];
+            const brandFilters = ['1/100', 'FG', 'FIGURE-RISE MECHANICS', 'FIGURE-RISE STANDARD', 'FIGURE-RISE', '포켓프라', '포켓몬프라'];
             if (!brandFilters.some(brand => selectedFilters.brand[brand] && item.brand === brand)) {
                 if (brandFilters.some(brand => selectedFilters.brand[brand])) {
                     show = false;
@@ -182,24 +186,16 @@ const ItemList = () => {
         });
 
         const startIndex = (currentPage - 1) * itemsPerPage;
-        console.log(startIndex);
         const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
-        console.log(endIndex);
-
         const paginatedItems = filteredItems.slice(startIndex, endIndex);
         setPaginatedItems(paginatedItems);
-    }, [currentPage, selectedFilters, itemsPerPage]);
-
-    // 검색창
-    const [inputValue, setInputValue] = useState('');
-    const [selectedOption, setSelectedOption] = useState('건프라');
-    const [searchResult, setSearchResult] = useState([]);
+    },[currentPage, searchResult, itemsPerPage, selectedFilters]);
 
     // 처음 로딩시 전체 나오게 하기
-    useEffect(()=> {
+    useEffect(() => {
         setSelectedOption('전체');
         setSearchResult(ItemDataBase);
-    },[]);
+    }, [location]);
 
     // h1창 이름 변경
     const handleSearchChange = (event) => {
@@ -212,16 +208,31 @@ const ItemList = () => {
             alert('존재하지 않는 검색어 입니다. 다시한번 검색어를 확인해 주세요.');
             return;
         }
-        setSelectedOption(inputValue);
-
+    
         const searchResult = ItemDataBase.filter(item => item.tag.includes(inputValue));
         setSearchResult(searchResult);
         setCurrentPage(1);
+    
+        // 기존 item 필터를 초기화하고 새로운 검색어 필터를 추가
+        setSelectedFilters(prevFilters => {
+            const newItems = Object.keys(prevFilters.item).reduce((acc, key) => {
+                acc[key] = false;
+                return acc;
+            }, {});
+    
+            return {
+                ...prevFilters,
+                item: {
+                    ...newItems,
+                    [inputValue]: true
+                }
+            };
+        });
     };
 
     // 검색창에서 enter 시(keyDown 사용 시 한글로 입력하면 alert가 2번 뜸, 그래서 keyup으로 바꿈, 추가: if (event.isComposing || event.keyCode === 229)return; 이거 추가 시 keydown도 가능)
     const handleKeyup = (event) => {
-        if (event.isComposing || event.keyCode === 229)return;
+        if (event.isComposing || event.keyCode === 229) return;
         if (event.key === 'Enter') {
             event.preventDefault();
             if (!validateSearchInput(inputValue)) {
@@ -234,36 +245,48 @@ const ItemList = () => {
 
     // 다른거 검색 못하게 막는 용도
     const validateSearchInput = (input) => {
-        const optionValues = ['건프라', '원피스', '나루토', '블리치', '에반게리온', '포켓몬'];  
+        const optionValues = ['건프라', '원피스', '나루토', '블리치', '에반게리온', '포켓몬'];
         return optionValues.includes(input);
-    }
+    } ;
 
     // 선택된 필터와 검색 결과를 기반으로 아이템을 필터링
     useEffect(() => {
         const filteredItems = searchResult.filter(item => {
-            return true;
+            let show = true;
+            // 나머지 필터링 로직은 이전과 동일
+            return show;
         });
-
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
         const paginatedItems = filteredItems.slice(startIndex, endIndex);
         setPaginatedItems(paginatedItems);
-    }, [currentPage, searchResult, itemsPerPage]);
+    }, [currentPage, searchResult, itemsPerPage, selectedFilters]);
+    
+    // 검색 후 뒤로 돌아갈 때 이전 페이지 정보 복구
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        if (page !== currentPage) {
+            setCurrentPage(page);
+        } else if (location.state && location.state.page) {
+            setCurrentPage(location.state.page);
+        }
+    }, [location, currentPage]);
 
     return (
         <div className='item-first'>
             <div className='item-size-200'><h1>{selectedOption}</h1></div>
-            <div className='search-bar'> 
+            <div className='search-bar'>
                 <label className='search-bar'>찾는 제품이 있나요?</label>
-                <input className='search-bar-input' type="text" list='figure-option' placeholder='검색어를 입력해주세요.' onChange={handleSearchChange} onKeyDown={handleKeyup}/>
-                <button className='button-class' onClick={handleSearchClick}><FontAwesomeIcon icon={faSearch}/></button>
+                <input className='search-bar-input' type="text" list='figure-option' placeholder='검색어를 입력해주세요.' value={inputValue} onChange={handleSearchChange} onKeyDown={handleKeyup} />
+                <button className='button-class' onClick={handleSearchClick}><FontAwesomeIcon icon={faSearch} /></button>
                 <datalist id='figure-option'>
-                    <option value="건프라"/>
-                    <option value="원피스"/>
-                    <option value="나루토"/>
-                    <option value="블리치"/>
-                    <option value="에반게리온"/>
-                    <option value="포켓몬"/>
+                    <option value="건프라" />
+                    <option value="원피스" />
+                    <option value="나루토" />
+                    <option value="블리치" />
+                    <option value="에반게리온" />
+                    <option value="포켓몬" />
                 </datalist>
             </div>
             <div className='item-size-150' onClick={toggleFiltersVisible}>
@@ -337,6 +360,8 @@ const ItemList = () => {
                                         <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE MECHANICS']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE MECHANICS')}></input>FIGURE-RISE MECHANICS</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE STANDARD']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE STANDARD')}></input>FIGURE-RISE STANDARD</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE')}></input>FIGURE-RISE</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.brand['포켓프라']} onChange={() => handleCheckboxChange('brand', '포켓프라')}></input>포켓프라</label></div>
+                                        <div><label><input type='checkbox' checked={selectedFilters.brand['포켓몬프라']} onChange={() => handleCheckboxChange('brand', '포켓몬프라')}></input>포켓몬프라</label></div>
                                     </div>
                                 )}
                             </div>

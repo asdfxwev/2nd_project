@@ -1,28 +1,42 @@
-import CscData from "./CscData";
-import Csc from './Csc'
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import CscData from "./CscData";
+import Csc from './Csc';
+import CscMenu from './CscMenu';
 import './Customerservice.css';
 
-
 export default function Customerservice() {
-
+    const [item, setItem] = useState(CscData);
     const [currentPage, setCurrentPage] = useState(1);
-    const [paginatedItem, setPageNatedItem] = useState([]);
+    const [paginatedItems, setPaginatedItems] = useState([]);
+    const [currentCategory, setCurrentCategory] = useState('ALL');
     const navigate = useNavigate();
-    const [filterItem, setFilterItem] = useState({
-        order: true,
-        delivery: false,
-        pay: false,
-        exchange: false,
-        coupon: false,
-        afterService: false,
-        product: false,
-    })
+    const location = useLocation();
 
     const itemsPerPage = 10;
 
-    const totalNumberOfPages = Math.ceil(CscData.length / itemsPerPage);
+    
+
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        const category = query.get('category') || 'ALL';
+        setCurrentPage(page);
+        setCurrentCategory(category);
+        
+        const filteredData = category === 'ALL' ? CscData : CscData.filter(item => item.classification === category);
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+        setPaginatedItems(filteredData.slice(startIndex, endIndex));
+    }, [location]);
+
+    // function onPageClick(pageNum) {
+    //     navigate(`?page=${pageNum}&category=${currentCategory}`);
+    // }
+
+    const totalNumberOfPages = Math.ceil(
+        (currentCategory === 'ALL' ? CscData : CscData.filter(item => item.classification === currentCategory)).length / itemsPerPage
+    );
 
     return (
         <section className="cscContainer">
@@ -40,34 +54,33 @@ export default function Customerservice() {
             <div className="cscMain">
                 <h2 className="cscTitle"></h2>
                 <div>
-                    <form>
-                        <input type="text" />
-                        <button>검색</button>
-                    </form>
-
                     <ul className="CscMenu">
-                        <li>FAQ TOP 10</li>
-                        &#124;
-                        <li>주문관련</li>
-                        &#124;
-                        <li>결제/환불</li>
-                        &#124;
-                        <li>교환/반품</li>
-                        &#124;
-                        <li>쿠폰/포인트</li>
-                        &#124;
-                        <li>배송</li>
-                        &#124;
-                        <li>A/S</li>
-                        &#124;
-                        <li>상품관련</li>
+                        <CscMenu 
+                            menuItem={[...new Set(CscData.map((val) => val.classification))]} 
+                            setItem={setItem} 
+                            currentCategory={currentCategory} 
+                            navigate={navigate} 
+                        />
                     </ul>
                     <div className="CscListTitle">
-                        <div style={{width:'100px'}}>분류</div>
-                        <div style={{width:'100px'}}>제목</div>
+                        <div style={{ width: '100px'}}>분류</div>
+                        <div style={{ width: '800px'}}>제목</div>
                     </div>
                     <div className="CscList">
-                        {<Csc />}
+                        {paginatedItems.map(item => (
+                            <Csc key={item.id} item={item} />
+                        ))}
+                    </div>
+                    <div className="cscPageNation">
+                        {Array.from({ length: totalNumberOfPages }).map((_, index) => (
+                            <Link
+                                key={index}
+                                to={`?page=${index + 1}&category=${currentCategory}`}
+                                // onClick={() => onPageClick(index + 1)}
+                            >
+                                {index + 1}
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>

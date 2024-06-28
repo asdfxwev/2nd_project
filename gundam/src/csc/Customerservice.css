@@ -1,8 +1,28 @@
 .cscContainer {
     display: flex;
     flex-direction: row;
-    width: 1280px;
-    margin: auto;
+    /* width: calc(100vw - 17px); */
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.cscSection {
+    width: 300px;
+    text-align: left;
+}
+
+.cscSection h2 {
+    font-size: 3rem;
+}
+
+.cscSection li {
+    margin-top: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.cscMain {
+    width: 1100px;
 }
 
 .CscBtnMenu {
@@ -11,8 +31,34 @@
 
 .CscMenu {
     display: flex;
+    margin: 30px 0px;
+    font-size: 1.5rem;
+    height: 100px;
 }
 
-.CscListTitle {
+.CscMenu li {
+    margin: 0px 30px;
+}
+
+.CscListTitle,
+.CscListTitles {
     display: flex;
+    text-align: center;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.cscSelect {
+    color: white;
+    background-color: aqua;
+}
+
+.Cscblock {
+    display: flex;
+    height: 300px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
 }

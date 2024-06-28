@@ -1,57 +1,64 @@
-.item_detail_main{
-    width: 100%;
+.item_detail_main {
+    /* width: 100%; */
     display: flex;
     justify-content: center;
     margin: 20px;
 }
 
+.nonVisbele {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
 /* ============== Left Box Start ============= */
-.detail_left_box{
+.detail_left_box {
     float: left;
     height: 100%;
     width: 800px;
 }
 
-.item_detail_img{
+.item_detail_img {
     width: 100%;
     height: 550px;
 }
 
-.detail_img{
-    margin: 10px;
+.detail_img {
+    margin: 10px 0;
     border-bottom: solid 1px rgb(200, 200, 200);
 
 }
 
-.detail_img_list{
+.detail_img_list {
     display: flex;
-    margin: 10px;
+    margin: 10px 0;
 }
 
-.detail_slide_img{
+.detail_slide_img {
     width: 90px;
     height: 90px;
     margin-right: 10px;
     border: solid 1px rgb(200, 200, 200);
 }
 
-.detail_slide_img:hover{
+.detail_slide_img:hover {
     transform: scale(1.2);
     border: solid 1px skyblue;
 }
 
 /* ==================== tab =================== */
-.tab{
+.tab {
     width: 100%;
     position: sticky;
     top: 0;
+    text-align: center;
 }
 
-.tab_inner{
+.tab_inner {
     display: flex;
     justify-content: space-between;
     border: solid 1px rgb(200, 200, 200);
-    margin: 10px;
+    margin: 10px 0;
     background-color: white;
 }
 
@@ -68,30 +75,34 @@
     border-bottom: solid 2px red;
 }
 
-#DETAIL{
+#DETAIL {
     font-size: 0;
 }
+
 /* ================= tab End ================== */
 
 /* =============== section img ================ */
-.detail_item_name{
+.detail_item_name {
     font-size: 40px;
-    font-weight: 900;
+    font-weight: bold;
     font-style: italic;
     margin-top: 100px;
+    margin-left: 10px;
 }
 
-.detail_item_subname{
+.detail_item_subname {
     font: inherit;
     font-size: 18px;
-    font-weight: 500;
-    margin: 20px 0px;
+    font-weight: 600;
+    margin: 20px 10px;
 }
 
-.sectionimg{
+.sectionimg {
     width: 100%;
-    padding: 10px;
+    /* padding: 10px; */
+    margin: 10px 0;
 }
+
 /* ============= section img End ============== */
 
 /* ============== Left Box End ================ */
@@ -100,7 +111,7 @@
 
 
 /* ============== Right Box Start ============= */
-.detail_right_box{
+.detail_right_box {
     float: right;
     display: flex;
     height: 100%;
@@ -109,7 +120,7 @@
     top: 0;
 }
 
-.right_inner{
+.right_inner {
     margin: 10px;
     width: 100%;
     height: 100%;
@@ -118,100 +129,97 @@
     text-align: left;
 }
 
-.underline{
+.underline {
     border-bottom: solid 1px rgb(200, 200, 200);
     margin: 10px;
     padding: 10px;
 }
 
-.font_medium{
+.font_medium {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-.detail_top{
+.detail_top {
     text-align: right;
 }
 
-.item_info{
+.item_info {
     display: flex;
-    height: 100px;
+    height: 150px;
 }
 
-.info_left_box{
+.info_left_box {
     width: 30%;
     text-align: left;
 }
 
-.info_right_box{
+.info_right_box {
     width: 70%;
-    height: 100px !important;
     font-size: 14px;
     text-align: left;
 }
 
-.info_right_box p{
+.info_right_box p {
     line-height: normal;
 }
 
-.info_comment{
-    /* font-style: ; */
+.info_comment {
+    font-weight: 600;
+    margin: 5px;
 }
 
-.item_count{
+.item_count {
     display: flex;
     /* width: 100%; */
     text-align: center;
 }
 
-.item_price{
+.item_price {
     font-size: 20px;
     font-weight: 700;
 }
 
-.count_left_box{
+.count_left_box {
     width: 30%;
     text-align: left;
 }
 
-.count_right_box{
+.count_right_box {
     display: flex;
     width: 70%;
     justify-content: right;
     align-items: center;
 }
 
-.item_count .count_right_box .count_num{
+.item_count .count_right_box .count_num {
     width: 40px;
     height: 40px;
 }
 
-.count_right_box button{
+.count_right_box button {
     width: 30px;
     height: 30px;
     border: none;
     border-radius: 50%;
 }
-.count_right_box button:hover{
+
+.count_right_box button:hover {
     background-color: blue;
     color: white;
 }
 
-.right_inner .item_total_price{
+.right_inner .item_total_price {
     display: flex;
     margin: 10px;
-    /* width: 100%; */
-    /* height: 40px; */
-    /* font-size: 14px; */
-    /* margin-top: 10px; */
 }
 
-.total_price_title{
+.total_price_title {
     width: 30%;
     text-align: left;
 }
 
-.total_price{
+.total_price {
     /* display: flex; */
     width: 70%;
     text-align: right;
@@ -222,11 +230,11 @@
     font-weight: 700;
 }
 
-.item_btn{
+.item_btn {
     margin: 5px;
 }
 
-.submit_btn{
+.submit_btn {
     width: 100%;
     height: 40px;
     bottom: 0%;
@@ -236,46 +244,68 @@
     color: white;
     font-size: 16px;
 }
+
 /* ============== Right Box End ================ */
 
 
 
 /* ============== ItemDetailInfo =============== */
-.info_bottom_box{
-    display: grid;
-    /* grid-template: repeat(5, 1fr) 2fr repeat(2, 1fr) / repeat(4, 1fr); */
-    grid-template: repeat(8, 1fr) / repeat(4, 1fr);
-    height: 600px;
+.info_top_box {
+    display: flex;
+    margin: 0 10px;
+    margin-top: 20px;
+    height: 60px;
     align-items: center;
-    font-size: 12px;
-    margin: 10px;
-    border: solid 1px gray;
 }
 
-.info_bottom_box div{
+.info_top_box .info_top_left {
+    width: 50%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.info_top_box .info_top_right {
+    width: 50%;
+    font-size: 30px;
+    text-align: right;
+}
+
+.info_bottom_box {
+    display: grid;
+    grid-template: repeat(8, 1fr) / repeat(4, 1fr);
+    height: 600px;
+    font-size: 12px;
+    margin: 10px;
+    margin-top: 0;
+    /* border: solid 1px gray; */
+    border-top: solid 2px black;
+    transition: max-height 0.3s ease-out;
+}
+
+.info_bottom_box div {
     width: 100%;
     height: 100%;
     align-content: center;
-    border: solid 1px gray;
-    background-color: rgb(200, 200, 200);
+    border-bottom: solid 1px gray;
+    background-color: rgb(240, 238, 238);
 }
 
-.info_bottom_box div:nth-of-type(even){
-    padding: 5px;
-    text-align: left;
-    width: 225px;
+.info_bottom_box div:nth-of-type(even) {
+    width: 200px;
     background-color: white;
 }
-.info_bottom_box div:nth-of-type(add){
-    width: 175px;
+
+.info_bottom_box div:nth-of-type(add) {
+    text-align: center;
+    width: 170px;
 }
 
-.company{
+.company {
     grid-area: 4/2/5/5;
     width: 100% !important;
 }
 
-.kc_check{
+.kc_check {
     grid-area: 8/2/9/5;
     width: 100% !important;
 }

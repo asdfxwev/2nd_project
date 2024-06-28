@@ -7,9 +7,11 @@ import React,{useState, useEffect} from 'react';
 import Login from '../Login/Login';
 import Join from '../join/join';
 import Findingid from '../Login/Findingid';
-import Notice from '../notice/Notice';
-import Customerservice from '../csc/Customerservice'
-import NoticeDelivery from '../notice/NoticeDelivery';
+import Notice from '../csc/Notice';
+import Customerservice from '../csc/Customerservice';
+import NoticeDelivery from '../csc/NoticeDelivery';
+import Inquiry from '../csc/Inquiry';
+import InquiryWrite from '../csc/InquiryWrite';
 
 
 
@@ -35,7 +37,9 @@ export default function Main() {
                 <Route path="/Notice" element={<Notice />} />
                 <Route path="/Notice/*" element={<NoticeDelivery />} />
                 {/* <Route path="/Notice" element={<Notice />} /> */}
-                <Route path="/Csc" element={<Customerservice />} />
+                <Route path="/Csc/" element={<Customerservice />} />
+                <Route path="/Csc/Inquiry" element={<Inquiry />} />
+                <Route path="/Csc/Inquiry/InquiryWrite" element={<InquiryWrite />} />
             </Routes>
         </>
     )

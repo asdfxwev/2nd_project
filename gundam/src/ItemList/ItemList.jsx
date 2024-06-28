@@ -3,7 +3,7 @@ import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
-import { Link,useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faL, faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -189,7 +189,7 @@ const ItemList = () => {
         const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
         const paginatedItems = filteredItems.slice(startIndex, endIndex);
         setPaginatedItems(paginatedItems);
-    },[currentPage, searchResult, itemsPerPage, selectedFilters]);
+    }, [currentPage, searchResult, itemsPerPage, selectedFilters]);
 
     // 처음 로딩시 전체 나오게 하기
     useEffect(() => {
@@ -208,18 +208,18 @@ const ItemList = () => {
             alert('존재하지 않는 검색어 입니다. 다시한번 검색어를 확인해 주세요.');
             return;
         }
-    
+
         const searchResult = ItemDataBase.filter(item => item.tag.includes(inputValue));
         setSearchResult(searchResult);
         setCurrentPage(1);
-    
+
         // 기존 item 필터를 초기화하고 새로운 검색어 필터를 추가
         setSelectedFilters(prevFilters => {
             const newItems = Object.keys(prevFilters.item).reduce((acc, key) => {
                 acc[key] = false;
                 return acc;
             }, {});
-    
+
             return {
                 ...prevFilters,
                 item: {
@@ -247,7 +247,7 @@ const ItemList = () => {
     const validateSearchInput = (input) => {
         const optionValues = ['건프라', '원피스', '나루토', '블리치', '에반게리온', '포켓몬'];
         return optionValues.includes(input);
-    } ;
+    };
 
     // 선택된 필터와 검색 결과를 기반으로 아이템을 필터링
     useEffect(() => {
@@ -261,7 +261,7 @@ const ItemList = () => {
         const paginatedItems = filteredItems.slice(startIndex, endIndex);
         setPaginatedItems(paginatedItems);
     }, [currentPage, searchResult, itemsPerPage, selectedFilters]);
-    
+
     // 검색 후 뒤로 돌아갈 때 이전 페이지 정보 복구
     useEffect(() => {
         const query = new URLSearchParams(location.search);

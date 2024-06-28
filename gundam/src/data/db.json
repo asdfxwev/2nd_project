@@ -2,11 +2,13 @@
   "users": [
     {
       "email": "user1@example.com",
-      "password": "password1"
+      "password": "password1",
+      "id": "be65"
     },
     {
       "email": "user2@example.com",
-      "password": "password2"
+      "password": "password2",
+      "id": "b73e"
     },
     {
       "id": "2f7d",
@@ -73,6 +75,17 @@
       "phoneNumber": "02315641561",
       "securityQuestion": "태어난 도시의 이름은?",
       "securityAnswer": "as"
+    },
+    {
+      "id": "c00e",
+      "name": "test",
+      "email": "test@naver.com",
+      "password": "testtest",
+      "confirmPassword": "testtest",
+      "address": "sungnam",
+      "phoneNumber": "01012341234",
+      "securityQuestion": "태어난 도시의 이름은?",
+      "securityAnswer": "sungnam"
     }
   ]
 }

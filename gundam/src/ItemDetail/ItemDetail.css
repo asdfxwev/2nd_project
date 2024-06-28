@@ -24,14 +24,14 @@
 }
 
 .detail_img {
-    margin: 10px;
+    margin: 10px 0;
     border-bottom: solid 1px rgb(200, 200, 200);
 
 }
 
 .detail_img_list {
     display: flex;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .detail_slide_img {
@@ -51,13 +51,14 @@
     width: 100%;
     position: sticky;
     top: 0;
+    text-align: center;
 }
 
 .tab_inner {
     display: flex;
     justify-content: space-between;
     border: solid 1px rgb(200, 200, 200);
-    margin: 10px;
+    margin: 10px 0;
     background-color: white;
 }
 
@@ -99,7 +100,7 @@
 .sectionimg {
     width: 100%;
     /* padding: 10px; */
-    /* margin: 10px; */
+    margin: 10px 0;
 }
 
 /* ============= section img End ============== */
@@ -269,7 +270,6 @@
     text-align: right;
 }
 
-
 .info_bottom_box {
     display: grid;
     grid-template: repeat(8, 1fr) / repeat(4, 1fr);
@@ -291,13 +291,13 @@
 }
 
 .info_bottom_box div:nth-of-type(even) {
-    width: 225px;
+    width: 200px;
     background-color: white;
 }
 
 .info_bottom_box div:nth-of-type(add) {
     text-align: center;
-    width: 175px;
+    width: 170px;
 }
 
 .company {

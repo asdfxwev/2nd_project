@@ -157,54 +157,39 @@ const handleCheckboxChange = (section, filter) => {
     useEffect(() => {
         const filteredItems = ItemDataBase.filter(item => {
             let show = true;
-
+    
             // 정보 필터링
             if (selectedFilters.information['세일상품만'] && !item.isOnSale) show = false;
             if (selectedFilters.information['품절상품 제외'] && item.isSoldOut) show = false;
             if (selectedFilters.information['예약종료상품 제외'] && item.isReservationEnd) show = false;
-
+    
             // 가격대별 필터링
-            if (
-                selectedFilters.price['10,000원 미만'] &&
-                (item.price >= 10000 || item.price < 0)
-            )
-                show = false;
-            if (
-                selectedFilters.price['10,000원 이상 ~ 50,000원 미만'] &&
-                (item.price < 10000 || item.price >= 50000)
-            )
-                show = false;
-            if (
-                selectedFilters.price['50,000원 이상 ~ 100,000원 미만'] &&
-                (item.price < 50000 || item.price >= 100000)
-            )
-                show = false;
-            if (
-                selectedFilters.price['100,000원 이상'] &&
-                (item.price < 100000 || item.price > 0)
-            )
-                show = false;
-
+            if (selectedFilters.price['10,000원 미만'] && (item.price >= 10000 || item.price < 0)) show = false;
+            if (selectedFilters.price['10,000원 이상 ~ 50,000원 미만'] && (item.price < 10000 || item.price >= 50000)) show = false;
+            if (selectedFilters.price['50,000원 이상 ~ 100,000원 미만'] && (item.price < 50000 || item.price >= 100000)) show = false;
+            if (selectedFilters.price['100,000원 이상'] && (item.price < 100000 || item.price > 0)) show = false;
+    
             // 브랜드별 필터링
             const brandFilters = ['1/100', 'FG', 'FIGURE-RISE MECHANICS', 'FIGURE-RISE STANDARD', 'FIGURE-RISE', '포켓프라', '포켓몬프라'];
             if (!brandFilters.some(brand => selectedFilters.brand[brand] && item.brand === brand)) {
-                if (brandFilters.some(brand => selectedFilters.brand[brand])) {
-                    show = false;
-                }
+                if (brandFilters.some(brand => selectedFilters.brand[brand])) show = false;
             }
-
+    
+            // 작품별 필터링
             const itemFilters = ['건담 무사', '건담 브레이커 배틀로그', '기동전사 건담 수성의 마녀', '기동전사 건담 복수의 레퀴엠', '신기동전사 건담W'];
             if (!itemFilters.some(comment => selectedFilters.item[comment] && item.comment === comment)) {
-                if (itemFilters.some(comment => selectedFilters.item[comment])) {
-                    show = false;
-                }
+                if (itemFilters.some(comment => selectedFilters.item[comment])) show = false;
             }
-
+    
+            // 태그 필터링
+            if (selectedFilters.item[inputValue] && item.tag !== inputValue) show = false;
+    
             return show;
         });
-
+    
         setSearchResult(filteredItems);
-    }, [selectedFilters]);
+    }, [selectedFilters, inputValue]);
+    
 
     useEffect(() => {
         const startIndex = (currentPage - 1) * itemsPerPage;
@@ -227,20 +212,20 @@ const handleCheckboxChange = (section, filter) => {
     // 버튼 클릭시
     const handleSearchClick = () => {
         if (!validateSearchInput(inputValue)) {
-            alert('존재하지 않는 검색어 입니다. 다시한번 검색어를 확인해 주세요.');
+            alert('존재하지 않는 검색어입니다. 다시 한번 검색어를 확인해 주세요.');
             return;
         }
-
-        const searchResult = ItemDataBase.filter(item => item.tag.includes(inputValue));
-        setSearchResult(searchResult);
+    
+        const searchResults = ItemDataBase.filter(item => item.tag === inputValue);
+        setSearchResult(searchResults);
         setSelectedOption(inputValue);
         setCurrentPage(1);
-
+    
         // 기존 item 필터를 초기화하고 새로운 검색어 필터를 추가
         setSelectedFilters(prevFilters => ({
             ...prevFilters,
             item: {
-                ...Object.keys(prevFilters.item).reduce((acc,key) => {
+                ...Object.keys(prevFilters.item).reduce((acc, key) => {
                     acc[key] = false;
                     return acc;
                 }, {}),
@@ -248,6 +233,8 @@ const handleCheckboxChange = (section, filter) => {
             }
         }));
     };
+    
+    
 
     // 검색창에서 enter 시(keyDown 사용 시 한글로 입력하면 alert가 2번 뜸, 그래서 keyup으로 바꿈, 추가: if (event.isComposing || event.keyCode === 229)return; 이거 추가 시 keydown도 가능)
     const handleKeyup = (event) => {

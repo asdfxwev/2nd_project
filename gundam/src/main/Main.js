@@ -7,9 +7,9 @@ import React,{useState, useEffect} from 'react';
 import Login from '../Login/Login';
 import Join from '../join/join';
 import Findingid from '../Login/Findingid';
-import Notice from '../notice/Notice';
+import Notice from '../csc/Notice';
 import Customerservice from '../csc/Customerservice';
-import NoticeDelivery from '../notice/NoticeDelivery';
+import NoticeDelivery from '../csc/NoticeDelivery';
 import Inquiry from '../csc/Inquiry';
 import InquiryWrite from '../csc/InquiryWrite';
 

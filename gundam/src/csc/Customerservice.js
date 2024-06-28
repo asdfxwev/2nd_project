@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import CscData from "./CscData";
 import Csc from './Csc';
 import CscMenu from './CscMenu';
+import CscLeft from './CscLeft'
 import './Customerservice.css';
 import InquiryWrite from './InquiryWrite';
 
@@ -38,15 +39,7 @@ export default function Customerservice() {
     return (
         <section className="cscContainer">
             <div className="cscSection">
-                <h2>고객센터</h2>
-                <ul>
-                    <li>자주묻는질문</li>
-                    <li>고객센터</li>
-                    <li><Link to={`/Csc/Inquiry`} >1:1 문의</Link></li>
-                    <li>건프라 가이드</li>
-                    <li>완구 설명서</li>
-                    <li>A/S안내</li>
-                </ul>
+                <CscLeft />
             </div>
             <div className="cscMain">
                 <h2 className="cscTitle"></h2>

@@ -23,6 +23,7 @@ export default function Button() {
     useEffect(() => {
         const handleScroll = () => {
             const footer = document.querySelector('.footer'); // Ensure this selector matches your footer element
+            if (!footer) return;
             const footerRect = footer.getBoundingClientRect(); // Check if footer exists
 
             if (footer && window.scrollY > window.innerHeight * 0.5) {

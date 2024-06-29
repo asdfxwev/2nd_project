@@ -1,3 +1,10 @@
+.h1-name{
+    width: 80%;
+    font-size: 3em;
+    margin: auto;
+    padding-top: 112px;
+}
+
 .cart-container {
     width: 80%;
     margin: auto;
@@ -56,4 +63,14 @@
 }
 .cart-actions button:hover {
     background-color: #0056b3;
+}
+
+.button-size {
+    background-color: inherit;
+    width: 150px;
+    border: 0;
+    font-size: 1em;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-right: 10px;
 }

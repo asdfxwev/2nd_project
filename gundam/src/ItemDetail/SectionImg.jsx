@@ -31,7 +31,7 @@ const SectionImg = ( {item} ) => {
                         <FontAwesomeIcon className="iconsize" icon={isOpen ? faAngleUp : faAngleDown} onClick={accordion} />
                     </div>
                 </div>
-                <div className={`info_bottom_box ${isOpen ? '' : 'nonVisible'}`}>
+                <div className={`info_bottom_box ${isOpen ? '' : 'detail_visible'}`}>
                     <div>제품명</div>
                     <div>{item.name}</div>
                     <div>판매코드</div>

@@ -42,8 +42,8 @@
 }
 
 .upperBox {
-    border: 1px solid black;
-    border-radius: 20px;
+    border: 1px solid rgba(224, 224, 224, .5);
+    border-radius: 5px;
     background-color: white;
     font-weight: bold;
     box-shadow: 5px 5px 5px gray;

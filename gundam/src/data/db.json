@@ -1,31 +1,24 @@
 {
   "users": [
     {
-      "id": "e8aa",
-      "name": "승범",
-      "email": "asdf@asdf",
-      "password": "asdfasdf",
-      "address": "대구 남구 마태산길 5-2 asdf",
-      "phoneNumber": "1234567890",
-      "inquiries": []
-    },
-    {
-      "id": "34cc",
-      "name": "승범이이",
-      "email": "asdfg@asdfg",
-      "password": "asdfasdf",
-      "address": "인천 강화군 길상면 마니산로 8 asdf",
-      "phoneNumber": "1234567890",
-      "inquiries": []
-    },
-    {
-      "id": "7808",
-      "name": "tkdk",
+      "id": "d002",
+      "name": "ㅂㅈㄷㄱ",
       "email": "qwer@qwer",
       "password": "qwerqwer",
-      "address": "부산 동래구 미남로 13 asdf",
+      "address": "서울 송파구 바람드리길 2 qwer",
       "phoneNumber": "1234567890",
-      "inquries": []
+      "inquiries": [
+        {
+          "inquiryType": "상품",
+          "subject": "qwer",
+          "message": "qwerqwer"
+        },
+        {
+          "inquiryType": "반품",
+          "subject": "qwerqwer",
+          "message": "qwerqwer"
+        }
+      ]
     }
   ]
 }

@@ -186,6 +186,14 @@
       "phoneNumber": "01012341234",
       "securityQuestion": "태어난 도시의 이름은?",
       "securityAnswer": "성남"
+    },
+    {
+      "id": "23b7",
+      "name": "전용덕",
+      "email": "dydejr852@naver.com",
+      "password": "12345678",
+      "address": "경기 수원시 장안구 대평로 27 203",
+      "phoneNumber": "01072815068"
     }
   ]
 }

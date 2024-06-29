@@ -1,4 +1,4 @@
-.container {
+.container_entire {
     width: 100%;
     font-family: Nunito, sans-serif;
     margin: 0 auto;
@@ -15,11 +15,11 @@
     background-color: #faf7f7;
     
 }
-.container{
+.container_entire{
     position: relative;
 }
 
-.imd{
+.leftimg{
     width: 27vw;
     position: absolute;
     left:10%;
@@ -35,7 +35,7 @@
     }
 }
 
-.imc {
+.rightimg {
     width: 27vw;
     position: absolute;
     right: 10%;

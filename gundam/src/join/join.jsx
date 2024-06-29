@@ -12,9 +12,9 @@ const SignupForm = () => {
 
     const handleSubmit = async (values) => {
 
-        const { name, email, password, confirmPassword, address, dtl_address, phoneNumber, securityQuestion, securityAnswer } = values;
+        const { name, email, password, confirmPassword, address, dtl_address, phoneNumber } = values;
         const combinedAddress = `${address} ${dtl_address}`; // address와 dtl_address 값을 공백으로 구분하여 연결
-        const formData = { name, email, password, address: combinedAddress, phoneNumber, securityQuestion, securityAnswer };
+        const formData = { name, email, password, address: combinedAddress, phoneNumber};
 
         try {
             const response = await axios.post('http://localhost:3001/users', formData);
@@ -70,9 +70,8 @@ const SignupForm = () => {
             confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다.').required('비밀번호 확인은 필수 항목입니다.'),
             address: Yup.string().required('주소는 필수 항목입니다.'),
             dtl_address: Yup.string(),
-            phoneNumber: Yup.string().matches(/^[0-9]{10,11}$/, '유효한 핸드폰 번호를 입력하세요.').required('핸드폰 번호는 필수 항목입니다.'),
-            securityQuestion: Yup.string().required('비밀번호 찾기 질문을 선택하세요.'),
-            securityAnswer: Yup.string().required('비밀번호 찾기 답변을 입력하세요.')
+            phoneNumber: Yup.string().matches(/^[0-9]{10,11}$/, '유효한 핸드폰 번호를 입력하세요.').required('핸드폰 번호는 필수 항목입니다.')
+            
         }),
         onSubmit: handleSubmit
     });

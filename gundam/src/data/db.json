@@ -17,6 +17,15 @@
       "address": "인천 강화군 길상면 마니산로 8 asdf",
       "phoneNumber": "1234567890",
       "inquiries": []
+    },
+    {
+      "id": "7808",
+      "name": "tkdk",
+      "email": "qwer@qwer",
+      "password": "qwerqwer",
+      "address": "부산 동래구 미남로 13 asdf",
+      "phoneNumber": "1234567890",
+      "inquries": []
     }
   ]
 }

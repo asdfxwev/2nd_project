@@ -14,7 +14,7 @@ const SignupForm = () => {
 
         const { name, email, password, confirmPassword, address, dtl_address, phoneNumber } = values;
         const combinedAddress = `${address} ${dtl_address}`; // address와 dtl_address 값을 공백으로 구분하여 연결
-        const formData = { name, email, password, address: combinedAddress, phoneNumber};
+        const formData = { name, email, password, address: combinedAddress, phoneNumber, inquries:[]};
 
         try {
             const response = await axios.post('http://localhost:3001/users', formData);

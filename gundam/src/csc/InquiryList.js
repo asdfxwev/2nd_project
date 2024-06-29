@@ -29,6 +29,7 @@
 
 
 import React, { useEffect, useState } from 'react';
+import './InquiryList.css'
 
 export default function InquiryList() {
     const [inquiries, setInquiries] = useState([]);
@@ -46,10 +47,10 @@ export default function InquiryList() {
     return (
         <>
             {inquiries.map((inquiry, index) => (
-                <div className="CscList">
+                <div className="CscInquiryList">
                     <div style={{ width: '100px' }}>{inquiry.inquiryType}</div>
                     <div style={{ width: '200px' }}>{inquiry.subject}</div>
-                    <div style={{ width: '400px' }}>{inquiry.message}</div>
+                    <div style={{ width: '800px' }}>{inquiry.message}</div>
                 </div>
             ))}
         </>

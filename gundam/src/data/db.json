@@ -176,6 +176,16 @@
       "phoneNumber": "01072815068",
       "securityQuestion": "첫 번째 반려동물의 이름은?",
       "securityAnswer": "루이"
+    },
+    {
+      "id": "bf73",
+      "name": "호",
+      "email": "test@naver.com",
+      "password": "12345678",
+      "address": "경기 성남시 분당구 금곡로 302 234",
+      "phoneNumber": "01012341234",
+      "securityQuestion": "태어난 도시의 이름은?",
+      "securityAnswer": "성남"
     }
   ]
 }

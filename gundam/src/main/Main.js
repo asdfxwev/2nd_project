@@ -7,6 +7,14 @@ import React,{useState, useEffect} from 'react';
 import Login from '../Login/Login';
 import Join from '../join/join';
 import Findingid from '../Login/Findingid';
+import Notice from '../csc/Notice';
+import Customerservice from '../csc/Customerservice';
+import NoticeDelivery from '../csc/NoticeDelivery';
+import Inquiry from '../csc/Inquiry';
+import InquiryWrite from '../csc/InquiryWrite';
+
+
+
 
 export default function Main() {
     const [items, setItems] = useState([]);
@@ -22,12 +30,16 @@ export default function Main() {
                 <Route path="/" element={<MainComponent />} />
                 <Route path="/ItemList" element={<ItemList />} />
                 <Route path="/ItemList/ItemDetail/:id" element={<ItemDetail />} />
-                <Route path="/Login" element={<Login/>} />
+                <Route path="/Login/*" element={<Login/>} />
                 <Route path="/Login/Join" element={<Join/>} />
                 <Route path="/Login/Findingid" element={<Findingid/>} />
                 {/* <Route path="/Notice" element={<Notice />} /> */}
+                <Route path="/Notice" element={<Notice />} />
+                <Route path="/Notice/*" element={<NoticeDelivery />} />
                 {/* <Route path="/Notice" element={<Notice />} /> */}
-                {/* <Route path="/Csc" element={<Customerservice />} /> */}
+                <Route path="/Csc/" element={<Customerservice />} />
+                <Route path="/Csc/Inquiry" element={<Inquiry />} />
+                <Route path="/Csc/Inquiry/InquiryWrite" element={<InquiryWrite />} />
             </Routes>
         </>
     )

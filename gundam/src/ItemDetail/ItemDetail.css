@@ -5,10 +5,15 @@
     margin: 20px;
 }
 
-.nonVisbele {
+.nonVisible {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+}
+
+.iconsize{
+    width: 30px;
+    height: 30px;
 }
 
 /* ============== Left Box Start ============= */
@@ -24,14 +29,14 @@
 }
 
 .detail_img {
-    margin: 10px;
+    margin: 10px 0;
     border-bottom: solid 1px rgb(200, 200, 200);
 
 }
 
 .detail_img_list {
     display: flex;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .detail_slide_img {
@@ -49,15 +54,17 @@
 /* ==================== tab =================== */
 .tab {
     width: 100%;
+    height: 60px;
     position: sticky;
     top: 0;
+    text-align: center;
 }
 
 .tab_inner {
     display: flex;
     justify-content: space-between;
     border: solid 1px rgb(200, 200, 200);
-    margin: 10px;
+    /* margin: 10px 0; */
     background-color: white;
 }
 
@@ -99,10 +106,18 @@
 .sectionimg {
     width: 100%;
     /* padding: 10px; */
-    /* margin: 10px; */
+    margin: 10px 0;
 }
 
 /* ============= section img End ============== */
+
+/* =============== section img ================ */
+.review_list{
+    width: 100%;
+    height: 800px;
+}
+/* ============= section img End ============== */
+
 
 /* ============== Left Box End ================ */
 
@@ -251,10 +266,11 @@
 /* ============== ItemDetailInfo =============== */
 .info_top_box {
     display: flex;
-    margin: 0 10px;
     margin-top: 20px;
+    padding-top: 60px;
     height: 60px;
     align-items: center;
+    border-bottom: solid 2px black;
 }
 
 .info_top_box .info_top_left {
@@ -269,16 +285,14 @@
     text-align: right;
 }
 
-
 .info_bottom_box {
     display: grid;
     grid-template: repeat(8, 1fr) / repeat(4, 1fr);
     height: 600px;
     font-size: 12px;
-    margin: 10px;
-    margin-top: 0;
+    /* margin: 10px;
+    margin-top: 0; */
     /* border: solid 1px gray; */
-    border-top: solid 2px black;
     transition: max-height 0.3s ease-out;
 }
 
@@ -291,13 +305,13 @@
 }
 
 .info_bottom_box div:nth-of-type(even) {
-    width: 225px;
+    width: 200px;
     background-color: white;
 }
 
 .info_bottom_box div:nth-of-type(add) {
     text-align: center;
-    width: 175px;
+    width: 170px;
 }
 
 .company {

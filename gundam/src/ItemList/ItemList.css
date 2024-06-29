@@ -6,7 +6,6 @@
 }
 
 .item-first {
-    /* padding: 40px; */
     margin: 40px;
 }
 
@@ -16,6 +15,12 @@
     gap: 20px;
     padding: 20px;
 }
+
+.item-list-hidden .item-card img {
+    width: 100%;
+    height: 300px;
+}
+
 .item-list-hidden .item-choose {
     display: none;
 }

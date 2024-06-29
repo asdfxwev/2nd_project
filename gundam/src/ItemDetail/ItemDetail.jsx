@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ItemDetail.css';
 import ItemDataBase from '../ItemList/ItemDataBase';
 import SectionImg from './SectionImg';
-import ItemDetailInfo from './ItemDetailInfo';
+import ItemReview from './ItemReview';
 import { useParams } from 'react-router-dom';
 
 import Checkbox from '@mui/material/Checkbox';
@@ -86,8 +86,8 @@ export default function ItemDetail() {
                     <div className='detail_item_name'>MG WING GUNDAM<br />ZERO EW Ver.Ka</div>
                     <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
                     
-                    <SectionImg key={selectedItem.id} item={selectedItem} />
-                    <ItemDetailInfo key={selectedItem.id} item={selectedItem} />
+                    <SectionImg key={selectedItem.id} item={selectedItem} />    {/* 상세보기 tap */}
+                    <ItemReview />
                     
                 </div>
 

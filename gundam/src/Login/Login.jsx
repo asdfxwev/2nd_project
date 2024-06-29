@@ -23,7 +23,7 @@ function Login() {
         if (result != null) {
             const loginInfo = {
                 name: result.name,
-                email: result.email
+                email: result.email,
             }
             localStorage.setItem("loginInfo", JSON.stringify(loginInfo));
             navigate('/');

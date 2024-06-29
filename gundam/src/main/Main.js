@@ -26,8 +26,8 @@ export default function Main() {
                 <Route path="/Login/Join" element={<Join/>} />
                 <Route path="/Login/Findingid" element={<Findingid/>} />
                 {/* <Route path="/Notice" element={<Notice />} /> */}
-                <Route path="/Notice" element={<Notice />} />
-                <Route path="/Csc" element={<Customerservice />} />
+                {/* <Route path="/Notice" element={<Notice />} /> */}
+                {/* <Route path="/Csc" element={<Customerservice />} /> */}
             </Routes>
         </>
     )

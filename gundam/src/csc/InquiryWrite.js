@@ -166,7 +166,7 @@ export default function InquiryWrite() {
             const userData = userResponse.data;
 
             // Add the new inquiry to the user's inquiries list
-            userData.inquiries = userData.inquiries ? [...userData.inquiries, newInquiry] : [newInquiry];
+            userData.inquries = userData.inquries ? [...userData.inquries, newInquiry] : [newInquiry];
 
             // Update the user data on the server
             await axios.put(`http://localhost:3001/users/${userId}`, userData);

@@ -7,16 +7,41 @@
       "password": "qwerqwer",
       "address": "서울 송파구 바람드리길 2 qwer",
       "phoneNumber": "1234567890",
-      "inquiries": [
+      "inquries": [
         {
-          "inquiryType": "상품",
+          "inquiryType": "배송",
+          "subject": "asdf",
+          "message": "asdfasdf"
+        },
+        {
+          "inquiryType": "",
+          "subject": "asdf",
+          "message": "asdf"
+        },
+        {
+          "inquiryType": "반품",
+          "subject": "qwer",
+          "message": "qwer"
+        }
+      ]
+    },
+    {
+      "id": "408d",
+      "name": "전용덕",
+      "email": "dydejr852@naver.com",
+      "password": "123456789",
+      "address": "충남 당진시 우강면 남원포1길 5-4 asd",
+      "phoneNumber": "1234567890",
+      "inquries": [
+        {
+          "inquiryType": "반품",
           "subject": "qwer",
           "message": "qwerqwer"
         },
         {
-          "inquiryType": "반품",
-          "subject": "qwerqwer",
-          "message": "qwerqwer"
+          "inquiryType": "완구A/S",
+          "subject": "fasdf",
+          "message": "asdv"
         }
       ]
     }

@@ -6,6 +6,7 @@ import Csc from './Csc';
 import CscMenu from './CscMenu';
 import './Customerservice.css';
 import CscLeft from './CscLeft';
+import './Inquiry.css'
 
 export default function Customerservice() {
     const [item, setItem] = useState(CscData);
@@ -44,13 +45,13 @@ export default function Customerservice() {
             <div className="cscMain">
                 <h2 className="cscTitle">1:1문의</h2>
                 <div>
-                    <div className="CscListTitle">
+                    <div className="CscInquiryListTitle">
                         <div style={{ width: '100px' }}>유형</div>
                         <div style={{ width: '200px' }}>제목</div>
-                        <div style={{ width: '400px' }}>내용</div>
+                        <div style={{ width: '800px' }}>내용</div>
                     </div>
                     <InquiryList />
-                    <div>
+                    <div className='InquiryWriteBtn'>
                         <Link to='/Csc/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>
                 </div>

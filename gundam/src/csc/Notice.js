@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import './Notice.css';
 import NoticeDelivery from "./NoticeDelivery";
 import CscLeft from "./CscLeft";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Notice() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -13,6 +16,7 @@ export default function Notice() {
 
     const itemsPerPage = 15;
     const totalNumberOfPages = Math.ceil(NoticeData.length / itemsPerPage);
+    const maxPagesToShow = 10;
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
@@ -26,6 +30,18 @@ export default function Notice() {
         const paginatedItems = NoticeData.slice(startIndex, endIndex);
         setPaginatedItems(paginatedItems);
     }, [currentPage]);
+
+    const getPageNumbers = () => {
+        const pageNumbers = [];
+        const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+        const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
+
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(i);
+        }
+
+        return pageNumbers;
+    };
 
     return (
         <section className="cscNoticeContiner">
@@ -43,19 +59,30 @@ export default function Notice() {
                 ))}
 
                 <ul className="noticeNumber">
-                    {Array.from({ length: totalNumberOfPages }).map((_, index) => (
-                        <NavLink
-                            key={index}
-                            to={`/Notice?page=${index + 1}`}
-                        // onClick={() => onPageClick(index + 1)}
+                    {currentPage > 1 && (
+                        <>
+                            <li><NavLink to={`/Notice?page=1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
+                            <li><NavLink to={`/Notice?page=${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
+                        </>
+                    )}
+                    {getPageNumbers().map((pageNumber) => (
+                        <li
+                            key={pageNumber}
+                            className={currentPage === pageNumber ? 'selected' : ''}
                         >
-                            <li
-                                className={currentPage === index + 1 ? 'selected' : ''}
+                            <NavLink
+                                to={`/Notice?page=${pageNumber}`}
                             >
-                                {index + 1}
-                            </li>
-                        </NavLink>
+                                {pageNumber}
+                            </NavLink>
+                        </li>
                     ))}
+                    {currentPage < totalNumberOfPages && (
+                        <>
+                            <li><NavLink to={`/Notice?page=${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
+                            <li><NavLink to={`/Notice?page=${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
+                        </>
+                    )}
                 </ul>
             </div>
         </section>

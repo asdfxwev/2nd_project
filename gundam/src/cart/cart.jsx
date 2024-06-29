@@ -8,7 +8,7 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
 
     return (
         <div className="cart-item">
-            <input type="checkbox" checked={isChecked} onChange={() => onCheckboxChange(item.id)} />
+            <div><input type="checkbox" checked={isChecked} onChange={() => onCheckboxChange(item.id)} /></div>
             <div><img src={item.image} alt={item.name} /></div>
             <div>{item.name}</div>
             <div><input type="number" value={item.quantity} min="1" onChange={handleChange} /></div>
@@ -88,7 +88,6 @@ const Cart = () => {
                     총 합계: {total.toLocaleString()}원
                 </div>
                 <div className="cart-actions">
-                    <button>계속 쇼핑하기</button>
                     <button>결제하기</button>
                 </div>
             </div>

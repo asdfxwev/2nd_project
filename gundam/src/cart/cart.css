@@ -33,14 +33,22 @@
 .cart-item div {
     flex: 1;
     text-align: center;
+    align-content: center;
 }
 .cart-item img {
-    max-width: 100px;
+    max-width: 80%;
 }
 .cart-item input {
     width: 50px;
     text-align: center;
 }
+
+.cart-item input[type="checkbox"] {
+    width: 32px;
+    height: 32px; 
+    margin-right: 10px;
+}
+
 .cart-total {
     display: flex;
     justify-content: flex-end;

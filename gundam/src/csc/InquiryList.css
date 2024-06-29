@@ -1,0 +1,8 @@
+.CscInquiryList {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid gray;
+}

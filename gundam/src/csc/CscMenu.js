@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CscData from "./CscData";
 
 export default function CscMenu({ setItem, menuItem, currentCategory, navigate }) {
+    
     const handleCategoryClick = (category) => {
         setItem(category === 'ALL' ? CscData : CscData.filter(item => item.classification === category));
         navigate(`?page=1&category=${category}`);

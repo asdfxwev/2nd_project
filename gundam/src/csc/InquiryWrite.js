@@ -26,7 +26,7 @@ export default function InquiryWrite() {
         event.preventDefault();
         const inquiry = { inquiryType, subject, message };
         try {
-            const response = await axios.post('http://localhost:3001/inquiries', inquiry);
+            const response = await axios.post('http://localhost:3000/users', inquiry);
             console.log(response.data);
             navigate('/Csc/Inquiry');
         } catch (error) {

@@ -17,19 +17,6 @@
       "address": "인천 강화군 길상면 마니산로 8 asdf",
       "phoneNumber": "1234567890",
       "inquiries": []
-    },
-    {
-      "id": "0637",
-      "inquiryType": "반품",
-      "subject": "a",
-      "message": "a"
-    },
-    {
-      "id": "d4f5",
-      "userId": "asdfg@asdfg",
-      "inquiryType": "배송",
-      "subject": "ㅁㄴㅇㄹ",
-      "message": "ㅁㄴㅇㄹ"
     }
   ]
 }

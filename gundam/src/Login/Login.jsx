@@ -20,10 +20,13 @@ function Login() {
         result = importedUsers.find((user) => {
             return user.email === email && user.password === password;
         });
-        if (result != null) {
+        if (result != null) {  //로컬스토리지에 저장
             const loginInfo = {
                 name: result.name,
                 email: result.email,
+                phoneNumber : result.phoneNumber,
+                address: result.address,
+                id: result.id,
             }
             localStorage.setItem("loginInfo", JSON.stringify(loginInfo));
             navigate('/');
@@ -35,10 +38,10 @@ function Login() {
 
 
     return (
-        <div className="container">
+        <div className="container_entire">
             <div className="container-login">
-                <img className='imd' src='./image/gamn.png' alt="Gundam Logo" />
-                <img className='imc' src='./image/gamm.png' alt="Gundam Logo" />
+                <img className='leftimg' src='./image/gamn.png' alt="Gundam Logo" />
+                <img className='rightimg' src='./image/gamm.png' alt="Gundam Logo" />
 
 
                 <div className="wrap-login">
@@ -84,9 +87,9 @@ function Login() {
                             </a>
                         </div>
                         <div>
-                            <IdFindingModal href="./Login/Findingid" />
+                           <IdFindingModal  href="./Login/Findingid" />
                             &nbsp;
-                            <SecurityModal href="./Login/Security" />
+                           <SecurityModal  href="./Login/Security" />
                         </div>
                     </form>
                 </div>

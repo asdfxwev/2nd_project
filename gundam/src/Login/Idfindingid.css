@@ -27,3 +27,16 @@
     width: 30%;
     height: 100%;
 }
+
+.FindID {
+    color: white;
+    background-color: gray;
+    border: 0;
+    border-radius: 15px;
+    font-size: 20px;
+    position: relative;
+    left: 20%;
+    margin-top: 5%;
+
+   
+}

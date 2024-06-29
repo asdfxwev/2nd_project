@@ -40,7 +40,7 @@ function IdFindingModal() {
 
     return (
         <span className='modalcss'>
-            <button type='button' onClick={openModal}>아이디 찾기</button>
+            <button className='FindID' type='button' onClick={openModal}>아이디 찾기</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

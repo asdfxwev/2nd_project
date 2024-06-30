@@ -87,7 +87,7 @@ export default function ItemDetail() {
                     <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
                     
                     <SectionImg key={selectedItem.id} item={selectedItem} />    {/* 상세보기 tap */}
-                    <ItemReview />
+                    <ItemReview key={selectedItem.id} item={selectedItem.id} />
                     
                 </div>
 

@@ -86,7 +86,6 @@
 }
 
 /* ================= tab End ================== */
-
 /* =============== section img ================ */
 .detail_item_name {
     font-size: 40px;
@@ -110,14 +109,62 @@
 }
 
 /* ============= section img End ============== */
-
-/* =============== section img ================ */
+/* ================== review ================== */
 .review_list{
     width: 100%;
     height: 800px;
+    text-align: center;
 }
-/* ============= section img End ============== */
 
+.re_list_top{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border-bottom: solid 2px black;
+}
+
+.re_list_data{
+    /* border-top: solid 2px black; */
+}
+
+.re_list_row{
+    display: grid;
+    grid-template: repeat(10, 1fr) / 1fr 3fr;
+}
+
+.re_list_top div{
+    align-content: center;
+    border-bottom: solid 1px rgb(200, 200, 200);
+}
+
+.re_list_data div{
+    height: 50px;
+    align-content: center;
+    border-bottom: solid 1px rgb(200, 200, 200);
+}
+
+.re_list_top div:nth-of-type(odd){
+    width: 25%;
+    height: 100%;
+    background-color: rgb(240, 238, 238);
+}
+
+.re_list_top div:nth-of-type(even){
+    width: 75%;
+    height: 100%;
+}
+
+.re_list_row div:nth-of-type(odd){
+    background-color: rgb(240, 238, 238);
+}
+
+.re_comment_title,
+.re_comment{
+    width: 100%;
+    height: 30px;
+}
+
+/* ================ review End ================ */
 
 /* ============== Left Box End ================ */
 
@@ -309,9 +356,8 @@
     background-color: white;
 }
 
-.info_bottom_box div:nth-of-type(add) {
+.info_bottom_box div:nth-of-type(odd) {
     text-align: center;
-    width: 170px;
 }
 
 .company {

@@ -58,3 +58,14 @@
 .footer div a:hover {
     text-decoration: underline;
 }
+
+.CustomerService {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 6px 18px;
+    background: #d6d6d6;
+    color: #fff;
+}
+
+   
+    

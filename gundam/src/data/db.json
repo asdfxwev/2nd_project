@@ -42,14 +42,25 @@
         }
       ]
     },
-    
     {
-      "id": "625a",
+      "id": "fe98",
+      "email": "dydejr852@naver.con",
+      "address": "경기 포천시 정자동길 8 1234",
       "name": "전용덕",
-      "email": "dydejr852@naver.com",
       "password": "12345678",
-      "address": "경기 포천시 정자동길 8 123",
-      "phoneNumber": "01072815068"
+      "confirmPassword": "12345678",
+      "phoneNumber": "01072815068",
+      "securityQuestion": "",
+      "securityAnswer": ""
+    },
+    {
+      "id": "0530",
+      "email": "dydejr852@naver.col",
+      "address": "경기 포천시 정자동길 8 1234",
+      "name": "전용덕",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "01072815069"
     }
   ]
 }

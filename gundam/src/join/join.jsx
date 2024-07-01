@@ -37,6 +37,16 @@ const SignupForm = () => {
         }
     };
 
+    const checkPhoneNumberExists = async (phoneNumber) => {
+        try {
+            const response = await axios.get(`http://localhost:3001/users?phoneNumber=${phoneNumber}`);
+            return response.data.length > 0;
+        } catch (error) {
+            console.error('Error checking phone number:', error);
+            return false;
+        }
+    };
+
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -74,8 +84,7 @@ const SignupForm = () => {
             address: '',
             dtl_address: '',
             phoneNumber: '',
-            securityQuestion: '',
-            securityAnswer: ''
+            
         },
         validationSchema: Yup.object({
             name: Yup.string().required('이름을 입력해주세요.'),
@@ -86,7 +95,7 @@ const SignupForm = () => {
             dtl_address: Yup.string(),
             phoneNumber: Yup.string().matches(/^[0-9]{10,11}$/, '유효한 핸드폰 번호를 입력하세요.').required('핸드폰 번호는 필수 항목입니다.')
 
-        }),  
+        }),
         onSubmit: handleSubmit
     });
 
@@ -137,6 +146,30 @@ const SignupForm = () => {
                         <div className="error">{formik.errors.email}</div>
                     ) : null}
 
+                </div>
+                <div className="form-group">
+                    <label htmlFor="phoneNumber"></label>
+                    <input
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        type="text"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.phoneNumber}
+                        placeholder="핸드폰 번호를 입력하세요"
+
+                    />
+                    <button type="button" onClick={async () => {
+                        const phoneNumberExists = await checkPhoneNumberExists(formik.values.phoneNumber);
+                        if (phoneNumberExists) {
+                            alert('이미 사용 중인 핸드폰 번호입니다.');
+                        } else {
+                            alert('사용 가능한 핸드폰 번호입니다.');
+                        }
+                    }}>중복 확인</button>
+                    {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+                        <div className="error">{formik.errors.phoneNumber}</div>
+                    ) : null}
                 </div>
 
                 <div className="form-group">
@@ -202,22 +235,7 @@ const SignupForm = () => {
 
 
 
-                <div className="form-group">
-                    <label htmlFor="phoneNumber"></label>
-                    <input
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        type="text"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.phoneNumber}
-                        placeholder="핸드폰 번호를 입력하세요"
-
-                    />
-                    {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
-                        <div className="error">{formik.errors.phoneNumber}</div>
-                    ) : null}
-                </div>
+                
 
 
                 <button type="submit" className="submit-button">회원가입</button>

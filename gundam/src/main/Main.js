@@ -12,6 +12,7 @@ import Customerservice from '../csc/Customerservice';
 import NoticeDelivery from '../csc/NoticeDelivery';
 import Inquiry from '../csc/Inquiry';
 import InquiryWrite from '../csc/InquiryWrite';
+import Cart from '../Cart/Cart';
 
 
 
@@ -40,6 +41,7 @@ export default function Main() {
                 <Route path="/Csc/" element={<Customerservice />} />
                 <Route path="/Csc/Inquiry" element={<Inquiry />} />
                 <Route path="/Csc/Inquiry/InquiryWrite" element={<InquiryWrite />} />
+                <Route path="/Cart/*" element={<Cart/>} />
             </Routes>
         </>
     )

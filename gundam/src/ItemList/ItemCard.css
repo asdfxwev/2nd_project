@@ -52,6 +52,7 @@
 .shopping-cart-icon {
     margin: 10px;
     font-size: 1.5em;
+    cursor: pointer;
 }
 
 .item-card:hover .shopping-cart-icon {

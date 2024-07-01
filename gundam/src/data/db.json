@@ -1,31 +1,6 @@
 {
   "users": [
     {
-      "id": "d002",
-      "name": "ㅂㅈㄷㄱ",
-      "email": "qwer@qwer",
-      "password": "qwerqwer",
-      "address": "서울 송파구 바람드리길 2 qwer",
-      "phoneNumber": "1234567890",
-      "inquries": [
-        {
-          "inquiryType": "배송",
-          "subject": "asdf",
-          "message": "asdfasdf"
-        },
-        {
-          "inquiryType": "",
-          "subject": "asdf",
-          "message": "asdf"
-        },
-        {
-          "inquiryType": "반품",
-          "subject": "qwer",
-          "message": "qwer"
-        }
-      ]
-    },
-    {
       "id": "408d",
       "name": "전용덕",
       "email": "dydejr852@naver.com",
@@ -42,6 +17,28 @@
           "inquiryType": "완구A/S",
           "subject": "fasdf",
           "message": "asdv"
+        }
+      ]
+    },
+    {
+      "id": "ebdf",
+      "name": "asdf",
+      "email": "asdf@asdf",
+      "password": "asdfasdf",
+      "address": "부산 동래구 미남로 11 asdf",
+      "phoneNumber": "1234567890",
+      "inquries": [
+        {
+          "id": "6f7d772b-7732-41f7-8415-f0fcbb3e9873",
+          "inquiryType": "반품",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": "f99d2da1-5062-41d8-8b90-b4f0832a8945",
+          "inquiryType": "반품",
+          "subject": "a",
+          "message": "a"
         }
       ]
     }

@@ -133,6 +133,7 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import CscData from "./CscData";
 import InquiryList from './InquiryList';
 import Csc from './Csc';
@@ -144,7 +145,8 @@ import CscLeft from './CscLeft';
 export default function InquiryWrite() {
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-    const [inquiryType, setInquiryType] = useState('');
+    const [inquiryType, setInquiryType] = useState('배송');
+    // const [inquiryNum, setInquiryNum] = useState(0);
     const navigate = useNavigate();
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const userId = existingInquiries.id; // Assuming the user ID is stored here
@@ -158,7 +160,7 @@ export default function InquiryWrite() {
 
     const InquirySubmit = async (event) => {
         event.preventDefault();
-        const newInquiry = { inquiryType, subject, message };
+        const newInquiry = { id: uuidv4(), inquiryType, subject, message };
 
         try {
             // Fetch the current user data
@@ -178,8 +180,13 @@ export default function InquiryWrite() {
 
         setSubject('');
         setMessage('');
-        setInquiryType('');
+        setInquiryType('배송');
     };
+    
+    function onSubjectChange(e) {
+        setSubject(e.target.value)
+        // setInquiryNum(e => e + 1)
+    }
 
     return (
         <section className="cscContainer">
@@ -189,26 +196,26 @@ export default function InquiryWrite() {
                 <div className="inquiryGrid">
                     <div>문의유형</div>
                     <div>
-                        <input name="inquirySelect" id="inquiryNum1" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum1">배송</label>
+                        <input name="inquirySelect" id="inquiryNum1" type="radio" onChange={handleInquiryChange} defaultChecked />
+                        <label For="inquiryNum1">배송</label>
                         <input name="inquirySelect" id="inquiryNum2" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum2">상품</label>
+                        <label For="inquiryNum2">상품</label>
                         <input name="inquirySelect" id="inquiryNum3" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum3">반품</label>
+                        <label For="inquiryNum3">반품</label>
                         <input name="inquirySelect" id="inquiryNum4" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum4">교환</label>
+                        <label For="inquiryNum4">교환</label>
                         <input name="inquirySelect" id="inquiryNum5" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum5">완구A/S</label>
+                        <label For="inquiryNum5">완구A/S</label>
                         <input name="inquirySelect" id="inquiryNum6" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum6">주문/결제</label>
+                        <label For="inquiryNum6">주문/결제</label>
                         <input name="inquirySelect" id="inquiryNum7" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum7">이벤트</label>
+                        <label For="inquiryNum7">이벤트</label>
                         <input name="inquirySelect" id="inquiryNum8" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum8">회원</label>
+                        <label For="inquiryNum8">회원</label>
                         <input name="inquirySelect" id="inquiryNum9" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum9">시스템장애</label>
+                        <label For="inquiryNum9">시스템장애</label>
                         <input name="inquirySelect" id="inquiryNum10" type="radio" onChange={handleInquiryChange} />
-                        <label htmlFor="inquiryNum10">기타</label>
+                        <label For="inquiryNum10">기타</label>
                     </div>
                     <div>문의제목</div>
                     <div>
@@ -217,7 +224,7 @@ export default function InquiryWrite() {
                             id="subject"
                             type="text"
                             value={subject}
-                            onChange={(e) => setSubject(e.target.value)}
+                            onChange={onSubjectChange}
                             required
                         />
                     </div>

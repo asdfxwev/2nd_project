@@ -1,49 +1,40 @@
 {
   "users": [
     {
-      "id": "408d",
-      "name": "전용덕",
-      "email": "dydejr852@naver.com",
-      "password": "123456789",
-      "address": "충남 당진시 우강면 남원포1길 5-4 asd",
-      "phoneNumber": "1234567890",
-      "cart": [
+      "id": "28d8",
+      "email": "asdf@asdf",
+      "address": "부산 연제구 미남로 1 asdf",
+      "name": "ㅁㄴㅇㄹ",
+      "password": "asdfasdf",
+      "confirmPassword": "asdfasdf",
+      "phoneNumber": "1234567891",
+      "inquries": [
         {
           "id": 1,
-          "tag": "건프라",
-          "name": "RG 윙 건담",
-          "price": 38400,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam01.jpg"
-          ],
-          "image": "/image/gundam01.jpg"
+          "inquiryType": "배송",
+          "subject": "asdf",
+          "message": "asdf"
         }
-      ]
+      ],
+      "inquiryCounter": 2
     },
     {
-      "id": "ebdf",
-      "name": "asdf",
-      "email": "asdf@asdf",
-      "password": "asdfasdf",
-      "address": "부산 동래구 미남로 11 asdf",
+      "id": "070c",
+      "email": "dydejr852@naver.com",
+      "address": "부산 해운대구 APEC로 30 asdf",
+      "name": "전용덕",
+      "password": "123456789",
+      "confirmPassword": "123456789",
       "phoneNumber": "1234567890",
       "inquries": [
         {
-          "id": "6f7d772b-7732-41f7-8415-f0fcbb3e9873",
-          "inquiryType": "반품",
-          "subject": "a",
-          "message": "a"
-        },
-        {
-          "id": "f99d2da1-5062-41d8-8b90-b4f0832a8945",
-          "inquiryType": "반품",
+          "id": 1,
+          "inquiryType": "배송",
           "subject": "a",
           "message": "a"
         }
-      ]
+      ],
+      "inquiryCounter": 2
     }
   ]
 }

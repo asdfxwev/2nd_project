@@ -47,8 +47,8 @@ export default function Customerservice() {
                 <div>
                     <div className="CscInquiryListTitle">
                         <div style={{ width: '100px' }}>유형</div>
-                        <div style={{ width: '200px' }}>제목</div>
-                        <div style={{ width: '800px' }}>내용</div>
+                        <div style={{ width: '500px' }}>제목</div>
+                        <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
                     <InquiryList />
                     <div className='InquiryWriteBtn'>

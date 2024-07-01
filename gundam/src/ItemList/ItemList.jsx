@@ -265,13 +265,6 @@ const ItemList = () => {
         setPaginatedItems(paginatedItems);
     }, [currentPage, searchResult, itemsPerPage, selectedFilters]);
 
-    // 검색 후 뒤로 돌아갈 때 이전 페이지 정보 복구
-    // useEffect(() => {
-    //     const query = new URLSearchParams(location.search);
-    //     const page = parseInt(query.get('page')) || 1;
-    //     setCurrentPage(page);
-    // }, [location.search]);
-
     return (
         <div className='item-first'>
             <div className='item-size-200'><h1>{selectedOption}</h1></div>
@@ -314,7 +307,7 @@ const ItemList = () => {
                                 </div>
                             </div>
                             <div className='filter-section'>
-                                <h3 className={selectedFilters.information.visible ? '' : 'open'} onClick={() => toggleSection('information')}>
+                                <h3 onClick={() => toggleSection('information')}>
                                     상품정보
                                     <span className='toggle-section'>
                                         {selectedFilters.information.visible ? '-' : '+'}
@@ -329,7 +322,7 @@ const ItemList = () => {
                                 )}
                             </div>
                             <div className='filter-section'>
-                                <h3 className={selectedFilters.price.visible ? '' : 'open'} onClick={() => toggleSection('price')}>
+                                <h3 onClick={() => toggleSection('price')}>
                                     가격대별
                                     <span className='toggle-section'>
                                         {selectedFilters.price.visible ? '-' : '+'}
@@ -346,7 +339,7 @@ const ItemList = () => {
                                 )}
                             </div>
                             <div className='filter-section'>
-                                <h3 className={selectedFilters.brand.visible ? '' : 'open'} onClick={() => toggleSection('brand')}>
+                                <h3 onClick={() => toggleSection('brand')}>
                                     브랜드별
                                     <span className='toggle-section'>
                                         {selectedFilters.brand.visible ? '-' : '+'}
@@ -365,7 +358,7 @@ const ItemList = () => {
                                 )}
                             </div>
                             <div className='filter-section'>
-                                <h3 className={selectedFilters.item.visible ? '' : 'open'} onClick={() => toggleSection('item')}>
+                                <h3 onClick={() => toggleSection('item')}>
                                     작품별
                                     <span className='toggle-section'>
                                         {selectedFilters.item.visible ? '-' : '+'}

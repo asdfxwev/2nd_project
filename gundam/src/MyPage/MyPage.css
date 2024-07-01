@@ -1,0 +1,59 @@
+
+.mypage_container {
+    display: flex;
+    flex-direction: row;
+    /* width: calc(100vw - 17px); */
+    margin-top: 100px;
+    margin-left: 100px;
+
+}
+
+.mypage_menu {
+   
+    width: 300px;
+    text-align: left;
+}
+
+.mypage_menu h2 {
+   
+    font-size: 3rem;
+}
+
+.mypage_menu ul {
+
+}
+
+.mypage_menu ul li {
+    margin-top: 20px;
+    text-align: left;
+    font-weight: bold;
+
+}
+
+
+.mypage_menu ul li a {
+     display: flex;
+}
+
+
+.mypage_menu ul li a:hover {
+   
+
+}
+
+.user_info {
+    
+   
+}
+
+.user_info h3 {
+  
+}
+
+.user_info p {
+
+   
+
+
+
+}

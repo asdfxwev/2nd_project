@@ -10,12 +10,12 @@
 .InquiryWriteBtn {
     font-size: 2rem;
     text-align: center;
-    margin-top: 20px;
+    margin: 20px 0px;
 }
 
 .InquiryWriteBtn>a {
-    border: 1px solid red;
+    border: 1px solid aqua;
     border-radius: 5px;
-    color: black;
-    background-color: red;
+    color: #b3ffff;
+    background-color: aqua;
 }

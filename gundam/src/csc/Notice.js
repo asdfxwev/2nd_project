@@ -5,17 +5,17 @@ import './Notice.css';
 import NoticeDelivery from "./NoticeDelivery";
 import CscLeft from "./CscLeft";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-
+import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 export default function Notice() {
     const [currentPage, setCurrentPage] = useState(1);
+    const [filteredItems, setFilteredItems] = useState(NoticeData);
     const [paginatedItems, setPaginatedItems] = useState([]);
-    const navigate = useNavigate();
+    const [content, setContent] = useState('');
     const location = useLocation();
 
-    const itemsPerPage = 15;
-    const totalNumberOfPages = Math.ceil(NoticeData.length / itemsPerPage);
+    const itemsPerPage = 10;
+    const totalNumberOfPages = Math.ceil(filteredItems.length / itemsPerPage);
     const maxPagesToShow = 10;
 
     useEffect(() => {
@@ -26,14 +26,15 @@ export default function Notice() {
 
     useEffect(() => {
         const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = Math.min(startIndex + itemsPerPage, NoticeData.length);
-        const paginatedItems = NoticeData.slice(startIndex, endIndex);
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredItems.length);
+        const paginatedItems = filteredItems.slice(startIndex, endIndex);
         setPaginatedItems(paginatedItems);
-    }, [currentPage]);
+    }, [currentPage, filteredItems]);
 
     const getPageNumbers = () => {
         const pageNumbers = [];
-        const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+        const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
+        const startPage = currentGroup * maxPagesToShow + 1;
         const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
 
         for (let i = startPage; i <= endPage; i++) {
@@ -43,12 +44,37 @@ export default function Notice() {
         return pageNumbers;
     };
 
+    const onNoticeChange = (e) => {
+        const searchContent = e.target.value;
+        setContent(searchContent);
+
+        const filtered = NoticeData.filter(item =>
+            item.title.toLowerCase().includes(searchContent.toLowerCase())
+        );
+        setFilteredItems(filtered);
+        setCurrentPage(1);
+    };
+
+    const onNoticeKeyDown = (e) => {
+        if (e.keyCode === 13) {
+            onNoticeSubmit(e);
+        }
+    };
+
+    const onNoticeSubmit = (e) => {
+        e.preventDefault();
+        onNoticeChange({ target: { value: content } });
+    };
+
     return (
         <section className="cscNoticeContiner">
             <CscLeft />
             <div className="cscNoticeMain">
-                <h2 className="h2Notice" style={{ textAlign: 'center' }}>공지사항</h2>
-
+                <h2 className="h2Notice">공지사항</h2>
+                <form className="noticeForm" onSubmit={onNoticeSubmit}>
+                    <input type="text" value={content} onChange={onNoticeChange} onKeyDown={onNoticeKeyDown} />
+                    <button type="submit">검색<FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+                </form>
                 <div style={{ height: '50px' }} className="noticeTitleGrid">
                     <div style={{ width: '220px' }}>분류</div>
                     <div style={{ width: '1100px' }}>제목</div>

@@ -7,9 +7,9 @@ export default function NoticeDelivery({ noticeNum }) {
 
     function onNoticeTitle(noticeId) {
         setVisibleNotice(noticeId === visibleNotice ? null : noticeId)
-    }
+    }   
 
-    console.log({ noticeNum });
+    // console.log({ noticeNum });
 
     return (
         <>

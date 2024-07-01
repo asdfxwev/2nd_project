@@ -12,6 +12,7 @@
     /* margin-top: 100px; */
     margin-bottom: 50px;
     font-size: 3rem;
+    text-align: center;
 }
 
 .titleData li {
@@ -86,4 +87,23 @@
     border: 1px solid aqua;
     /* border-radius: 10%; */
     background-color: aqua;
+}
+
+.noticeForm {
+    text-align: right;
+    /* width: 100px; */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-bottom: 20px;
+}
+
+.noticeForm input {
+    width: 200px;
+    height: 23px;
+}
+
+.noticeForm button {
+    height: 28px;
 }

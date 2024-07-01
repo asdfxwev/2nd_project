@@ -25,7 +25,7 @@ export default function ProjectImg() {
     };
 
     return (
-        <div>
+        <section className="productImg">
             <h2 className="bestChoice">당신을 위한 최고의 선택!!!</h2>
             <div className="mainGridArea">
                 {projImg.map((img, i) => (
@@ -49,6 +49,6 @@ export default function ProjectImg() {
                 <div><img src="" alt="" /></div>
                 <div></div>
             </div>
-        </div>
+        </section>
     )
 }

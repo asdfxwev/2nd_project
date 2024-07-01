@@ -1,29 +1,43 @@
 
+.join_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
 .signup-form {
-    background-color: #fff;
-    padding: 10%;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 40%;
-    margin-left:30%;
+    background-color: white;
+    padding: .5%;
+    height: 90%;
+    border-radius: 50px;
+    box-shadow: 0 0 80px rgba(255, 4, 4, 0.1);
+    width: 25%;
     
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     text-align: left;
 }
-
+.logo2 img{
+    width: 30%;
+    margin-bottom: 15px;
+    text-align: center;
+    margin-left: 35%;
+    
+}
 
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 20px;
-    border: 3px solid #ccc;
-    border-radius: 100px;
+    padding: 1%;
+    border: none; /* 모든 테두리를 제거합니다. */
+    border-bottom: 3px solid #ccc; /* 아래쪽 테두리만 추가합니다. */
+    border-radius: 0; /* 원래의 둥근 모서리를 제거합니다. */
     box-sizing: border-box;
+    background-color: transparent; /* 배경색을 투명하게 설정합니다. */
 }
 
 .error {
@@ -35,11 +49,12 @@
 .submit-button {
     background-color: #4CAF50;
     color: white;
-    padding: 20px 100px;
+    padding: 5% 5%;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    width: 50%;
+    width: 60%;
+    margin-left: 20%;
 }
 
 .submit-button:hover {

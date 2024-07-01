@@ -40,7 +40,7 @@ export default function Customerservice() {
         <section className="cscContainer">
                 <CscLeft />
             <div className="cscMain">
-                <h2 className="cscTitle"></h2>
+                <h2 className="cscTitle h2Notice">자주묻는질문</h2>
                 <div>
                     <ul className="CscMenu">
                         <CscMenu 

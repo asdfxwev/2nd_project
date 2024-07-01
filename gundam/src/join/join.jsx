@@ -6,15 +6,32 @@ import './SignupForm.css';
 import { useNavigate } from 'react-router-dom';
 // import AddressSearch from './AddressSearch';
 
+const checkEmailExists = async (email) => {
+    try {
+        const response = await axios.get(`http://localhost:3001/users/check-email?email=${email}`);
+        return response.data.exists; // 서버는 이메일이 존재하면 { exists: true }, 존재하지 않으면 { exists: false }를 응답해야 함
+    } catch (error) {
+        console.error('Error checking email:', error);
+        return false; // 에러가 발생한 경우, 중복 확인을 실패로 간주
+    }
+};
+
 const SignupForm = () => {
 
     const navigate = useNavigate();
 
     const handleSubmit = async (values) => {
 
-        const { name, email, password, confirmPassword, address, dtl_address, phoneNumber } = values;
+        const { name, email, password, confirmPassword, address, dtl_address, phoneNumber, rest} = values;
         const combinedAddress = `${address} ${dtl_address}`; // address와 dtl_address 값을 공백으로 구분하여 연결
-        const formData = { name, email, password, address: combinedAddress, phoneNumber};
+        const emailExists = await checkEmailExists(email);
+        if (emailExists) {
+            alert('이미 사용 중인 이메일입니다.');
+            return; // 이메일이 중복되면 여기서 함수 종료
+        }
+        const formData = { name, email, password, address: combinedAddress, phoneNumber, rest};
+
+       
 
         try {
             const response = await axios.post('http://localhost:3001/users', formData);
@@ -24,6 +41,8 @@ const SignupForm = () => {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
     };
+
+   
     useEffect(() => {
         const script = document.createElement('script');
         script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
@@ -107,6 +126,7 @@ const SignupForm = () => {
                 {formik.touched.email && formik.errors.email ? (
                     <div className="error">{formik.errors.email}</div>
                 ) : null}
+                
             </div>
 
             <div className="form-group">

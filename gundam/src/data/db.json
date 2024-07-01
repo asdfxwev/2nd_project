@@ -1,198 +1,27 @@
 {
   "users": [
     {
-      "email": "user1@example.com",
-      "password": "password1",
-      "id": "fc37"
-    },
-    {
-      "email": "user2@example.com",
-      "password": "password2",
-      "id": "22b9"
-    },
-    {
-      "id": "2f7d",
-      "name": "전용덕",
+      "id": "6bad",
+      "name": "전",
       "email": "dydejr852@naver.com",
-      "password": "123456789",
-      "confirmPassword": "123456789",
-      "address": "ㅀㅀㅀㅀㅀㄹㅇㄹㅇㄹㅇㄹ",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "7f1f",
-      "name": "전용",
-      "email": "dydejr855@naver.com",
-      "password": "123456789",
-      "confirmPassword": "123456789",
-      "address": "ㅀㅀㅀㅀㅀㄹㅇㄹㅇㄹㅇㄹ",
-      "phoneNumber": "01072815069",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "b419",
-      "name": "전용덕",
-      "email": "dydejr852@naver.com",
-      "password": "123456789",
-      "confirmPassword": "123456789",
-      "address": "ㅀㅀㅀㅀㅀㄹㅇㄹㅇㄹㅇㄹ",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "86a2",
-      "name": "김성규",
-      "email": "dydejr852@naver.con",
-      "password": "231456789",
-      "confirmPassword": "123456789",
-      "address": "ㅀㅀㅀㅀㅀㄹㅇㄹㅇㄹㅇㄹ",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "태어난 도시의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "6a23",
-      "name": "김성규",
-      "email": "doja120@naver.com",
-      "password": "123456789",
-      "confirmPassword": "123456789",
-      "address": "ㅀㅀㅀㅀㅀㄹㅇㄹㅇㄹㅇㄹ",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "태어난 도시의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "46dd",
-      "name": "ㄱㅀㅀ",
-      "email": "doja120@naver.com",
-      "password": "123456789",
-      "confirmPassword": "123456789",
-      "address": "ㅀㅀㅀㅀㅀㄹㅇㄹㅇㄹㅇㄹ",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "태어난 도시의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "feb8",
-      "name": "전용덕",
-      "email": "dydejr123@naver.com",
-      "password": "123456789",
-      "address": "경기 성남시 분당구 금곡로 298",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "89a5",
-      "name": "전용덕",
-      "email": "dydejr852@asdfg.com",
       "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 298",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
+      "address": "경기 광주시 퇴촌면 정자동길 2 12345678",
+      "phoneNumber": "01072815068"
     },
     {
-      "id": "133f",
+      "id": "8300",
       "name": "전용덕",
       "email": "dydejr852@naver.com",
       "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 298",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "태어난 도시의 이름은?",
-      "securityAnswer": "루이"
+      "address": "경기 포천시 정자동길 8 123",
+      "phoneNumber": "01072815068"
     },
     {
-      "id": "8bb2",
-      "name": "ㄴㅇㄴㅇㄴㅇ",
-      "email": "sdsdsds@sdsd",
-      "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 302",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "가장 친한 친구의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "054b",
-      "name": "전용덕",
-      "email": "dydejr852@naver.co",
-      "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 298",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "47b2",
-      "name": "전용덕",
-      "email": "dydejr852@naver.cob",
-      "password": "123456789",
-      "address": "경기 성남시 분당구 금곡로 298",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "a5dc",
-      "name": "전용덕",
-      "email": "dydejr852@naver.con",
-      "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 298",
-      "addresa": "203",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "3ea7",
-      "name": "전용덕",
-      "email": "dydejr852@naver.con",
-      "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 298 203",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "3e64",
+      "id": "3583",
       "name": "전용덕",
       "email": "dydejr852@naver.com",
       "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 302 123",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "bf72",
-      "name": "kim",
-      "email": "dydejr43@aasd",
-      "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 302 234",
-      "phoneNumber": "01072815068",
-      "securityQuestion": "첫 번째 반려동물의 이름은?",
-      "securityAnswer": "루이"
-    },
-    {
-      "id": "bf73",
-      "name": "호",
-      "email": "test@naver.com",
-      "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 302 234",
-      "phoneNumber": "01012341234",
-      "securityQuestion": "태어난 도시의 이름은?",
-      "securityAnswer": "성남"
-    },
-    {
-      "id": "23b7",
-      "name": "전용덕",
-      "email": "dydejr852@naver.com",
-      "password": "12345678",
-      "address": "경기 수원시 장안구 대평로 27 203",
+      "address": "경기 성남시 분당구 금곡로 298 123",
       "phoneNumber": "01072815068"
     }
   ]

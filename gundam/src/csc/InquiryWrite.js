@@ -141,7 +141,6 @@ export default function InquiryWrite() {
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [inquiryType, setInquiryType] = useState('배송');
-    const [inquiryNum, setInquiryNum] = useState('');
     const navigate = useNavigate();
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const userId = existingInquiries.id; // Assuming the user ID is stored here
@@ -160,11 +159,8 @@ export default function InquiryWrite() {
             // Fetch the current user data
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data;
-            console.log(Math.max(userData.inquries.id));
 
             const id = userData.inquiryCounter || 1;
-            console.log(id);
-            // console.log(userData.inquries.data.id);
 
             const newInquiry = { id, inquiryType, subject, message };
             

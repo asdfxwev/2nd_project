@@ -5,7 +5,7 @@ import SectionImg from './SectionImg';
 import ItemReview from './ItemReview';
 import ItemQna from './ItemQna';
 import ItemService from './ItemService';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -54,6 +54,8 @@ export default function ItemDetail() {
         return number.toLocaleString('ko-KR');
     };
     
+    const navigate = useNavigate();
+
     return (
         <div className="item_detail_main">
             <div className='detail_left_box'>
@@ -101,8 +103,7 @@ export default function ItemDetail() {
             <div className='detail_right_box'>
                 <div className='right_inner'>
                     <div className='detail_top'>
-                        {/* <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> 추후 찜 기능 추가 시 아이콘 사용할것 */}
-                        <FontAwesomeIcon icon={faCartShopping} className='detail_cart' />
+                        <FontAwesomeIcon icon={faCartShopping} className='detail_cart' onClick={() => {navigate('../cart/Cart')}} />
                     </div>
                     <div className='item_name'><h2>{selectedItem.name}</h2></div>
                     <div className='underline'><span className='item_price'>{formatNumber(selectedItem.price)}</span>원</div>
@@ -123,10 +124,10 @@ export default function ItemDetail() {
                     </div>
                     <div className='item_total_price font_medium'>
                         <p className='total_price_title '>총금액</p>
-                        <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>  {/* 총금액 계산 안됨. */}
+                        <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>
                     </div>
                     <div className='item_btn'>
-                        <button className='submit_btn'>구매하기</button>
+                        <button className='submit_btn' onClick={() => {navigate('/ItemBuy')}}>구매하기</button>
                     </div>
                 </div>
             </div>

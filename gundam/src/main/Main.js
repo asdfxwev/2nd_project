@@ -13,7 +13,8 @@ import NoticeDelivery from '../csc/NoticeDelivery';
 import Inquiry from '../csc/Inquiry';
 import InquiryWrite from '../csc/InquiryWrite';
 import MyPage from '../MyPage/MyPage';
-import Cart from '../Cart/Cart';
+import Cart from '../cart/Cart';
+import ItemBuy from '../buy/ItemBuy';
 
 
 
@@ -44,6 +45,7 @@ export default function Main() {
                 <Route path="/Csc/Inquiry" element={<Inquiry />} />
                 <Route path="/Csc/Inquiry/InquiryWrite" element={<InquiryWrite />} />
                 <Route path="/Cart/*" element={<Cart/>} />
+                <Route path="/ItemBuy/*" element={<ItemBuy/>} />
             </Routes>
         </>
     )

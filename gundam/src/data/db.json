@@ -7,18 +7,6 @@
       "password": "123456789",
       "address": "충남 당진시 우강면 남원포1길 5-4 asd",
       "phoneNumber": "1234567890",
-      "inquries": [
-        {
-          "inquiryType": "반품",
-          "subject": "qwer",
-          "message": "qwerqwer"
-        },
-        {
-          "inquiryType": "완구A/S",
-          "subject": "fasdf",
-          "message": "asdv"
-        }
-      ],
       "cart": [
         {
           "id": 1,

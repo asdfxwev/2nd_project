@@ -12,24 +12,29 @@
     cursor: pointer;
 }
 
-
-.inquiryData {
+.inquiryDataContainer {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid gray;
     transition-duration: 1s;
     max-height: 0;
-    height: 50px;
     display: none;
     opacity: 0;
-    border-bottom: 1px solid gray;
+}
+
+
+.inquiryData {
     display: none;
-    width: 700px;
+    width: 500px;
 }
 
 .inquiryBlock {
     transition-duration: 1s;
-    height: 200px;
+    /* height: 200px; */
     max-height: 200px;
     opacity: 1;
     align-items: center;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }

@@ -132,7 +132,11 @@ export default function InquiryList() {
                         <div onClick={() => inquiryDelete(inquiry.id)} className="inquiryDelete" style={{ width: '100px' }}>삭제</div>
                     </div>
                     {visibleInquiry === inquiry.id &&
-                        <div className="inquiryData inquiryBlock">{inquiry.message}</div>
+                        <div className="inquiryDataContainer inquiryBlock">
+                            <div style={{width:'100px', justifyContent:'center', display:'flex'}}>내용:</div>
+                            <div className="inquiryData inquiryBlock">{inquiry.message}</div>
+                            <div style={{width:'100px'}}></div>
+                        </div>
                     }
                 </React.Fragment>
             ))}

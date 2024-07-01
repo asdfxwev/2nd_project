@@ -33,6 +33,12 @@
           "inquiryType": "반품",
           "subject": "a",
           "message": "a"
+        },
+        {
+          "id": "f99d2da1-5062-41d8-8b90-b4f0832a8945",
+          "inquiryType": "반품",
+          "subject": "a",
+          "message": "a"
         }
       ]
     }

@@ -3,11 +3,15 @@ import './ItemDetail.css';
 import ItemDataBase from '../ItemList/ItemDataBase';
 import SectionImg from './SectionImg';
 import ItemReview from './ItemReview';
+import ItemQna from './ItemQna';
+import ItemService from './ItemService';
 import { useParams } from 'react-router-dom';
 
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export default function ItemDetail() {
     const { id } = useParams();
@@ -86,8 +90,10 @@ export default function ItemDetail() {
                     <div className='detail_item_name'>MG WING GUNDAM<br />ZERO EW Ver.Ka</div>
                     <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
                     
-                    <SectionImg key={selectedItem.id} item={selectedItem} />    {/* 상세보기 tap */}
-                    <ItemReview key={selectedItem.id} item={selectedItem.id} />
+                    <SectionImg key={selectedItem.id} item={selectedItem} /> {/* 상세보기 tap */}
+                    <ItemReview key={selectedItem.id} item={selectedItem.id} /> {/* 리뷰 tap */}
+                    <ItemQna key={selectedItem.id} item={selectedItem.id} /> {/* Q&A tap */}
+                    <ItemService /> {/* 배송/교환/반품 tap */}
                     
                 </div>
 
@@ -95,7 +101,8 @@ export default function ItemDetail() {
             <div className='detail_right_box'>
                 <div className='right_inner'>
                     <div className='detail_top'>
-                        <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                        {/* <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> 추후 찜 기능 추가 시 아이콘 사용할것 */}
+                        <FontAwesomeIcon icon={faCartShopping} className='detail_cart' />
                     </div>
                     <div className='item_name'><h2>{selectedItem.name}</h2></div>
                     <div className='underline'><span className='item_price'>{formatNumber(selectedItem.price)}</span>원</div>

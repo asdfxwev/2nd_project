@@ -45,5 +45,48 @@
         }
       ]
     }
+  ],
+  "review": [
+    {
+      "reviewId": 1,
+      "productId": 2,
+      "userId": "bf73",
+      "userName": "호",
+      "title": "리뷰제목 입력",
+      "comment": "엉망이에요 사지마요 바가지에 퀄리티 똥망",
+      "date": "2024-06-29"
+    },
+    {
+      "reviewId": 2,
+      "productId": 2,
+      "userId": "bf73",
+      "userName": "호",
+      "title": "리뷰제목 입력2",
+      "comment": "Good quality, but a bit expensive.",
+      "date": "2024-06-28"
+    }
+  ],
+  "qna": [
+    {
+      "qna_State": [{"1":"문의중"},{"2":"답변완료"}]
+    },
+    {
+      "qna_Id": 1,
+      "productId": 2,
+      "userId": "bf73",
+      "userName": "호",
+      "qna_State": "1",
+      "comment": "문의 내용 입력 11111",
+      "qna_date": "2024-06-29"
+    },
+    {
+      "reviewId": 2,
+      "productId": 2,
+      "userId": "bf73",
+      "userName": "호",
+      "qna_State": "2",
+      "comment": "문의 내용 입력 22222222222",
+      "qna_date": "2024-06-28"
+    }
   ]
 }

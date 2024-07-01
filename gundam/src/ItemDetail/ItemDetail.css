@@ -16,6 +16,12 @@
     height: 30px;
 }
 
+.detail_cart{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
 /* ============== Left Box Start ============= */
 .detail_left_box {
     float: left;
@@ -31,7 +37,6 @@
 .detail_img {
     margin: 10px 0;
     border-bottom: solid 1px rgb(200, 200, 200);
-
 }
 
 .detail_img_list {
@@ -42,8 +47,9 @@
 .detail_slide_img {
     width: 90px;
     height: 90px;
-    margin-right: 10px;
+    margin: 0 5px;
     border: solid 1px rgb(200, 200, 200);
+    overflow: hidden;
 }
 
 .detail_slide_img:hover {
@@ -110,9 +116,10 @@
 
 /* ============= section img End ============== */
 /* ================== review ================== */
-.review_list{
+.review_list,
+.qna_list{
     width: 100%;
-    height: 800px;
+    /* height: 600px; */
     text-align: center;
 }
 
@@ -121,10 +128,6 @@
     width: 100%;
     height: 40px;
     border-bottom: solid 2px black;
-}
-
-.re_list_data{
-    /* border-top: solid 2px black; */
 }
 
 .re_list_row{
@@ -158,13 +161,129 @@
     background-color: rgb(240, 238, 238);
 }
 
-.re_comment_title,
+.re_list_row div:nth-of-type(even){
+    text-align: left;
+}
+
+.re_list_row div p:nth-of-type(odd){
+    font-weight: 600;
+    margin: 5px;
+}
+
+.re_list_row div p:nth-of-type(even){
+    font-size: 14px;
+    margin: 5px;
+}
+
+.review_pop{
+    padding: 20px 0;
+}
+
+.re_title,
 .re_comment{
-    width: 100%;
+    width: 80%;
     height: 30px;
+    margin: 5px;
+}
+
+.re_button_box{
+    width: 100%;
+    text-align: center;
+}
+
+.re_button{
+    width: 60px;
+    height: 30px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.re_button:hover{
+    color: white;
+    background-color: blue;
+
+}
+
+.no_review{
+    grid-area: 1/1/2/3;
+    background-color: white !important;
 }
 
 /* ================ review End ================ */
+/* =================== qna ==================== */
+.qna_list_row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.no_qna,
+.qna_list_row div{
+    height: 60px;
+    align-content: center;
+    border-bottom: solid 1px rgb(200, 200, 200);
+}
+
+.qna_list_row div:nth-of-type(odd){
+    width: 200px;
+}
+
+.qna_list_row div:nth-of-type(even){
+    width: 400px;
+    text-align: left;
+}
+
+.qna_state{
+    color: red;
+    font-weight: 600;
+}
+/* ================= qna End ================== */
+/* ================= service ================== */
+.service_delivery_list{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: repeat(3, 1fr) / 1fr 3fr;
+    font-size: 12px;
+    text-align: center;
+}
+
+.service_delivery_list div{
+    width: 100%;
+    height: 100%;
+    border-bottom: solid 1px rgb(200, 200, 200);
+    align-content: center;
+    margin: 5px 0;
+}
+
+.service_delivery_list div:nth-of-type(even){
+    text-align: left;
+}
+
+.service_return_list{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: repeat(4, 1fr) / 1fr 3fr;
+    font-size: 12px;
+    text-align: center;
+}
+
+.service_return_list div{
+    width: 100%;
+    height: 100%;
+    border-bottom: solid 1px rgb(200, 200, 200);
+    align-content: center;
+    margin: 5px 0;
+}
+
+.service_return_list div:nth-of-type(even){
+    text-align: left;
+}
+
+/* =============== service End ================ */
+
 
 /* ============== Left Box End ================ */
 
@@ -202,7 +321,11 @@
 }
 
 .detail_top {
-    text-align: right;
+    display: flex;
+    height: 50px;
+    justify-content: right;
+    align-items: center;
+    margin: 5px;
 }
 
 .item_info {
@@ -337,10 +460,7 @@
     grid-template: repeat(8, 1fr) / repeat(4, 1fr);
     height: 600px;
     font-size: 12px;
-    /* margin: 10px;
-    margin-top: 0; */
-    /* border: solid 1px gray; */
-    transition: max-height 0.3s ease-out;
+    transition: 1s ;
 }
 
 .info_bottom_box div {

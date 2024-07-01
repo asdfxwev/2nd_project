@@ -23,9 +23,10 @@ const Cart = () => {
     const [checkedItems, setCheckedItems] = useState([]);
 
     useEffect(() => {
-        const storedItems = JSON.parse(localStorage.getItem('cartItems')) || []; // 기본 값 설정
+        const storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         setCartItems(storedItems);
         setCheckedItems(storedItems.map(item => item.id));
+        console.log(storedItems);
     }, []);
 
     const handleQuantityChange = (id, quantity) => {
@@ -92,7 +93,7 @@ const Cart = () => {
                 </div>
             </div>
         </div>
-    );
+    ); 
 };
 
 export default Cart;

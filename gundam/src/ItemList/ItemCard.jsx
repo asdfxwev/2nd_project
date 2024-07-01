@@ -10,6 +10,7 @@ const ItemCard = ({ item }) => {
     };
 
     const addToCart = (item) => {
+        console.log(item);
         const storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         const existingItem = storedItems.find(cartItem => cartItem.id === item.id);
         if (existingItem) {

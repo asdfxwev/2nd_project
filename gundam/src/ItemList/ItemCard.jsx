@@ -1,61 +1,78 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './ItemCard.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const ItemCard = ({ item }) => {
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
-    const userId = existingInquiries.id; // Assuming the user ID is stored here
+    const userId = existingInquiries.id;
     
-    const navigate = useNavigate();
-    console.log(item);
+    const [isAdded, setIsAdded] = useState(false);
+
+    useEffect(() => {
+        const checkIfAdded = async () => {
+            try {
+                const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+                const userData = userResponse.data;
+
+                if (userData.cart) {
+                    const existingItemIndex = userData.cart.findIndex(cartItem => cartItem.id === item.id);
+                    if (existingItemIndex >= 0) {
+                        setIsAdded(true);
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error.response ? error.response.data : error.message);
+            }
+        };
+
+        checkIfAdded();
+    }, [userId, item.id]);
+
     const formatPrice = (price) => {
         return new Intl.NumberFormat('ko-KR').format(price);
     };
 
-    const addToCart = async () => {
-        // event.preventDefault();
-        // const storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        // const existingItem = storedItems.find(cartItem => cartItem.id === item.id);
-        // if (existingItem) {
-        //     const updatedItems = storedItems.map(cartItem =>
-        //         cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
-        //     );
-        //     localStorage.setItem('cartItems', JSON.stringify(updatedItems));
-        // } else {
-        //     localStorage.setItem('cartItems', JSON.stringify([...storedItems, { ...item, quantity: 1 }]));
-        // }
+    const addToCart = async (item) => {
         try {
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data;
-            // const id = userData.inquiryCounter || 1;
-
-            const cart = item;
-
-            // Add the new inquiry to the user's inquiries list
-            userData.cart = userData.cart ? [...userData.inquries, cart] : [cart];
-            // userData.inquiryCounter = id + 1;
-
+    
+            if (!userData.cart) {
+                userData.cart = [];
+            }
+    
+            const existingItemIndex = userData.cart.findIndex(cartItem => cartItem.id === item.id);
+    
+            if (existingItemIndex >= 0) {
+                if (isAdded) {
+                    // Remove the item if it is already added
+                    userData.cart.splice(existingItemIndex, 1);
+                } else {
+                    // Increase the quantity if not already added
+                    userData.cart[existingItemIndex].quantity += 1;
+                }
+            } else {
+                // Add the item if it is not already in the cart
+                userData.cart.push({ ...item, quantity: 1 });
+            }
+    
             await axios.put(`http://localhost:3001/users/${userId}`, userData);
 
-            navigate('/Cart');
+            // Toggle the state for icon color and effect
+            setIsAdded(!isAdded);
+            
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
     };
 
     return (
-        <div className="item-card">
+        <div className={`item-card ${isAdded ? 'added' : ''}`}>
             <Link to={`/ItemList/ItemDetail/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div>
                     <img src={item.image} alt={item.name} />
-                    <div className='sx'>
-                        <ShoppingCartIcon className="shopping-cart-icon" onClick={() => {
-                            // e.preventDefault(); 
-                            addToCart(item);
-                        }} />
-                    </div>
                 </div>
                 <div className="item-details">
                     <p className='item_p'>{item.comment}</p>
@@ -64,6 +81,11 @@ const ItemCard = ({ item }) => {
                     <p className='item_p'>{item.brand}</p>
                 </div>
             </Link>
+            <div className='sx'>
+                <button className='button-shopping' onClick={() => addToCart(item)}>
+                    <ShoppingCartIcon className="shopping-cart-icon" style={{ color: isAdded ? 'red' : 'inherit' }} />
+                </button>
+            </div>
         </div>
     );
 };

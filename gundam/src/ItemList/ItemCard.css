@@ -43,7 +43,13 @@
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-.item-card:hover .sx {
+.button-shopping {
+    border: 0;
+    background-color: inherit;
+}
+
+.item-card:hover .sx,
+.item-card.added .sx {
     transform: translateX(-50%) translateY(0);
     bottom: 40%;
     opacity: 1;
@@ -55,7 +61,8 @@
     cursor: pointer;
 }
 
-.item-card:hover .shopping-cart-icon {
+.item-card:hover .shopping-cart-icon,
+.item-card.added .shopping-cart-icon {
     font-size: 2em;
 }
 

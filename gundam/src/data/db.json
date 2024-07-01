@@ -19,21 +19,6 @@
       "inquiryCounter": 2,
       "cart": [
         {
-          "id": 17,
-          "tag": "건프라",
-          "name": "RG 더블오라이저",
-          "price": 36000,
-          "comment": "건담 브레이커 배틀로그",
-          "detail": "영웅들로 인하여 균형이 유지되고 있는 세계. 그중 하나인 네오 월드에 갑자기 적열 운석이 날아온다. 낙하지점에 나타난 건 자칭 \"오공 임펄스 건담\"이라는 기억을 상실한 소년.",
-          "brand": "FG",
-          "src": [
-            "/image/gundam17.jpg",
-            "/image/gundam18.jpg",
-            "/image/gundam19.jpg"
-          ],
-          "image": "/image/gundam17.jpg"
-        },
-        {
           "id": 2,
           "tag": "건프라",
           "name": "MG 윙 건담 제로(EW) Ver.Ka",
@@ -52,21 +37,7 @@
             "/image/gundam02_7.jpg"
           ],
           "image": "/image/gundam02.jpg",
-          "quantity": 1
-        },
-        {
-          "id": 1,
-          "tag": "건프라",
-          "name": "RG 윙 건담",
-          "price": 38400,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam01.jpg"
-          ],
-          "image": "/image/gundam01.jpg",
-          "quantity": 1
+          "quantity": 3
         }
       ]
     },

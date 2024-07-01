@@ -65,7 +65,11 @@ export default function ItemDetail() {
             const userData = userResponse.data;
             // const id = userData.inquiryCounter || 1;
 
-            const cart = selectedItem;
+            const cart = {...selectedItem, quantity: count};
+            console.log(cart);
+            // cart.push({...cart, quantity:{count}})
+            console.log(cart);
+
 
             // Add the new inquiry to the user's inquiries list
             userData.cart = userData.cart ? [...userData.cart, cart] : [cart];

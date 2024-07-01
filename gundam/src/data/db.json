@@ -41,6 +41,15 @@
           "message": "a"
         }
       ]
+    },
+    
+    {
+      "id": "625a",
+      "name": "전용덕",
+      "email": "dydejr852@naver.com",
+      "password": "12345678",
+      "address": "경기 포천시 정자동길 8 123",
+      "phoneNumber": "01072815068"
     }
   ]
 }

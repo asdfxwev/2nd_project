@@ -46,18 +46,40 @@ const MyPage = () => {
                     <li><a href="/review">리뷰관리</a></li>
                     <li><a href="/profile">회원정보변경</a></li>
                     <li><a href="/orders">주문내역</a></li>
+                    <li>구매확인</li>
+                    <li>알림신청</li>
+
+                </ul>
+                <h2>나의 혜택관리</h2>
+                <ul>
+                    <li>회원등급</li>
+                    <li>구매실적</li>
+                    <li>포인트내역</li>
+                    <li>쿠폰내역</li>
                 </ul>
             </div>
 
-        
+
             <div className='user_info'>
-                <h3>회원 정보</h3>
-                <p>이름: {userInfo.name}</p>
-                <p>이메일: {userInfo.email}</p>
-                <p>주소: {userInfo.address}</p>
-                <p>전화번호: {userInfo.phoneNumber}</p>
-             </div>
-         </div>
+    <h3>회원 정보</h3>
+    <div className='row'>
+        <div className='name'>이름</div>
+        <div className="Value">{userInfo.name}</div>
+    </div>
+    <div className='row'>
+        <div className='name'>이메일</div>
+        <div className="Value">{userInfo.email}</div>
+    </div>
+    <div className='row'>
+        <div className='name'>주소</div>
+        <div className="Value">{userInfo.address}</div>
+    </div>
+    <div className='row'>
+        <div className='name'>전화번호</div>
+        <div className="Value">{userInfo.phoneNumber}</div>
+    </div>
+</div>
+        </div>
     );
 
 

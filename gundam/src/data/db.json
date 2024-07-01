@@ -61,6 +61,15 @@
         }
       ],
       "inquiryCounter": 8
+    },
+    {
+      "id": "fc0f",
+      "email": "dydejr852@naver.coj",
+      "address": "울산 북구 동해안로 1427 1234",
+      "name": "전용덕",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "01072815068"
     }
   ]
 }

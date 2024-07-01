@@ -1,3 +1,4 @@
+import axios from 'axios'; // axios import 추가
 import { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
@@ -10,32 +11,42 @@ const importedUsers = dbData.users; // 중복 제거 후 사용
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState('');
-    console.log(`** users.length=${importedUsers.length}`)
-
+    console.log(`** users.length=${importedUsers.length}`);
+    
     const navigate = useNavigate();
     let result = null;
+    const handleSubmit = async (values) => {
+        // 로그인 로직 처리
+        try {
+            // 예시: 로그인 API 호출
+            const response = await axios.post('http://localhost:3001/Login', values);
+            console.log(response.data);
+            // 로그인 성공 후 이전 페이지로 리디렉션
+            navigate(-1);
+        } catch (error) {
+            console.error('Login error:', error);
+        }
+    };
 
     const onLogin = (event) => {
         event.preventDefault(); // 페이지 새로고침 방지
         result = importedUsers.find((user) => {
             return user.email === email && user.password === password;
         });
-        if (result != null) {  //로컬스토리지에 저장
+        if (result != null) {  // 로컬스토리지에 저장
             const loginInfo = {
                 name: result.name,
                 email: result.email,
-                phoneNumber : result.phoneNumber,
+                phoneNumber: result.phoneNumber,
                 address: result.address,
                 id: result.id,
             }
             localStorage.setItem("loginInfo", JSON.stringify(loginInfo));
-            navigate('/');
+            navigate(-1); // 변경: navigate('/') -> navigate(-1)
         } else {
-            alert('로그인실패')
+            alert('로그인 실패')
         }
     }
-    //onLogin
-
 
     return (
         <div className="container_entire">
@@ -43,16 +54,11 @@ function Login() {
                 <img className='leftimg' src='./image/gamn.png' alt="Gundam Logo" />
                 <img className='rightimg' src='./image/gamm.png' alt="Gundam Logo" />
 
-
                 <div className="wrap-login">
                     <form className="login-form">
                         <a href="/"><img className='img' src='./image/logo.png' alt="Gundam Logo" /></a>
 
-
-                        {/* <span className="login-form-title"> 출격 준비</span> */}
-
                         <span className="login-form-title">
-                            {/* <img src={jpIMG} alt="Jovem Programador" /> */}
                         </span>
 
                         <div className="wrap-input">
@@ -74,7 +80,6 @@ function Login() {
                             />
                             <span className="focus-input" data-placeholder="Password"></span>
                         </div>
-
 
                         <div className="container-login-form-btn">
                             <button onClick={onLogin} className="login-form-btn">Login</button>

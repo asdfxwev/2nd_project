@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <>
             <Button />
-            <header>
+            <header style={{width:'calc(100vw - 17px)'}}>
                 <Menu />
             </header>
         </>

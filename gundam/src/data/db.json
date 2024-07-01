@@ -1,28 +1,46 @@
 {
   "users": [
     {
-      "id": "6bad",
-      "name": "전",
-      "email": "dydejr852@naver.com",
-      "password": "12345678",
-      "address": "경기 광주시 퇴촌면 정자동길 2 12345678",
-      "phoneNumber": "01072815068"
-    },
-    {
-      "id": "8300",
+      "id": "408d",
       "name": "전용덕",
       "email": "dydejr852@naver.com",
-      "password": "12345678",
-      "address": "경기 포천시 정자동길 8 123",
-      "phoneNumber": "01072815068"
+      "password": "123456789",
+      "address": "충남 당진시 우강면 남원포1길 5-4 asd",
+      "phoneNumber": "1234567890",
+      "inquries": [
+        {
+          "inquiryType": "반품",
+          "subject": "qwer",
+          "message": "qwerqwer"
+        },
+        {
+          "inquiryType": "완구A/S",
+          "subject": "fasdf",
+          "message": "asdv"
+        }
+      ]
     },
     {
-      "id": "3583",
-      "name": "전용덕",
-      "email": "dydejr852@naver.com",
-      "password": "12345678",
-      "address": "경기 성남시 분당구 금곡로 298 123",
-      "phoneNumber": "01072815068"
+      "id": "ebdf",
+      "name": "asdf",
+      "email": "asdf@asdf",
+      "password": "asdfasdf",
+      "address": "부산 동래구 미남로 11 asdf",
+      "phoneNumber": "1234567890",
+      "inquries": [
+        {
+          "id": "6f7d772b-7732-41f7-8415-f0fcbb3e9873",
+          "inquiryType": "반품",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": "f99d2da1-5062-41d8-8b90-b4f0832a8945",
+          "inquiryType": "반품",
+          "subject": "a",
+          "message": "a"
+        }
+      ]
     }
   ]
 }

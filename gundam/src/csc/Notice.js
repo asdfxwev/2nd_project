@@ -33,8 +33,11 @@ export default function Notice() {
 
     const getPageNumbers = () => {
         const pageNumbers = [];
-        const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+        const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
+        const startPage = currentGroup * maxPagesToShow + 1;
         const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
+        // const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+        // const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
 
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(i);

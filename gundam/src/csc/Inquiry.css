@@ -10,7 +10,7 @@
 .InquiryWriteBtn {
     font-size: 2rem;
     text-align: center;
-    margin-top: 20px;
+    margin: 20px 0px;
 }
 
 .InquiryWriteBtn>a {

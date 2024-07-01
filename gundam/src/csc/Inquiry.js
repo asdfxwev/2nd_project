@@ -43,7 +43,7 @@ export default function Customerservice() {
                 <CscLeft />
             </div>
             <div className="cscMain">
-                <h2 className="cscTitle">1:1문의</h2>
+                <h2 className="cscTitle h2Notice">1:1문의</h2>
                 <div>
                     <div className="CscInquiryListTitle">
                         <div style={{ width: '100px' }}>유형</div>

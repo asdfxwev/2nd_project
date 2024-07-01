@@ -5,7 +5,7 @@ import './Notice.css';
 import NoticeDelivery from "./NoticeDelivery";
 import CscLeft from "./CscLeft";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Notice() {
@@ -13,6 +13,7 @@ export default function Notice() {
     const [paginatedItems, setPaginatedItems] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
+    const [content, setContent] = useState('');
 
     const itemsPerPage = 15;
     const totalNumberOfPages = Math.ceil(NoticeData.length / itemsPerPage);
@@ -36,8 +37,6 @@ export default function Notice() {
         const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
         const startPage = currentGroup * maxPagesToShow + 1;
         const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
-        // const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
-        // const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
 
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(i);
@@ -46,12 +45,30 @@ export default function Notice() {
         return pageNumbers;
     };
 
+    function onNoticeChange(e) {
+        setContent(e.target.value)
+    }
+
+    function onNoticeKeyDown(e) {
+        if (e.keyCode === 13) {
+            onsubmit(e);
+        }
+    }
+
+    function onNoticeSubmit(e) {
+        e.preventDefault();
+        setContent('');
+    }
+
     return (
         <section className="cscNoticeContiner">
             <CscLeft />
             <div className="cscNoticeMain">
                 <h2 className="h2Notice" style={{ textAlign: 'center' }}>공지사항</h2>
-
+                <form>
+                    <input type="text" value={content} onChange={onNoticeChange} onKeyDown={onNoticeKeyDown} />
+                    <button onClick={onNoticeSubmit}>검색<FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+                </form>
                 <div style={{ height: '50px' }} className="noticeTitleGrid">
                     <div style={{ width: '220px' }}>분류</div>
                     <div style={{ width: '1100px' }}>제목</div>

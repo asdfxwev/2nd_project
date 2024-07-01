@@ -1,4 +1,48 @@
 .inquiryGrid {
     display: grid;
-    grid-template: repeat(5, 1fr) / 1fr 3fr
+    grid-template: 2fr 1fr 4fr / 1fr 2fr;
+    gap: 20px;
+}
+
+.inquriySubject {
+    width: 500px;
+    height: 50px;
+    font-size: 1.5rem;
+}
+
+.inquiryMessage {
+    resize: none;
+    width: 500px;
+    height: 200px;
+}
+
+.inquiryType {
+    display: grid;
+    place-content: center;
+}
+
+.inquiryTypeList {
+    width: 500px;
+    font-size: 1rem;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+
+.inquiryTypeList div {
+    display: flex;
+    align-items: center;
+}
+
+.inquiryBtn {
+    width: 300px;
+    border: 1px solid aqua;
+    background-color: aqua;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.inquiryTypeBtn {
+    grid-area: 4 / 1 / 5 / 3;
+    text-align: center;
 }

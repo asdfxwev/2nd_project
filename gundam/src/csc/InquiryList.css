@@ -13,8 +13,8 @@
 }
 
 .inquiryDataContainer {
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: center;
     border-bottom: 1px solid gray;
     transition-duration: 1s;
@@ -25,16 +25,51 @@
 
 
 .inquiryData {
-    display: none;
+    /* display: none; */
     width: 500px;
 }
 
-.inquiryBlock {
-    transition-duration: 1s;
+.inquiryDataContainer .inquiryBlock {
+    /* transition-duration: 1s; */
     /* height: 200px; */
     max-height: 200px;
     opacity: 1;
-    align-items: center;
-    display: flex;
+    /* align-items: center;
+    display: flex; */
     /* justify-content: center; */
+}
+
+.CscInquiryList {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid gray;
+}
+
+.inquiryDelete {
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.inquiryDataContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    max-height: 0;
+    height: 0px;
+    opacity: 0;
+    transition-duration: .5s;
+}
+
+.inquiryData {
+    width: 500px;
+}
+
+.inquiryDataContainer.active {
+    max-height: 200px;
+    height: 200px;
+    opacity: 1;
 }

@@ -5,7 +5,8 @@ import SectionImg from './SectionImg';
 import ItemReview from './ItemReview';
 import ItemQna from './ItemQna';
 import ItemService from './ItemService';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -14,6 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export default function ItemDetail() {
+    const navigate = useNavigate();
     const { id } = useParams();
     
     const selectedItem = ItemDataBase.find(item => item.id === parseInt(id));
@@ -53,6 +55,29 @@ export default function ItemDetail() {
     const formatNumber = (number) => {
         return number.toLocaleString('ko-KR');
     };
+
+    const toCart = async (e) => {
+        e.preventDefault();
+        const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
+        const userId = existingInquiries.id; // Assuming the user ID is stored here
+        try {
+            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userData = userResponse.data;
+            // const id = userData.inquiryCounter || 1;
+
+            const cart = selectedItem;
+
+            // Add the new inquiry to the user's inquiries list
+            userData.cart = userData.cart ? [...userData.inquries, cart] : [cart];
+            // userData.inquiryCounter = id + 1;
+
+            await axios.put(`http://localhost:3001/users/${userId}`, userData);
+
+            navigate('/Cart');
+        } catch (error) {
+            console.error('Error:', error.response ? error.response.data : error.message);
+        }
+    }
     
     return (
         <div className="item_detail_main">
@@ -102,7 +127,7 @@ export default function ItemDetail() {
                 <div className='right_inner'>
                     <div className='detail_top'>
                         {/* <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> 추후 찜 기능 추가 시 아이콘 사용할것 */}
-                        <FontAwesomeIcon icon={faCartShopping} className='detail_cart' />
+                        <FontAwesomeIcon icon={faCartShopping} onClick={toCart} className='detail_cart' />
                     </div>
                     <div className='item_name'><h2>{selectedItem.name}</h2></div>
                     <div className='underline'><span className='item_price'>{formatNumber(selectedItem.price)}</span>원</div>

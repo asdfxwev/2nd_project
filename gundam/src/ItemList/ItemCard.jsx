@@ -5,9 +5,7 @@ import './ItemCard.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const ItemCard = ({ item }) => {
-    const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
-    const userId = existingInquiries.id; // Assuming the user ID is stored here
-    
+
     const navigate = useNavigate();
     console.log(item);
     const formatPrice = (price) => {
@@ -26,6 +24,8 @@ const ItemCard = ({ item }) => {
         // } else {
         //     localStorage.setItem('cartItems', JSON.stringify([...storedItems, { ...item, quantity: 1 }]));
         // }
+        const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
+        const userId = existingInquiries.id; // Assuming the user ID is stored here
         try {
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data;

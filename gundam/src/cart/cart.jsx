@@ -251,7 +251,7 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
             <div><img src={item.image} alt={item.name} /></div>
             <div>{item.name}</div>
             <div><input type="number" value={item.quantity} min="1" onChange={handleChange} /></div>
-            <div>{item.price.toLocaleString()}원</div>
+            {/* <div>{item.price.toLocaleString()}원</div> */}
             <div>{(item.price * item.quantity).toLocaleString()}원</div>
         </div>
     );
@@ -262,8 +262,8 @@ const Cart = () => {
     const [checkedItems, setCheckedItems] = useState([]);
 
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
+    
     const userId = existingInquiries ? existingInquiries.id : null;
-
     useEffect(() => {
         const fetchData = async () => {
             try {

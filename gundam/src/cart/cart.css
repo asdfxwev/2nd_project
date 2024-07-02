@@ -98,3 +98,9 @@
     cursor: pointer;
     margin-right: 10px;
 }
+
+.cart-header input[type="checkbox"] {
+    width: 16px;
+    height: 16px; 
+    margin-right: 10px;
+}

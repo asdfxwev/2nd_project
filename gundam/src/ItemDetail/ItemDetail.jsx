@@ -56,12 +56,12 @@ export default function ItemDetail() {
         return number.toLocaleString('ko-KR');
     };
 
+    const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const toCart = async (e) => {
         e.preventDefault();
-        const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
-        const userId = existingInquiries.id; // Assuming the user ID is stored here
+        if (existingInquiries) {
         try {
-            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userResponse = await axios.get(`http://localhost:3001/users/${existingInquiries.id}`);
             const userData = userResponse.data;
             // const id = userData.inquiryCounter || 1;
 
@@ -75,12 +75,15 @@ export default function ItemDetail() {
             userData.cart = userData.cart ? [...userData.cart, cart] : [cart];
             // userData.inquiryCounter = id + 1;
 
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
+            await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, userData);
 
             navigate('/Cart');
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
+    } else {
+        navigate('/Login')
+    }
     }
     
 

@@ -13,13 +13,13 @@ const ItemBuy = () => {
         return number.toLocaleString('ko-KR');
     };
 
-    const [totalprice, setTotalPrice] = useState(buyitem.price);
+    // const [totalprice, setTotalPrice] = useState(buyitem.price);
 
     useEffect(() => {
-        setTotalPrice(count * buyitem.price);
+        // setTotalPrice(count * buyitem.price);
     }, []);
 
-    const mainImage = buyitem.src[0];
+    // const mainImage = buyitem.src[0];
 
     return (
         <>

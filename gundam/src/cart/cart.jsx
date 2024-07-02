@@ -11,17 +11,16 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
 
     return (
         <div className="cart-item">
-            <div><input type="checkbox" checked={isChecked} onChange={() => onCheckboxChange(item.id)} /></div>
-            <div><img src={item.image} alt={item.name} /></div>
+            <div>
+                <input type="checkbox" checked={isChecked} onChange={() => onCheckboxChange(item.id)} />
+            </div>
+            <div><a href={`ItemList/ItemDetail/${item.id}`}>
+                <img src={item.image} alt={item.name} /></a>
+            </div>
             <div> {item.name}</div>
             <div className="quantity-controls">
                 <button onClick={() => handleQuantityChange(item.quantity - 1)}>-</button>
-                <input 
-                    type="number" 
-                    value={item.quantity} 
-                    min="1" 
-                    readOnly 
-                />
+                <input type="number" value={item.quantity} min="1" readOnly />
                 <button onClick={() => handleQuantityChange(item.quantity + 1)}>+</button>
             </div>
             <div>{item.price.toLocaleString()}원</div>
@@ -33,12 +32,11 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
     const [checkedItems, setCheckedItems] = useState([]);
+    const [isAllChecked, setIsAllChecked] = useState(false);
 
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const userId = existingInquiries.id;
 
-
-    // const userId = existingInquiries ? existingInquiries.id : null;
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -47,6 +45,7 @@ const Cart = () => {
 
                 setCartItems(userData.cart);
                 setCheckedItems(userData.cart.map(item => item.id));
+                setIsAllChecked(true); // Initially set all items as checked
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
@@ -62,11 +61,21 @@ const Cart = () => {
     };
 
     const handleCheckboxChange = (id) => {
-        setCheckedItems(prevCheckedItems =>
-            prevCheckedItems.includes(id)
-                ? prevCheckedItems.filter(itemId => itemId !== id)
-                : [...prevCheckedItems, id]
-        );
+        const newCheckedItems = checkedItems.includes(id)
+            ? checkedItems.filter(itemId => itemId !== id)
+            : [...checkedItems, id];
+        
+        setCheckedItems(newCheckedItems);
+        setIsAllChecked(newCheckedItems.length === cartItems.length);
+    };
+
+    const handleAllCheckboxChange = () => {
+        if (isAllChecked) {
+            setCheckedItems([]);
+        } else {
+            setCheckedItems(cartItems.map(item => item.id));
+        }
+        setIsAllChecked(!isAllChecked);
     };
 
     const handleRemoveCheckedItems = async () => {
@@ -80,6 +89,7 @@ const Cart = () => {
 
             setCartItems(updatedItems);
             setCheckedItems([]);
+            setIsAllChecked(false);
         } catch (error) {
             console.error('Error deleting items:', error.response ? error.response.data : error.message);
         }
@@ -96,6 +106,7 @@ const Cart = () => {
 
             setCartItems([]);
             setCheckedItems([]);
+            setIsAllChecked(false);
         } catch (error) {
             console.error('Error clearing cart:', error.response ? error.response.data : error.message);
         }
@@ -110,7 +121,14 @@ const Cart = () => {
             <h1 className='h1-name'>장바구니</h1>
             <div className="cart-container">
                 <div className="cart-header">
-                    <div>선택</div>
+                    <div>
+                        <input 
+                            type="checkbox" 
+                            checked={isAllChecked} 
+                            onChange={handleAllCheckboxChange} 
+                        />
+                        전체선택
+                    </div>
                     <div>상품 이미지</div>
                     <div>상품 이름</div>
                     <div>수량</div>
@@ -132,7 +150,9 @@ const Cart = () => {
                     총 합계: {total.toLocaleString()}원
                 </div>
                 <div className="cart-actions">
+                    <a href={`/Itembuy`}>
                     <button>결제하기</button>
+                    </a>
                 </div>
             </div>
         </div>

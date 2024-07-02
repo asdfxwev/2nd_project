@@ -45,28 +45,30 @@ const ItemBuyCartList = ({ setTotal, initialItem, initialCount }) => {
                 const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
                 const userData = userResponse.data;
 
-                setCartItems(userData.cart);
-                setCheckedItems(userData.cart.map(item => item.id));
+                let combinedItems = userData.cart;
+
+                if (initialItem && initialCount) {
+                    const initialCartItem = { ...initialItem, quantity: initialCount };
+                    combinedItems = [initialCartItem, ...userData.cart];
+                }
+
+                setCartItems(combinedItems);
+                setCheckedItems(combinedItems.map(item => item.id));
                 setIsAllChecked(true); // Initially set all items as checked
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
         };
-
-        if (initialItem && initialCount) {
-            setCartItems([{ ...initialItem, quantity: initialCount }]);
-            setCheckedItems([initialItem.id]);
-            setIsAllChecked(true);
-        } else {
-            fetchData();
-        }
+        fetchData();
     }, [userId, initialItem, initialCount]);
 
     useEffect(() => {
-        const total = cartItems
-            .filter(item => checkedItems.includes(item.id))
-            .reduce((sum, item) => sum + item.price * item.quantity, 0);
-        setTotal(total);
+        if (cartItems.length > 0) {
+            const totalAmount = cartItems
+                .filter(item => checkedItems.includes(item.id))
+                .reduce((sum, item) => sum + item.price * item.quantity, 0);
+            setTotal(totalAmount);
+        }
     }, [cartItems, checkedItems, setTotal]);
 
     // const total = cartItems
@@ -162,9 +164,6 @@ const ItemBuyCartList = ({ setTotal, initialItem, initialCount }) => {
                 ))}
                 <button className='button-size' onClick={handleRemoveCheckedItems}>선택한 상품 삭제</button>
                 <button className='button-size' onClick={handleRemoveAllItems}>전체 상품 삭제</button>
-                {/* <div className="cart-total">
-                    총 합계: {total.toLocaleString()}원
-                </div> */}
             </div>
         </div>
     );

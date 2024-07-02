@@ -57,7 +57,8 @@
           "message": "a"
         }
       ],
-      "inquiryCounter": 2
+      "inquiryCounter": 2,
+      "cart": []
     }
   ],
   "review": [

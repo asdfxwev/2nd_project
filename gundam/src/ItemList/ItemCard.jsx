@@ -77,18 +77,11 @@ const ItemCard = ({ item }) => {
         }
     };
 
-    // const handleCardClick = (e) => {
-    //     if (!checkLogin()) {
-    //         e.preventDefault();
-    //     }
-    // };
-
     return (
         <div className={`item-card ${isAdded ? 'added' : ''}`}>
             <Link 
                 to={`/ItemList/ItemDetail/${item.id}`} 
                 style={{ textDecoration: 'none', color: 'inherit' }} 
-                // onClick={handleCardClick}
             >
                 <div>
                     <img src={item.image} alt={item.name} />

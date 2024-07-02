@@ -38,11 +38,27 @@
 .cart-item img {
     max-width: 80%;
 }
-.cart-item input {
-    width: 50px;
+
+.quantity-controls button {
+    width: 30px;
+    height: 30px;
+    background-color: skyblue;
+    border: 1px solid #ccc;
+    cursor: pointer;
     text-align: center;
 }
 
+.quantity-controls button:hover {
+    background-color: #0056b3;
+}
+
+.quantity-controls input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    height: 30px;
+}
 .cart-item input[type="checkbox"] {
     width: 32px;
     height: 32px; 
@@ -66,11 +82,11 @@
     margin-left: 10px;
     cursor: pointer;
     border: none;
-    background-color: #007bff;
+    background-color: skyblue;
     color: white;
 }
 .cart-actions button:hover {
-    background-color: #0056b3;
+    background-color: skyblue;
 }
 
 .button-size {
@@ -80,5 +96,11 @@
     font-size: 1em;
     margin-top: 20px;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+.cart-header input[type="checkbox"] {
+    width: 16px;
+    height: 16px; 
     margin-right: 10px;
 }

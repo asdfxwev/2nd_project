@@ -5,8 +5,9 @@ import SectionImg from './SectionImg';
 import ItemReview from './ItemReview';
 import ItemQna from './ItemQna';
 import ItemService from './ItemService';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios';
+
 
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -16,6 +17,8 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export default function ItemDetail() {
     const navigate = useNavigate();
+    const [isAdded, setIsAdded] = useState(false);
+
     const { id } = useParams();
 
     const selectedItem = ItemDataBase.find(item => item.id === parseInt(id));
@@ -25,6 +28,10 @@ export default function ItemDetail() {
     const handleImageClick = (src) => {
         setMainImage(src);
     };
+    const location = useLocation();  // 현재 페이지의 URL을 가져옴
+    console.log('location.pathname='+location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
+    localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
+
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -57,29 +64,36 @@ export default function ItemDetail() {
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const toCart = async (e) => {
         e.preventDefault();
+
         if (existingInquiries) {
-        try {
-            const userResponse = await axios.get(`http://localhost:3001/users/${existingInquiries.id}`);
-            const userData = userResponse.data;
-            // const id = userData.inquiryCounter || 1;
-
-            const cart = { ...selectedItem, quantity: count };
-            console.log(cart);
-            // cart.push({...cart, quantity:{count}})
-            console.log(cart);
+            const userId = existingInquiries.id; // Assuming the user ID is stored here
+            try {
+                const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+                const userData = userResponse.data;
 
 
-            // Add the new inquiry to the user's inquiries list
-            userData.cart = userData.cart ? [...userData.cart, cart] : [cart];
-            // userData.inquiryCounter = id + 1;
+                if (userData.cart.some(e => e.id === selectedItem.id)) {
+                    alert('이미장바구니에 담겨있지요')
+                    setIsAdded(true)
+                } else {
 
-            await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, userData);
+                    const cart = { ...selectedItem, quantity: count };
 
-            navigate('/Cart');
+                    console.log(isAdded);
 
-        } catch (error) {
-            console.error('Error:', error.response ? error.response.data : error.message);
-        }}
+                    userData.cart = userData.cart ? [...userData.cart, cart] : [cart];
+
+                    await axios.put(`http://localhost:3001/users/${userId}`, userData);
+                    setIsAdded(true);
+
+                    if (window.confirm('장바구니로 갈래?')) {
+                        navigate('/Cart');
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error.response ? error.response.data : error.message);
+            }
+        }
         else {
             navigate('/Login')
         }
@@ -138,7 +152,7 @@ export default function ItemDetail() {
                 <div className='right_inner'>
                     <div className='detail_top'>
                         {/* <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> 추후 찜 기능 추가 시 아이콘 사용할것 */}
-                        <FontAwesomeIcon icon={faCartShopping} className='detail_cart' onClick={toCart} />
+                        <FontAwesomeIcon icon={faCartShopping} onClick={toCart} className='detail_cart' style={{ color: isAdded ? 'red' : 'inherit' }} />
                     </div>
                     <div className='item_name'><h2>{selectedItem.name}</h2></div>
                     <div className='underline'><span className='item_price'>{formatNumber(selectedItem.price)}</span>원</div>

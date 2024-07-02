@@ -8,9 +8,38 @@
       "password": "asdfasdf",
       "confirmPassword": "asdfasdf",
       "phoneNumber": "1234567891",
-      "inquries": [],
-      "inquiryCounter": 2,
-      "cart": []
+      "inquries": [
+        {
+          "id": 2,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
+        }
+      ],
+      "inquiryCounter": 3,
+      "cart": [
+        {
+          "id": 2,
+          "tag": "건프라",
+          "name": "MG 윙 건담 제로(EW) Ver.Ka",
+          "price": 66000,
+          "comment": "건담 브레이커 배틀로그",
+          "detail": "비우주세기의 건담 시리즈 2탄으로 등장한 TV 작품. 건담 5기가 돌연 거대 세력을 급습하는 다이나믹한 장면으로부터 숨막히는 전개가 이어지는 작품이다.",
+          "brand": "FG",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam02_1.jpg",
+            "/image/gundam02_2.jpg",
+            "/image/gundam02_3.jpg",
+            "/image/gundam02_4.jpg",
+            "/image/gundam02_5.jpg",
+            "/image/gundam02_6.jpg",
+            "/image/gundam02_7.jpg"
+          ],
+          "image": "/image/gundam02.jpg",
+          "quantity": 1
+        }
+      ]
     },
     {
       "id": "070c",
@@ -30,7 +59,111 @@
       ],
       "inquiryCounter": 2,
       "cart": []
+    },
+    {
+      "id": "bd65",
+      "email": "vaundy@naver.com",
+      "address": "dfasdf ",
+      "name": "vaundy",
+      "password": "123456789",
+      "confirmPassword": "123456789",
+      "phoneNumber": "01000000000",
+      "cart": [
+        {
+          "id": 1,
+          "tag": "건프라",
+          "name": "RG 윙 건담",
+          "price": 38400,
+          "comment": "건담 무사",
+          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
+          "brand": "1/100",
+          "src": [
+            "/image/gundam01.jpg"
+          ],
+          "image": "/image/gundam01.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "tag": "건프라",
+          "name": "SD 건담월드 히어로즈 오공 임펄스 건담",
+          "price": 7200,
+          "comment": "기동전사 건담 수성의 마녀",
+          "detail": "건담 시리즈의 기념비적인 첫 번째 작품. 스페이스 콜로니와 같이 최첨단 과학기술을 배경으로, 치밀하면서도 리얼한 세계관을 구축하여 인기를 얻었다",
+          "brand": "FIGURE-RISE MECHANICS",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam08.jpg",
+            "/image/gundam09.jpg"
+          ],
+          "image": "/image/gundam03.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "tag": "건프라",
+          "name": "MG 윙 건담 제로(EW) Ver.Ka",
+          "price": 66000,
+          "comment": "건담 브레이커 배틀로그",
+          "detail": "비우주세기의 건담 시리즈 2탄으로 등장한 TV 작품. 건담 5기가 돌연 거대 세력을 급습하는 다이나믹한 장면으로부터 숨막히는 전개가 이어지는 작품이다.",
+          "brand": "FG",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam02_1.jpg",
+            "/image/gundam02_2.jpg",
+            "/image/gundam02_3.jpg",
+            "/image/gundam02_4.jpg",
+            "/image/gundam02_5.jpg",
+            "/image/gundam02_6.jpg",
+            "/image/gundam02_7.jpg"
+          ],
+          "image": "/image/gundam02.jpg",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "f17b",
+      "email": "asdf@asdfg",
+      "address": "asdf asdf",
+      "name": "tmdqja",
+      "password": "asdfasdf",
+      "phoneNumber": "1234567890",
+      "inquries": [
+        {
+          "id": "6f7d772b-7732-41f7-8415-f0fcbb3e9873",
+          "inquiryType": "반품",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": "f99d2da1-5062-41d8-8b90-b4f0832a8945",
+          "inquiryType": "반품",
+          "subject": "a",
+          "message": "a"
+        }
+      ]
+    },
+    {
+      "id": "79c7",
+      "email": "dydejr852@naver.cov",
+      "address": "경기 수원시 장안구 대평로 27 1234",
+      "name": "전용덕",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "01072815061"
+    },
+    
+    {
+      "id": "c533",
+      "email": "dydejr852@naver.cod",
+      "address": "울산 북구 정자1길 7 123",
+      "name": "전용덕",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "01072815063"
     }
+    
   ],
   "review": [
     {

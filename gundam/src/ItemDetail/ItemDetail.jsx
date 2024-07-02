@@ -5,8 +5,9 @@ import SectionImg from './SectionImg';
 import ItemReview from './ItemReview';
 import ItemQna from './ItemQna';
 import ItemService from './ItemService';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios';
+
 
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -27,6 +28,10 @@ export default function ItemDetail() {
     const handleImageClick = (src) => {
         setMainImage(src);
     };
+    const location = useLocation();  // 현재 페이지의 URL을 가져옴
+    console.log('location.pathname='+location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
+    localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
+
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 

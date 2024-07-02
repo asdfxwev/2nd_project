@@ -16,6 +16,8 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export default function ItemDetail() {
     const navigate = useNavigate();
+    const [isAdded, setIsAdded] = useState(false);
+
     const { id } = useParams();
 
     const selectedItem = ItemDataBase.find(item => item.id === parseInt(id));
@@ -65,27 +67,26 @@ export default function ItemDetail() {
             try {
                 const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
                 const userData = userResponse.data;
-                console.log(userData.cart);
-                console.log(userData.cart.id);
-                console.log(userData.cart.data);
-                console.log(userData.cart.some);
-                // console.log(userData.cart.data.id);
-                console.log(selectedItem.id);
+
 
                 if (userData.cart.some(e => e.id === selectedItem.id)) {
                     alert('이미장바구니에 담겨있지요')
-                }else {
+                    setIsAdded(true)
+                } else {
 
-                const cart = { ...selectedItem, quantity: count };
+                    const cart = { ...selectedItem, quantity: count };
 
+                    console.log(isAdded);
 
-                // Add the new inquiry to the user's inquiries list
-                userData.cart = userData.cart ? [...userData.cart, cart] : [cart];
-                // userData.inquiryCounter = id + 1;
+                    userData.cart = userData.cart ? [...userData.cart, cart] : [cart];
 
-                await axios.put(`http://localhost:3001/users/${userId}`, userData);
+                    await axios.put(`http://localhost:3001/users/${userId}`, userData);
+                    setIsAdded(true);
 
-                navigate('/Cart');}
+                    if (window.confirm('장바구니로 갈래?')) {
+                        navigate('/Cart');
+                    }
+                }
             } catch (error) {
                 console.error('Error:', error.response ? error.response.data : error.message);
             }
@@ -145,7 +146,7 @@ export default function ItemDetail() {
                     <div className='detail_top'>
                         {/* <FontAwesomeIcon icon={faCartShopping} className='detail_cart' onClick={() => {navigate('../cart/Cart')}} /> */}
                         {/* <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> 추후 찜 기능 추가 시 아이콘 사용할것 */}
-                        <FontAwesomeIcon icon={faCartShopping} onClick={toCart} className='detail_cart' />
+                        <FontAwesomeIcon icon={faCartShopping} onClick={toCart} className='detail_cart' style={{ color: isAdded ? 'red' : 'inherit' }} />
                     </div>
                     <div className='item_name'><h2>{selectedItem.name}</h2></div>
                     <div className='underline'><span className='item_price'>{formatNumber(selectedItem.price)}</span>원</div>

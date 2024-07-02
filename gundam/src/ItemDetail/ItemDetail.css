@@ -30,6 +30,7 @@
     float: left;
     height: 100%;
     width: 800px;
+    margin: 0 10px;
 }
 
 .item_detail_img {
@@ -584,4 +585,76 @@
     text-align: left;
 }
 
+
+/* 주문화면 상품목록css 장바구니 참조 */
+.item_list_container {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* margin-top: 20px; */
+}
+
+.item_list_header {
+    display: flex;
+    height: 30px;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+}
+
+.item_list_header div {
+    flex: 1;
+    text-align: center;
+}
+
+
+.buy_item_box {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
+.buy_item_box div {
+    flex: 1;
+    text-align: center;
+    align-content: center;
+}
+.buy_item_box img {
+    max-width: 80%;
+}
+.item_list_header input[type="checkbox"],
+.buy_item_box input[type="checkbox"] {
+    width: 16px;
+    height: 16px; 
+    margin-right: 10px;
+}
+
+
+
+.buy_count_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy_count_box button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.buy_count_box button:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
 /* ================ ItemBuy end ================ */
+
+
+.test{
+    height: 1000px;
+}

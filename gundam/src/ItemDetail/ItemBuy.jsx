@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import './ItemDetail.css'
-// import ItemDataBase from '../ItemList/ItemDataBase';
+import './ItemDetail.css';
+import ItemBuyCartList from './ItemBuyCartList';
 import { useLocation } from 'react-router-dom';
 
 const ItemBuy = () => {
 
-    const userinfo = JSON.parse(localStorage.getItem('loginInfo'));
-    console.log({userinfo});
+    const userinfo = JSON.parse(localStorage.getItem('loginInfo')); // 사용자 정보
 
     const location = useLocation();
     const { item, count } = location.state || {};
-
+    const [total, setTotal] = useState(0); // 총 결제금액 상태 변수
 
     const formatNumber = (number) => {
         return number.toLocaleString('ko-KR');
     };
 
-    const [totalprice, setTotalPrice] = useState(item.price);
+    const [totalprice, setTotalPrice] = useState(item ? item.price : 0);
 
     useEffect(() => {
-        setTotalPrice(count * item.price);
-    }, []);
+        if (item && count) {
+            setTotalPrice(count * item.price);
+        }
+    }, [item, count]);
 
-
+    // ItemBuyCartList 컴포넌트가 첫 번째로 처리되도록 useEffect를 사용하여 설정
+    useEffect(() => {
+        if (item && count) {
+            const initialCartItems = [{ ...item, quantity: count }];
+            const initialTotal = initialCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            setTotal(initialTotal);
+        }
+    }, [item, count]);
+    // =====================================================================
 
 
     return (
@@ -38,8 +47,10 @@ const ItemBuy = () => {
                             <div className="subtitle_right"></div>
                         </div>
                         <div className='buy_left_content_box'>
-                            
+                            <ItemBuyCartList setTotal={setTotal} initialItem={item} initialCount={count} />
                         </div>
+
+                        <div className='test'></div>
 
                     </div>
 
@@ -49,20 +60,8 @@ const ItemBuy = () => {
                             
                             <div className='item_info underline'>
                                 <div className='userinfo'>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
+                                    {/* 사용자정보 보여줄곳 */}
                                 </div>
-                                {/* <div className='buy_left_box font_medium'>
-                                    <img className="buy_item_img" src={item.src[0]} alt={item.name} />
-                                </div>
-                                <div className='buy_right_box'>
-                                    <p>{item.comment}</p>
-                                    <p className='buy_item_name'>{item.name}</p>
-                                    <p>수량 : {count}</p>
-                                    <p>{formatNumber(item.price)} 원</p>
-                                </div> */}
                             </div>
                             <div className='item_count underline'>
                                 <div className='count_left_box font_medium'>구매수량</div>
@@ -72,10 +71,11 @@ const ItemBuy = () => {
                             </div>
                             <div className='item_total_price font_medium'>
                                 <p className='total_price_title '>총 결제금액</p>
-                                <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>
+                                <p className='total_price'><span className='t_price'>{formatNumber(total)}</span> 원</p>
+                                {/* <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span> 원</p> */}
                             </div>
                             <div className='item_btn'>
-                                <button className='submit_btn' >구매하기</button>
+                                <button className='submit_btn' >결제하기</button>
                             </div>
                         </div>
                     </div>

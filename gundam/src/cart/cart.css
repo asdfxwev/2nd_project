@@ -3,6 +3,7 @@
     font-size: 3em;
     margin: auto;
     padding-top: 112px;
+    font-family: 'LINESeedKR-Bd';
 }
 
 .cart-container {
@@ -12,6 +13,7 @@
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
+    font-family: 'LINESeedKR-Bd';
 }
 .cart-header {
     display: flex;
@@ -29,6 +31,7 @@
     justify-content: space-between;
     border-bottom: 1px solid #ddd;
     padding: 20px 0;
+    font-family: 'LINESeedKR-Bd';
 }
 .cart-item div {
     flex: 1;
@@ -84,6 +87,7 @@
     border: none;
     background-color: skyblue;
     color: white;
+    font-family: 'LINESeedKR-Bd';
 }
 .cart-actions button:hover {
     background-color: skyblue;
@@ -97,6 +101,7 @@
     margin-top: 20px;
     cursor: pointer;
     margin-right: 10px;
+    font-family: 'LINESeedKR-Bd';
 }
 
 .cart-header input[type="checkbox"] {

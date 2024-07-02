@@ -1,5 +1,6 @@
 import './productImg.css'
 import { useState } from 'react';
+import Gundam3DModel from './Gundam3DModel';
 
 export default function ProjectImg() {
 
@@ -46,8 +47,13 @@ export default function ProjectImg() {
                         </div>
                     </a>
                 ))}
-                <div><img src="" alt="" /></div>
-                <div></div>
+                <div className="gridTemplate9 gridTemplate">
+                    <Gundam3DModel />
+                    <div className="productInfo">
+                        <p>건담 3D 모델</p>
+                        <span>가격 정보 없음</span>
+                    </div>
+                </div>
             </div>
         </section>
     )

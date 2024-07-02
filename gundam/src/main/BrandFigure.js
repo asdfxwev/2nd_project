@@ -9,6 +9,7 @@ export default function BrandFigure() {
         { id: '3', name: './image/category3.png', style: 'category category3' },
         { id: '4', name: './image/category4.png', style: 'category category4' },
         { id: '5', name: './image/category5.png', style: 'category category5' },
+        // { id: '6', name: './image/gundam3D.glb', style: 'category category6' },
     ];
 
     const [hoveredId, setHoveredId] = useState(null);

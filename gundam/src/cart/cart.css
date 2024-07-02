@@ -42,7 +42,7 @@
 .quantity-controls button {
     width: 30px;
     height: 30px;
-    background-color: #007bff;
+    background-color: skyblue;
     border: 1px solid #ccc;
     cursor: pointer;
     text-align: center;
@@ -82,11 +82,11 @@
     margin-left: 10px;
     cursor: pointer;
     border: none;
-    background-color: #007bff;
+    background-color: skyblue;
     color: white;
 }
 .cart-actions button:hover {
-    background-color: #0056b3;
+    background-color: skyblue;
 }
 
 .button-size {

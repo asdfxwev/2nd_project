@@ -59,30 +59,37 @@ export default function ItemDetail() {
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const toCart = async (e) => {
         e.preventDefault();
-        
-        if(existingInquiries){
+
+        if (existingInquiries) {
             const userId = existingInquiries.id; // Assuming the user ID is stored here
-        try {
-            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
-            const userData = userResponse.data;
-            // const id = userData.inquiryCounter || 1;
+            try {
+                const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+                const userData = userResponse.data;
+                console.log(userData.cart);
+                console.log(userData.cart.id);
+                console.log(userData.cart.data);
+                console.log(userData.cart.some);
+                // console.log(userData.cart.data.id);
+                console.log(selectedItem.id);
 
-            const cart = { ...selectedItem, quantity: count };
-            console.log(cart);
-            // cart.push({...cart, quantity:{count}})
-            console.log(cart);
+                if (userData.cart.some(e => e.id === selectedItem.id)) {
+                    alert('이미장바구니에 담겨있지요')
+                }else {
+
+                const cart = { ...selectedItem, quantity: count };
 
 
-            // Add the new inquiry to the user's inquiries list
-            userData.cart = userData.cart ? [...userData.cart, cart] : [cart];
-            // userData.inquiryCounter = id + 1;
+                // Add the new inquiry to the user's inquiries list
+                userData.cart = userData.cart ? [...userData.cart, cart] : [cart];
+                // userData.inquiryCounter = id + 1;
 
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
+                await axios.put(`http://localhost:3001/users/${userId}`, userData);
 
-            navigate('/Cart');
-        } catch (error) {
-            console.error('Error:', error.response ? error.response.data : error.message);
-        }}
+                navigate('/Cart');}
+            } catch (error) {
+                console.error('Error:', error.response ? error.response.data : error.message);
+            }
+        }
         else {
             navigate('/Login')
         }

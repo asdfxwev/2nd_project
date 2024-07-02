@@ -8,9 +8,38 @@
       "password": "asdfasdf",
       "confirmPassword": "asdfasdf",
       "phoneNumber": "1234567891",
-      "inquries": [],
-      "inquiryCounter": 2,
-      "cart": []
+      "inquries": [
+        {
+          "id": 2,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
+        }
+      ],
+      "inquiryCounter": 3,
+      "cart": [
+        {
+          "id": 2,
+          "tag": "건프라",
+          "name": "MG 윙 건담 제로(EW) Ver.Ka",
+          "price": 66000,
+          "comment": "건담 브레이커 배틀로그",
+          "detail": "비우주세기의 건담 시리즈 2탄으로 등장한 TV 작품. 건담 5기가 돌연 거대 세력을 급습하는 다이나믹한 장면으로부터 숨막히는 전개가 이어지는 작품이다.",
+          "brand": "FG",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam02_1.jpg",
+            "/image/gundam02_2.jpg",
+            "/image/gundam02_3.jpg",
+            "/image/gundam02_4.jpg",
+            "/image/gundam02_5.jpg",
+            "/image/gundam02_6.jpg",
+            "/image/gundam02_7.jpg"
+          ],
+          "image": "/image/gundam02.jpg",
+          "quantity": 1
+        }
+      ]
     },
     {
       "id": "070c",
@@ -55,6 +84,15 @@
           "quantity": 1
         }
       ]
+    },
+    {
+      "id": "f17b",
+      "email": "asdf@asdfg",
+      "address": "asdf asdf",
+      "name": "tmdqja",
+      "password": "asdfasdf",
+      "confirmPassword": "asdfasdf",
+      "phoneNumber": "01072690607"
     }
   ],
   "review": [

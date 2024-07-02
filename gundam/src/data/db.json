@@ -44,7 +44,27 @@
           "message": "a"
         }
       ]
+    },
+    {
+      "id": "79c7",
+      "email": "dydejr852@naver.cov",
+      "address": "경기 수원시 장안구 대평로 27 1234",
+      "name": "전용덕",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "01072815061"
+    },
+    
+    {
+      "id": "c533",
+      "email": "dydejr852@naver.cod",
+      "address": "울산 북구 정자1길 7 123",
+      "name": "전용덕",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "01072815063"
     }
+    
   ],
   "review": [
     {

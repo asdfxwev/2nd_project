@@ -40,7 +40,7 @@ const MyPage = () => {
     return (
         <div className='mypage_container'>
             <div className='mypage_menu'>
-                <h2>마이페이지</h2>
+                <h2 className='MyPage_h2'>마이페이지</h2>
                 <ul>
                     <li><a href="/">장바구니</a></li>
                     <li><a href="/review">리뷰관리</a></li>
@@ -50,7 +50,7 @@ const MyPage = () => {
                     <li>알림신청</li>
 
                 </ul>
-                <h2>나의 혜택관리</h2>
+                <h2 className='MyPage_h2'>나의 혜택관리</h2>
                 <ul>
                     <li>회원등급</li>
                     <li>구매실적</li>
@@ -61,7 +61,7 @@ const MyPage = () => {
 
 
             <div className='user_info'>
-    <h3>회원 정보</h3>
+    <h3 className='MyPage_h3'>회원 정보</h3>
     <div className='row'>
         <div className='name'>이름</div>
         <div className="Value">{userInfo.name}</div>

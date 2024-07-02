@@ -3,7 +3,7 @@ import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -388,7 +388,7 @@ const ItemList = () => {
                     {Array.from({ length: totalNumberOfPages }).map((_, index) => (
                         <Link
                             key={index}
-                            // to={`/ItemList?page=${index + 1}`}
+                            to={`/ItemList?page=${index + 1}`}
                             className={`page-link ${currentPage === index + 1 ? 'active' : ''}`}
                             onClick={() => handlePageClick(index + 1)}
                         >

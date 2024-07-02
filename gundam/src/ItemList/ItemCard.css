@@ -2,6 +2,7 @@
     border-radius: 8px;
     position: relative;
     overflow: hidden;
+    font-family: 'LINESeedKR-Bd';
 }
 
 .item-card img {
@@ -53,6 +54,7 @@
     transform: translateX(-50%) translateY(0);
     bottom: 40%;
     opacity: 1;
+    font-family: 'LINESeedKR-Bd';
 }
 
 .shopping-cart-icon {

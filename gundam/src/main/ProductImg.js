@@ -60,23 +60,32 @@ export default function ProjectImg() {
                 ))}
                 <div className="gridTemplate9 gridTemplate">
                     {/* <Gundam3DModel /> */}
+                    {/* <Canvas style={{ height: '600px', width: '580px', cursor: 'grab'}}>
+                        <ambientLight intensity={2} />
+                        <spotLight position={[10, 10, 10]} angle={15} penumbra={1} />
+                        <Model />
+                        <OrbitControls
+                            // autoRotate
+                            // enableZoom={false}
+                            enablePan={false}
+                            minPolarAngle={Math.PI / 4}
+                            maxPolarAngle={Math.PI / 2}
+                            target={[0, 2, -4]}
+                        />
+                    </Canvas> */}
                     <Canvas style={{ height: '600px', width: '580px', cursor: 'grab' }}>
-                        <ambientLight intensity={0.5} />
+                        <ambientLight intensity={2} />
                         <spotLight position={[10, 10, 10]} angle={15} penumbra={1} />
                         <Model />
                         <OrbitControls
                             autoRotate
-                            enableZoom={false}
+                            // enableZoom={false}
                             enablePan={false}
                             minPolarAngle={Math.PI / 4}
                             maxPolarAngle={Math.PI / 2}
-                            target={[0, 0, 0]}
+                            target={[0, 2, 0]}
                         />
                     </Canvas>
-                    <div className="productInfo">
-                        <p>건담 3D 모델</p>
-                        <span>가격 정보 없음</span>
-                    </div>
                 </div>
             </div>
         </section>

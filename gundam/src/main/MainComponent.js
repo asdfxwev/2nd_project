@@ -1,7 +1,6 @@
 import IntersectionObservers from './IntersectionObservers'
 import IntersectionObserverss from './IntersectionObserverss'
 import ProjectImg from './ProductImg'
-import Slider from './Slider';
 import Slide from './Slide';
 import MainTab from './MainTab';
 import BrandFigure from './BrandFigure';

@@ -17,19 +17,19 @@ const HeaderMenu = ({ data, smallTopMenu, onLinkClick, menuAnimating, menuClosin
                     ))}
 
                     {menu.items.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><a href='/ItemList?page=1' onClick={onLinkClick}>{item.name}</a></div>
                     ))}
                     {menu.itemss.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><a href='/ItemList?page=1' onClick={onLinkClick}>{item.name}</a></div>
                     ))}
                     {menu.itemsss && menu.itemsss.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><a href='/ItemList?page=1' onClick={onLinkClick}>{item.name}</a></div>
                     ))}
                     {menu.itemssss && menu.itemssss.map((item, idx) => (
-                        <div key={idx} className={item.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{item.name}</Link></div>
+                        <div key={idx} className={item.id}><a href='/ItemList?page=1' onClick={onLinkClick}>{item.name}</a></div>
                     ))}
                     {menu.image.map((image, idx) => (
-                        <div key={idx} className={image.id}><Link to='/ItemList?page=1' onClick={onLinkClick}>{image.name}</Link></div>
+                        <div key={idx} className={image.id}><a href='/ItemList?page=1' onClick={onLinkClick}>{image.name}</a></div>
                     ))}
                 </div>
             ))}

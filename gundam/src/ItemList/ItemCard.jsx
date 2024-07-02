@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './ItemCard.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -30,11 +30,28 @@ const ItemCard = ({ item }) => {
         checkIfAdded();
     }, [userId, item.id]);
 
+
+    const navigate = useNavigate();
+    console.log(item);
     const formatPrice = (price) => {
         return new Intl.NumberFormat('ko-KR').format(price);
     };
 
     const addToCart = async (item) => {
+    // const addToCart = async () => {
+        // event.preventDefault();
+        // const storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        // const existingItem = storedItems.find(cartItem => cartItem.id === item.id);
+        // if (existingItem) {
+        //     const updatedItems = storedItems.map(cartItem =>
+        //         cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+        //     );
+        //     localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+        // } else {
+        //     localStorage.setItem('cartItems', JSON.stringify([...storedItems, { ...item, quantity: 1 }]));
+        // }
+        const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
+        const userId = existingInquiries.id; // Assuming the user ID is stored here
         try {
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data;
@@ -62,7 +79,7 @@ const ItemCard = ({ item }) => {
 
             // Toggle the state for icon color and effect
             setIsAdded(!isAdded);
-            
+            navigate('/Cart');
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }

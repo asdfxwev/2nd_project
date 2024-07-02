@@ -26,6 +26,8 @@ const Cart = () => {
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const userId = existingInquiries.id;
 
+    
+    // const userId = existingInquiries ? existingInquiries.id : null;
     useEffect(() => {
         const fetchData = async () => {
             try {

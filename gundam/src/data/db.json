@@ -16,7 +16,30 @@
           "message": "asdf"
         }
       ],
-      "inquiryCounter": 2
+      "inquiryCounter": 2,
+      "cart": [
+        {
+          "id": 2,
+          "tag": "건프라",
+          "name": "MG 윙 건담 제로(EW) Ver.Ka",
+          "price": 66000,
+          "comment": "건담 브레이커 배틀로그",
+          "detail": "비우주세기의 건담 시리즈 2탄으로 등장한 TV 작품. 건담 5기가 돌연 거대 세력을 급습하는 다이나믹한 장면으로부터 숨막히는 전개가 이어지는 작품이다.",
+          "brand": "FG",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam02_1.jpg",
+            "/image/gundam02_2.jpg",
+            "/image/gundam02_3.jpg",
+            "/image/gundam02_4.jpg",
+            "/image/gundam02_5.jpg",
+            "/image/gundam02_6.jpg",
+            "/image/gundam02_7.jpg"
+          ],
+          "image": "/image/gundam02.jpg",
+          "quantity": 3
+        }
+      ]
     },
     {
       "id": "070c",
@@ -34,7 +57,8 @@
           "message": "a"
         }
       ],
-      "inquiryCounter": 2
+      "inquiryCounter": 2,
+      "cart": []
     }
   ],
   "review": [
@@ -45,7 +69,8 @@
       "userName": "호",
       "title": "리뷰제목 입력",
       "comment": "엉망이에요 사지마요 바가지에 퀄리티 똥망",
-      "date": "2024-06-29"
+      "date": "2024-06-29",
+      "id": "e474"
     },
     {
       "reviewId": 2,
@@ -54,7 +79,8 @@
       "userName": "호",
       "title": "리뷰제목 입력2",
       "comment": "Good quality, but a bit expensive.",
-      "date": "2024-06-28"
+      "date": "2024-06-28",
+      "id": "370e"
     }
   ],
   "qna": [
@@ -65,7 +91,8 @@
       "userName": "호",
       "qna_State": "1",
       "comment": "문의 내용 입력 11111",
-      "qna_date": "2024-06-29"
+      "qna_date": "2024-06-29",
+      "id": "f966"
     },
     {
       "reviewId": 2,
@@ -74,7 +101,8 @@
       "userName": "호",
       "qna_State": "2",
       "comment": "문의 내용 입력 22222222222",
-      "qna_date": "2024-06-28"
+      "qna_date": "2024-06-28",
+      "id": "2b0d"
     }
   ]
 }

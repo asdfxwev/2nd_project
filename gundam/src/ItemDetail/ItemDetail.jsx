@@ -5,7 +5,7 @@ import SectionImg from './SectionImg';
 import ItemReview from './ItemReview';
 import ItemQna from './ItemQna';
 import ItemService from './ItemService';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -127,7 +127,9 @@ export default function ItemDetail() {
                         <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>
                     </div>
                     <div className='item_btn'>
-                        <button className='submit_btn' onClick={() => {navigate('/ItemBuy')}}>구매하기</button>
+                        <Link to={`/ItemBuy/${selectedItem.id}/${count}`}>
+                            <button type='button' id='buy' className='submit_btn'>구매하기</button>
+                        </Link>
                     </div>
                 </div>
             </div>

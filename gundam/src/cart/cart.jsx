@@ -3,8 +3,10 @@ import './Cart.css';
 import axios from 'axios';
 
 const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
-    const handleChange = (event) => {
-        onQuantityChange(item.id, parseInt(event.target.value));
+    const handleQuantityChange = (newQuantity) => {
+        if (newQuantity >= 1) {
+            onQuantityChange(item.id, newQuantity);
+        }
     };
 
     return (
@@ -12,7 +14,16 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
             <div><input type="checkbox" checked={isChecked} onChange={() => onCheckboxChange(item.id)} /></div>
             <div><img src={item.image} alt={item.name} /></div>
             <div> {item.name}</div>
-            <div><input type="number" value={item.quantity} min="1" onChange={handleChange} /></div>
+            <div className="quantity-controls">
+                <button onClick={() => handleQuantityChange(item.quantity - 1)}>-</button>
+                <input 
+                    type="number" 
+                    value={item.quantity} 
+                    min="1" 
+                    readOnly 
+                />
+                <button onClick={() => handleQuantityChange(item.quantity + 1)}>+</button>
+            </div>
             <div>{item.price.toLocaleString()}원</div>
             <div>{(item.price * item.quantity).toLocaleString()}원</div>
         </div>
@@ -26,7 +37,7 @@ const Cart = () => {
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const userId = existingInquiries.id;
 
-    
+
     // const userId = existingInquiries ? existingInquiries.id : null;
     useEffect(() => {
         const fetchData = async () => {

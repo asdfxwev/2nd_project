@@ -18,13 +18,6 @@ export default function Menu() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginInfo, setLoginInfo] = useState("");
 
-    const scroll = () => {
-        if (window.scrollY > window.innerHeight * 0.3  && location.pathname === '/' ) {
-            setSmallTopMenu(true);
-        } else {
-            setSmallTopMenu(false);
-        }
-    };
 
     const Menu = (menu) => {
         if (visibleMenu === menu) {
@@ -39,10 +32,17 @@ export default function Menu() {
             setMenuAnimating(true);
             setMenuClosing(false);
         }
-        scroll();
+        // scroll();
     };
 
     useEffect(() => {
+        const scroll = () => {
+            if (window.scrollY > window.innerHeight * 0.3 && location.pathname === '/') {
+                setSmallTopMenu(true);
+            } else {
+                setSmallTopMenu(false);
+            }
+        };
         window.addEventListener('scroll', scroll);
 
         return () => {
@@ -75,7 +75,7 @@ export default function Menu() {
         setIsLoggedIn(false);
         navigate("/");
         setLoginInfo('');
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
     };
 
     // console.log(loginInfo.name);
@@ -98,7 +98,7 @@ export default function Menu() {
                     {isLoggedIn ? (
                         <>
                             <div className={`h_right h_login ${smallTopMenu ? 'blackText' : ''} `}>{loginInfo.name} ㅎㅇ</div>
-                            <div style={{cursor:'pointer'}} className={`h_right h_logout ${smallTopMenu ? 'blackText' : ''} `}  onClick={onLogout}><FontAwesomeIcon icon={faRightFromBracket} />로그아웃</div>
+                            <div style={{ cursor: 'pointer' }} className={`h_right h_logout ${smallTopMenu ? 'blackText' : ''} `} onClick={onLogout}><FontAwesomeIcon icon={faRightFromBracket} />로그아웃</div>
                             <div className={`h_right h_mypage ${smallTopMenu ? 'blackText' : ''} `}><a href='/Mypage' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faUser} /> 마이페이지</a></div>
                             <div className={`h_right h_shopping ${smallTopMenu ? 'blackText' : ''} `}><a href='/Cart' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</a></div>
                             {/* <div className={`h_right h_search ${smallTopMenu ? 'blackText' : ''} `} onClick={() => Menu('headerSearch')} ><FontAwesomeIcon icon={faSearch} /> 검색</div> */}

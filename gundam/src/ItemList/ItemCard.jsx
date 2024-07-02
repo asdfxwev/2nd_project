@@ -5,11 +5,11 @@ import './ItemCard.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const ItemCard = ({ item }) => {
-    const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
-    const userId = existingInquiries.id;
-    
+
     const [isAdded, setIsAdded] = useState(false);
 
+    const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
+    const userId = existingInquiries.id;
     useEffect(() => {
         const checkIfAdded = async () => {
             try {
@@ -38,7 +38,7 @@ const ItemCard = ({ item }) => {
     };
 
     const addToCart = async (item) => {
-    // const addToCart = async () => {
+        // const addToCart = async () => {
         // event.preventDefault();
         // const storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         // const existingItem = storedItems.find(cartItem => cartItem.id === item.id);
@@ -55,13 +55,13 @@ const ItemCard = ({ item }) => {
         try {
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data;
-    
+
             if (!userData.cart) {
                 userData.cart = [];
             }
-    
+
             const existingItemIndex = userData.cart.findIndex(cartItem => cartItem.id === item.id);
-    
+
             if (existingItemIndex >= 0) {
                 if (isAdded) {
                     // Remove the item if it is already added
@@ -74,7 +74,7 @@ const ItemCard = ({ item }) => {
                 // Add the item if it is not already in the cart
                 userData.cart.push({ ...item, quantity: 1 });
             }
-    
+
             await axios.put(`http://localhost:3001/users/${userId}`, userData);
 
             // Toggle the state for icon color and effect

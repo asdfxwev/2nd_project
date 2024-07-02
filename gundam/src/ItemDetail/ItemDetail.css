@@ -507,6 +507,11 @@
 .buy_titlebar{
     /* width: 80%; */
     width: 1200px;
+    
+}
+
+.buy_titlebar h1{
+    margin: 0 20px;
 }
 
 .buy_left_subtitle{
@@ -555,5 +560,24 @@
     background-color: rgb(240, 238, 238);
 }
 
+.buy_item_img{
+    width: 120px;
+    height: 150px;
+}
+
+.buy_item_name{
+    font-weight: 600;
+}
+
+.buy_left_box {
+    width: 30%;
+    text-align: left;
+}
+
+.buy_right_box{
+    width: 70%;
+    font-size: 14px;
+    text-align: left;
+}
 
 /* ================ ItemBuy end ================ */

@@ -14,7 +14,7 @@ import Inquiry from '../csc/Inquiry';
 import InquiryWrite from '../csc/InquiryWrite';
 import MyPage from '../MyPage/MyPage';
 import Cart from '../cart/Cart';
-import ItemBuy from '../buy/ItemBuy';
+import ItemBuy from '../ItemDetail/ItemBuy';
 
 
 

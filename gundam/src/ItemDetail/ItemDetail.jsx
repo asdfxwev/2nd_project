@@ -32,6 +32,8 @@ export default function ItemDetail() {
 
     const [count, setCount] = useState(1);
 
+    const [reviewCount, setReviewCount] = useState(0);  // 리뷰 개수를 저장하는 상태 변수
+
     useEffect(() => {
         setTotalPrice(count * selectedItem.price);
     }, [count]);
@@ -45,11 +47,7 @@ export default function ItemDetail() {
     };
 
     const plus = () => {
-        if (count >= 3) {
-            alert(`수량은 3개 까지 선택 가능합니다.`);
-        } else {
-            setCount(e => e + 1);
-        }
+        setCount(e => e + 1);
     };
 
     const formatNumber = (number) => {
@@ -78,6 +76,7 @@ export default function ItemDetail() {
             await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, userData);
 
             navigate('/Cart');
+
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }}
@@ -85,8 +84,11 @@ export default function ItemDetail() {
             navigate('/Login')
         }
     }
-    
 
+    const handleBuyClick = (e) => {
+        e.preventDefault();
+        navigate('/ItemBuy', { state: { item: selectedItem, count: count } });
+    }
 
     return (
         <div className="item_detail_main">
@@ -113,7 +115,7 @@ export default function ItemDetail() {
                 <div className="tab">
                     <div className="tab_inner">
                         <a href="#DETAIL" >상세보기</a>
-                        <a href="#REVIEW_TAB" >상품리뷰(<span >0</span>)</a>
+                        <a href="#REVIEW_TAB" >상품리뷰(<span>{reviewCount}</span>)</a>
                         <a href="#QNA" >Q&amp;A</a>
                         <a href="#SERVICE" >배송/교환/반품</a>
                     </div>
@@ -125,7 +127,7 @@ export default function ItemDetail() {
                     <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
 
                     <SectionImg key={selectedItem.id} item={selectedItem} /> {/* 상세보기 tap */}
-                    <ItemReview key={selectedItem.id} item={selectedItem.id} /> {/* 리뷰 tap */}
+                    <ItemReview key={selectedItem.id} item={selectedItem.id} setReviewCount={setReviewCount} /> {/* 리뷰 tap */}
                     <ItemQna key={selectedItem.id} item={selectedItem.id} /> {/* Q&A tap */}
                     <ItemService /> {/* 배송/교환/반품 tap */}
 
@@ -135,9 +137,8 @@ export default function ItemDetail() {
             <div className='detail_right_box'>
                 <div className='right_inner'>
                     <div className='detail_top'>
-                        {/* <FontAwesomeIcon icon={faCartShopping} className='detail_cart' onClick={() => {navigate('../cart/Cart')}} /> */}
                         {/* <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> 추후 찜 기능 추가 시 아이콘 사용할것 */}
-                        <FontAwesomeIcon icon={faCartShopping} onClick={toCart} className='detail_cart' />
+                        <FontAwesomeIcon icon={faCartShopping} className='detail_cart' onClick={toCart} />
                     </div>
                     <div className='item_name'><h2>{selectedItem.name}</h2></div>
                     <div className='underline'><span className='item_price'>{formatNumber(selectedItem.price)}</span>원</div>
@@ -161,11 +162,7 @@ export default function ItemDetail() {
                         <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>
                     </div>
                     <div className='item_btn'>
-
-                        <Link to={`/ItemBuy/${selectedItem.id}/${count}`}>
-                            <button type='button' id='buy' className='submit_btn'>구매하기</button>
-                        </Link>
-
+                        <button type='button' className='submit_btn' onClick={handleBuyClick}>구매하기</button>
                     </div>
                 </div>
             </div>

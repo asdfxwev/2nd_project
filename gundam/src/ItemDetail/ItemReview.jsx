@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import reviewData from '../data/db.json';
 
-const ItemReview = ( {item} ) => {
+const ItemReview = ({ item, setReviewCount }) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 저장 변수
     const [modalIsOpen, setModalIsOpen] = useState(false); // 리뷰작성 모달팝업 호출 변수
@@ -18,6 +18,10 @@ const ItemReview = ( {item} ) => {
         setReviews(reviewData.review);
     }, []);
 
+    useEffect(() => {
+        const filteredReviews = reviews.filter(review => review.productId === item);
+        setReviewCount(filteredReviews.length);
+    }, [reviews, item, setReviewCount]);
 
     // 브라우저의 localStorage에서 로그인 정보 확인
     if (!isLoggedIn) {

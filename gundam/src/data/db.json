@@ -155,6 +155,15 @@
       "password": "12345678",
       "confirmPassword": "12345678",
       "phoneNumber": "01072815063"
+    },
+    {
+      "id": "607d",
+      "email": "test@naver.com",
+      "address": "경기 성남시 분당구 성남대로 지하 156 ",
+      "name": "호",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "01012345678"
     }
   ],
   "review": [

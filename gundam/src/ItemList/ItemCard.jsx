@@ -9,9 +9,9 @@ const ItemCard = ({ item }) => {
     const navigate = useNavigate();
 
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
-    const userId = existingInquiries.id;
     useEffect(() => {
-        if (userId) {
+        if (existingInquiries) {
+            const userId = existingInquiries.id;
             const checkIfAdded = async () => {
                 try {
                     const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
@@ -30,14 +30,14 @@ const ItemCard = ({ item }) => {
 
             checkIfAdded();
         }
-    }, [userId, item.id]);
+    }, [existingInquiries, item.id]);
 
     const formatPrice = (price) => {
         return new Intl.NumberFormat('ko-KR').format(price);
     };
 
     const checkLogin = () => {
-        if (!userId) {
+        if (!existingInquiries) {
             alert('로그인 후 사용하실 수 있습니다!')
             navigate('/login');
             return false;
@@ -49,7 +49,7 @@ const ItemCard = ({ item }) => {
         if (!checkLogin()) return;
 
         try {
-            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userResponse = await axios.get(`http://localhost:3001/users/${existingInquiries.id}`);
             const userData = userResponse.data;
 
             if (!userData.cart) {
@@ -68,7 +68,7 @@ const ItemCard = ({ item }) => {
                 userData.cart.push({ ...item, quantity: 1 });
             }
 
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
+            await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, userData);
 
             setIsAdded(!isAdded);
 

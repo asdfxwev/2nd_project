@@ -1,5 +1,6 @@
 .productImg {
     width: calc(100vw - 16px);
+    margin-bottom: 20px;
 }
 
 .bestChoice {

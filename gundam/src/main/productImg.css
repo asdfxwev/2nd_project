@@ -1,5 +1,6 @@
 .productImg {
     width: calc(100vw - 16px);
+    margin-bottom: 20px;
 }
 
 .bestChoice {
@@ -84,7 +85,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto;
 }
 
 .productInfo {

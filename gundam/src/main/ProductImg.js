@@ -1,6 +1,8 @@
 import './productImg.css'
-import { useState } from 'react';
-import Gundam3DModel from './Gundam3DModel';
+import { useState, useEffect } from 'react';
+// import Gundam3DModel from './Gundam3DModel';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 
 export default function ProjectImg() {
 
@@ -25,12 +27,21 @@ export default function ProjectImg() {
         setHoveredId(null);
     };
 
+    function Model() {
+        const gltf = useGLTF('./image/gundam_f91/scene.gltf');
+        // 초기에 모델의 크기를 조정하는 useEffect를 사용합니다.
+        useEffect(() => {
+            gltf.scene.scale.set(0.02, 0.02, 0.02); // 모델의 크기를 조정합니다.
+        }, [gltf.scene]);
+        return <primitive object={gltf.scene} />;
+    }
+
     return (
         <section className="productImg">
             <h2 className="bestChoice">당신을 위한 최고의 선택!!!</h2>
             <div className="mainGridArea">
                 {projImg.map((img, i) => (
-                    <a href={`/ItemList/ItemDetail/${i+1}`} key={img.id} className={`${img.class} gridTemplate`} >
+                    <a href={`/ItemList/ItemDetail/${i + 1}`} key={img.id} className={`${img.class} gridTemplate`} >
                         <div>
                             <img className="gridTemplates" src={img.src} alt={img.alt} />
                         </div>
@@ -48,11 +59,33 @@ export default function ProjectImg() {
                     </a>
                 ))}
                 <div className="gridTemplate9 gridTemplate">
-                    <Gundam3DModel />
-                    <div className="productInfo">
-                        <p>건담 3D 모델</p>
-                        <span>가격 정보 없음</span>
-                    </div>
+                    {/* <Gundam3DModel /> */}
+                    {/* <Canvas style={{ height: '600px', width: '580px', cursor: 'grab'}}>
+                        <ambientLight intensity={2} />
+                        <spotLight position={[10, 10, 10]} angle={15} penumbra={1} />
+                        <Model />
+                        <OrbitControls
+                            // autoRotate
+                            // enableZoom={false}
+                            enablePan={false}
+                            minPolarAngle={Math.PI / 4}
+                            maxPolarAngle={Math.PI / 2}
+                            target={[0, 2, -4]}
+                        />
+                    </Canvas> */}
+                    <Canvas style={{ height: '600px', width: '580px', cursor: 'grab' }}>
+                        <ambientLight intensity={2} />
+                        <spotLight position={[10, 10, 10]} angle={15} penumbra={1} />
+                        <Model />
+                        <OrbitControls
+                            autoRotate
+                            // enableZoom={false}
+                            enablePan={false}
+                            minPolarAngle={Math.PI / 4}
+                            maxPolarAngle={Math.PI / 2}
+                            target={[0, 2, 0]}
+                        />
+                    </Canvas>
                 </div>
             </div>
         </section>

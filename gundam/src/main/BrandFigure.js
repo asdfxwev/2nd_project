@@ -26,15 +26,16 @@ export default function BrandFigure() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.remove('show');
-                } else {
+                    entry.target.classList.remove('shows');
+                }
+                else {
                     entry.target.classList.add('show');
                 }
             });
         }, {
             root: null,
             rootMargin: '0px',
-            threshold: 0.2
+            threshold: 0.1
         });
 
         const images1 = document.querySelectorAll('.category1');
@@ -80,7 +81,7 @@ export default function BrandFigure() {
 
     return (
         <section className="BrandFigure">
-            <h2>브랜드별 피규어</h2>
+            <h2 style={{fontSize:'3rem'}}>브랜드별 피규어</h2>
             <div className="FigureContainer">
                 <ul className="FigureList">
                     {BrandFigure.map((figure, i) => (

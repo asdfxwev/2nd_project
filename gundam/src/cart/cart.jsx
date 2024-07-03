@@ -45,7 +45,7 @@ const Cart = () => {
 
                 setCartItems(userData.cart);
                 setCheckedItems(userData.cart.map(item => item.id));
-                setIsAllChecked(true); // Initially set all items as checked
+                setIsAllChecked(true); 
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
@@ -60,16 +60,13 @@ const Cart = () => {
         setCartItems(updatedItems);
 
         try {
-            // Get the current user data
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data;
 
-            // Find the item to update
             const itemIndex = userData.cart.findIndex(item => item.id === id);
             if (itemIndex !== -1) {
                 userData.cart[itemIndex].quantity = quantity;
 
-                // Update the user data with the new cart
                 await axios.put(`http://localhost:3001/users/${userId}`, userData);
             }
         } catch (error) {

@@ -45,42 +45,41 @@ const ItemCard = ({ item }) => {
         return true;
     };
 
-    const addToCart = async (item) => {
-        if (!checkLogin()) return;
+    const addToCart = async (item, isChecked) => {
+    if (!checkLogin()) return;
 
-        try {
-            const userResponse = await axios.get(`http://localhost:3001/users/${existingInquiries.id}`);
-            const userData = userResponse.data;
+    try {
+        const userResponse = await axios.get(`http://localhost:3001/users/${existingInquiries.id}`);
+        const userData = userResponse.data;
 
-            if (!userData.cart) {
-                userData.cart = [];
-            }
-
-            const existingItemIndex = userData.cart.findIndex(cartItem => cartItem.id === item.id);
-
-            if (existingItemIndex >= 0) {
-                if (isAdded) {
-                    userData.cart.splice(existingItemIndex, 1);
-                    
-                } else {
-                    userData.cart[existingItemIndex].quantity += 1;
-                    
-                }
-            } else {
-                userData.cart.push({ ...item, quantity: 1 });
-                if (window.confirm('장바구니로 갈래?')) {
-                    navigate('/Cart');
-                }
-            }
-
-            await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, userData);
-
-            setIsAdded(!isAdded);
-
-        } catch (error) {
-            console.error('Error:', error.response ? error.response.data : error.message);
+        if (!userData.cart) {
+            userData.cart = [];
         }
-    };
+
+        const existingItemIndex = userData.cart.findIndex(cartItem => cartItem.id === item.id);
+
+        if (existingItemIndex >= 0) {
+            if (isChecked) {
+                userData.cart[existingItemIndex].quantity += 1;
+                userData.cart[existingItemIndex].isChecked = true; // isChecked를 true로 설정
+            } else {
+                userData.cart.splice(existingItemIndex, 1);
+            }
+        } else {
+            userData.cart.push({ ...item, quantity: 1, isChecked: true }); // isChecked를 추가하여 장바구니에 추가
+            if (window.confirm('장바구니로 갈래?')) {
+                navigate('/Cart');
+            }
+        }
+
+        await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, userData);
+        setIsAdded(!isAdded);
+
+    } catch (error) {
+        console.error('장바구니에 상품을 추가하는 중 오류 발생:', error);
+    }
+};
+
 
     return (
         <div className={`item-card ${isAdded ? 'added' : ''}`}>

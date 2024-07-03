@@ -81,13 +81,11 @@
       "cart": []
     },
     {
-      "id": "bd65",
-      "email": "vaundy@naver.com",
-      "address": "dfasdf ",
       "name": "vaundy",
-      "password": "123456789",
-      "confirmPassword": "123456789",
+      "email": "vaundy@naver.com",
       "phoneNumber": "01000000000",
+      "address": "dfasdf ",
+      "id": "bd65",
       "cart": []
     },
     {

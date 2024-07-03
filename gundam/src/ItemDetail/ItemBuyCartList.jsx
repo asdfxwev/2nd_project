@@ -31,7 +31,7 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
     );
 };
 
-const ItemBuyCartList = ({ setTotal, setTotalQuantity, initialItem, initialCount }) => {
+const ItemBuyCartList = ({ setTotal, setTotalQuantity, setcheckedTrueItems, initialItem, initialCount }) => {
     const [cartItems, setCartItems] = useState([]);
     const [checkedItems, setCheckedItems] = useState([]);
     const [isAllChecked, setIsAllChecked] = useState(false);
@@ -63,12 +63,13 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, initialItem, initialCount
                 const initiallyCheckedItems = combinedItems.filter(item => item.isChecked).map(item => item.id);
                 setCheckedItems(initiallyCheckedItems);
                 setIsAllChecked(initiallyCheckedItems.length === combinedItems.length); // Initially set all items as checked
+                setcheckedTrueItems(initiallyCheckedItems);
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
         };
         fetchData();
-    }, [userId, initialItem, initialCount]);
+    }, [userId, initialItem, initialCount, setcheckedTrueItems]);
 
     useEffect(() => {
         if (cartItems.length > 0) {
@@ -107,6 +108,7 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, initialItem, initialCount
         const updatedCheckedItems = updatedItems.filter(item => item.isChecked).map(item => item.id);
         setCheckedItems(updatedCheckedItems);
         setIsAllChecked(updatedCheckedItems.length === updatedItems.length);
+        setcheckedTrueItems(updatedCheckedItems);
 
         try {
             const userData = { ...existingInquiries, cart: updatedItems };
@@ -123,6 +125,7 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, initialItem, initialCount
         const updatedCheckedItems = updatedItems.filter(item => item.isChecked).map(item => item.id);
         setCheckedItems(updatedCheckedItems);
         setIsAllChecked(!isAllChecked);
+        setcheckedTrueItems(updatedCheckedItems);
 
         try {
             const userData = { ...existingInquiries, cart: updatedItems };

@@ -86,7 +86,7 @@ export default function ItemDetail() {
 
                 } else {
 
-                    const cart = { ...selectedItem, quantity: count };
+                    const cart = { ...selectedItem, quantity: count, isChecked: true };
 
                     console.log(isAdded);
 
@@ -133,7 +133,8 @@ export default function ItemDetail() {
 
     const handleBuyClick = (e) => {
         e.preventDefault();
-        navigate('/ItemBuy', { state: { item: selectedItem, count: count } });
+        const itemToBuy = { ...selectedItem, isChecked: true };
+        navigate('/ItemBuy', { state: { item: itemToBuy, count: count } });
     }
 
     return (

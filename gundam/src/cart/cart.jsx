@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './cart.css';
+import './Cart.css';
 import axios from 'axios';
 
 const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {

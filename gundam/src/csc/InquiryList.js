@@ -151,12 +151,18 @@
 import React, { useEffect, useState } from 'react';
 import './InquiryList.css';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 export default function InquiryList() {
     const [inquiries, setInquiries] = useState([]);
     const [visibleInquiry, setVisibleInquiry] = useState(null);
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const userId = existingInquiries.id;
+
+    const location = useLocation();  // 현재 페이지의 URL을 가져옴
+    console.log('location.pathname='+location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
+    localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
+
 
     useEffect(() => {
         const fetchData = async () => {

@@ -43,6 +43,7 @@ export default function Notice() {
 
         return pageNumbers;
     };
+    
 
     const onNoticeChange = (e) => {
         const searchContent = e.target.value;

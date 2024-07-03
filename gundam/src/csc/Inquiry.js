@@ -36,6 +36,9 @@ export default function Customerservice() {
     const totalNumberOfPages = Math.ceil(
         (currentCategory === 'ALL' ? CscData : CscData.filter(item => item.classification === currentCategory)).length / itemsPerPage
     );
+    console.log('location.pathname='+location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
+    localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
+
 
     return (
         <section className="cscContainer">

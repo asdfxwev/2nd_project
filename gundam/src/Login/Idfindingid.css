@@ -20,17 +20,33 @@
     align-self: center;
     width: 30%;
     height: 100%;
+    
 }
 
 .FindID {
+    /* font-family: 'LINESeedKR-Bd'; */
+    font-family: 'GmarketSansMedium';
+
     color: white;
     background-color: gray;
     border: 0;
-    border-radius: 15px;
-    font-size: 20px;
+    border-radius: 10px;
+    font-size: 15px;
     position: relative;
-    left: 20%;
+    left: 27%;
     margin-top: 5%;
 
-   
+}
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }

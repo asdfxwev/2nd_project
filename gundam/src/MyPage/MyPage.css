@@ -15,6 +15,8 @@
     text-align: left;
     font-family: "Noto Sans KR", sans-serif;
     margin-top: -50px;
+    font-family: 'GmarketSansMedium';
+
 }
 
 .mypage_menu .MyPage_h2 {
@@ -32,6 +34,8 @@
     margin-bottom: 13px;
     text-align: left;
     font-weight: bold;
+    font-family: 'LINESeedKR-Bd';
+
 
 }
 
@@ -39,6 +43,8 @@
 .mypage_menu ul li a {
      display: flex;
      color: black;
+    
+
 }
 
 .MyPage_h3{
@@ -51,6 +57,7 @@
     font-family: "Noto Sans KR", sans-serif;
     text-align: left;
     width: 50%;
+    font-family: 'LINESeedKR-Bd';
 
 }
 
@@ -82,9 +89,46 @@
 .user_info .MyPage_h3{
     font-size: 2em;
     margin-bottom: 20px;
+    
 }
 .user_info p{
     font-size: 1.5em;
     margin-bottom: 60px;
 }
 
+
+
+
+    /* font-family: 'GmarketSansMedium'; */
+    /* font-family: 'SEBANG_Gothic_Bold'; */
+    /* font-family: 'IBMPlexSansKR-Regular'; */
+
+
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SEBANG_Gothic_Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

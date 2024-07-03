@@ -52,7 +52,7 @@ function Login() {
 
                 <div className="wrap-login">
                     <form className="login-form">
-                        <a href="/"><img className='img' src='./image/logo.png' alt="Gundam Logo" /></a>
+                        <a href="/"><img className='logo_img' src='./image/logo.png' alt="Gundam Logo" /></a>
 
                         <span className="login-form-title">
                         </span>

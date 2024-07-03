@@ -109,7 +109,10 @@
       "name": "전용덕",
       "password": "12345678",
       "confirmPassword": "12345678",
-      "phoneNumber": "01072815063"
+      "phoneNumber": "01072815063",
+      "cart": [],
+      "inquries": [],
+      "inquiryCounter": 2
     },
     {
       "id": "0930",

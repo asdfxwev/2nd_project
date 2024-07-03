@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import './ItemDetail.css';
 import ItemBuyCartList from './ItemBuyCartList';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const ItemBuy = () => {
 
     const userinfo = JSON.parse(localStorage.getItem('loginInfo')); // 사용자 정보
-    console.log(userinfo);
 
     const location = useLocation();
+    const navigate = useNavigate();
     const { item, count } = location.state || {};
     const [total, setTotal] = useState(0); // 총 결제금액 상태 변수
     const [totalQuantity, setTotalQuantity] = useState(0); // 총 구매수량 상태 변수
-    const [checkedTrueItems, setcheckedTrueItems] = useState([]); // 체크된 아이템 상태 변수
+    const [checkedTrueItems, setCheckedTrueItems] = useState([]); // 체크된 아이템 상태 변수
 
     const formatNumber = (number) => {
         return number.toLocaleString('ko-KR');
     };
 
-    const [totalprice, setTotalPrice] = useState(item ? item.price : 0);
+    // const [totalprice, setTotalPrice] = useState(item ? item.price : 0);
+
+    // useEffect(() => {
+    //     if (item && count) {
+    //         setTotalPrice(count * item.price);
+    //     }
+    // }, [item, count]);
 
     useEffect(() => {
         if (item && count) {
-            setTotalPrice(count * item.price);
+            setTotal(item.price * count);
+            setTotalQuantity(count);
+            setCheckedTrueItems([{ ...item, quantity: count }]);
         }
     }, [item, count]);
 
@@ -43,16 +51,26 @@ const ItemBuy = () => {
             const userResponse = await axios.get(`http://localhost:3001/users/${userinfo.id}`);
             const userData = userResponse.data;
 
+            const today = new Date().toISOString().split('T')[0]; // 오늘의 년월일을 얻음 (YYYY-MM-DD 형식)
+
             // isChecked가 true인 데이터만 buy 배열에 추가
-            const itemsToBuy = userData.cart.filter(item => checkedTrueItems.includes(item.id));
-            userData.buy = userData.buy ? [...userData.buy, ...itemsToBuy] : itemsToBuy;
+            const itemsToBuy = userData.cart.filter(cartItem => cartItem.isChecked).map(item => ({
+                ...item,
+                date: today // "date" 속성 추가
+            }));
+
+            // 중복 제거: buy 배열에 동일한 id의 항목이 없을 때만 추가
+            const newBuyItems = itemsToBuy.filter(item => !(userData.buy && userData.buy.some(buyItem => buyItem.id === item.id)));
+
+            userData.buy = userData.buy ? [...userData.buy, ...newBuyItems] : newBuyItems;
 
             // isChecked가 true인 데이터는 cart에서 제거
-            userData.cart = userData.cart.filter(item => !checkedTrueItems.includes(item.id));
+            userData.cart = userData.cart.filter(cartItem => !cartItem.isChecked);
 
             await axios.put(`http://localhost:3001/users/${userinfo.id}`, userData);
 
             alert('결제가 완료되었습니다.');
+            navigate('../Order/Order'); // 결제 완료 페이지로 이동
         } catch (error) {
             console.error('결제 처리 중 오류 발생:', error);
         }
@@ -76,7 +94,7 @@ const ItemBuy = () => {
                             <ItemBuyCartList 
                                 setTotal={setTotal}
                                 setTotalQuantity={setTotalQuantity}
-                                setcheckedTrueItems={setcheckedTrueItems}
+                                setCheckedTrueItems={setCheckedTrueItems}
                                 initialItem={item}
                                 initialCount={count}
                             />

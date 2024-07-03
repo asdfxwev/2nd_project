@@ -6,10 +6,12 @@ import { useLocation } from 'react-router-dom';
 const ItemBuy = () => {
 
     const userinfo = JSON.parse(localStorage.getItem('loginInfo')); // 사용자 정보
+    console.log(userinfo);
 
     const location = useLocation();
     const { item, count } = location.state || {};
     const [total, setTotal] = useState(0); // 총 결제금액 상태 변수
+    const [totalQuantity, setTotalQuantity] = useState(0); // 총 구매수량 상태 변수
 
     const formatNumber = (number) => {
         return number.toLocaleString('ko-KR');
@@ -28,7 +30,9 @@ const ItemBuy = () => {
         if (item && count) {
             const initialCartItems = [{ ...item, quantity: count }];
             const initialTotal = initialCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            const initialTotalQuantity = initialCartItems.reduce((sum, item) => sum + item.quantity, 0);
             setTotal(initialTotal);
+            setTotalQuantity(initialTotalQuantity);
         }
     }, [item, count]);
     // =====================================================================
@@ -46,11 +50,17 @@ const ItemBuy = () => {
                             <div className="subtitle_left"><h3>상품 정보</h3></div>
                             <div className="subtitle_right"></div>
                         </div>
-                        <div className='buy_left_content_box'>
-                            <ItemBuyCartList setTotal={setTotal} initialItem={item} initialCount={count} />
+                        <div>
+                            <ItemBuyCartList setTotal={setTotal} setTotalQuantity={setTotalQuantity} initialItem={item} initialCount={count} />
                         </div>
-
-                        <div className='test'></div>
+                        
+                        {/* <div className="buy_left_subtitle">
+                            <div className="subtitle_left"><h3>배송지 정보</h3></div>
+                            <div className="subtitle_right"></div>
+                        </div>
+                        <div className='buy_left_address_box'>
+                            <div></div>
+                        </div> */}
 
                     </div>
 
@@ -60,13 +70,18 @@ const ItemBuy = () => {
                             
                             <div className='item_info underline'>
                                 <div className='userinfo'>
-                                    {/* 사용자정보 보여줄곳 */}
+                                    <p>주문자</p>
+                                    <p>{userinfo.name}</p>
+                                    <p>연락처</p>
+                                    <p>{userinfo.phoneNumber}</p>
+                                    <p>e-Mail</p>
+                                    <p>{userinfo.email}</p>
                                 </div>
                             </div>
                             <div className='item_count underline'>
                                 <div className='count_left_box font_medium'>구매수량</div>
                                 <div className='count_right_box'>
-                                    <div className='count_num'>{count}</div>
+                                    <div className='count_num'>{totalQuantity}</div>
                                 </div>
                             </div>
                             <div className='item_total_price font_medium'>

@@ -106,7 +106,8 @@
             "/image/gundam01.jpg"
           ],
           "image": "/image/gundam01.jpg",
-          "quantity": 1
+          "quantity": 2,
+          "isChecked": true
         }
       ]
     },

@@ -31,7 +31,7 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
     );
 };
 
-const ItemBuyCartList = ({ setTotal, initialItem, initialCount }) => {
+const ItemBuyCartList = ({ setTotal, setTotalQuantity, initialItem, initialCount }) => {
     const [cartItems, setCartItems] = useState([]);
     const [checkedItems, setCheckedItems] = useState([]);
     const [isAllChecked, setIsAllChecked] = useState(false);
@@ -73,8 +73,13 @@ const ItemBuyCartList = ({ setTotal, initialItem, initialCount }) => {
                 .filter(item => checkedItems.includes(item.id))
                 .reduce((sum, item) => sum + item.price * item.quantity, 0);
             setTotal(totalAmount);
+
+            const totalQuantity = cartItems
+                .filter(item => checkedItems.includes(item.id))
+                .reduce((sum, item) => sum + item.quantity, 0);
+            setTotalQuantity(totalQuantity);
         }
-    }, [cartItems, checkedItems, setTotal]);
+    }, [cartItems, checkedItems, setTotal, setTotalQuantity]);
 
     // const total = cartItems
     //     .filter(item => checkedItems.includes(item.id))

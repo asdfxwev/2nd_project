@@ -36,7 +36,6 @@ const MyPage = () => {
         }
     };
 
-
     return (
         <div className='mypage_container'>
             <div className='mypage_menu'>

@@ -39,8 +39,8 @@ const Cart = () => {
                 const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
                 const userData = userResponse.data;
 
-                setCartItems(userData.cart);
-                setCheckedItems(userData.cart.map(item => item.id));
+                setCartItems(userData.buy);
+                setCheckedItems(userData.buy.map(item => item.id));
                 setIsAllChecked(true); 
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -59,9 +59,9 @@ const Cart = () => {
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data;
 
-            const itemIndex = userData.cart.findIndex(item => item.id === id);
+            const itemIndex = userData.buy.findIndex(item => item.id === id);
             if (itemIndex !== -1) {
-                userData.cart[itemIndex].quantity = quantity;
+                userData.buy[itemIndex].quantity = quantity;
 
                 await axios.put(`http://localhost:3001/users/${userId}`, userData);
             }

@@ -198,11 +198,12 @@ const ItemList = () => {
     }, [currentPage, searchResult]);
 
 
-    // 처음 로딩시 전체 나오게 하기
-    useEffect(() => {
-        setSelectedOption('전체');
-        setSearchResult(ItemDataBase);
-    }, [location]);
+// 페이지가 로드될 때 URL 쿼리 파라미터에서 currentPage 설정
+useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const page = parseInt(query.get('page')) || 1;
+    setCurrentPage(page);
+}, [location.search]);
 
     // h1창 이름 변경
     const handleSearchChange = (event) => {

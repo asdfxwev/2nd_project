@@ -8,8 +8,21 @@
       "password": "asdfasdf",
       "confirmPassword": "asdfasdf",
       "phoneNumber": "1234567891",
-      "inquries": [],
-      "inquiryCounter": 3,
+      "inquries": [
+        {
+          "id": 4,
+          "inquiryType": "배송",
+          "subject": "asdf",
+          "message": "asfd"
+        },
+        {
+          "id": 5,
+          "inquiryType": "배송",
+          "subject": "asdf",
+          "message": "zxcv"
+        }
+      ],
+      "inquiryCounter": 6,
       "cart": []
     },
     {
@@ -100,20 +113,7 @@
       "name": "tmdqja",
       "password": "asdfasdf",
       "phoneNumber": "1234567890",
-      "inquries": [
-        {
-          "id": "6f7d772b-7732-41f7-8415-f0fcbb3e9873",
-          "inquiryType": "반품",
-          "subject": "a",
-          "message": "a"
-        },
-        {
-          "id": "f99d2da1-5062-41d8-8b90-b4f0832a8945",
-          "inquiryType": "반품",
-          "subject": "a",
-          "message": "a"
-        }
-      ]
+      "inquries": []
     },
     {
       "id": "79c7",
@@ -174,46 +174,58 @@
   ],
   "review": [
     {
+      "id": "43e5",
       "reviewId": 1,
       "productId": 2,
-      "userId": "607d",
-      "userName": "호",
-      "title": "리뷰제목 입력",
-      "comment": "엉망이에요 사지마요 바가지에 퀄리티 똥망",
-      "date": "2024-06-29",
-      "id": "e474"
+      "userId": "28d8",
+      "title": "ㅁ",
+      "comment": "ㅁ",
+      "date": "2024. 7. 3."
     },
     {
+      "id": "ded1",
       "reviewId": 2,
       "productId": 2,
-      "userId": "607d",
-      "userName": "호",
-      "title": "리뷰제목 입력2",
-      "comment": "Good quality, but a bit expensive.",
-      "date": "2024-06-28",
-      "id": "370e"
+      "userId": "28d8",
+      "title": "ㅁ",
+      "comment": "ㅁ",
+      "date": "2024. 7. 3."
+    },
+    {
+      "id": "529d",
+      "reviewId": 3,
+      "productId": 3,
+      "userId": "28d8",
+      "title": "ㅁㄴ",
+      "comment": "ㅍㅊ",
+      "date": "2024. 7. 3."
+    },
+    {
+      "id": "663c",
+      "reviewId": 4,
+      "productId": 1,
+      "userId": "28d8",
+      "title": "ㅋ",
+      "comment": "ㅌㅊ",
+      "date": "2024. 7. 3."
     }
   ],
   "qna": [
     {
+      "id": "dad5",
       "qna_Id": 1,
-      "productId": 2,
-      "userId": "607d",
-      "userName": "호",
-      "qna_State": "1",
-      "comment": "문의 내용 입력 11111",
-      "qna_date": "2024-06-29",
-      "id": "f966"
+      "productId": 1,
+      "userId": "28d8",
+      "comment": "ㅁㄴㅇㄹ",
+      "date": "2024. 7. 3."
     },
     {
-      "reviewId": 2,
-      "productId": 2,
-      "userId": "607d",
-      "userName": "호",
-      "qna_State": "2",
-      "comment": "문의 내용 입력 22222222222",
-      "qna_date": "2024-06-28",
-      "id": "2b0d"
+      "id": "4721",
+      "qna_Id": 2,
+      "productId": 1,
+      "userId": "28d8",
+      "comment": "ㅋㅌㅊㅍ",
+      "date": "2024. 7. 3."
     }
   ]
 }

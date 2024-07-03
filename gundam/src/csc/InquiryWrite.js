@@ -142,6 +142,7 @@ export default function InquiryWrite() {
     const [message, setMessage] = useState('');
     const [inquiryType, setInquiryType] = useState('배송');
     const navigate = useNavigate();
+    
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
     const userId = existingInquiries.id; // Assuming the user ID is stored here
 

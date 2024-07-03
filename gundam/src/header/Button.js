@@ -4,7 +4,7 @@ import './Button.css';
 import { useLocation } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
-import { gsap } from 'gsap';
+// import { gsap } from 'gsap';
 
 export default function Button() {
     const menuSmallTop = HeaderMenuSmallTop();

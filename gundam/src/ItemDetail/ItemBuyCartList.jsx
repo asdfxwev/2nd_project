@@ -48,8 +48,13 @@ const ItemBuyCartList = ({ setTotal, initialItem, initialCount }) => {
                 let combinedItems = userData.cart;
 
                 if (initialItem && initialCount) {
-                    const initialCartItem = { ...initialItem, quantity: initialCount };
-                    combinedItems = [initialCartItem, ...userData.cart];
+                    const existingItemIndex = combinedItems.findIndex(item => item.id === initialItem.id);
+                    if (existingItemIndex >= 0) {
+                        combinedItems[existingItemIndex].quantity += initialCount;
+                    }else {
+                        const initialCartItem = {...initialItem, quantity: initialCount};
+                        combinedItems = [initialCartItem, ...userData.cart];
+                    }
                 }
 
                 setCartItems(combinedItems);

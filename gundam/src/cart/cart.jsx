@@ -14,6 +14,10 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange }) => {
         onCheckboxChange(item.id);
     };
 
+    // 기본값 설정
+    const price = item.price || 0;
+    const quantity = item.quantity || 1; // 예를 들어 기본값이 1일 경우
+
     return (
         <div className="cart-item">
             <div>
@@ -26,12 +30,12 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange }) => {
             </div>
             <div>{item.name}</div>
             <div className="quantity-controls">
-                <button onClick={() => handleQuantityChange(item.quantity - 1)}>-</button>
-                {item.quantity}
-                <button onClick={() => handleQuantityChange(item.quantity + 1)}>+</button>
+                <button onClick={() => handleQuantityChange(quantity - 1)}>-</button>
+                {quantity}
+                <button onClick={() => handleQuantityChange(quantity + 1)}>+</button>
             </div>
-            <div>{item.price.toLocaleString()}원</div>
-            <div>{(item.price * item.quantity).toLocaleString()}원</div>
+            <div>{price.toLocaleString()}원</div>
+            <div>{(price * quantity).toLocaleString()}원</div>
         </div>
     );
 };
@@ -111,8 +115,14 @@ const Cart = () => {
         setCartItems(updatedItems);
 
         try {
-            const userData = { ...existingInquiries, cart: updatedItems };
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
+            // 기존의 userData에서 buy 항목을 유지하면서 cart만 업데이트 하는 코드
+            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userData = userResponse.data;
+
+            // buy는 유지, cart만 업데이트 하는 코드임
+            const updatedUserData = { ...userData, cart: updatedItems };
+
+            await axios.put(`http://localhost:3001/users/${userId}`, updatedUserData);
 
             setCheckedItems([]);
             setIsAllChecked(false);
@@ -126,8 +136,12 @@ const Cart = () => {
         setCartItems(updatedItems);
 
         try {
-            const userData = { ...existingInquiries, cart: updatedItems };
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
+            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userData = userResponse.data;
+
+            const updatedUserData = { ...userData, cart: updatedItems };
+
+            await axios.put(`http://localhost:3001/users/${userId}`, updatedUserData);
 
             setCheckedItems([]);
             setIsAllChecked(false);
@@ -147,8 +161,7 @@ const Cart = () => {
             window.location.href = '/Itembuy';
         }
     };
-    
-    
+
     return (
         <div>
             <h1 className='h1-name'>장바구니</h1>

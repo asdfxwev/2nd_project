@@ -50,31 +50,42 @@ const ItemBuy = () => {
         try {
             const userResponse = await axios.get(`http://localhost:3001/users/${userinfo.id}`);
             const userData = userResponse.data;
-
+    
             const today = new Date().toISOString().split('T')[0]; // 오늘의 년월일을 얻음 (YYYY-MM-DD 형식)
-
+    
             // isChecked가 true인 데이터만 buy 배열에 추가
-            const itemsToBuy = userData.cart.filter(cartItem => cartItem.isChecked).map(item => ({
+            const itemsToBuyFromCart = userData.cart.filter(cartItem => cartItem.isChecked).map(item => ({
                 ...item,
                 date: today // "date" 속성 추가
             }));
-
+    
+            // itemdetail에서 가져온 항목 추가
+            const itemDetailToBuy = {
+                ...item,
+                quantity: count,
+                date: today
+            };
+    
+            // 결합된 항목들
+            const allItemsToBuy = [...itemsToBuyFromCart, itemDetailToBuy];
+    
             // 중복 제거: buy 배열에 동일한 id의 항목이 없을 때만 추가
-            const newBuyItems = itemsToBuy.filter(item => !(userData.buy && userData.buy.some(buyItem => buyItem.id === item.id)));
-
+            const newBuyItems = allItemsToBuy.filter(item => !(userData.buy && userData.buy.some(buyItem => buyItem.id === item.id)));
+    
             userData.buy = userData.buy ? [...userData.buy, ...newBuyItems] : newBuyItems;
-
+    
             // isChecked가 true인 데이터는 cart에서 제거
             userData.cart = userData.cart.filter(cartItem => !cartItem.isChecked);
-
+    
             await axios.put(`http://localhost:3001/users/${userinfo.id}`, userData);
-
+    
             alert('결제가 완료되었습니다.');
             navigate('../Order/Order'); // 결제 완료 페이지로 이동
         } catch (error) {
             console.error('결제 처리 중 오류 발생:', error);
         }
     };
+    
     // =====================================================================
 
 

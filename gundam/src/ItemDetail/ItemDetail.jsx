@@ -7,7 +7,7 @@ import ItemQna from './ItemQna';
 import ItemService from './ItemService';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import TopBtn from '../header/TopBtn';
+import TopBtn from '../header/TopBtn.js';
 
 
 import Checkbox from '@mui/material/Checkbox';

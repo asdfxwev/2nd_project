@@ -2,15 +2,15 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    font-family: 'LINESeedKR-Bd';
 }
 
-/* a{
-    font-family: 'GmarketSansMedium';
-    font-family: 'LINESeedKR-Bd';
-    font-family: 'SEBANG_Gothic_Bold';
-    font-family: 'IBMPlexSansKR-Regular';
-    
-} */
+/* a { */
+    /* font-family: 'GmarketSansMedium'; */
+    /* font-family: 'SEBANG_Gothic_Bold'; */
+    /* font-family: 'IBMPlexSansKR-Regular'; */
+
+/* } */
 
 @font-face {
     font-family: 'GmarketSansMedium';
@@ -53,7 +53,7 @@
     z-index: 3;
 }
 
-.topBtn{
+.topBtn {
     position: fixed;
     right: 50px;
     /* bottom: 200px; */
@@ -105,4 +105,3 @@
 /* body{
     overflow-x: hidden;
 } */
-

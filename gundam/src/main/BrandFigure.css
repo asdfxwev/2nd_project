@@ -34,7 +34,7 @@
     transition: width .5s ease-in-out ;
     height: 80vh;
     width: 16vw;
-    transform: translateY(0);
+    transform: translateY(0px);
 }
 
 .category1 {
@@ -75,6 +75,6 @@
 }
 
 
-.category.show {
+.category.shows {
     transform: translateY(200px);
 }

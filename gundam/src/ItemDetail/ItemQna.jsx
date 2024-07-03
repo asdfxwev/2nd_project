@@ -5,6 +5,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import qnaData from '../data/db.json';
+import axios from 'axios';
 
 const ItemQna = ({item}) => {
 
@@ -13,6 +14,7 @@ const ItemQna = ({item}) => {
     const [modalOpenPop, setModalOpenPop] = useState(false); // 비로그인 시 안내모달팝업 호출 변수
     const [qnas, setQnas] = useState([]); // 리뷰 데이터를 저장할 상태 변수
     const navigate = useNavigate();
+    const [comment, setQnaValue] = useState('');
 
     useEffect(() => {
         setQnas(qnaData.qna);
@@ -44,6 +46,36 @@ const ItemQna = ({item}) => {
 
     const filteredQnas = qnas.filter(qna => qna.productId === item);
 
+    function onQnaMessage (e) {
+        setQnaValue(e.target.value)
+    }
+
+    const submitQna = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.get(`http://localhost:3001/qna`);
+            const qnaList = response.data;
+            const date = new Date().toLocaleDateString();
+
+            // 리뷰 아이디 생성
+            const qna_Id = qnaList.length ? qnaList[qnaList.length - 1].qna_Id + 1 : 1;
+
+            const productId = item;
+            const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
+            const userId = existingInquiries.id;
+
+            const newQna = { qna_Id, productId, userId, comment, date };
+
+            // 서버에 새로운 리뷰 추가
+            await axios.post(`http://localhost:3001/qna`, newQna);
+
+            setQnaValue('');
+            closeModal();
+        } catch (error) {
+            console.error('Error:', error.response ? error.response.data : error.message);
+        }
+    }
+
     return(
         <>
             <div className="info_top_box" id="QNA">
@@ -57,11 +89,11 @@ const ItemQna = ({item}) => {
                     >
                         <div className="review_pop">
                             <h2>Qna작성</h2>
-                            <div>
-                                내용 : <input type="text" id="comment" className="re_comment" />
+                            <div className="qnaBox">
+                                내용 : <textarea value={comment} onChange={onQnaMessage} type="text" id="comment" className="re_comment" />
                             </div>
                             <div className="re_button_box">
-                                <button type="button" className="re_button">저장</button>
+                                <button type="button" className="re_button" onClick={submitQna}>저장</button>
                                 <button type="button" className="re_button" onClick={closeModal}>닫기</button>
                             </div>
                         </div>

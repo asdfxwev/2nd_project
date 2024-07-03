@@ -3,6 +3,7 @@ import './ItemDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import reviewData from '../data/db.json';
 
@@ -13,6 +14,8 @@ const ItemReview = ({ item, setReviewCount }) => {
     const [modalOpenPop, setModalOpenPop] = useState(false); // 비로그인 시 안내모달팝업 호출 변수
     const [reviews, setReviews] = useState([]); // 리뷰 데이터를 저장할 상태 변수
     const navigate = useNavigate();
+    const [title, setReviewTitle] = useState('');
+    const [comment, setReviewMessage] = useState('');
 
     useEffect(() => {
         setReviews(reviewData.review);
@@ -50,6 +53,41 @@ const ItemReview = ({ item, setReviewCount }) => {
     // 선택된 상품의 리뷰만 필터링
     const filteredReviews = reviews.filter(review => review.productId === item);
 
+    function onreviewTitle(e) {
+        setReviewTitle(e.target.value)
+    }
+
+    function onreviewMessage(e) {
+        setReviewMessage(e.target.value)
+    }
+
+    const reviewSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.get(`http://localhost:3001/review`);
+            const reviewList = response.data;
+            const date = new Date().toLocaleDateString();
+
+            // 리뷰 아이디 생성
+            const reviewId = reviewList.length ? reviewList[reviewList.length - 1].reviewId + 1 : 1;
+
+            const productId = item;
+            const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
+            const userId = existingInquiries.id;
+
+            const newReview = { reviewId, productId, userId, title, comment, date };
+
+            // 서버에 새로운 리뷰 추가
+            await axios.post(`http://localhost:3001/review`, newReview);
+
+            setReviewTitle('');
+            setReviewMessage('');
+            closeModal();
+        } catch (error) {
+            console.error('Error:', error.response ? error.response.data : error.message);
+        }
+    }
+
     return (
         <>
             <div className="info_top_box" id="REVIEW_TAB">
@@ -61,17 +99,17 @@ const ItemReview = ({ item, setReviewCount }) => {
                         onRequestClose={closeModal}
                         contentLabel="Example Modal"
                     >
-                        <div className="review_pop">
+                        <form className="review_pop">
                             <h2>리뷰작성</h2>
                             <div>
-                                제목 : <input type="text" id="title" className="re_title" />
-                                내용 : <input type="text" id="comment" className="re_comment" />
+                                <div>제목 : <input value={title} onChange={onreviewTitle} type="text" id="title" className="re_title" /></div>
+                                <div className="reviewBox">내용 : <textarea value={comment} onChange={onreviewMessage} type="text" id="comment" className="re_comment" /></div>
                             </div>
                             <div className="re_button_box">
-                                <button type="button" className="re_button">저장</button>
+                                <button type="button" className="re_button" onClick={reviewSubmit}>저장</button>
                                 <button type="button" className="re_button" onClick={closeModal}>닫기</button>
                             </div>
-                        </div>
+                        </form>
                     </Modal>
 
                     <Modal
@@ -81,7 +119,7 @@ const ItemReview = ({ item, setReviewCount }) => {
                     >
                         <div>
                             <h2>로그인 후 이용 가능합니다.</h2>
-                            <button type="button" onClick={() => {navigate('/Login')}}>로그인</button>
+                            <button type="button" onClick={() => { navigate('/Login') }}>로그인</button>
                             <button type="button" onClick={closePopModal}>닫기</button>
                         </div>
                     </Modal>

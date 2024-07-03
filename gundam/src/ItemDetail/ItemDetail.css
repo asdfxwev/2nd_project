@@ -658,3 +658,14 @@
 .test{
     height: 1000px;
 }
+
+#comment {
+    width: 355px;
+    height: 100px;
+    resize: none;
+}
+
+.qnaBox, .reviewBox{
+    display: flex;
+    align-items: center;
+}

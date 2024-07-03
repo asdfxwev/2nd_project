@@ -10,19 +10,79 @@
       "phoneNumber": "1234567891",
       "inquries": [
         {
-          "id": 4,
+          "id": 6,
           "inquiryType": "배송",
-          "subject": "asdf",
-          "message": "asfd"
+          "subject": "ㅁ",
+          "message": "ㅁ"
         },
         {
-          "id": 5,
+          "id": 7,
           "inquiryType": "배송",
-          "subject": "asdf",
-          "message": "zxcv"
+          "subject": "ㅁㄴㅇ",
+          "message": "ㅇㄹ"
+        },
+        {
+          "id": 8,
+          "inquiryType": "회원",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 9,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 10,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 11,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 12,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 13,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 14,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 15,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 16,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 17,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
         }
       ],
-      "inquiryCounter": 6,
+      "inquiryCounter": 19,
       "cart": [
         {
           "id": 2,

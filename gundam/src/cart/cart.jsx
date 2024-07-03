@@ -116,6 +116,14 @@ const Cart = () => {
         .filter(item => checkedItems.includes(item.id))
         .reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+    const handleCheckout = () => {
+        if (cartItems.length === 0) {
+            alert('장바구니에 상품이 없습니다!');
+        } else {
+            window.location.href = '/Itembuy';
+        }
+    };
+
     return (
         <div>
             <h1 className='h1-name'>장바구니</h1>
@@ -150,9 +158,7 @@ const Cart = () => {
                     총 합계: {total.toLocaleString()}원
                 </div>
                 <div className="cart-actions">
-                    <a href={`/Itembuy`}>
-                    <button>결제하기</button>
-                    </a>
+                    <button onClick={handleCheckout}>결제하기</button>
                 </div>
             </div>
         </div>

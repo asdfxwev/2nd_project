@@ -1,33 +1,34 @@
+import React, { useRef, useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
-
-export default function topBtn() {
+export default function TopBtn() {
+    const [imageSrc, setImageSrc] = useState('./image/underGundam.png');
     const [bottomOffset, setBottomOffset] = useState(30);
+    const topRef = useRef(null);
+    const [showButton, setShowButton] = useState(false);
+    // const orbitControlsRef = useRef(null);
 
     function scrollTop() {
-        scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
     useEffect(() => {
         const handleScroll = () => {
-            const footer = document.querySelector('.footer');
+            const footer = document.querySelector('.footer'); // Ensure this selector matches your footer element
             if (!footer) return;
-            const footerRect = footer.getBoundingClientRect();
+            const footerRect = footer.getBoundingClientRect(); // Check if footer exists
 
             if (footer && window.scrollY > window.innerHeight * 0.5) {
-                if (isDetailPage) {
-                    setShowButton(false);
-                } else {
-                    setShowButton(true);
-                }
+                setShowButton(true);
+
             } else {
                 setShowButton(false);
             }
 
             if (footer) {
                 if (window.innerHeight - footerRect.top > 0) {
-                    setBottomOffset(window.innerHeight - footerRect.top);
+                    setBottomOffset(window.innerHeight - footerRect.top); // Adjust the offset to avoid overlapping
                 } else {
                     setBottomOffset(20);
                 }
@@ -39,30 +40,22 @@ export default function topBtn() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [isLoginPage]);
+    }, []);
 
     return (
         <>
-            <Canvas
-                style={{ height: '150px', width: '150px', cursor: 'pointer', bottom: `${bottomOffset}px` }}
+            {/* <img src='./image/underGundam.png' alt='underGundam' style={{ pointer: 'cursor' }} onClick={scrollTop} /> */}
+            {/* <img */}
+            {showButton && <FontAwesomeIcon icon={faArrowUp}
+                src={imageSrc}
+                alt='topBtn'
                 className='topBtn'
-                onClick={() => scrollTop()}
-            >
-                <ambientLight intensity={2} />
-                <spotLight position={[10, 10, 10]} angle={15} penumbra={1} />
-                <React.Suspense fallback={null}>
-                    <Model />
-                </React.Suspense>
-                <OrbitControls
-                    autoRotate
-                    // ref={orbitControlsRef}
-                    enableZoom={false}
-                    enablePan={false}
-                    minPolarAngle={Math.PI / 4}
-                    maxPolarAngle={Math.PI / 2}
-                    target={[0, 2, 0]}
-                />
-            </Canvas>
+                onClick={() => {
+                    scrollTop();
+                }}
+                style={{ bottom: `${bottomOffset}px`, transition: 'all 0.3s', cursor: 'pointer', zIndex: '15' }}
+            />
+            }
         </>
     )
 }

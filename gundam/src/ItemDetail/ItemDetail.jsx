@@ -7,6 +7,7 @@ import ItemQna from './ItemQna';
 import ItemService from './ItemService';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import TopBtn from '../header/TopBtn';
 
 
 import Checkbox from '@mui/material/Checkbox';
@@ -209,8 +210,9 @@ export default function ItemDetail() {
                         <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>
                     </div>
                     <div className='item_btn'>
-                        <button type='button' className='submit_btn' onClick={handleBuyClick}>구매하기</button>
+                        <button type='button' style={{cursor:'pointer'}} className='submit_btn' onClick={handleBuyClick}>구매하기</button>
                     </div>
+                    <TopBtn />
                 </div>
             </div>
         </div>

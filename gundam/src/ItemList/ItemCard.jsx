@@ -83,8 +83,8 @@ const ItemCard = ({ item }) => {
 
     return (
         <div className={`item-card ${isAdded ? 'added' : ''}`}>
-            <Link 
-                to={`/ItemList/ItemDetail/${item.id}`} 
+            <a 
+                href={`/ItemList/ItemDetail/${item.id}`} 
                 style={{ textDecoration: 'none', color: 'inherit' }} 
             >
                 <div>
@@ -96,7 +96,7 @@ const ItemCard = ({ item }) => {
                     <p className='item_p'>{formatPrice(item.price)} 원</p>
                     <p className='item_p'>{item.brand}</p>
                 </div>
-            </Link>
+            </a>
             <div className='sx'>
                 <button className='button-shopping' onClick={() => addToCart(item)}>
                     <ShoppingCartIcon className="shopping-cart-icon" style={{ color: isAdded ? 'red' : 'inherit' }} />

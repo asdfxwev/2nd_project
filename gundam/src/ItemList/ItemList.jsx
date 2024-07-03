@@ -3,7 +3,7 @@ import ItemCard from './ItemCard';
 import './ItemList.css';
 import ItemDataBase from './ItemDataBase';
 import TuneIcon from '@mui/icons-material/Tune';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 

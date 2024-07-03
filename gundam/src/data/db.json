@@ -8,20 +8,7 @@
       "password": "asdfasdf",
       "confirmPassword": "asdfasdf",
       "phoneNumber": "1234567891",
-      "inquries": [
-        {
-          "id": 4,
-          "inquiryType": "배송",
-          "subject": "asdf",
-          "message": "asfd"
-        },
-        {
-          "id": 5,
-          "inquiryType": "배송",
-          "subject": "asdf",
-          "message": "zxcv"
-        }
-      ],
+      "inquries": [],
       "inquiryCounter": 6,
       "cart": [
         {

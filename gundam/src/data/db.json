@@ -8,8 +8,81 @@
       "password": "asdfasdf",
       "confirmPassword": "asdfasdf",
       "phoneNumber": "1234567891",
-      "inquries": [],
-      "inquiryCounter": 6,
+      "inquries": [
+        {
+          "id": 6,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 7,
+          "inquiryType": "배송",
+          "subject": "ㅁㄴㅇ",
+          "message": "ㅇㄹ"
+        },
+        {
+          "id": 8,
+          "inquiryType": "회원",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 9,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 10,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 11,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 12,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 13,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 14,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 15,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 16,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 17,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        }
+      ],
+      "inquiryCounter": 19,
       "cart": [
         {
           "id": 2,

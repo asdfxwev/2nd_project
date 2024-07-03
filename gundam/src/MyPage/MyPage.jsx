@@ -45,8 +45,7 @@ const MyPage = () => {
                     <li><a href="/Cart">장바구니</a></li>
                     <li><a href="/review">리뷰관리</a></li>
                     <li><a href="/profile">회원정보변경</a></li>
-                    <li><a href="/orders">주문내역</a></li>
-                    <li>구매확인</li>
+                    <li><a href="/Order">구매내역</a></li>
                     <li>알림신청</li>
 
                 </ul>

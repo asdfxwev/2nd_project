@@ -61,11 +61,16 @@ const ItemCard = ({ item }) => {
             if (existingItemIndex >= 0) {
                 if (isAdded) {
                     userData.cart.splice(existingItemIndex, 1);
+                    
                 } else {
                     userData.cart[existingItemIndex].quantity += 1;
+                    
                 }
             } else {
                 userData.cart.push({ ...item, quantity: 1 });
+                if (window.confirm('장바구니로 갈래?')) {
+                    navigate('/Cart');
+                }
             }
 
             await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, userData);

@@ -91,6 +91,12 @@
     font-family: 'LINESeedKR-Bd';
 }
 
+.cart-item input[type="checkbox"] {
+    width: 32px;
+    height: 32px; 
+    margin-right: 10px;
+}
+
 .cart-header input[type="checkbox"] {
     width: 16px;
     height: 16px; 

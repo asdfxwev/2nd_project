@@ -227,7 +227,7 @@ import { useLocation } from 'react-router-dom';
 
 // InquiryList 컴포넌트를 정의합니다.
 export default function InquiryList({inquiries, existingInquiries}) {
-    const [inquries, setInquiries] = useState([inquiries]); // 문의 데이터 상태
+    const [inquiriesState, setinquiriesState] = useState([inquiries]); // 문의 데이터 상태
     const [visibleInquiry, setVisibleInquiry] = useState(null); // 현재 표시 중인 문의
     // const existingInquiries = JSON.parse(localStorage.getItem('loginInfo')); // 로컬 스토리지에서 로그인 정보를 가져옴
     // const userId = existingInquiries.id; // 사용자 ID
@@ -272,7 +272,7 @@ export default function InquiryList({inquiries, existingInquiries}) {
             await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, { ...userData, inquries: updatedInquiries });
 
             // 로컬 상태를 업데이트합니다.
-            setInquiries(updatedInquiries);
+            setinquiriesState(updatedInquiries);
         } catch (error) {
             console.error('Error deleting inquiry:', error.response ? error.response.data : error.message);
         }
@@ -280,7 +280,7 @@ export default function InquiryList({inquiries, existingInquiries}) {
 
     return (
         <>
-            {inquiries.map((inquiry) => (
+            {inquiriesState.map((inquiry) => (
                 <React.Fragment key={inquiry.id}>
                     <div className="CscInquiryList">
                         <div style={{ width: '100px' }}>{inquiry.inquiryType}</div>

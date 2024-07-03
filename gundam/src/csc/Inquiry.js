@@ -11,8 +11,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-export default function Customerservice() {
-    const [item, setItem] = useState(CscData);
+export default function Inquiry() {
     const [currentPage, setCurrentPage] = useState(1);
     const [paginatedItems, setPaginatedItems] = useState([]);
     const navigate = useNavigate();
@@ -22,6 +21,7 @@ export default function Customerservice() {
 
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo')); // 로컬 스토리지에서 로그인 정보를 가져옴
     const userId = existingInquiries.id; // 사용자 ID
+
     // 데이터를 가져오는 useEffect 훅
     useEffect(() => {
         const fetchData = async () => {
@@ -58,13 +58,17 @@ export default function Customerservice() {
     //     setPaginatedItems(filteredData.slice(startIndex, endIndex));
     // }, [location]);
 
-    const totalNumberOfPages =
+    const totalNumberOfPages = Math.ceil(inquiries.length / itemsPerPage);
 
         useEffect(() => {
             const query = new URLSearchParams(location.search);
             const page = parseInt(query.get('page')) || 1;
 
-        })
+            setCurrentPage(page);
+            const startIndex = ([page - 1]) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
+            setPaginatedItems(inquiries.slice(startIndex, endIndex));
+        }, [location, inquiries]);
 
     // const totalNumberOfPages = Math.ceil(
     //     (currentCategory === 'ALL' ? CscData : CscData.filter(item => item.classification === currentCategory)).length / itemsPerPage
@@ -104,8 +108,8 @@ export default function Customerservice() {
                     <ul className="noticeNumber">
                         {currentPage > 1 && (
                             <>
-                                <li><NavLink to={`/Csc/Inquiry?page=1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
-                                <li><NavLink to={`/Csc/Inquiry?page=${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
+                                <li><NavLink to={`/Inquiry?page=1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
+                                <li><NavLink to={`/Inquiry?page=${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
                             </>
                         )}
                         {getPageNumbers().map((pageNumber) => (
@@ -114,7 +118,7 @@ export default function Customerservice() {
                                 className={currentPage === pageNumber ? 'selected' : ''}
                             >
                                 <NavLink
-                                    to={`/Csc/Inquiry?page=${pageNumber}`}
+                                    to={`/Inquiry?page=${pageNumber}`}
                                 >
                                     {pageNumber}
                                 </NavLink>
@@ -122,13 +126,13 @@ export default function Customerservice() {
                         ))}
                         {currentPage < totalNumberOfPages && (
                             <>
-                                <li><NavLink to={`/Csc/Inquiry?page=${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
-                                <li><NavLink to={`/Csc/Inquiry?page=${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
+                                <li><NavLink to={`/Inquiry?page=${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
+                                <li><NavLink to={`/Inquiry?page=${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
                             </>
                         )}
                     </ul>
                     <div className='InquiryWriteBtn'>
-                        <Link to='/Csc/Inquiry/InquiryWrite'>문의작성</Link>
+                        <Link to='/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>
                 </div>
             </div>

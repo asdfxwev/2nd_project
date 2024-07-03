@@ -39,7 +39,7 @@ export default function InquiryWrite() {
             // Update the user data on the server
             await axios.put(`http://localhost:3001/users/${userId}`, userData);
 
-            navigate('/Csc/Inquiry');
+            navigate('/Csc/Inquiry?page=1');
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }

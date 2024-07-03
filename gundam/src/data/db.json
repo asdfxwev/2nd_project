@@ -126,60 +126,8 @@
       "phoneNumber": "01012345678",
       "address": "경기 성남시 분당구 성남대로 지하 156 ",
       "id": "607d",
-      "cart": [
-        {
-          "id": 6,
-          "tag": "건프라",
-          "name": "MG 건담 발바토스",
-          "price": 54000,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam05.jpg",
-            "/image/gundam11.jpg"
-          ],
-          "image": "/image/gundam06.jpg",
-          "quantity": 1,
-          "isChecked": false
-        }
-      ],
-      "buy": [
-        {
-          "id": 13,
-          "tag": "건프라",
-          "name": "SD 건담월드 히어로즈 노부나가 건담 에피온",
-          "price": 8400,
-          "comment": "기동전사 건담 수성의 마녀",
-          "detail": "건담 시리즈의 기념비적인 첫 번째 작품. 스페이스 콜로니와 같이 최첨단 과학기술을 배경으로, 치밀하면서도 리얼한 세계관을 구축하여 인기를 얻었다",
-          "brand": "FIGURE-RISE MECHANICS",
-          "src": [
-            "/image/gundam013.jpg",
-            "/image/gundam14.jpg",
-            "/image/gundam15.jpg"
-          ],
-          "image": "/image/gundam13.jpg",
-          "isChecked": true,
-          "quantity": 1
-        },
-        {
-          "id": 3,
-          "tag": "건프라",
-          "name": "SD 건담월드 히어로즈 오공 임펄스 건담",
-          "price": 7200,
-          "comment": "기동전사 건담 수성의 마녀",
-          "detail": "건담 시리즈의 기념비적인 첫 번째 작품. 스페이스 콜로니와 같이 최첨단 과학기술을 배경으로, 치밀하면서도 리얼한 세계관을 구축하여 인기를 얻었다",
-          "brand": "FIGURE-RISE MECHANICS",
-          "src": [
-            "/image/gundam02.jpg",
-            "/image/gundam08.jpg",
-            "/image/gundam09.jpg"
-          ],
-          "image": "/image/gundam03.jpg",
-          "quantity": 1,
-          "isChecked": true
-        }
-      ]
+      "cart": [],
+      "buy": []
     },
     {
       "id": "0930",
@@ -262,23 +210,6 @@
       "userId": "28d8",
       "comment": "ㅓㅕㅑㅘㅣ,",
       "date": "2024. 7. 3."
-    }
-  ],
-  "buy": [
-    {
-      "id": 1,
-      "tag": "건프라",
-      "name": "RG 윙 건담",
-      "price": 38400,
-      "comment": "건담 무사",
-      "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-      "brand": "1/100",
-      "src": [
-        "/image/gundam01.jpg"
-      ],
-      "image": "/image/gundam01.jpg",
-      "quantity": 2,
-      "isChecked": true
     }
   ]
 }

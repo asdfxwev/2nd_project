@@ -31,7 +31,7 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
     );
 };
 
-const ItemBuyCartList = ({ setTotal, setTotalQuantity, setcheckedTrueItems, initialItem, initialCount }) => {
+const ItemBuyCartList = ({ setTotal, setTotalQuantity, setCheckedTrueItems, initialItem, initialCount }) => {
     const [cartItems, setCartItems] = useState([]);
     const [checkedItems, setCheckedItems] = useState([]);
     const [isAllChecked, setIsAllChecked] = useState(false);
@@ -52,7 +52,7 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, setcheckedTrueItems, init
                     if (existingItemIndex >= 0) {
                         combinedItems[existingItemIndex].quantity += initialCount;
                     } else {
-                        const initialCartItem = { ...initialItem, quantity: initialCount };
+                        const initialCartItem = { ...initialItem, quantity: initialCount, isChecked: true };
                         combinedItems = [initialCartItem, ...userData.cart];
                     }
                 }
@@ -63,13 +63,13 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, setcheckedTrueItems, init
                 const initiallyCheckedItems = combinedItems.filter(item => item.isChecked).map(item => item.id);
                 setCheckedItems(initiallyCheckedItems);
                 setIsAllChecked(initiallyCheckedItems.length === combinedItems.length); // Initially set all items as checked
-                setcheckedTrueItems(initiallyCheckedItems);
+                // setcheckedTrueItems(initiallyCheckedItems);
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
         };
         fetchData();
-    }, [userId, initialItem, initialCount, setcheckedTrueItems]);
+    }, [userId, initialItem, initialCount]);
 
     useEffect(() => {
         if (cartItems.length > 0) {
@@ -82,8 +82,11 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, setcheckedTrueItems, init
                 .filter(item => checkedItems.includes(item.id))
                 .reduce((sum, item) => sum + item.quantity, 0);
             setTotalQuantity(totalQuantity);
+
+            const trueCheckedItems = cartItems.filter(item => item.isChecked);
+            setCheckedTrueItems(trueCheckedItems);
         }
-    }, [cartItems, checkedItems, setTotal, setTotalQuantity]);
+    }, [cartItems, checkedItems, setTotal, setTotalQuantity, setCheckedTrueItems]);
 
     const handleQuantityChange = async (id, quantity) => {
         const updatedItems = cartItems.map(item =>
@@ -108,7 +111,7 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, setcheckedTrueItems, init
         const updatedCheckedItems = updatedItems.filter(item => item.isChecked).map(item => item.id);
         setCheckedItems(updatedCheckedItems);
         setIsAllChecked(updatedCheckedItems.length === updatedItems.length);
-        setcheckedTrueItems(updatedCheckedItems);
+        // setcheckedTrueItems(updatedCheckedItems);
 
         try {
             const userData = { ...existingInquiries, cart: updatedItems };
@@ -125,7 +128,7 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, setcheckedTrueItems, init
         const updatedCheckedItems = updatedItems.filter(item => item.isChecked).map(item => item.id);
         setCheckedItems(updatedCheckedItems);
         setIsAllChecked(!isAllChecked);
-        setcheckedTrueItems(updatedCheckedItems);
+        // setcheckedTrueItems(updatedCheckedItems);
 
         try {
             const userData = { ...existingInquiries, cart: updatedItems };

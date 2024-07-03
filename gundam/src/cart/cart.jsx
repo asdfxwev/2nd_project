@@ -20,7 +20,7 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
             <div> {item.name}</div>
             <div className="quantity-controls">
                 <button onClick={() => handleQuantityChange(item.quantity - 1)}>-</button>
-                <input type="number" value={item.quantity} min="1" readOnly />
+                {item.quantity}
                 <button onClick={() => handleQuantityChange(item.quantity + 1)}>+</button>
             </div>
             <div>{item.price.toLocaleString()}원</div>
@@ -53,11 +53,28 @@ const Cart = () => {
         fetchData();
     }, [userId]);
 
-    const handleQuantityChange = (id, quantity) => {
+    const handleQuantityChange = async (id, quantity) => {
         const updatedItems = cartItems.map(item =>
             item.id === id ? { ...item, quantity } : item
         );
         setCartItems(updatedItems);
+
+        try {
+            // Get the current user data
+            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userData = userResponse.data;
+
+            // Find the item to update
+            const itemIndex = userData.cart.findIndex(item => item.id === id);
+            if (itemIndex !== -1) {
+                userData.cart[itemIndex].quantity = quantity;
+
+                // Update the user data with the new cart
+                await axios.put(`http://localhost:3001/users/${userId}`, userData);
+            }
+        } catch (error) {
+            console.error('Error updating quantity:', error.response ? error.response.data : error.message);
+        }
     };
 
     const handleCheckboxChange = (id) => {

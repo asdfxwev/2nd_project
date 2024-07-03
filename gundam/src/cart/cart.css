@@ -45,27 +45,14 @@
 .quantity-controls button {
     width: 30px;
     height: 30px;
-    background-color: skyblue;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    text-align: center;
+    border: none;
+    border-radius: 50%;
+    margin: 0 5px;
 }
 
 .quantity-controls button:hover {
     background-color: #0056b3;
-}
-
-.quantity-controls input {
-    width: 50px;
-    text-align: center;
-    border: 1px solid #ccc;
-    margin: 0 5px;
-    height: 30px;
-}
-.cart-item input[type="checkbox"] {
-    width: 32px;
-    height: 32px; 
-    margin-right: 10px;
+    color: white;
 }
 
 .cart-total {

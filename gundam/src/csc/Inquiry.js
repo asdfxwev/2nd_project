@@ -22,18 +22,18 @@ export default function Customerservice() {
     const maxPagesToShow = 10;
 
 
-    useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        const page = parseInt(query.get('page')) || 1;
-        const category = query.get('category') || 'ALL';
-        setCurrentPage(page);
-        setCurrentCategory(category);
+    // useEffect(() => {
+    //     const query = new URLSearchParams(location.search);
+    //     const page = parseInt(query.get('page')) || 1;
+    //     const category = query.get('category') || 'ALL';
+    //     setCurrentPage(page);
+    //     setCurrentCategory(category);
 
-        const filteredData = category === 'ALL' ? CscData : CscData.filter(item => item.classification === category);
-        const startIndex = (page - 1) * itemsPerPage;
-        const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
-        setPaginatedItems(filteredData.slice(startIndex, endIndex));
-    }, [location]);
+    //     const filteredData = category === 'ALL' ? CscData : CscData.filter(item => item.classification === category);
+    //     const startIndex = (page - 1) * itemsPerPage;
+    //     const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+    //     setPaginatedItems(filteredData.slice(startIndex, endIndex));
+    // }, [location]);
 
     const totalNumberOfPages = Math.ceil(
         (currentCategory === 'ALL' ? CscData : CscData.filter(item => item.classification === currentCategory)).length / itemsPerPage
@@ -50,6 +50,7 @@ export default function Customerservice() {
         }
 
         return pageNumbers;
+        console.log(pageNumbers);
     };
 
     return (

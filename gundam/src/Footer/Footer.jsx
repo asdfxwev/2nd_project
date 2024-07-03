@@ -20,7 +20,7 @@ function Footer() {
 
             </div> */}
             <div className='footer_bottom'>
-                <img className='img' src='./image/logo.png' alt="Gundam Logo" />
+                {/* <img className='img' src='./image/logo.png' alt="Gundam Logo" /> */}
                 <pre className='footer_p'> 법인명: 코딩의 목적 | 주소: 경기도 분당구 성남시<br />
                     대표이사: 코딩의목적 | 사업자등록번호: 000-000-0000 | 통신판매업신고: 제2020-서울중구-1520호<br />
                     이메일문의: dydejr852@naver.com | 코리아몰: dydejr852@naver.com <br />

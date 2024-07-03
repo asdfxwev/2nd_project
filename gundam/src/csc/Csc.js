@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import './Csc.css';
 
+
+    
+
 export default function Csc({ item }) {
 
     const [visibleNotice, setVisibleNotice] = useState(null);
@@ -22,6 +25,7 @@ export default function Csc({ item }) {
             }, 500); // Match the duration of the CSS animation
         }
     };
+    
 
     return (
         <>

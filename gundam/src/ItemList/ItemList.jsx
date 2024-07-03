@@ -7,6 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+
 const ItemList = () => {
     const location = useLocation();
     const [currentPage, setCurrentPage] = useState(1);
@@ -49,6 +50,11 @@ const ItemList = () => {
             '신기동전사 건담W': false
         }
     });
+
+     // 현재 페이지의 URL을 가져옴
+    console.log('location.pathname='+location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
+    localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
+
 
     const toggleFiltersVisible = () => {
         setFiltersVisible(!filtersVisible);

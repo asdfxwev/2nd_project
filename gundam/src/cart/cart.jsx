@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Cart.css';
 import axios from 'axios';
+import MyPageleft from '../MyPage/MyPageleft';
 
 const CartItem = ({ item, onQuantityChange, onCheckboxChange }) => {
     const handleQuantityChange = (newQuantity) => {
@@ -146,7 +147,8 @@ const Cart = () => {
             window.location.href = '/Itembuy';
         }
     };
-
+    
+    
     return (
         <div>
             <h1 className='h1-name'>장바구니</h1>

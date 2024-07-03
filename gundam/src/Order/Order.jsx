@@ -11,7 +11,7 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
 
     return (
         <div className="cart-item">
-            <div></div>
+            <div>{item.date}</div>
             <div><a href={`ItemList/ItemDetail/${item.id}`}>
                 <img src={item.image} alt={item.name} /></a>
             </div>

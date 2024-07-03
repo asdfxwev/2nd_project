@@ -143,9 +143,11 @@
     {
       "name": "vaundy",
       "email": "vaundy@naver.com",
+      "password": "123456789",
       "phoneNumber": "01000000000",
       "address": "dfasdf ",
       "id": "bd65",
+      "buy": [],
       "cart": []
     },
     {

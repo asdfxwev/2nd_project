@@ -5,7 +5,7 @@ import SectionImg from './SectionImg';
 import ItemReview from './ItemReview';
 import ItemQna from './ItemQna';
 import ItemService from './ItemService';
-import { useParams, useNavigate,useLocation } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -29,7 +29,7 @@ export default function ItemDetail() {
         setMainImage(src);
     };
     const location = useLocation();  // 현재 페이지의 URL을 가져옴
-    console.log('location.pathname='+location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
+    console.log('location.pathname=' + location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
     localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
 
 
@@ -62,6 +62,7 @@ export default function ItemDetail() {
     };
 
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
+    
     const toCart = async (e) => {
         e.preventDefault();
 
@@ -73,8 +74,16 @@ export default function ItemDetail() {
 
 
                 if (userData.cart.some(e => e.id === selectedItem.id)) {
-                    alert('이미장바구니에 담겨있지요')
-                    setIsAdded(true)
+                    // alert('이미장바구니에 담겨있지요')
+                    setIsAdded(false)
+
+                    try {
+                        const updatedCart = userData.cart.filter(e => e.id !== selectedItem.id)
+                        await axios.put(`http://localhost:3001/users/${userId}`, { ...userData, cart: updatedCart})
+                    }catch (error) {
+                        console.error('Error deleting inquiry:', error.response ? error.response.data : error.message);
+                    }
+
                 } else {
 
                     const cart = { ...selectedItem, quantity: count };
@@ -98,6 +107,29 @@ export default function ItemDetail() {
             navigate('/Login')
         }
     }
+
+    useEffect(() => {
+        if (existingInquiries) {
+            const userId = existingInquiries.id;
+            const checkIfAdded = async () => {
+                try {
+                    const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+                    const userData = userResponse.data;
+
+                    if (userData.cart) {
+                        const existingItemIndex = userData.cart.findIndex(cartItem => cartItem.id === selectedItem.id);
+                        if (existingItemIndex >= 0) {
+                            setIsAdded(true);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error:', error.response ? error.response.data : error.message);
+                }
+            };
+
+            checkIfAdded();
+        }
+    }, [existingInquiries, selectedItem.id]);
 
     const handleBuyClick = (e) => {
         e.preventDefault();

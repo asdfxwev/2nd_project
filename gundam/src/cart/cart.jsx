@@ -43,9 +43,12 @@ const Cart = () => {
                 const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
                 const userData = userResponse.data;
 
+                if (!userData.cart) {
+                    userData.cart = [];
+                }
                 setCartItems(userData.cart);
                 setCheckedItems(userData.cart.map(item => item.id));
-                setIsAllChecked(true); // Initially set all items as checked
+                setIsAllChecked(true);
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }

@@ -116,7 +116,7 @@ const ItemQna = ({item}) => {
             <div className="qna_list">
                 {filteredQnas.length > 0 ? (
                     filteredQnas.map(qna => {
-                        const qnaStateText = qna.qna_State === "1" ? "문의중" : "답변완료";
+                        const qnaStateText = qna.qna_State == '' ? "문의중" : "문의중";
                         return (
                             <div className="qna_list_row" key={qna.qna_Id}>
                                 <div className="qna_state">{qnaStateText}</div>

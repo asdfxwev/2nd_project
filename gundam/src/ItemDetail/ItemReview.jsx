@@ -102,8 +102,12 @@ const ItemReview = ({ item, setReviewCount }) => {
                         <form className="review_pop">
                             <h2>리뷰작성</h2>
                             <div>
-                                <div>제목 :<input value={title} onChange={onreviewTitle} type="text" id="title" className="re_title" /></div>
-                                <div className="reviewBox">내용 : <textarea value={comment} onChange={onreviewMessage} type="text" id="comment" className="re_comment" /></div>
+                                <div>제목 :
+                                    <input value={title} onChange={onreviewTitle} type="text" id="title" className="re_title" />
+                                </div>
+                                <div className="reviewBox">내용 : 
+                                    <textarea value={comment} onChange={onreviewMessage} type="text" id="comment" className="re_comment" />
+                                </div>
                             </div>
                             <div className="re_button_box">
                                 <button type="button" className="re_button" onClick={reviewSubmit}>저장</button>
@@ -117,10 +121,12 @@ const ItemReview = ({ item, setReviewCount }) => {
                         onRequestClose={closePopModal}
                         contentLabel="Example Modal"
                     >
-                        <div>
+                        <div className="review_pop">
                             <h2>로그인 후 이용 가능합니다.</h2>
-                            <button type="button" onClick={() => { navigate('/Login') }}>로그인</button>
-                            <button type="button" onClick={closePopModal}>닫기</button>
+                            <div className="re_button_box">
+                                <button type="button" className="re_button" onClick={() => { navigate('/Login') }}>로그인</button>
+                                <button type="button" className="re_button" onClick={closePopModal}>닫기</button>
+                            </div>
                         </div>
                     </Modal>
                 </div>

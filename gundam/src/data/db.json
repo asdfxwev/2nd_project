@@ -114,7 +114,6 @@
     {
       "name": "호",
       "email": "test@naver.com",
-      "password": "12345678",
       "phoneNumber": "01012345678",
       "address": "경기 성남시 분당구 성남대로 지하 156 ",
       "id": "607d",
@@ -138,8 +137,67 @@
             "/image/gundam02_7.jpg"
           ],
           "image": "/image/gundam02.jpg",
+          "isChecked": false,
+          "quantity": 2
+        },
+        {
+          "id": 18,
+          "tag": "건프라",
+          "name": "RG 포스 임펄스 건담",
+          "price": 36000,
+          "comment": "기동전사 건담 수성의 마녀",
+          "detail": "건담 시리즈의 기념비적인 첫 번째 작품. 스페이스 콜로니와 같이 최첨단 과학기술을 배경으로, 치밀하면서도 리얼한 세계관을 구축하여 인기를 얻었다",
+          "brand": "FIGURE-RISE MECHANICS",
+          "src": [
+            "/image/gundam18.jpg",
+            "/image/gundam19.jpg",
+            "/image/gundam20.jpg"
+          ],
+          "image": "/image/gundam18.jpg",
+          "quantity": 1,
+          "isChecked": false
+        },
+        {
+          "id": 19,
+          "tag": "건프라",
+          "name": "MG 시난주 애니메이션 컬러 Ver.",
+          "price": 90000,
+          "comment": "기동전사 건담 복수의 레퀴엠",
+          "detail": "21세기의 첫 TV 시리즈 작품. 자프트와 지구 연합군의 전쟁에, 친구들을 구하기 위해 지구군으로서 참전한 코디네이터 키라의 고뇌와 성장을 그렸다.",
+          "brand": "FIGURE-RISE STANDARD",
+          "src": [
+            "/image/gundam19.jpg",
+            "/image/gundam20.jpg",
+            "/image/gundam1.jpg"
+          ],
+          "image": "/image/gundam19.jpg",
+          "quantity": 1,
+          "isChecked": false
+        }
+      ],
+      "buy": [
+        {
+          "id": 2,
+          "tag": "건프라",
+          "name": "MG 윙 건담 제로(EW) Ver.Ka",
+          "price": 66000,
+          "comment": "건담 브레이커 배틀로그",
+          "detail": "비우주세기의 건담 시리즈 2탄으로 등장한 TV 작품. 건담 5기가 돌연 거대 세력을 급습하는 다이나믹한 장면으로부터 숨막히는 전개가 이어지는 작품이다.",
+          "brand": "FG",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam02_1.jpg",
+            "/image/gundam02_2.jpg",
+            "/image/gundam02_3.jpg",
+            "/image/gundam02_4.jpg",
+            "/image/gundam02_5.jpg",
+            "/image/gundam02_6.jpg",
+            "/image/gundam02_7.jpg"
+          ],
+          "image": "/image/gundam02.jpg",
           "isChecked": true,
-          "quantity": 3
+          "quantity": 2,
+          "date": "2024-07-04"
         }
       ]
     },

@@ -84,7 +84,7 @@ const SignupForm = () => {
             address: '',
             dtl_address: '',
             phoneNumber: '',
-            
+
         },
         validationSchema: Yup.object({
             name: Yup.string().required('이름을 입력해주세요.'),
@@ -235,7 +235,7 @@ const SignupForm = () => {
 
 
 
-                
+
 
 
                 <button type="submit" className="submit-button">회원가입</button>

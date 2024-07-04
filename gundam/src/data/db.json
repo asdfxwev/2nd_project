@@ -10,43 +10,43 @@
       "phoneNumber": "1234567891",
       "inquries": [
         {
-          "id": 39,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "aa"
-        },
-        {
-          "id": 40,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "aaa"
-        },
-        {
-          "id": 41,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "aaaa"
-        },
-        {
-          "id": 42,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "aaaaa"
-        },
-        {
-          "id": 43,
+          "id": 52,
           "inquiryType": "배송",
           "subject": "ㅁ",
           "message": "ㅁ"
         },
         {
-          "id": 44,
+          "id": 53,
           "inquiryType": "배송",
           "subject": "ㅁ",
-          "message": "ㅁ"
+          "message": "ㅁㅁ"
+        },
+        {
+          "id": 54,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁ"
+        },
+        {
+          "id": 55,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁ"
+        },
+        {
+          "id": 56,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁㅁ"
+        },
+        {
+          "id": 57,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁㅁㅁ"
         }
       ],
-      "inquiryCounter": 45,
+      "inquiryCounter": 58,
       "cart": []
     },
     {

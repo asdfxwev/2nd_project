@@ -57,7 +57,9 @@ export default function Inquiry() {
 
     useEffect(() => {
         const startIndex = ([currentPage - 1]) * itemsPerPage;
-        const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
+        console.log(startIndex);
+        const endIndex = Math.min(startIndex + itemsPerPage , inquiries.length);
+        console.log(endIndex);
         setPaginatedItems(inquiries.slice(startIndex, endIndex));
     }, [currentPage, inquiries])
 
@@ -77,6 +79,7 @@ export default function Inquiry() {
 
         return pageNumbers;
     };
+    console.log(paginatedItems);
 
     console.log(totalNumberOfPages);
 

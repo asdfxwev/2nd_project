@@ -5,11 +5,16 @@ import { useLocation } from 'react-router-dom';
 
 // InquiryList 컴포넌트를 정의합니다.
 export default function InquiryList({ inquiries, existingInquiries }) {
-    const [inquiriesState, setinquiriesState] = useState([inquiries]); // 문의 데이터 상태
+    const [inquiriesState, setInquiriesState] = useState([]); // 문의 데이터 상태
     const [visibleInquiry, setVisibleInquiry] = useState(null); // 현재 표시 중인 문의
 
+    // inquiries prop이 변경될 때마다 상태를 업데이트합니다.
+    useEffect(() => {
+        setInquiriesState(inquiries);
+    }, [inquiries]);
+
     // 문의 제목을 클릭하면 해당 문의 내용을 토글합니다.
-    const onInquriyTitle = (inquiryId) => {
+    const onInquiryTitle = (inquiryId) => {
         setVisibleInquiry(inquiryId === visibleInquiry ? null : inquiryId);
     };
 
@@ -26,7 +31,7 @@ export default function InquiryList({ inquiries, existingInquiries }) {
             await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, { ...userData, inquries: updatedInquiries });
 
             // 로컬 상태를 업데이트합니다.
-            setinquiriesState(updatedInquiries);
+            setInquiriesState(updatedInquiries);
         } catch (error) {
             console.error('Error deleting inquiry:', error.response ? error.response.data : error.message);
         }
@@ -38,7 +43,7 @@ export default function InquiryList({ inquiries, existingInquiries }) {
                 <React.Fragment key={inquiry.id}>
                     <div className="CscInquiryList">
                         <div style={{ width: '100px' }}>{inquiry.inquiryType}</div>
-                        <div onClick={() => onInquriyTitle(inquiry.id)} style={{ width: '500px', cursor: 'pointer' }}>{inquiry.subject}</div>
+                        <div onClick={() => onInquiryTitle(inquiry.id)} style={{ width: '500px', cursor: 'pointer' }}>{inquiry.subject}</div>
                         <div onClick={() => inquiryDelete(inquiry.id)} className="inquiryDelete" style={{ width: '100px' }}>삭제</div>
                     </div>
                     <div className={`inquiryDataContainer ${visibleInquiry === inquiry.id ? 'active' : ''}`}>

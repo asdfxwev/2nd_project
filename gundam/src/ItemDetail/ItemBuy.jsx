@@ -61,18 +61,20 @@ const ItemBuy = () => {
                     date: today // cart에서 가져온 항목에 date 속성 추가
                 }));
     
-            // itemdetail에서 가져온 항목에 date 속성 추가
-            const itemDetailToBuy = {
-                ...item,
-                quantity: count,
-                date: today
-            };
+            // itemdetail에서 가져온 항목이 있는 경우에만 date 속성 추가
+            let itemDetailToBuy = null;
+            if (item) {
+                itemDetailToBuy = {
+                    ...item,
+                    quantity: count,
+                    date: today
+                };
+            }
     
-            // 결합된 항목들
-            const allItemsToBuy = [
-                ...itemsToBuyFromCartWithDate,
-                itemDetailToBuy
-            ];
+            // 결합된 항목들 (itemDetailToBuy가 있는 경우에만 추가)
+            const allItemsToBuy = itemDetailToBuy 
+                ? [...itemsToBuyFromCartWithDate, itemDetailToBuy]
+                : [...itemsToBuyFromCartWithDate];
     
             // 중복 제거: buy 배열에 동일한 id의 항목이 없을 때만 추가
             const newBuyItems = allItemsToBuy.filter(item => !(userData.buy && userData.buy.some(buyItem => buyItem.id === item.id)));
@@ -90,6 +92,7 @@ const ItemBuy = () => {
             console.error('결제 처리 중 오류 발생:', error);
         }
     };
+    
     
     
     // =====================================================================

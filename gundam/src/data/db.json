@@ -76,7 +76,9 @@
       "address": "dfasdf ",
       "id": "bd65",
       "buy": [],
-      "cart": []
+      "cart": [],
+      "inquries": [],
+      "inquiryCounter": 14
     },
     {
       "id": "f17b",

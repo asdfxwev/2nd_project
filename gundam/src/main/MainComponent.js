@@ -9,7 +9,7 @@ import SlideScroll from './SlideScroll';
 export default function MainComponent () {
 
     return (
-        <main >
+        <main style={{overflowX:'hidden'}}>
             <Slide />
             {/* <Slider /> */}
             {/* <IntersectionObserverss /> */}

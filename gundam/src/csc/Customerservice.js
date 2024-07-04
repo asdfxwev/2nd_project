@@ -62,7 +62,6 @@ export default function Customerservice() {
                             <Link
                                 key={index}
                                 to={`?page=${index + 1}&category=${currentCategory}`}
-                                // onClick={() => onPageClick(index + 1)}
                             >
                                 {index + 1}
                             </Link>

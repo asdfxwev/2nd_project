@@ -41,55 +41,44 @@ export default function Inquiry() {
         fetchData();
     }, [userId]);
 
-    const itemsPerPage = 10;
-    const maxPagesToShow = 10;
-
-
-    // useEffect(() => {
-    //     const query = new URLSearchParams(location.search);
-    //     const page = parseInt(query.get('page')) || 1;
-    //     const category = query.get('category') || 'ALL';
-    //     setCurrentPage(page);
-    //     setCurrentCategory(category);
-
-    //     const filteredData = category === 'ALL' ? CscData : CscData.filter(item => item.classification === category);
-    //     const startIndex = (page - 1) * itemsPerPage;
-    //     const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
-    //     setPaginatedItems(filteredData.slice(startIndex, endIndex));
-    // }, [location]);
+    const itemsPerPage = 5;
+    const maxPagesToShow = 5;
+    console.log(inquiries);
 
     const totalNumberOfPages = Math.ceil(inquiries.length / itemsPerPage);
 
-        useEffect(() => {
-            const query = new URLSearchParams(location.search);
-            const page = parseInt(query.get('page')) || 1;
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        console.log(page);
 
-            setCurrentPage(page);
-            const startIndex = ([page - 1]) * itemsPerPage;
-            const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
-            setPaginatedItems(inquiries.slice(startIndex, endIndex));
-        }, [location, inquiries]);
+        setCurrentPage(page);
+    }, [location, inquiries]);
 
-    // const totalNumberOfPages = Math.ceil(
-    //     (currentCategory === 'ALL' ? CscData : CscData.filter(item => item.classification === currentCategory)).length / itemsPerPage
-    // );
-    console.log('location.pathname=' + location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
-    localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
-
+    useEffect(() => {
+        const startIndex = ([currentPage - 1]) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
+        setPaginatedItems(inquiries.slice(startIndex, endIndex));
+    }, [currentPage, inquiries])
 
     const getPageNumbers = () => {
         const pageNumbers = [];
         const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
         const startPage = currentGroup * maxPagesToShow + 1;
         const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
+        console.log(currentGroup);
+        console.log(startPage);
+        console.log(endPage);
 
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(i);
         }
+        console.log(pageNumbers);
 
         return pageNumbers;
-        console.log(pageNumbers);
     };
+
+    console.log(totalNumberOfPages);
 
     return (
         <section className="cscContainer">
@@ -104,7 +93,7 @@ export default function Inquiry() {
                         <div style={{ width: '500px' }}>제목</div>
                         <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
-                    <InquiryList inquiries = {inquiries} existingInquiries = {existingInquiries} />
+                    <InquiryList inquiries={inquiries} existingInquiries={existingInquiries} />
                     <ul className="noticeNumber">
                         {currentPage > 1 && (
                             <>

@@ -104,10 +104,12 @@ const ItemQna = ({item}) => {
                         onRequestClose={closePopModal}
                         contentLabel="Example Modal"
                     >
-                        <div>
+                        <div className="review_pop">
                             <h2>로그인 후 이용 가능합니다.</h2>
-                            <button type="button" onClick={() => {navigate('/Login')}}>로그인</button>
-                            <button type="button" onClick={closePopModal}>닫기</button>
+                            <div className="re_button_box">
+                                <button type="button" className="re_button" onClick={() => { navigate('/Login') }}>로그인</button>
+                                <button type="button" className="re_button" onClick={closePopModal}>닫기</button>
+                            </div>
                         </div>
                     </Modal>
                     

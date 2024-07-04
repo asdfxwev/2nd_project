@@ -174,10 +174,10 @@ export default function ItemDetail() {
                     <div className='detail_item_name'>MG WING GUNDAM<br />ZERO EW Ver.Ka</div>
                     <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
 
-                    <SectionImg key={selectedItem.id} item={selectedItem} /> {/* 상세보기 tap */}
-                    <ItemReview key={selectedItem.id} item={selectedItem.id} setReviewCount={setReviewCount} /> {/* 리뷰 tap */}
-                    <ItemQna key={selectedItem.id} item={selectedItem.id} /> {/* Q&A tap */}
-                    <ItemService /> {/* 배송/교환/반품 tap */}
+                    <SectionImg key={selectedItem.id} item={selectedItem} /> {/* 상세보기 tab */}
+                    <ItemReview key={selectedItem.id} item={selectedItem.id} setReviewCount={setReviewCount} /> {/* 리뷰 tab */}
+                    <ItemQna key={selectedItem.id} item={selectedItem.id} /> {/* Q&A tab */}
+                    <ItemService /> {/* 배송/교환/반품 tab */}
 
                 </div>
 

@@ -19,8 +19,8 @@ const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
             <div className="quantity-controls">
                 {item.quantity}
             </div>
-            <div>{item.price.toLocaleString()}원</div>
-            <div>{(item.price * item.quantity).toLocaleString()}원</div>
+            <div>{item.price}원</div>
+            <div>{(item.price * item.quantity)}원</div>
         </div>
     );
 };

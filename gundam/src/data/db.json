@@ -78,7 +78,7 @@
       "buy": [],
       "cart": [],
       "inquries": [],
-      "inquiryCounter": 26
+      "inquiryCounter": 27
     },
     {
       "id": "f17b",
@@ -151,6 +151,15 @@
       "password": "12345678",
       "confirmPassword": "12345678",
       "phoneNumber": "01056564141"
+    },
+    {
+      "id": "b9f7",
+      "email": "qwer@qwer",
+      "address": "asdf asdf",
+      "name": "qwer",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "0100000000"
     }
   ],
   "review": [

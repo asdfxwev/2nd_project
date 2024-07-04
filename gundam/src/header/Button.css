@@ -48,7 +48,7 @@
 
 .Every {
     position: fixed;
-    width: calc(100vw - 16px);
+    width: calc(100vw - 17px);
     height: 4rem;
     text-align: center;
     z-index: 3;

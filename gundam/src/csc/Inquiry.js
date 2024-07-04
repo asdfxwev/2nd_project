@@ -21,8 +21,6 @@ export default function Inquiry() {
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo')); // 로컬 스토리지에서 로그인 정보를 가져옴
     const userId = existingInquiries.id; // 사용자 ID
 
-    const itemsPerPage = 5;
-    const maxPagesToShow = 5;
 
     // 데이터를 가져오는 useEffect 훅
     useEffect(() => {
@@ -41,7 +39,11 @@ export default function Inquiry() {
             }
         };
         fetchData();
-    }, [userId]);
+    }, [userId, inquiries]);
+    console.log(inquiries);
+
+    const itemsPerPage = 5;
+    const maxPagesToShow = 5;
 
     const totalNumberOfPages = Math.ceil(inquiries.length / itemsPerPage);
 
@@ -62,6 +64,8 @@ export default function Inquiry() {
         const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
         const startPage = currentGroup * maxPagesToShow + 1;
         const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
+        console.log(currentGroup);
+        console.log(pageNumbers);
 
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(i);
@@ -69,6 +73,8 @@ export default function Inquiry() {
 
         return pageNumbers;
     };
+    console.log(currentPage);
+    console.log(paginatedItems);
 
     return (
         <section className="cscContainer">
@@ -83,7 +89,7 @@ export default function Inquiry() {
                         <div style={{ width: '500px' }}>제목</div>
                         <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
-                    <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} />
+                    <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} totalNumberOfPages={totalNumberOfPages} />
                     <ul className="noticeNumber">
                         {currentPage > 1 && (
                             <>

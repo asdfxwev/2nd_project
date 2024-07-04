@@ -109,7 +109,8 @@
       "phoneNumber": "01072815063",
       "cart": [],
       "inquries": [],
-      "inquiryCounter": 2
+      "inquiryCounter": 2,
+      "buy": []
     },
     {
       "name": "호",

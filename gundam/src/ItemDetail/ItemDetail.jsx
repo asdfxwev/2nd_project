@@ -63,7 +63,7 @@ export default function ItemDetail() {
     };
 
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
-    
+
     const toCart = async (e) => {
         e.preventDefault();
 
@@ -80,8 +80,8 @@ export default function ItemDetail() {
 
                     try {
                         const updatedCart = userData.cart.filter(e => e.id !== selectedItem.id)
-                        await axios.put(`http://localhost:3001/users/${userId}`, { ...userData, cart: updatedCart})
-                    }catch (error) {
+                        await axios.put(`http://localhost:3001/users/${userId}`, { ...userData, cart: updatedCart })
+                    } catch (error) {
                         console.error('Error deleting inquiry:', error.response ? error.response.data : error.message);
                     }
 
@@ -210,7 +210,7 @@ export default function ItemDetail() {
                         <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>
                     </div>
                     <div className='item_btn'>
-                        <button type='button' style={{cursor:'pointer'}} className='submit_btn' onClick={handleBuyClick}>구매하기</button>
+                        <button type='button' style={{ cursor: 'pointer' }} className='submit_btn' onClick={handleBuyClick}>구매하기</button>
                     </div>
                     <TopBtn />
                 </div>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 // InquiryList 컴포넌트를 정의합니다.
-export default function InquiryList({ inquiries, existingInquiries }) {
+export default function InquiryList({ inquiries, existingInquiries, totalNumberOfPages }) {
     const [inquiriesState, setInquiriesState] = useState([]); // 문의 데이터 상태
     const [visibleInquiry, setVisibleInquiry] = useState(null); // 현재 표시 중인 문의
 
@@ -32,6 +32,7 @@ export default function InquiryList({ inquiries, existingInquiries }) {
 
             // 로컬 상태를 업데이트합니다.
             setInquiriesState(updatedInquiries);
+            console.log(updatedInquiries);
         } catch (error) {
             console.error('Error deleting inquiry:', error.response ? error.response.data : error.message);
         }

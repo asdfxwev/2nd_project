@@ -42,9 +42,9 @@ const MyPage = () => {
                 <h2 className='MyPage_h2'>마이페이지</h2>
                 <ul>
                     <li><a href="/Cart">장바구니</a></li>
-                    <li><a href="/review">리뷰관리</a></li>
-                    <li><a href="/profile">회원정보변경</a></li>
                     <li><a href="/Order">구매내역</a></li>
+                    <li>리뷰관리</li>
+                    <li>회원정보변경</li>
                     <li>알림신청</li>
 
                 </ul>

@@ -110,7 +110,25 @@
       "cart": [],
       "inquries": [],
       "inquiryCounter": 2,
-      "buy": []
+      "buy": [
+        {
+          "id": 6,
+          "tag": "건프라",
+          "name": "MG 건담 발바토스",
+          "price": 54000,
+          "comment": "건담 무사",
+          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
+          "brand": "1/100",
+          "src": [
+            "/image/gundam05.jpg",
+            "/image/gundam11.jpg"
+          ],
+          "image": "/image/gundam06.jpg",
+          "isChecked": true,
+          "quantity": 1,
+          "date": "2024-07-04"
+        }
+      ]
     },
     {
       "name": "호",

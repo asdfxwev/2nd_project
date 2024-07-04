@@ -71,10 +71,14 @@
     {
       "name": "vaundy",
       "email": "vaundy@naver.com",
+      "password": "123456789",
       "phoneNumber": "01000000000",
       "address": "dfasdf ",
       "id": "bd65",
-      "cart": []
+      "buy": [],
+      "cart": [],
+      "inquries": [],
+      "inquiryCounter": 14
     },
     {
       "id": "f17b",

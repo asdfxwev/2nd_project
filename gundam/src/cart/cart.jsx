@@ -1,30 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './Cart.css';
 import axios from 'axios';
-import MyPageleft from '../MyPage/MyPageleft';
 
-const CartItem = ({ item, onQuantityChange, onCheckboxChange }) => {
+const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
     const handleQuantityChange = (newQuantity) => {
         if (newQuantity >= 1) {
             onQuantityChange(item.id, newQuantity);
         }
     };
 
-    const handleCheckboxChange = () => {
-        onCheckboxChange(item.id);
-    };
-
     return (
         <div className="cart-item">
             <div>
-                <input type="checkbox" checked={item.isChecked} onChange={handleCheckboxChange} />
+                <input type="checkbox" checked={isChecked} onChange={() => onCheckboxChange(item.id)} />
             </div>
-            <div>
-                <a href={`ItemList/ItemDetail/${item.id}`}>
-                    <img src={item.image} alt={item.name} />
-                </a>
+            <div><a href={`ItemList/ItemDetail/${item.id}`}>
+                <img src={item.image} alt={item.name} /></a>
             </div>
-            <div>{item.name}</div>
+            <div> {item.name}</div>
             <div className="quantity-controls">
                 <button onClick={() => handleQuantityChange(item.quantity - 1)}>-</button>
                 {item.quantity}
@@ -51,8 +44,8 @@ const Cart = () => {
                 const userData = userResponse.data;
 
                 setCartItems(userData.cart);
-                setCheckedItems(userData.cart.filter(item => item.isChecked));
-                setIsAllChecked(userData.cart.every(item => item.isChecked));
+                setCheckedItems(userData.cart.map(item => item.id));
+                setIsAllChecked(true); // Initially set all items as checked
             } catch (error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
             }
@@ -60,84 +53,67 @@ const Cart = () => {
         fetchData();
     }, [userId]);
 
-    const handleQuantityChange = async (id, quantity) => {
+    const handleQuantityChange = (id, quantity) => {
         const updatedItems = cartItems.map(item =>
             item.id === id ? { ...item, quantity } : item
         );
         setCartItems(updatedItems);
-
-        try {
-            const userData = { ...existingInquiries, cart: updatedItems };
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
-        } catch (error) {
-            console.error('수량을 업데이트하는 중 오류 발생:', error);
-        }
     };
 
-    const handleCheckboxChange = async (id) => {
-        const updatedItems = cartItems.map(item =>
-            item.id === id ? { ...item, isChecked: !item.isChecked } : item
-        );
-        setCartItems(updatedItems);
-
-        try {
-            const userData = { ...existingInquiries, cart: updatedItems };
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
-
-            setCheckedItems(updatedItems.filter(item => item.isChecked));
-            setIsAllChecked(updatedItems.every(item => item.isChecked));
-        } catch (error) {
-            console.error('체크박스 상태를 업데이트하는 중 오류 발생:', error);
-        }
+    const handleCheckboxChange = (id) => {
+        const newCheckedItems = checkedItems.includes(id)
+            ? checkedItems.filter(itemId => itemId !== id)
+            : [...checkedItems, id];
+        
+        setCheckedItems(newCheckedItems);
+        setIsAllChecked(newCheckedItems.length === cartItems.length);
     };
 
-    const handleAllCheckboxChange = async () => {
-        const updatedItems = cartItems.map(item => ({ ...item, isChecked: !isAllChecked }));
-        setCartItems(updatedItems);
-
-        try {
-            const userData = { ...existingInquiries, cart: updatedItems };
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
-
-            setCheckedItems(updatedItems.filter(item => item.isChecked));
-            setIsAllChecked(!isAllChecked);
-        } catch (error) {
-            console.error('전체 체크박스 상태를 업데이트하는 중 오류 발생:', error);
+    const handleAllCheckboxChange = () => {
+        if (isAllChecked) {
+            setCheckedItems([]);
+        } else {
+            setCheckedItems(cartItems.map(item => item.id));
         }
+        setIsAllChecked(!isAllChecked);
     };
 
     const handleRemoveCheckedItems = async () => {
-        const updatedItems = cartItems.filter(item => !item.isChecked);
-        setCartItems(updatedItems);
-
         try {
-            const userData = { ...existingInquiries, cart: updatedItems };
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
+            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userData = userResponse.data;
 
+            const updatedItems = userData.cart.filter(item => !checkedItems.includes(item.id));
+
+            await axios.put(`http://localhost:3001/users/${userId}`, { ...userData, cart: updatedItems });
+
+            setCartItems(updatedItems);
             setCheckedItems([]);
             setIsAllChecked(false);
         } catch (error) {
-            console.error('선택된 상품을 삭제하는 중 오류 발생:', error);
+            console.error('Error deleting items:', error.response ? error.response.data : error.message);
         }
     };
 
     const handleRemoveAllItems = async () => {
-        const updatedItems = [];
-        setCartItems(updatedItems);
-
         try {
-            const userData = { ...existingInquiries, cart: updatedItems };
+            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userData = userResponse.data;
+
+            userData.cart = [];
+
             await axios.put(`http://localhost:3001/users/${userId}`, userData);
 
+            setCartItems([]);
             setCheckedItems([]);
             setIsAllChecked(false);
         } catch (error) {
-            console.error('모든 상품을 삭제하는 중 오류 발생:', error);
+            console.error('Error clearing cart:', error.response ? error.response.data : error.message);
         }
     };
 
     const total = cartItems
-        .filter(item => item.isChecked)
+        .filter(item => checkedItems.includes(item.id))
         .reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     const handleCheckout = () => {
@@ -147,18 +123,17 @@ const Cart = () => {
             window.location.href = '/Itembuy';
         }
     };
-    
-    
+
     return (
         <div>
             <h1 className='h1-name'>장바구니</h1>
             <div className="cart-container">
                 <div className="cart-header">
                     <div>
-                        <input
-                            type="checkbox"
-                            checked={isAllChecked}
-                            onChange={handleAllCheckboxChange}
+                        <input 
+                            type="checkbox" 
+                            checked={isAllChecked} 
+                            onChange={handleAllCheckboxChange} 
                         />
                         전체선택
                     </div>
@@ -174,6 +149,7 @@ const Cart = () => {
                         item={item}
                         onQuantityChange={handleQuantityChange}
                         onCheckboxChange={handleCheckboxChange}
+                        isChecked={checkedItems.includes(item.id)}
                     />
                 ))}
                 <button className='button-size' onClick={handleRemoveCheckedItems}>선택한 상품 삭제</button>

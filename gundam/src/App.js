@@ -10,7 +10,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App" style={{overflowX:'hidden'}}>
       <Header />
       <Main />
       <Footer />

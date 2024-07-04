@@ -10,79 +10,43 @@
       "phoneNumber": "1234567891",
       "inquries": [
         {
-          "id": 6,
+          "id": 39,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aa"
+        },
+        {
+          "id": 40,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aaa"
+        },
+        {
+          "id": 41,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aaaa"
+        },
+        {
+          "id": 42,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aaaaa"
+        },
+        {
+          "id": 43,
           "inquiryType": "배송",
           "subject": "ㅁ",
           "message": "ㅁ"
         },
         {
-          "id": 7,
-          "inquiryType": "배송",
-          "subject": "ㅁㄴㅇ",
-          "message": "ㅇㄹ"
-        },
-        {
-          "id": 8,
-          "inquiryType": "회원",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 9,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 10,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 11,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 12,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 13,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 14,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 15,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 16,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 17,
+          "id": 44,
           "inquiryType": "배송",
           "subject": "ㅁ",
           "message": "ㅁ"
         }
       ],
-      "inquiryCounter": 19,
+      "inquiryCounter": 45,
       "cart": []
     },
     {

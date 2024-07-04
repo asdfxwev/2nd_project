@@ -11,8 +11,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-export default function Customerservice() {
-    const [item, setItem] = useState(CscData);
+export default function Inquiry() {
     const [currentPage, setCurrentPage] = useState(1);
     const [paginatedItems, setPaginatedItems] = useState([]);
     const navigate = useNavigate();
@@ -22,6 +21,7 @@ export default function Customerservice() {
 
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo')); // 로컬 스토리지에서 로그인 정보를 가져옴
     const userId = existingInquiries.id; // 사용자 ID
+
     // 데이터를 가져오는 useEffect 훅
     useEffect(() => {
         const fetchData = async () => {
@@ -41,51 +41,44 @@ export default function Customerservice() {
         fetchData();
     }, [userId]);
 
-    const itemsPerPage = 10;
-    const maxPagesToShow = 10;
+    const itemsPerPage = 5;
+    const maxPagesToShow = 5;
+    console.log(inquiries);
 
+    const totalNumberOfPages = Math.ceil(inquiries.length / itemsPerPage);
 
-    // useEffect(() => {
-    //     const query = new URLSearchParams(location.search);
-    //     const page = parseInt(query.get('page')) || 1;
-    //     const category = query.get('category') || 'ALL';
-    //     setCurrentPage(page);
-    //     setCurrentCategory(category);
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        console.log(page);
 
-    //     const filteredData = category === 'ALL' ? CscData : CscData.filter(item => item.classification === category);
-    //     const startIndex = (page - 1) * itemsPerPage;
-    //     const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
-    //     setPaginatedItems(filteredData.slice(startIndex, endIndex));
-    // }, [location]);
+        setCurrentPage(page);
+    }, [location, inquiries]);
 
-    const totalNumberOfPages =
-
-        useEffect(() => {
-            const query = new URLSearchParams(location.search);
-            const page = parseInt(query.get('page')) || 1;
-
-        })
-
-    // const totalNumberOfPages = Math.ceil(
-    //     (currentCategory === 'ALL' ? CscData : CscData.filter(item => item.classification === currentCategory)).length / itemsPerPage
-    // );
-    console.log('location.pathname=' + location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
-    localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
-
+    useEffect(() => {
+        const startIndex = ([currentPage - 1]) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
+        setPaginatedItems(inquiries.slice(startIndex, endIndex));
+    }, [currentPage, inquiries])
 
     const getPageNumbers = () => {
         const pageNumbers = [];
         const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
         const startPage = currentGroup * maxPagesToShow + 1;
         const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
+        console.log(currentGroup);
+        console.log(startPage);
+        console.log(endPage);
 
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(i);
         }
+        console.log(pageNumbers);
 
         return pageNumbers;
-        console.log(pageNumbers);
     };
+
+    console.log(totalNumberOfPages);
 
     return (
         <section className="cscContainer">
@@ -100,12 +93,12 @@ export default function Customerservice() {
                         <div style={{ width: '500px' }}>제목</div>
                         <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
-                    <InquiryList inquiries = {inquiries} existingInquiries = {existingInquiries} />
+                    <InquiryList inquiries={inquiries} existingInquiries={existingInquiries} />
                     <ul className="noticeNumber">
                         {currentPage > 1 && (
                             <>
-                                <li><NavLink to={`/Csc/Inquiry?page=1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
-                                <li><NavLink to={`/Csc/Inquiry?page=${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
+                                <li><NavLink to={`/Inquiry?page=1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
+                                <li><NavLink to={`/Inquiry?page=${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
                             </>
                         )}
                         {getPageNumbers().map((pageNumber) => (
@@ -114,7 +107,7 @@ export default function Customerservice() {
                                 className={currentPage === pageNumber ? 'selected' : ''}
                             >
                                 <NavLink
-                                    to={`/Csc/Inquiry?page=${pageNumber}`}
+                                    to={`/Inquiry?page=${pageNumber}`}
                                 >
                                     {pageNumber}
                                 </NavLink>
@@ -122,13 +115,13 @@ export default function Customerservice() {
                         ))}
                         {currentPage < totalNumberOfPages && (
                             <>
-                                <li><NavLink to={`/Csc/Inquiry?page=${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
-                                <li><NavLink to={`/Csc/Inquiry?page=${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
+                                <li><NavLink to={`/Inquiry?page=${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
+                                <li><NavLink to={`/Inquiry?page=${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
                             </>
                         )}
                     </ul>
                     <div className='InquiryWriteBtn'>
-                        <Link to='/Csc/Inquiry/InquiryWrite'>문의작성</Link>
+                        <Link to='/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>
                 </div>
             </div>

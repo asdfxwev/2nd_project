@@ -84,9 +84,9 @@
 
 .selected {
     font-weight: bold;
-    border: 1px solid aqua;
+    /* border: 1px solid aqua; */
     /* border-radius: 10%; */
-    background-color: aqua;
+    background-color: red;
 }
 
 .noticeForm {

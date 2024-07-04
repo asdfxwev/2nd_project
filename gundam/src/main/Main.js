@@ -44,9 +44,9 @@ export default function Main() {
                 <Route path="/Notice/*" element={<NoticeDelivery />} />
                 {/* <Route path="/Notice" element={<Notice />} /> */}
                 <Route path="/Csc/" element={<Customerservice />} />
-                <Route path="/Csc/Inquiry" element={<Inquiry />} />
-                <Route path="/Csc/Inquiry/*" element={<InquiryList />} />
-                <Route path="/Csc/Inquiry/InquiryWrite" element={<InquiryWrite />} />
+                {/* <Route path="/Csc/Inquiry" element={<Inquiry />} /> */}
+                <Route path="/Inquiry" element={<Inquiry />} />
+                <Route path="/Inquiry/InquiryWrite" element={<InquiryWrite />} />
                 <Route path="/Cart/*" element={<Cart/>} />
                 <Route path="/Order/*" element={<Order/>} />
                 <Route path="/ItemBuy/*" element={<ItemBuy/>} />

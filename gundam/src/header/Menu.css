@@ -50,7 +50,7 @@
 .detailMenu {
     display: none;
     background-color: #f9f9f9;
-    padding: 10px;
+    /* padding: 10px; */
     display: grid;
     grid-template: repeat(9, 1fr) / repeat(6, 1fr) .5fr 1fr .5fr;
     width: 100%;
@@ -60,6 +60,7 @@
     background-color: #fff;
     transition-duration: .5s ease-in-out;
     z-index: 2;
+    width: calc(100vw - 17px);
 }
 
 .smallMenu {

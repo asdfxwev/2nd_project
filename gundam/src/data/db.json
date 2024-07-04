@@ -10,43 +10,43 @@
       "phoneNumber": "1234567891",
       "inquries": [
         {
-          "id": 52,
+          "id": 89,
           "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
+          "subject": "배송이 언제오나요?",
+          "message": "배송 내일 오전까지 안오면 환불할게요"
         },
         {
-          "id": 53,
+          "id": 90,
+          "inquiryType": "상품",
+          "subject": "상품이 이상해요",
+          "message": "구매한 것과 달라요"
+        },
+        {
+          "id": 91,
+          "inquiryType": "시스템장애",
+          "subject": "시스템 때문에 못샀어요",
+          "message": "물어내세요"
+        },
+        {
+          "id": 92,
+          "inquiryType": "이벤트",
+          "subject": "이벤트 언제함?",
+          "message": "ㅎㅇ"
+        },
+        {
+          "id": 93,
+          "inquiryType": "주문/결제",
+          "subject": "결제가 안돼요",
+          "message": "공짜 ㄳ"
+        },
+        {
+          "id": 95,
           "inquiryType": "배송",
           "subject": "ㅁ",
           "message": "ㅁㅁ"
-        },
-        {
-          "id": 54,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁㅁ"
-        },
-        {
-          "id": 55,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁㅁㅁ"
-        },
-        {
-          "id": 56,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁㅁㅁㅁ"
-        },
-        {
-          "id": 57,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁㅁㅁㅁㅁ"
         }
       ],
-      "inquiryCounter": 58,
+      "inquiryCounter": 96,
       "cart": []
     },
     {

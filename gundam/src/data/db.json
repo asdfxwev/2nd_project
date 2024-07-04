@@ -151,6 +151,54 @@
       "password": "12345678",
       "confirmPassword": "12345678",
       "phoneNumber": "01056564141"
+    },
+    {
+      "id": "87f3",
+      "email": "qwer@qwer",
+      "address": "asdf asdf",
+      "name": "qwerqwer",
+      "password": "qwerqwer",
+      "confirmPassword": "qwerqwer",
+      "phoneNumber": "9876543210",
+      "inquries": [
+        {
+          "id": 3,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁ"
+        },
+        {
+          "id": 4,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁ"
+        },
+        {
+          "id": 5,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁ"
+        },
+        {
+          "id": 6,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁㅁ"
+        },
+        {
+          "id": 7,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁㅁㅁ"
+        },
+        {
+          "id": 15,
+          "inquiryType": "배송",
+          "subject": "ㅁㅁ",
+          "message": "ㅁㅁㅁ"
+        }
+      ],
+      "inquiryCounter": 16
     }
   ],
   "review": [

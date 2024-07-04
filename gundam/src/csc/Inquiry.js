@@ -89,7 +89,7 @@ export default function Inquiry() {
                         <div style={{ width: '500px' }}>제목</div>
                         <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
-                    <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} totalNumberOfPages={totalNumberOfPages} />
+                    <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} setCurrentPage={setCurrentPage} currentPage = {currentPage} />
                     <ul className="noticeNumber">
                         {currentPage > 1 && (
                             <>

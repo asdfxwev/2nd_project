@@ -64,7 +64,7 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 // InquiryList 컴포넌트를 정의합니다.
-export default function InquiryList({ inquiries, existingInquiries, totalNumberOfPages }) {
+export default function InquiryList({ inquiries, existingInquiries, setCurrentPage, currentPage }) {
     const [inquiriesState, setInquiriesState] = useState([]); // 문의 데이터 상태
     const [visibleInquiry, setVisibleInquiry] = useState(null); // 현재 표시 중인 문의
     const navigate = useNavigate();
@@ -95,7 +95,16 @@ export default function InquiryList({ inquiries, existingInquiries, totalNumberO
             setInquiriesState(updatedInquiries);
 
             // 1페이지로 리다이렉트
-            navigate('/Inquiry?page=1');
+            // navigate('/Inquiry?page=1');
+
+            const currentPageAfterDelete = Math.ceil(updatedInquiries.length / 5);
+
+            if (currentPage > currentPageAfterDelete) {
+                navigate(`/Inquiry?page=${currentPageAfterDelete}`);
+                setCurrentPage(currentPageAfterDelete);
+            } else {
+                setCurrentPage(currentPage);
+            }
         } catch (error) {
             console.error('Error deleting inquiry:', error.response ? error.response.data : error.message);
         }

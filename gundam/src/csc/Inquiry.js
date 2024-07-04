@@ -18,9 +18,11 @@ export default function Inquiry() {
     const location = useLocation();
     const [inquiries, setInquiries] = useState([]); // 문의 데이터 상태
 
-
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo')); // 로컬 스토리지에서 로그인 정보를 가져옴
     const userId = existingInquiries.id; // 사용자 ID
+
+    const itemsPerPage = 5;
+    const maxPagesToShow = 5;
 
     // 데이터를 가져오는 useEffect 훅
     useEffect(() => {
@@ -41,47 +43,32 @@ export default function Inquiry() {
         fetchData();
     }, [userId]);
 
-    const itemsPerPage = 5;
-    const maxPagesToShow = 5;
-    console.log(inquiries);
-
     const totalNumberOfPages = Math.ceil(inquiries.length / itemsPerPage);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
         const page = parseInt(query.get('page')) || 1;
-        console.log(page);
-
         setCurrentPage(page);
-    }, [location, inquiries]);
+    }, [location]);
 
     useEffect(() => {
-        const startIndex = ([currentPage - 1]) * itemsPerPage;
-        console.log(startIndex);
-        const endIndex = Math.min(startIndex + itemsPerPage , inquiries.length);
-        console.log(endIndex);
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
         setPaginatedItems(inquiries.slice(startIndex, endIndex));
-    }, [currentPage, inquiries])
+    }, [currentPage, inquiries]);
 
     const getPageNumbers = () => {
         const pageNumbers = [];
         const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
         const startPage = currentGroup * maxPagesToShow + 1;
         const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
-        console.log(currentGroup);
-        console.log(startPage);
-        console.log(endPage);
 
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(i);
         }
-        console.log(pageNumbers);
 
         return pageNumbers;
     };
-    console.log(paginatedItems);
-
-    console.log(totalNumberOfPages);
 
     return (
         <section className="cscContainer">
@@ -96,7 +83,7 @@ export default function Inquiry() {
                         <div style={{ width: '500px' }}>제목</div>
                         <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
-                    <InquiryList inquiries={inquiries} existingInquiries={existingInquiries} />
+                    <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} />
                     <ul className="noticeNumber">
                         {currentPage > 1 && (
                             <>
@@ -109,9 +96,7 @@ export default function Inquiry() {
                                 key={pageNumber}
                                 className={currentPage === pageNumber ? 'selected' : ''}
                             >
-                                <NavLink
-                                    to={`/Inquiry?page=${pageNumber}`}
-                                >
+                                <NavLink to={`/Inquiry?page=${pageNumber}`}>
                                     {pageNumber}
                                 </NavLink>
                             </li>

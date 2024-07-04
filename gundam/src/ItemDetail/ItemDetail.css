@@ -431,6 +431,7 @@
     background-color: red;
     color: white;
     font-size: 16px;
+    cursor: pointer;
 }
 
 /* ============== Right Box End ================ */
@@ -508,6 +509,7 @@
     height: 100%;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
 }
 
 .buy_titlebar{
@@ -555,9 +557,9 @@
     border: solid 1px rgb(240, 238, 238);
 }
 
-.item_info {
+.buy_item_info {
     display: flex;
-    height: 150px;
+    height: 240px;
 }
 
 .buy_right_subtitle h3{
@@ -630,8 +632,6 @@
     margin-right: 10px;
 }
 
-
-
 .buy_count_box {
     display: flex;
     justify-content: center;
@@ -653,21 +653,35 @@
 
 .userinfo{
     display: grid;
-    grid-template: repeat(3, 1fr) / .5fr 1fr;
+    grid-template: repeat(4, .5fr) / .5fr 1fr;
     width: 100%;
+    align-items: center;
+    height: 100%;
 }
 
 .userinfo p{
     padding: 0 5px;
 }
 
-.userinfo p:nth-of-type(odd){
-    border-right: solid 1px rgb(200, 200, 200);
+.buy_address_search{
+    text-align: right;
+}
+
+.address_search_btn{
+    width: 70px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+.address_search_btn:hover{
+    color: white;
+    background-color: blue;
 }
 
 .buy_left_address_box{
-    width: 100%;
-    display: grid;
+    height: 80px;
+    grid-area: 5/1/6/3;
 }
 
 

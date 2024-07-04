@@ -182,11 +182,34 @@
     {
       "name": "호",
       "email": "test@naver.com",
+      "password": "12345678",
       "phoneNumber": "01012345678",
       "address": "경기 성남시 분당구 성남대로 지하 156 ",
       "id": "607d",
-      "cart": [],
-      "buy": []
+      "cart": [
+        {
+          "id": 2,
+          "tag": "건프라",
+          "name": "MG 윙 건담 제로(EW) Ver.Ka",
+          "price": 66000,
+          "comment": "건담 브레이커 배틀로그",
+          "detail": "비우주세기의 건담 시리즈 2탄으로 등장한 TV 작품. 건담 5기가 돌연 거대 세력을 급습하는 다이나믹한 장면으로부터 숨막히는 전개가 이어지는 작품이다.",
+          "brand": "FG",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam02_1.jpg",
+            "/image/gundam02_2.jpg",
+            "/image/gundam02_3.jpg",
+            "/image/gundam02_4.jpg",
+            "/image/gundam02_5.jpg",
+            "/image/gundam02_6.jpg",
+            "/image/gundam02_7.jpg"
+          ],
+          "image": "/image/gundam02.jpg",
+          "isChecked": true,
+          "quantity": 3
+        }
+      ]
     },
     {
       "id": "0930",
@@ -204,8 +227,8 @@
       "reviewId": 1,
       "productId": 2,
       "userId": "28d8",
-      "title": "ㅁ",
-      "comment": "ㅁ",
+      "title": "퀄리티 ㅅㅌㅊ",
+      "comment": "어릴때 비싸서 못샀던거 원없이 사는중~",
       "date": "2024. 7. 3."
     },
     {
@@ -213,8 +236,8 @@
       "reviewId": 2,
       "productId": 2,
       "userId": "28d8",
-      "title": "ㅁ",
-      "comment": "ㅁ",
+      "title": "컬렉터",
+      "comment": "소장용 조립용 두개구매",
       "date": "2024. 7. 3."
     },
     {
@@ -236,13 +259,13 @@
       "date": "2024. 7. 3."
     },
     {
-      "id": "0e5c",
-      "reviewId": 5,
-      "productId": 2,
-      "userId": "28d8",
-      "title": "ㅅㄱ도",
-      "comment": "ㅓㅑㅐㅏㅣ",
-      "date": "2024. 7. 3."
+      "id": "2658",
+      "reviewId": 6,
+      "productId": 3,
+      "userId": "607d",
+      "title": "리뷰제목",
+      "comment": "리뷰내용",
+      "date": "2024. 7. 4."
     }
   ],
   "qna": [
@@ -267,8 +290,24 @@
       "qna_Id": 3,
       "productId": 2,
       "userId": "28d8",
-      "comment": "ㅓㅕㅑㅘㅣ,",
+      "comment": "당일배송 가능?",
       "date": "2024. 7. 3."
+    },
+    {
+      "id": "dc94",
+      "qna_Id": 4,
+      "productId": 3,
+      "userId": "607d",
+      "comment": "퀄리티 쿳?",
+      "date": "2024. 7. 4."
+    },
+    {
+      "id": "b19f",
+      "qna_Id": 5,
+      "productId": 2,
+      "userId": "607d",
+      "comment": "직구인가요?",
+      "date": "2024. 7. 4."
     }
   ]
 }

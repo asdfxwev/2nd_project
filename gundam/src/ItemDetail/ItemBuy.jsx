@@ -114,7 +114,7 @@ const ItemBuy = () => {
                         <div className='right_inner'>
                             <div className='buy_right_subtitle'><h3>주문자 정보</h3></div>
                             
-                            <div className='item_info underline'>
+                            <div className='buy_item_info underline'>
                                 <div className='userinfo'>
                                     <p>주문자</p>
                                     <p>{userinfo.name}</p>
@@ -122,6 +122,11 @@ const ItemBuy = () => {
                                     <p>{userinfo.phoneNumber}</p>
                                     <p>e-Mail</p>
                                     <p>{userinfo.email}</p>
+                                    <p className='buy_left_address'>배송지</p>
+                                    <p className='buy_address_search'>
+                                        <button className='address_search_btn'>주소검색</button>
+                                    </p>
+                                    <p className='buy_left_address_box'>{userinfo.address}</p>
                                 </div>
                             </div>
                             <div className='item_count underline'>

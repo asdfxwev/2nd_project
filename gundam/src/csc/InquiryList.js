@@ -68,7 +68,7 @@ export default function InquiryList({ inquiries, existingInquiries, setCurrentPa
     const [inquiriesState, setInquiriesState] = useState([]); // 문의 데이터 상태
     const [visibleInquiry, setVisibleInquiry] = useState(null); // 현재 표시 중인 문의
     const navigate = useNavigate();
-
+console.log(inquiries);
     // inquiries prop이 변경될 때마다 상태를 업데이트합니다.
     useEffect(() => {
         setInquiriesState(inquiries);

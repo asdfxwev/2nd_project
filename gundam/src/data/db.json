@@ -8,6 +8,40 @@
       "id": "28d8",
       "cart": [
         {
+          "id": 90,
+          "inquiryType": "상품",
+          "subject": "상품이 이상해요",
+          "message": "구매한 것과 달라요"
+        },
+        {
+          "id": 91,
+          "inquiryType": "시스템장애",
+          "subject": "시스템 때문에 못샀어요",
+          "message": "물어내세요"
+        },
+        {
+          "id": 92,
+          "inquiryType": "이벤트",
+          "subject": "이벤트 언제함?",
+          "message": "ㅎㅇ"
+        },
+        {
+          "id": 93,
+          "inquiryType": "주문/결제",
+          "subject": "결제가 안돼요",
+          "message": "공짜 ㄳ"
+        },
+        {
+          "id": 111,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁ"
+        }
+      ],
+      "inquiryCounter": 114,
+      "cart": [],
+      "buy": [
+        {
           "id": 2,
           "tag": "건프라",
           "name": "MG 윙 건담 제로(EW) Ver.Ka",
@@ -26,11 +60,10 @@
             "/image/gundam02_7.jpg"
           ],
           "image": "/image/gundam02.jpg",
-          "isChecked": false,
-          "quantity": 6
-        }
-      ],
-      "buy": [
+          "isChecked": true,
+          "quantity": 1,
+          "date": "2024-07-05"
+        },
         {
           "id": 3,
           "tag": "건프라",
@@ -45,46 +78,6 @@
             "/image/gundam09.jpg"
           ],
           "image": "/image/gundam03.jpg",
-          "quantity": 1,
-          "isChecked": true,
-          "date": "2024-07-05"
-        },
-        {
-          "id": 4,
-          "tag": "건프라",
-          "name": "HGUC 크시 건담",
-          "price": 72000,
-          "comment": "기동전사 건담 복수의 레퀴엠",
-          "detail": "21세기의 첫 TV 시리즈 작품. 자프트와 지구 연합군의 전쟁에, 친구들을 구하기 위해 지구군으로서 참전한 코디네이터 키라의 고뇌와 성장을 그렸다.",
-          "brand": "FIGURE-RISE STANDARD",
-          "src": [
-            "/image/gundam03.jpg",
-            "/image/gundam05.jpg"
-          ],
-          "image": "/image/gundam04.jpg",
-          "quantity": 1,
-          "isChecked": true,
-          "date": "2024-07-05"
-        },
-        {
-          "id": 2,
-          "tag": "건프라",
-          "name": "MG 윙 건담 제로(EW) Ver.Ka",
-          "price": 66000,
-          "comment": "건담 브레이커 배틀로그",
-          "detail": "비우주세기의 건담 시리즈 2탄으로 등장한 TV 작품. 건담 5기가 돌연 거대 세력을 급습하는 다이나믹한 장면으로부터 숨막히는 전개가 이어지는 작품이다.",
-          "brand": "FG",
-          "src": [
-            "/image/gundam02.jpg",
-            "/image/gundam02_1.jpg",
-            "/image/gundam02_2.jpg",
-            "/image/gundam02_3.jpg",
-            "/image/gundam02_4.jpg",
-            "/image/gundam02_5.jpg",
-            "/image/gundam02_6.jpg",
-            "/image/gundam02_7.jpg"
-          ],
-          "image": "/image/gundam02.jpg",
           "isChecked": true,
           "quantity": 1,
           "date": "2024-07-05"
@@ -288,103 +281,56 @@
       "phoneNumber": "01056564141"
     },
     {
-      "id": "87f3",
-      "email": "qwer@qwer",
-      "address": "asdf asdf",
       "name": "qwerqwer",
-      "password": "qwerqwer",
-      "confirmPassword": "qwerqwer",
+      "email": "qwer@qwer",
       "phoneNumber": "9876543210",
-      "inquries": [
-        {
-          "id": 5,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁㅁㅁ"
-        },
-        {
-          "id": 6,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁㅁㅁㅁ"
-        },
-        {
-          "id": 7,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁㅁㅁㅁㅁ"
-        },
-        {
-          "id": 16,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "a"
-        },
-        {
-          "id": 17,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "aa"
-        },
-        {
-          "id": 18,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "aaa"
-        },
-        {
-          "id": 19,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "aaaa"
-        },
-        {
-          "id": 20,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "a"
-        },
-        {
-          "id": 21,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "a"
-        },
-        {
-          "id": 22,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "a"
-        }
-      ],
-      "inquiryCounter": 23
+      "address": "asdf asdf",
+      "id": "87f3",
+      "cart": []
     },
     {
-      "id": "1591",
-      "email": "dydejr852@naver.coa",
-      "address": "경기 성남시 분당구 금곡로 298 10",
-      "name": "김성규",
-      "password": "12345678",
-      "confirmPassword": "12345678",
-      "phoneNumber": "01072815055"
+      "id": "5acb",
+      "userid": "asdf@asdf",
+      "password": "asdfasdF!",
+      "email": "asdfasdf@asdf.com",
+      "name": "asdf",
+      "isAgreed": true
     },
     {
-      "id": "3702",
-      "email": "dydejr852@naver.cob",
-      "address": "경기 성남시 분당구 금곡로 298 123",
-      "name": "aa",
-      "password": "123456789",
-      "confirmPassword": "123456789",
-      "phoneNumber": "01012345677"
+      "id": "2167",
+      "email": "asdf@asdf333",
+      "address": "대전 동구 판교1길 3 123123",
+      "name": "asdsadsad",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "phoneNumber": "01033333333"
     },
     {
-      "id": "d231",
-      "email": "dydejr852@naver.coc",
-      "address": "경기 포천시 정자동길 8 1234",
-      "name": "김성규",
-      "password": "12345678",
-      "confirmPassword": "12345678",
-      "phoneNumber": "01072815068"
+      "id": "525a",
+      "email": "aaaaaa@aaaaaa",
+      "address": "서울 종로구 삼청로 59 123123123",
+      "name": "123123123",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "phoneNumber": "1231231444"
+    },
+    {
+      "id": "ef16",
+      "email": "025731kk@naver.com",
+      "address": "광주 남구 판촌길 23-4 ㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇ",
+      "name": "이거왜안됌?",
+      "password": "rlarudfo123",
+      "confirmPassword": "rlarudfo123",
+      "phoneNumber": "3332221111"
+    },
+    {
+      "id": "afbd",
+      "email": "asdf@asdf33",
+      "address": "세종특별자치시 연동면 내송길 5 123",
+      "name": "rlarudfo",
+      "password": "123123123",
+      "confirmPassword": "123123123",
+      "phoneNumber": "01080334919"
     }
   ],
   "review": [
@@ -432,6 +378,24 @@
       "title": "리뷰제목",
       "comment": "리뷰내용",
       "date": "2024. 7. 4."
+    },
+    {
+      "id": "1e19",
+      "reviewId": 7,
+      "productId": 2,
+      "userId": "87f3",
+      "title": "as",
+      "comment": "as",
+      "date": "2024. 7. 5."
+    },
+    {
+      "id": "2296",
+      "reviewId": 8,
+      "productId": 7,
+      "userId": "28d8",
+      "title": "루루루루",
+      "comment": "ㅎ라하하리",
+      "date": "2024. 7. 5."
     }
   ],
   "qna": [

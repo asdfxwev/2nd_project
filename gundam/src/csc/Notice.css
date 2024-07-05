@@ -86,7 +86,9 @@
     font-weight: bold;
     /* border: 1px solid aqua; */
     /* border-radius: 10%; */
-    background-color: red;
+    /* background-color: rgba(0, 255, 255, 0.233); */
+    background-color: #b3ffff;
+    /* margin: 10px; */
 }
 
 .noticeForm {

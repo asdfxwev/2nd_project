@@ -133,9 +133,13 @@ export default function ItemDetail() {
     }, [existingInquiries, selectedItem.id]);
 
     const handleBuyClick = (e) => {
-        e.preventDefault();
-        const itemToBuy = { ...selectedItem, isChecked: true };
-        navigate('/ItemBuy', { state: { item: itemToBuy, count: count } });
+        if (existingInquiries) {
+            e.preventDefault();
+            const itemToBuy = { ...selectedItem, isChecked: true };
+            navigate('/ItemBuy', { state: { item: itemToBuy, count: count } });
+        } else {
+            navigate('/Login')
+        }
     }
 
     return (

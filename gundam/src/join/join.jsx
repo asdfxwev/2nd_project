@@ -88,12 +88,12 @@ const SignupForm = () => {
         },
         validationSchema: Yup.object({
             name: Yup.string().required('이름을 입력해주세요.'),
-            email: Yup.string().email('올바른 이메일 주소를 입력하세요.').required('이메일 주소는 필수 항목입니다.'),
+            email: Yup.string().email('올바른 이메일 주소를 입력하세요.') .matches(/^.+@.+\..+$/, '올바른 이메일 주소를 입력하세요.').required('이메일 주소는 필수 항목입니다.'),
             password: Yup.string().min(8, '비밀번호는 최소 8자 이상이어야 합니다.').required('비밀번호는 필수 항목입니다.'),
             confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다.').required('비밀번호 확인은 필수 항목입니다.'),
             address: Yup.string().required('주소는 필수 항목입니다.'),
             dtl_address: Yup.string(),
-            phoneNumber: Yup.string().matches(/^[0-9]{10,11}$/, '유효한 핸드폰 번호를 입력하세요.').required('핸드폰 번호는 필수 항목입니다.')
+            phoneNumber: Yup.string().matches(/^010[0-9]{8}$/, '유효한 핸드폰 번호를 입력하세요.').required('핸드폰 번호는 필수 항목입니다.')
 
         }),
         onSubmit: handleSubmit

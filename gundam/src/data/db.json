@@ -38,15 +38,9 @@
           "inquiryType": "주문/결제",
           "subject": "결제가 안돼요",
           "message": "공짜 ㄳ"
-        },
-        {
-          "id": 95,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁ"
         }
       ],
-      "inquiryCounter": 96,
+      "inquiryCounter": 108,
       "cart": []
     },
     {

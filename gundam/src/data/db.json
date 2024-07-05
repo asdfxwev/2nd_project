@@ -38,15 +38,9 @@
           "inquiryType": "주문/결제",
           "subject": "결제가 안돼요",
           "message": "공짜 ㄳ"
-        },
-        {
-          "id": 95,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁ"
         }
       ],
-      "inquiryCounter": 96,
+      "inquiryCounter": 108,
       "cart": []
     },
     {
@@ -230,13 +224,76 @@
       "phoneNumber": "01056564141"
     },
     {
-      "id": "b9f7",
+      "id": "87f3",
       "email": "qwer@qwer",
       "address": "asdf asdf",
-      "name": "qwer",
-      "password": "12345678",
-      "confirmPassword": "12345678",
-      "phoneNumber": "0100000000"
+      "name": "qwerqwer",
+      "password": "qwerqwer",
+      "confirmPassword": "qwerqwer",
+      "phoneNumber": "9876543210",
+      "inquries": [
+        {
+          "id": 5,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁ"
+        },
+        {
+          "id": 6,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁㅁ"
+        },
+        {
+          "id": 7,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁㅁㅁㅁㅁ"
+        },
+        {
+          "id": 16,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": 17,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aa"
+        },
+        {
+          "id": 18,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aaa"
+        },
+        {
+          "id": 19,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aaaa"
+        },
+        {
+          "id": 20,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": 21,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": 22,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
+        }
+      ],
+      "inquiryCounter": 23
     }
   ],
   "review": [

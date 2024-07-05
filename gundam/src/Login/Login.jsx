@@ -12,7 +12,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState('');
     console.log(`** users.length=${importedUsers.length}`);
-    
+
     const navigate = useNavigate();
     let result = null;
 
@@ -33,7 +33,7 @@ function Login() {
 
             const currentUrl = localStorage.getItem('currentUrl');
             localStorage.removeItem('currentUrl');
-            if(currentUrl !== null && currentUrl.length > 0 ){
+            if (currentUrl !== null && currentUrl.length > 0) {
                 navigate(currentUrl); // 변경: navigate('/') -> navigate(-1) 로그인 성공 후 이전 페이지로 리디렉션
             } else {
                 navigate('/'); // 변경: navigate('/') -> navigate(-1) 로그인 성공 후 이전 페이지로 리디렉션
@@ -88,9 +88,9 @@ function Login() {
                             </a>
                         </div>
                         <div>
-                           <IdFindingModal  href="./Login/Findingid" />
+                            <IdFindingModal href="./Login/Findingid" />
                             &nbsp;
-                           <SecurityModal  href="./Login/Security" />
+                            <SecurityModal href="./Login/Security" />
                         </div>
                     </form>
                 </div>

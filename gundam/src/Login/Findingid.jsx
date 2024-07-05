@@ -9,7 +9,7 @@ const Find = () => {
     const [phoneNumber, setPhoneNumber] = useState(''); // 핸드폰 번호 상태 관리 추가
     const [email, setEmail] = useState(''); // 이메일 상태 관리
     const [message, setMessage] = useState('');
-    
+
     const handleFindEmail = (e) => {
         e.preventDefault();
         // 이름과 핸드폰 번호로 사용자 검색
@@ -89,7 +89,7 @@ const Find = () => {
                     <div>
                         <button
                             className={`tabLinks ${activeTab === 'findId' ? 'active' : ''}`}
-                            
+
                         ><h4>이메일 찾기</h4></button>
                         <button
                             className={`tabLinks ${activeTab === 'findPw' ? 'active' : ''}`}

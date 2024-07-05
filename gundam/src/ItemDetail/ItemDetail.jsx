@@ -63,7 +63,7 @@ export default function ItemDetail() {
     };
 
     const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
-    
+
     const toCart = async (e) => {
         e.preventDefault();
 
@@ -80,8 +80,8 @@ export default function ItemDetail() {
 
                     try {
                         const updatedCart = userData.cart.filter(e => e.id !== selectedItem.id)
-                        await axios.put(`http://localhost:3001/users/${userId}`, { ...userData, cart: updatedCart})
-                    }catch (error) {
+                        await axios.put(`http://localhost:3001/users/${userId}`, { ...userData, cart: updatedCart })
+                    } catch (error) {
                         console.error('Error deleting inquiry:', error.response ? error.response.data : error.message);
                     }
 
@@ -174,10 +174,10 @@ export default function ItemDetail() {
                     <div className='detail_item_name'>MG WING GUNDAM<br />ZERO EW Ver.Ka</div>
                     <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
 
-                    <SectionImg key={selectedItem.id} item={selectedItem} /> {/* 상세보기 tap */}
-                    <ItemReview key={selectedItem.id} item={selectedItem.id} setReviewCount={setReviewCount} /> {/* 리뷰 tap */}
-                    <ItemQna key={selectedItem.id} item={selectedItem.id} /> {/* Q&A tap */}
-                    <ItemService /> {/* 배송/교환/반품 tap */}
+                    <SectionImg key={selectedItem.id} item={selectedItem} /> {/* 상세보기 tab */}
+                    <ItemReview key={selectedItem.id} item={selectedItem.id} setReviewCount={setReviewCount} /> {/* 리뷰 tab */}
+                    <ItemQna key={selectedItem.id} item={selectedItem.id} /> {/* Q&A tab */}
+                    <ItemService /> {/* 배송/교환/반품 tab */}
 
                 </div>
 
@@ -210,7 +210,7 @@ export default function ItemDetail() {
                         <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span>원</p>
                     </div>
                     <div className='item_btn'>
-                        <button type='button' style={{cursor:'pointer'}} className='submit_btn' onClick={handleBuyClick}>구매하기</button>
+                        <button type='button' style={{ cursor: 'pointer' }} className='submit_btn' onClick={handleBuyClick}>구매하기</button>
                     </div>
                     <TopBtn />
                 </div>

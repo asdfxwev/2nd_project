@@ -74,7 +74,7 @@ export default function Inquiry() {
                         <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
                     <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} setCurrentPage={setCurrentPage} currentPage = {currentPage} />
-                    <PagiNation maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {inquiries} paginatedItems = {paginatedItems} navigation='/Inquiry?page='/>
+                    <PagiNation maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {inquiries} navigation='/Inquiry?page='/>
                     <div className='InquiryWriteBtn'>
                         <Link to='/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>

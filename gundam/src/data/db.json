@@ -7,7 +7,7 @@
       "address": "부산 연제구 미남로 1 asdf",
       "id": "28d8",
       "cart": [],
-      "inquiryCounter": 116,
+      "inquiryCounter": 120,
       "buy": [
         {
           "id": 2,
@@ -63,6 +63,30 @@
           "inquiryType": "배송",
           "subject": "ㅁ",
           "message": "ㅁㅁ"
+        },
+        {
+          "id": 116,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁ"
+        },
+        {
+          "id": 117,
+          "inquiryType": "배송",
+          "subject": "ㅁㄴㅇ",
+          "message": "ㅁㄴㅇㅍ"
+        },
+        {
+          "id": 118,
+          "inquiryType": "배송",
+          "subject": "ㄴㅇㅍㅁㅊㅍㅊㅁㅋ",
+          "message": "ㅌㅍㅋㅌㅊㅍ"
+        },
+        {
+          "id": 119,
+          "inquiryType": "배송",
+          "subject": "ㅋㅌㅊㅍ",
+          "message": "ㅋㅌㅊㅍ"
         }
       ]
     },
@@ -420,6 +444,38 @@
       "userId": "607d",
       "comment": "직구인가요?",
       "date": "2024. 7. 4."
+    },
+    {
+      "id": "4702",
+      "qna_Id": 6,
+      "productId": 1,
+      "userId": "28d8",
+      "comment": "ㅁ",
+      "date": "2024. 7. 5."
+    },
+    {
+      "id": "2cfd",
+      "qna_Id": 7,
+      "productId": 1,
+      "userId": "28d8",
+      "comment": "ㅁ",
+      "date": "2024. 7. 5."
+    },
+    {
+      "id": "9634",
+      "qna_Id": 8,
+      "productId": 1,
+      "userId": "28d8",
+      "comment": "ㅁ",
+      "date": "2024. 7. 5."
+    },
+    {
+      "id": "8e17",
+      "qna_Id": 9,
+      "productId": 1,
+      "userId": "28d8",
+      "comment": "ㅁ",
+      "date": "2024. 7. 5."
     }
   ]
 }

@@ -8,6 +8,7 @@ import './Customerservice.css';
 import CscLeft from './CscLeft';
 import './Inquiry.css'
 import axios from 'axios';
+import PagiNation from './PagiNation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -40,12 +41,11 @@ export default function Inquiry() {
         };
         fetchData();
     }, [userId, inquiries]);
-    console.log(inquiries);
+    // console.log(inquiries);
+    
 
     const itemsPerPage = 5;
     const maxPagesToShow = 5;
-
-    const totalNumberOfPages = Math.ceil(inquiries.length / itemsPerPage);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
@@ -59,22 +59,6 @@ export default function Inquiry() {
         setPaginatedItems(inquiries.slice(startIndex, endIndex));
     }, [currentPage, inquiries]);
 
-    const getPageNumbers = () => {
-        const pageNumbers = [];
-        const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
-        const startPage = currentGroup * maxPagesToShow + 1;
-        const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
-        console.log(currentGroup);
-        console.log(pageNumbers);
-
-        for (let i = startPage; i <= endPage; i++) {
-            pageNumbers.push(i);
-        }
-
-        return pageNumbers;
-    };
-    console.log(currentPage);
-    console.log(paginatedItems);
 
     return (
         <section className="cscContainer">
@@ -90,30 +74,7 @@ export default function Inquiry() {
                         <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
                     <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} setCurrentPage={setCurrentPage} currentPage = {currentPage} />
-                    <ul className="noticeNumber">
-                        {currentPage > 1 && (
-                            <>
-                                <li><NavLink to={`/Inquiry?page=1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
-                                <li><NavLink to={`/Inquiry?page=${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
-                            </>
-                        )}
-                        {getPageNumbers().map((pageNumber) => (
-                            <li
-                                key={pageNumber}
-                                className={currentPage === pageNumber ? 'selected' : ''}
-                            >
-                                <NavLink to={`/Inquiry?page=${pageNumber}`}>
-                                    {pageNumber}
-                                </NavLink>
-                            </li>
-                        ))}
-                        {currentPage < totalNumberOfPages && (
-                            <>
-                                <li><NavLink to={`/Inquiry?page=${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
-                                <li><NavLink to={`/Inquiry?page=${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
-                            </>
-                        )}
-                    </ul>
+                    <PagiNation maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {inquiries} paginatedItems = {paginatedItems} navigation='/Inquiry?page='/>
                     <div className='InquiryWriteBtn'>
                         <Link to='/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>

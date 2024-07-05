@@ -56,11 +56,25 @@ const Cart = () => {
         fetchData();
     }, [userId]);
 
-    const handleQuantityChange = (id, quantity) => {
+    const handleQuantityChange = async (id, quantity) => {
         const updatedItems = cartItems.map(item =>
             item.id === id ? { ...item, quantity } : item
         );
         setCartItems(updatedItems);
+
+        // 서버에 수량 업데이트 요청
+        try {
+            const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userData = userResponse.data;
+
+            const updatedCart = userData.cart.map(item =>
+                item.id === id ? { ...item, quantity } : item
+            );
+
+            await axios.put(`http://localhost:3001/users/${userId}`, { ...userData, cart: updatedCart });
+        } catch (error) {
+            console.error('Error updating quantity:', error.response ? error.response.data : error.message);
+        }
     };
 
     const handleCheckboxChange = (id) => {

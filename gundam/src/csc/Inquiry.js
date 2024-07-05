@@ -8,7 +8,7 @@ import './Customerservice.css';
 import CscLeft from './CscLeft';
 import './Inquiry.css'
 import axios from 'axios';
-import PagiNation from './PageNation'
+import PagiNation from './PagiNation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 

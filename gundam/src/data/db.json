@@ -6,40 +6,8 @@
       "phoneNumber": "1234567891",
       "address": "부산 연제구 미남로 1 asdf",
       "id": "28d8",
-      "cart": [
-        {
-          "id": 90,
-          "inquiryType": "상품",
-          "subject": "상품이 이상해요",
-          "message": "구매한 것과 달라요"
-        },
-        {
-          "id": 91,
-          "inquiryType": "시스템장애",
-          "subject": "시스템 때문에 못샀어요",
-          "message": "물어내세요"
-        },
-        {
-          "id": 92,
-          "inquiryType": "이벤트",
-          "subject": "이벤트 언제함?",
-          "message": "ㅎㅇ"
-        },
-        {
-          "id": 93,
-          "inquiryType": "주문/결제",
-          "subject": "결제가 안돼요",
-          "message": "공짜 ㄳ"
-        },
-        {
-          "id": 111,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁ"
-        }
-      ],
-      "inquiryCounter": 114,
       "cart": [],
+      "inquiryCounter": 116,
       "buy": [
         {
           "id": 2,
@@ -81,6 +49,20 @@
           "isChecked": true,
           "quantity": 1,
           "date": "2024-07-05"
+        }
+      ],
+      "inquries": [
+        {
+          "id": 114,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁ"
+        },
+        {
+          "id": 115,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㅁ"
         }
       ]
     },

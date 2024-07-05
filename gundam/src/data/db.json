@@ -51,44 +51,7 @@
           "date": "2024-07-05"
         }
       ],
-      "inquries": [
-        {
-          "id": 114,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ"
-        },
-        {
-          "id": 115,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁ"
-        },
-        {
-          "id": 116,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁ"
-        },
-        {
-          "id": 117,
-          "inquiryType": "배송",
-          "subject": "ㅁㄴㅇ",
-          "message": "ㅁㄴㅇㅍ"
-        },
-        {
-          "id": 118,
-          "inquiryType": "배송",
-          "subject": "ㄴㅇㅍㅁㅊㅍㅊㅁㅋ",
-          "message": "ㅌㅍㅋㅌㅊㅍ"
-        },
-        {
-          "id": 119,
-          "inquiryType": "배송",
-          "subject": "ㅋㅌㅊㅍ",
-          "message": "ㅋㅌㅊㅍ"
-        }
-      ]
+      "inquries": []
     },
     {
       "id": "070c",

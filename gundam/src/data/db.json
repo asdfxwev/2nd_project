@@ -162,18 +162,6 @@
       "phoneNumber": "9876543210",
       "inquries": [
         {
-          "id": 3,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁ"
-        },
-        {
-          "id": 4,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁㅁㅁ"
-        },
-        {
           "id": 5,
           "inquiryType": "배송",
           "subject": "ㅁ",
@@ -192,13 +180,49 @@
           "message": "ㅁㅁㅁㅁㅁㅁ"
         },
         {
-          "id": 15,
+          "id": 16,
           "inquiryType": "배송",
-          "subject": "ㅁㅁ",
-          "message": "ㅁㅁㅁ"
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": 17,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aa"
+        },
+        {
+          "id": 18,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aaa"
+        },
+        {
+          "id": 19,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "aaaa"
+        },
+        {
+          "id": 20,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": 21,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": 22,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a"
         }
       ],
-      "inquiryCounter": 16
+      "inquiryCounter": 23
     }
   ],
   "review": [

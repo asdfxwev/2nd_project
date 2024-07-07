@@ -19,14 +19,6 @@ const ItemBuy = () => {
         return number.toLocaleString('ko-KR');
     };
 
-    // const [totalprice, setTotalPrice] = useState(item ? item.price : 0);
-
-    // useEffect(() => {
-    //     if (item && count) {
-    //         setTotalPrice(count * item.price);
-    //     }
-    // }, [item, count]);
-
     useEffect(() => {
         if (item && count) {
             setTotal(item.price * count);
@@ -45,6 +37,52 @@ const ItemBuy = () => {
             setTotalQuantity(initialTotalQuantity);
         }
     }, [item, count]);
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+        script.onload = () => {
+            const addressKakao = document.getElementById("address_kakao");
+            if (addressKakao) {
+                addressKakao.addEventListener("click", function () {
+                    new window.daum.Postcode({
+                        oncomplete: async function (data) {
+                            // 주소 필드 업데이트
+                            const newAddress = data.address;
+
+                            try {
+                                // 사용자 정보 업데이트
+                                const updatedUser = {
+                                    ...userinfo,
+                                    address: newAddress
+                                };
+
+                                // 서버에 업데이트 요청
+                                await axios.put(`http://localhost:3001/users/${userinfo.id}`, updatedUser);
+
+                                // 사용자 정보 갱신
+                                localStorage.setItem('loginInfo', JSON.stringify(updatedUser));
+
+                                // 상태 업데이트
+                                alert('주소가 업데이트되었습니다.');
+                                window.location.reload();
+                            } catch (error) {
+                                console.error('주소 업데이트 중 오류 발생:', error);
+                                alert('주소 업데이트 중 오류가 발생했습니다.');
+                            }
+                        }
+                    }).open();
+                });
+            }
+        };
+
+        document.body.appendChild(script);
+
+        // 스크립트 제거를 위한 정리 함수
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, [userinfo]);
 
     const gundam_buy = async () => {
         try {
@@ -119,15 +157,6 @@ const ItemBuy = () => {
                                 initialCount={count}
                             />
                         </div>
-                        
-                        {/* <div className="buy_left_subtitle">
-                            <div className="subtitle_left"><h3>배송지 정보</h3></div>
-                            <div className="subtitle_right"></div>
-                        </div>
-                        <div className='buy_left_address_box'>
-                            <div></div>
-                        </div> */}
-
                     </div>
 
                     <div className='detail_right_box'>
@@ -144,7 +173,7 @@ const ItemBuy = () => {
                                     <p>{userinfo.email}</p>
                                     <p className='buy_left_address'>배송지</p>
                                     <p className='buy_address_search'>
-                                        <button className='address_search_btn'>주소검색</button>
+                                        <button id='address_kakao' className='address_search_btn'>주소검색</button>
                                     </p>
                                     <p className='buy_left_address_box'>{userinfo.address}</p>
                                 </div>
@@ -158,7 +187,6 @@ const ItemBuy = () => {
                             <div className='item_total_price font_medium'>
                                 <p className='total_price_title '>총 결제금액</p>
                                 <p className='total_price'><span className='t_price'>{formatNumber(total)}</span> 원</p>
-                                {/* <p className='total_price'><span className='t_price'>{formatNumber(totalprice)}</span> 원</p> */}
                             </div>
                             <div className='item_btn'>
                                 <button className='submit_btn' onClick={gundam_buy} >결제하기</button>

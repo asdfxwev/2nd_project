@@ -79,7 +79,11 @@ const ItemQna = ({item, pathName}) => {
 
     const itemsPerPage = 5;
     const maxPagesToShow = 5;
-    console.log(item);
+    // console.log(item);
+    // console.log(pathName);
+    const pathNames = pathName + '?QnaPage=';
+    // console.log(pathNames);
+    console.log(filteredQnas);
 
     return(
         <>
@@ -137,7 +141,7 @@ const ItemQna = ({item, pathName}) => {
                         <div>등록된 Q&A가 없습니다.</div>
                     </div>
                 )}
-                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredQnas} navigation={pathName}/>
+                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredQnas} navigation={pathNames}/>
             </div>
         </>
     );

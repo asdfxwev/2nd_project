@@ -84,7 +84,7 @@ const ItemCard = ({ item }) => {
     return (
         <div className={`item-card ${isAdded ? 'added' : ''}`}>
             <a 
-                href={`/ItemList/ItemDetail/${item.id}`} 
+                href={`/ItemList/ItemDetail/${item.id}?QnaPage=1`} 
                 style={{ textDecoration: 'none', color: 'inherit' }} 
             >
                 <div>

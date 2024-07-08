@@ -6,8 +6,9 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import reviewData from '../data/db.json';
+import PagiNationNum from "../csc/PagiNationNum";
 
-const ItemReview = ({ item, setReviewCount }) => {
+const ItemReview = ({ item, setReviewCount, pathName }) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 저장 변수
     const [modalIsOpen, setModalIsOpen] = useState(false); // 리뷰작성 모달팝업 호출 변수
@@ -88,6 +89,9 @@ const ItemReview = ({ item, setReviewCount }) => {
         }
     }
 
+    const itemsPerPage = 5;
+    const maxPagesToShow = 5;
+
     return (
         <>
             <div className="info_top_box" id="REVIEW_TAB">
@@ -152,6 +156,8 @@ const ItemReview = ({ item, setReviewCount }) => {
                         </div>
                     )}
                 </div>
+                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredReviews} />
+                {/* navigation = {} */}
             </div>
         </>
     );

@@ -96,3 +96,35 @@
     height: 16px; 
     margin-right: 10px;
 }
+
+@media screen and (width < 85rem) {
+    .quantity-controls button {
+        width: 15px;
+        height: 15px;
+        border: none;
+        border-radius: 50%;
+        margin: 0 5px;
+    }
+    .cart-item input[type="checkbox"] {
+        width: 16px;
+        height: 16px; 
+        margin-right: 10px;
+    }
+    .cart-item div {
+        flex: 1;
+        text-align: center;
+        align-content: center;
+        font-size: 14px;
+    }
+    .button-size {
+        background-color: inherit;
+        width: 100px;
+        border: 0;
+        font-size: .8em;
+        margin-top: 20px;
+        cursor: pointer;
+        margin-right: 10px;
+        font-family: 'LINESeedKR-Bd';
+    }
+}
+

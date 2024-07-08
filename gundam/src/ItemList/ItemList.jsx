@@ -12,7 +12,7 @@ const ItemList = () => {
     const location = useLocation();
     const [currentPage, setCurrentPage] = useState(1);
     const [paginatedItems, setPaginatedItems] = useState([]);
-    const itemsPerPage = 20;
+    const [itemsPerPage, setItemsPerPage] = useState(20);
     const [filtersVisible, setFiltersVisible] = useState(true);
     const [itemListClass, setItemListClass] = useState('item-list');
     const [searchResult, setSearchResult] = useState([]);
@@ -50,6 +50,28 @@ const ItemList = () => {
             '신기동전사 건담W': false
         }
     });
+    //width에 따른 itemsPerPage 수량 변경 코드 
+    const updateItemsPerPage = () => {
+        const width = window.innerWidth;
+        if (width < 560) {
+            setItemsPerPage(4);
+        } else if (width < 880){
+            setItemsPerPage(8);
+        } else if (width < 1360) {
+            setItemsPerPage(12);
+        } else {
+            setItemsPerPage(20);
+        }
+    };
+    
+    // updateItemsPerPage resize하는 코드
+    useEffect(() => {
+        updateItemsPerPage();
+        window.addEventListener('resize', updateItemsPerPage);
+        return () => {
+            window.removeEventListener('resize', updateItemsPerPage);
+        };
+    }, []);
 
     // 현재 페이지의 URL을 가져옴
     console.log('location.pathname=' + location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1

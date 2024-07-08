@@ -1,81 +1,23 @@
-// // import { useState, useEffect } from "react";
-// // import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
-// // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// // import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
-// // export default function PagiNationNum({itemsPerPage, maxPagesToShow, object, navigation}) {
-// //     const [currentPage, setCurrentPage] = useState(1);
-// //     const [paginatedItems, setPaginatedItems] = useState([]);
-// //     const navigate = useNavigate();
-// //     const location = useLocation();
-
-// //     const totalNumberOfPages = Math.ceil(object.length / itemsPerPage);
-// //     useEffect(() => {
-// //         const query = new URLSearchParams(location.search);
-// //         const page = parseInt(query.get('page')) || 1;
-// //         setCurrentPage(page);
-// //     }, [location]);
-
-// //     const getPageNumbers = () => {
-// //         const pageNumbers = [];
-// //         const currentGroup = Math.floor((currentPage - 1) / maxPagesToShow);
-// //         const startPage = currentGroup * maxPagesToShow + 1;
-// //         const endPage = Math.min(totalNumberOfPages, startPage + maxPagesToShow - 1);
-
-// //         for (let i = startPage; i <= endPage; i++) {
-// //             pageNumbers.push(i);
-// //         }
-
-// //         return pageNumbers;
-// //     };
-
-// //     return (
-// //         <>
-// //                     <ul className="noticeNumber">
-// //                 {currentPage > 1 && (
-// //                     <>
-// //                         <li><NavLink to={`${navigation}1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
-// //                         <li><NavLink to={`${navigation}${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
-// //                     </>
-// //                 )}
-// //                 {getPageNumbers().map((pageNumber) => (
-// //                     <li
-// //                         key={pageNumber}
-// //                         className={currentPage === pageNumber ? 'selected' : ''}
-// //                     >
-// //                         <NavLink to={`${navigation}${pageNumber}`}>
-// //                             {pageNumber}
-// //                         </NavLink>
-// //                     </li>
-// //                 ))}
-// //                 {currentPage < totalNumberOfPages && (
-// //                     <>
-// //                         <li><NavLink to={`${navigation}${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
-// //                         <li><NavLink to={`${navigation}${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
-// //                     </>
-// //                 )}
-// //             </ul>
-// //         </>
-// //     )
-// // }
 
 // import { useState, useEffect } from "react";
-// import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+// import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 
-// export default function PagiNation({itemsPerPage, maxPagesToShow, object, navigation}) {
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
+
+// export default function PagiNationNum({ itemsPerPage, maxPagesToShow, object }) {
 //     const [currentPage, setCurrentPage] = useState(1);
 //     const [paginatedItems, setPaginatedItems] = useState([]);
 //     const navigate = useNavigate();
 //     const location = useLocation();
 
 //     const totalNumberOfPages = Math.ceil(object.length / itemsPerPage);
+
 //     useEffect(() => {
-//         const query = new URLSearchParams(location.search);
-//         const page = parseInt(query.get('Qnapage')) || 1;
-//         setCurrentPage(page);
-//     }, [location]);
+//         const startIndex = (currentPage - 1) * itemsPerPage;
+//         const endIndex = startIndex + itemsPerPage;
+//         setPaginatedItems(object.slice(startIndex, endIndex));
+//     }, [currentPage, object, itemsPerPage]);
 
 //     const getPageNumbers = () => {
 //         const pageNumbers = [];
@@ -90,6 +32,10 @@
 //         return pageNumbers;
 //     };
 
+//     const handlePageChange = (pageNumber) => {
+//         setCurrentPage(pageNumber);
+//     };
+
 //     return (
 //         <>
 //             <ul className="noticeNumber">
@@ -97,6 +43,16 @@
 //                     <>
 //                         <li><NavLink to={`${navigation}1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
 //                         <li><NavLink to={`${navigation}${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
+//                         <li>
+//                             <div onClick={() => handlePageChange(1)}>
+//                                 <FontAwesomeIcon icon={faAnglesLeft} />
+//                             </div>
+//                         </li>
+//                         <li>
+//                             <div onClick={() => handlePageChange(currentPage - 1)}>
+//                                 <FontAwesomeIcon icon={faAngleLeft} />
+//                             </div>
+//                         </li>
 //                     </>
 //                 )}
 //                 {getPageNumbers().map((pageNumber) => (
@@ -104,15 +60,23 @@
 //                         key={pageNumber}
 //                         className={currentPage === pageNumber ? 'selected' : ''}
 //                     >
-//                         <NavLink to={`${navigation}${pageNumber}`}>
+//                         <div onClick={() => handlePageChange(pageNumber)}>
 //                             {pageNumber}
-//                         </NavLink>
+//                         </div>
 //                     </li>
 //                 ))}
 //                 {currentPage < totalNumberOfPages && (
 //                     <>
-//                         <li><NavLink to={`${navigation}${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
-//                         <li><NavLink to={`${navigation}${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
+//                         <li>
+//                             <div onClick={() => handlePageChange(currentPage + 1)}>
+//                                 <FontAwesomeIcon icon={faAngleRight} />
+//                             </div>
+//                         </li>
+//                         <li>
+//                             <div onClick={() => handlePageChange(totalNumberOfPages)}>
+//                                 <FontAwesomeIcon icon={faAnglesRight} />
+//                             </div>
+//                         </li>
 //                     </>
 //                 )}
 //             </ul>
@@ -120,23 +84,22 @@
 //     )
 // }
 
-import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 
-export default function PagiNation({ itemsPerPage, maxPagesToShow, object, navigation }) {
+export default function PagiNationNum({ itemsPerPage, maxPagesToShow, object }) {
     const [currentPage, setCurrentPage] = useState(1);
-    const navigate = useNavigate();
-    const location = useLocation();
+    const [paginatedItems, setPaginatedItems] = useState([]);
 
     const totalNumberOfPages = Math.ceil(object.length / itemsPerPage);
 
     useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        const page = parseInt(query.get('QnaPage')) || 1;
-        setCurrentPage(page);
-    }, [location]);
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        setPaginatedItems(object.slice(startIndex, endIndex));
+    }, [currentPage, object, itemsPerPage]);
 
     const getPageNumbers = () => {
         const pageNumbers = [];
@@ -151,13 +114,25 @@ export default function PagiNation({ itemsPerPage, maxPagesToShow, object, navig
         return pageNumbers;
     };
 
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
         <>
             <ul className="noticeNumber">
                 {currentPage > 1 && (
                     <>
-                        <li><NavLink to={`${navigation}1`}><FontAwesomeIcon icon={faAnglesLeft} /></NavLink></li>
-                        <li><NavLink to={`${navigation}${currentPage - 1}`}><FontAwesomeIcon icon={faAngleLeft} /></NavLink></li>
+                        <li>
+                            <button onClick={() => handlePageChange(1)}>
+                                <FontAwesomeIcon icon={faAnglesLeft} />
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => handlePageChange(currentPage - 1)}>
+                                <FontAwesomeIcon icon={faAngleLeft} />
+                            </button>
+                        </li>
                     </>
                 )}
                 {getPageNumbers().map((pageNumber) => (
@@ -165,18 +140,26 @@ export default function PagiNation({ itemsPerPage, maxPagesToShow, object, navig
                         key={pageNumber}
                         className={currentPage === pageNumber ? 'selected' : ''}
                     >
-                        <NavLink to={`${navigation}${pageNumber}`}>
+                        <button onClick={() => handlePageChange(pageNumber)}>
                             {pageNumber}
-                        </NavLink>
+                        </button>
                     </li>
                 ))}
                 {currentPage < totalNumberOfPages && (
                     <>
-                        <li><NavLink to={`${navigation}${currentPage + 1}`}><FontAwesomeIcon icon={faAngleRight} /></NavLink></li>
-                        <li><NavLink to={`${navigation}${totalNumberOfPages}`}><FontAwesomeIcon icon={faAnglesRight} /></NavLink></li>
+                        <li>
+                            <button onClick={() => handlePageChange(currentPage + 1)}>
+                                <FontAwesomeIcon icon={faAngleRight} />
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => handlePageChange(totalNumberOfPages)}>
+                                <FontAwesomeIcon icon={faAnglesRight} />
+                            </button>
+                        </li>
                     </>
                 )}
             </ul>
         </>
-    );
+    )
 }

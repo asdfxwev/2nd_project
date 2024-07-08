@@ -45,10 +45,15 @@ const ItemBuyCartList = ({ setTotal, setTotalQuantity, setCheckedTrueItems, init
                 const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
                 const userData = userResponse.data;
 
+                if (!userData.cart) {
+                    userData.cart = [];
+                }
+
                 let combinedItems = userData.cart;
 
                 if (initialItem && initialCount) {
-                    const existingItemIndex = combinedItems.findIndex(item => item.id === initialItem.id);
+                    const existingItemIndex = combinedItems.find(item => item.id === initialItem.id);
+                    
                     if (existingItemIndex >= 0) {
                         combinedItems[existingItemIndex].quantity += initialCount;
                     } else {

@@ -106,3 +106,15 @@
 /* body{
     overflow-x: hidden;
 } */
+
+
+@media (width < 62.5rem) {
+    .logo {
+        width: 5rem;
+        height: 4rem;
+    }
+    .smallThing .logo {
+        width: 5rem;
+        height: 4rem;
+    }
+}

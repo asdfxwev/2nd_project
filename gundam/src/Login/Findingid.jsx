@@ -53,7 +53,7 @@ const Find = () => {
                             placeholder='핸드폰 번호'
                             onChange={(e) => setPhoneNumber(e.target.value)}
                             required />
-                        <button type='submit'>FIND</button>
+                        <button className='login_button' type='submit'>FIND</button>
                     </form>
                     {email && <p>사용자 이메일 : {email}</p>}
                     {message && <p>{message}</p>}
@@ -75,7 +75,7 @@ const Find = () => {
                         <span>name</span>
                         <input type='email' id='email' name='email' required />
                         <span>E-mail</span>
-                        <button type='submit'>FIND</button>
+                        <button className='login_button' type='submit'>FIND</button>
                     </form>
                 </div>
             </>

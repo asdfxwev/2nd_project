@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
+// import PageSearchParams from './PagiSearchParams'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,11 +11,13 @@ export default function PagiNation({itemsPerPage, maxPagesToShow, object, naviga
     const location = useLocation();
 
     const totalNumberOfPages = Math.ceil(object.length / itemsPerPage);
+    
     useEffect(() => {
         const query = new URLSearchParams(location.search);
         const page = parseInt(query.get('page')) || 1;
         setCurrentPage(page);
     }, [location]);
+    
 
     const getPageNumbers = () => {
         const pageNumbers = [];

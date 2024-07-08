@@ -1,6 +1,7 @@
 .isc {
-    display: flex;
     height: 50vh;
+    display: flex;
+    min-height: 50vh;
     white-space: nowrap;
     overflow-x: auto;
     margin: 0px 300px;
@@ -46,5 +47,26 @@
 
 .intersectionImageContainer::-webkit-scrollbar {
     height: 10px;
-    background-color: #F90;
+    /* background-color: #F90; */
+    background: rgba(33, 122, 244, .1); 
+}
+
+.intersectionImageContainer::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #217af4; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+@media (width < 87rem){
+    .isc {
+        /* font-size: 1rem; */
+        margin: 0px 100px;
+    }
+}
+@media (width < 57.5rem){
+    .isc {
+        /* font-size: 1rem; */
+        margin: 0px;
+    }
 }

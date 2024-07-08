@@ -45,7 +45,8 @@ const ItemQna = ({item, pathName}) => {
         setModalOpenPop(false);
     };
 
-    const filteredQnas = qnas.filter(qna => qna.productId === item);
+    const filteredQna = qnas.filter(qna => qna.productId === item);
+    const filteredQnas = filteredQna.reverse();
 
     function onQnaMessage (e) {
         setQnaValue(e.target.value)
@@ -141,7 +142,7 @@ const ItemQna = ({item, pathName}) => {
                         <div>등록된 Q&A가 없습니다.</div>
                     </div>
                 )}
-                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredQnas} navigation={pathNames}/>
+                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredQnas} />
             </div>
         </>
     );

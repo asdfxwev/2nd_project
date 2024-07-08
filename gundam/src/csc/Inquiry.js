@@ -9,6 +9,7 @@ import CscLeft from './CscLeft';
 import './Inquiry.css'
 import axios from 'axios';
 import PagiNation from './PagiNation'
+// import PageSearchParams from './PagiSearchParams'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,6 +31,9 @@ export default function Inquiry() {
                 const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
                 const userData = userResponse.data;
                 if (userData && userData.inquries) {
+                    // console.log(userData.inquries);
+                    const inquries = userData.inquries.reverse();
+                    // console.log(inquries);
                     setInquiries(userData.inquries);
                 } else {
                     setInquiries([]); // 안전하게 빈 배열로 초기화
@@ -41,7 +45,6 @@ export default function Inquiry() {
         };
         fetchData();
     }, [userId, inquiries]);
-    // console.log(inquiries);
     
 
     const itemsPerPage = 5;
@@ -58,7 +61,6 @@ export default function Inquiry() {
         const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
         setPaginatedItems(inquiries.slice(startIndex, endIndex));
     }, [currentPage, inquiries]);
-
 
     return (
         <section className="cscContainer">
@@ -83,3 +85,4 @@ export default function Inquiry() {
         </section>
     )
 }
+

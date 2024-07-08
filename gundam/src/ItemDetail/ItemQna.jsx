@@ -6,8 +6,9 @@ import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import qnaData from '../data/db.json';
 import axios from 'axios';
+import PagiNationNum from "../csc/PagiNationNum";
 
-const ItemQna = ({item}) => {
+const ItemQna = ({item, pathName}) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 저장 변수
     const [modalIsOpen, setModalIsOpen] = useState(false); // Qna작성 모달팝업 호출 변수
@@ -76,6 +77,10 @@ const ItemQna = ({item}) => {
         }
     }
 
+    const itemsPerPage = 5;
+    const maxPagesToShow = 5;
+    console.log(item);
+
     return(
         <>
             <div className="info_top_box" id="QNA">
@@ -132,6 +137,7 @@ const ItemQna = ({item}) => {
                         <div>등록된 Q&A가 없습니다.</div>
                     </div>
                 )}
+                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredQnas} navigation={pathName}/>
             </div>
         </>
     );

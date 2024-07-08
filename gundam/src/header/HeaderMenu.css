@@ -239,18 +239,25 @@
     background: url(../../public/image/header8.jpg) center/90% 90% no-repeat;
 }
 
-/* .detailMenu.smallMenu {
-    top: 5rem;
-} */
-
-.detailMenu a{
+.detailMenu a {
     color: black;
 }
 
 .absolute {
     position: absolute !important;
     width: calc(100vw - 17px);
+}
 
+.img1>a,
+.img2>a,
+.img3>a,
+.img4>a,
+.img5>a,
+.img6>a,
+.img7>a,
+.img8>a {
+    width: 100%;
+    height: 100%;
 }
 
 .menuAnimation {
@@ -265,6 +272,7 @@
     from {
         height: 0px;
     }
+
     to {
         height: 414px;
     }
@@ -274,8 +282,61 @@
     from {
         height: 414px;
     }
+
     to {
         height: 0px;
 
     }
+}
+
+@media (width < 99rem) {
+    .img33 a {
+        font-size: .7rem;
+    }
+
+    .brand a, .art a, .brands a, .arts a {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (width < 87rem) {
+    .detailMenu {
+        top: 7rem;
+    }
+    .detailMenu.smallMenu  {
+        top: 5rem;
+    }
+
+    .img55 a {
+        font-size: .8rem;
+    }
+}
+
+@media (width < 64rem) {
+    .img11 a,
+    .img66 a, .img55 a {
+        font-size: .6rem;
+    }
+
+}
+
+
+@media (width < 55rem) {
+    .detailMenu {
+        top: 9rem;
+        font-size: .8rem;
+    }
+
+    .detailMenu.smallMenu {
+        top: 7rem;
+    }
+    .img77 a {
+        font-size: .8rem;
+    }
+
+    .brand a, .art a, .brands a, .arts a {
+        font-size: 1.3rem;
+    }
+
 }

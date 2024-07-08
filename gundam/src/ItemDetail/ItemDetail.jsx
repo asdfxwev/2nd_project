@@ -23,6 +23,7 @@ export default function ItemDetail() {
     const { id } = useParams();
 
     const selectedItem = ItemDataBase.find(item => item.id === parseInt(id));
+    console.log(selectedItem.id);
 
     const [mainImage, setMainImage] = useState(selectedItem.src[0]);
 
@@ -180,7 +181,7 @@ export default function ItemDetail() {
 
                     <SectionImg key={selectedItem.id} item={selectedItem} /> {/* 상세보기 tab */}
                     <ItemReview key={selectedItem.id} item={selectedItem.id} setReviewCount={setReviewCount} /> {/* 리뷰 tab */}
-                    <ItemQna key={selectedItem.id} item={selectedItem.id} /> {/* Q&A tab */}
+                    <ItemQna key={selectedItem.id} item={selectedItem.id} pathName = {location.pathname} /> {/* Q&A tab */}
                     <ItemService /> {/* 배송/교환/반품 tab */}
 
                 </div>

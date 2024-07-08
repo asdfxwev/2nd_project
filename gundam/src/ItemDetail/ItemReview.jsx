@@ -51,7 +51,8 @@ const ItemReview = ({ item, setReviewCount }) => {
     };
 
     // 선택된 상품의 리뷰만 필터링
-    const filteredReviews = reviews.filter(review => review.productId === item);
+    const filteredReview = reviews.filter(review => review.productId === item);
+    const filteredReviews = filteredReview.reverse();
 
     function onreviewTitle(e) {
         setReviewTitle(e.target.value)

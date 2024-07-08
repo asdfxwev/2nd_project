@@ -20,9 +20,9 @@
     color: red;
 }
 
-.tabImageContainer {
+/* .tabImageContainer {
     height: 70vh;
-}
+} */
 
 .tabImageList {
     display: flex;
@@ -71,4 +71,44 @@
 
 .tabImage {
     margin: 0px 10px;
+}
+
+@media (width < 104rem){
+    .tabButton {
+        font-size: 1.2rem;
+    }
+}
+
+@media (width < 87rem){
+    .tabButton {
+        font-size: 1rem;
+        margin: 0px 5px;
+    }
+}
+
+@media (width < 67rem){
+    .tabButtonList {
+        flex-direction: column;
+        align-items: center;
+    }
+    .tabButton {
+        font-size: 1.5rem;
+    }
+}
+
+@media (width < 50rem) {
+    .tabImageList {
+        display: grid;
+        grid-template: 1fr 1fr / 1fr 1fr;
+    }
+    .tabImg{
+        width: calc(50vw - 14px);
+    }
+}
+
+@media (height < 39rem) {
+    .mainTab{
+        height: auto;
+    }
+
 }

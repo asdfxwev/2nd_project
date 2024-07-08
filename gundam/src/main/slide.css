@@ -49,3 +49,21 @@
 .forwardBtn {
     left: 90%;
 }
+
+@media (width < 81.25rem) {
+    .backBtn {
+        right: 80%;
+    }
+    .forwardBtn {
+        left: 80%;
+    }
+}
+
+@media (width < 40rem) {
+    .backBtn {
+        right: 75%;
+    }
+    .forwardBtn {
+        left: 75%;
+    }
+}

@@ -15,6 +15,9 @@ const ItemBuy = () => {
     const [totalQuantity, setTotalQuantity] = useState(0); // 총 구매수량 상태 변수
     const [checkedTrueItems, setCheckedTrueItems] = useState([]); // 체크된 아이템 상태 변수
     const [showUser, setShowUser] = useState(true); // user 정보 표시 여부 상태 변수
+    const [deliveryAddress, setDeliveryAddress] = useState(''); // 배송지 주소 상태 변수
+    const [deliveryUser, setDeliveryUser] = useState(''); // 수령자 이름 상태 변수
+    const [deliveryPhone, setDeliveryPhone] = useState(''); // 수령자 연락처 상태 변수
 
     const formatNumber = (number) => {
         return number.toLocaleString('ko-KR');
@@ -48,29 +51,8 @@ const ItemBuy = () => {
                 addressKakao.addEventListener("click", function () {
                     new window.daum.Postcode({
                         oncomplete: async function (data) {
-                            // 주소 필드 업데이트
-                            const newAddress = data.address;
-
-                            // try {
-                            //     // 사용자 정보 업데이트
-                            //     const updatedUser = {
-                            //         ...userinfo,
-                            //         address: newAddress
-                            //     };
-
-                            //     // 서버에 업데이트 요청
-                            //     await axios.put(`http://localhost:3001/users/${userinfo.id}`, updatedUser);
-
-                            //     // 사용자 정보 갱신
-                            //     localStorage.setItem('loginInfo', JSON.stringify(updatedUser));
-
-                            //     // 상태 업데이트
-                            //     alert('주소가 업데이트되었습니다.');
-                            //     window.location.reload();
-                            // } catch (error) {
-                            //     console.error('주소 업데이트 중 오류 발생:', error);
-                            //     alert('주소 업데이트 중 오류가 발생했습니다.');
-                            // }
+                            // 주소 데이터 상태에 저장
+                            setDeliveryAddress(data.address);
                         }
                     }).open();
                 });
@@ -121,8 +103,31 @@ const ItemBuy = () => {
 
             // 중복 제거: buy 배열에 동일한 id의 항목이 없을 때만 추가
             const newBuyItems = allItemsToBuy.filter(item => !(userData.buy && userData.buy.some(buyItem => buyItem.id === item.id)));
+            
+            if (deliveryUser == '' || deliveryPhone == '' || deliveryAddress == '') {
+                alert(`배송정보를 입력해주세요.`);
+                return false;
+            }
 
-            userData.buy = userData.buy ? [...userData.buy, ...newBuyItems] : newBuyItems;
+             // userinfo 값에 따라 배송 정보 설정
+             const deliveryInfo = showUser ? {
+                deliveryuser: userinfo.name,
+                deliveryphone: userinfo.phoneNumber,
+                deliveryaddress: userinfo.address
+            } : {
+                deliveryuser: deliveryUser,
+                deliveryphone: deliveryPhone,
+                deliveryaddress: deliveryAddress
+            };
+
+            // newBuyItems에 deliveryInfo 추가
+            const updatedBuyItems = newBuyItems.map(item => ({
+                ...item,
+                ...deliveryInfo
+            }));
+
+            // userData.buy = userData.buy ? [...userData.buy, ...newBuyItems] : newBuyItems;
+            userData.buy = userData.buy ? [...userData.buy, ...updatedBuyItems] : updatedBuyItems;
 
             // isChecked가 true인 데이터는 cart에서 제거
             userData.cart = userData.cart.filter(cartItem => !cartItem.isChecked);
@@ -178,23 +183,20 @@ const ItemBuy = () => {
                                         <p>{userinfo.phoneNumber}</p>
                                         <p>e-Mail</p>
                                         <p>{userinfo.email}</p>
-                                        <p className='buy_left_address'>배송지</p>
-                                        {/* <p className='buy_address_search'>
-                                            <button id='address_kakao' className='address_search_btn'>주소검색</button>
-                                        </p> */}
-                                        <p className='buy_left_address_box'>{userinfo.address}</p>
+                                        <p>배송지</p>
+                                        <p className='buy_user_address_box'>{userinfo.address}</p>
                                     </div>
                                 ) : (
                                     <div id='delivery' className='delivery_info'>
-                                        <p>주문자</p>
-                                        <input type='text' ></input>
+                                        <p>수령자</p>
+                                        <input type='text' name='delivery_user' placeholder='수령자를 입력하세요.' onChange={(e) => setDeliveryUser(e.target.value)} maxLength={8}></input>
                                         <p>연락처</p>
-                                        <input type='text' ></input>
-                                        <p className='buy_left_address'>배송지</p>
+                                        <input type='text' name='delivery_phone' placeholder='연락처를 입력하세요.' onChange={(e) => setDeliveryPhone(e.target.value)} maxLength={11}></input>
+                                        <p>배송지</p>
                                         <p className='buy_address_search'>
                                             <button id='address_kakao' className='address_search_btn'>주소검색</button>
                                         </p>
-                                        <p className='buy_left_address_box'>{userinfo.address}</p>
+                                        <input type='text' name='deliyvery_address' className='buy_deliyvery_address_box' placeholder='주소를 검색하세요.' value={deliveryAddress} readOnly></input>
                                     </div>
                                 )}
                             </div>

@@ -17,7 +17,7 @@ const ItemList = () => {
     const [itemListClass, setItemListClass] = useState('item-list');
     const [searchResult, setSearchResult] = useState([]);
     const [inputValue, setInputValue] = useState('');
-    const [selectedOption, setSelectedOption] = useState('전체');    
+    const [selectedOption, setSelectedOption] = useState('전체');
     const [selectedFilters, setSelectedFilters] = useState({
         information: {
             visible: true,
@@ -51,8 +51,8 @@ const ItemList = () => {
         }
     });
 
-     // 현재 페이지의 URL을 가져옴
-    console.log('location.pathname='+location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
+    // 현재 페이지의 URL을 가져옴
+    console.log('location.pathname=' + location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
     localStorage.setItem('currentUrl', location.pathname);  // 현재 페이지의 URL을 로컬스토리지에 저장
 
 
@@ -204,12 +204,12 @@ const ItemList = () => {
     }, [currentPage, searchResult]);
 
 
-// 페이지가 로드될 때 URL 쿼리 파라미터에서 currentPage 설정
-useEffect(() => {
-    const query = new URLSearchParams(location.search);
-    const page = parseInt(query.get('page')) || 1;
-    setCurrentPage(page);
-}, [location.search]);
+    // 페이지가 로드될 때 URL 쿼리 파라미터에서 currentPage 설정
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        setCurrentPage(page);
+    }, [location.search]);
 
     // h1창 이름 변경
     const handleSearchChange = (event) => {
@@ -320,13 +320,10 @@ useEffect(() => {
                                         {selectedFilters.information.visible ? '-' : '+'}
                                     </span>
                                 </h3>
-                                {selectedFilters.information.visible && (
-                                    <div>
-                                        <div><label><input type="checkbox" checked={selectedFilters.information['세일상품만']} onChange={() => handleCheckboxChange('information', '세일상품만')} />세일상품만</label></div>
-                                        <div><label><input type="checkbox" checked={selectedFilters.information['품절상품 제외']} onChange={() => handleCheckboxChange('information', '품절상품 제외')} />품절상품 제외</label></div>
-                                        <div><label><input type="checkbox" checked={selectedFilters.information['예약종료상품 제외']} onChange={() => handleCheckboxChange('information', '예약종료상품 제외')} />예약종료상품 제외</label></div>
-                                    </div>
-                                )}
+                                <div className={`filter-section-content ${selectedFilters.information.visible ? 'visible' : ''}`}>
+                                    <div><label><input type="checkbox" checked={selectedFilters.information['세일상품만']} onChange={() => handleCheckboxChange('information', '세일상품만')} />세일상품만</label></div>
+                                    <div><label><input type="checkbox" checked={selectedFilters.information['품절상품 제외']} onChange={() => handleCheckboxChange('information', '품절상품 제외')} />품절상품 제외</label></div>
+                                    <div><label><input type="checkbox" checked={selectedFilters.information['예약종료상품 제외']} onChange={() => handleCheckboxChange('information', '예약종료상품 제외')} />예약종료상품 제외</label></div></div>
                             </div>
                             <div className='filter-section'>
                                 <h3 onClick={() => toggleSection('price')}>
@@ -335,15 +332,13 @@ useEffect(() => {
                                         {selectedFilters.price.visible ? '-' : '+'}
                                     </span>
                                 </h3>
-                                {selectedFilters.price.visible && (
-                                    <div>
-                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['전체']} onChange={() => handleCheckboxChange('price', '전체')}></input>전체</label></div>
-                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['10,000원 미만']} onChange={() => handleCheckboxChange('price', '10,000원 미만')}></input>10,000원 미만</label></div>
-                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['10,000원 이상 ~ 50,000원 미만']} onChange={() => handleCheckboxChange('price', '10,000원 이상 ~ 50,000원 미만')}></input>10,000원 이상 ~ 50,000원 미만</label></div>
-                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['50,000원 이상 ~ 100,000원 미만']} onChange={() => handleCheckboxChange('price', '50,000원 이상 ~ 100,000원 미만')}></input>50,000원 이상 ~ 100,000원 미만</label></div>
-                                        <div><label><input type='radio' name='price' checked={selectedFilters.price['100,000원 이상']} onChange={() => handleCheckboxChange('price', '100,000원 이상')}></input>100,000원 이상</label></div>
-                                    </div>
-                                )}
+                                <div className={`filter-section-content ${selectedFilters.price.visible ? 'visible' : ''}`}>
+                                    <div><label><input type='radio' name='price' checked={selectedFilters.price['전체']} onChange={() => handleCheckboxChange('price', '전체')}></input>전체</label></div>
+                                    <div><label><input type='radio' name='price' checked={selectedFilters.price['10,000원 미만']} onChange={() => handleCheckboxChange('price', '10,000원 미만')}></input>10,000원 미만</label></div>
+                                    <div><label><input type='radio' name='price' checked={selectedFilters.price['10,000원 이상 ~ 50,000원 미만']} onChange={() => handleCheckboxChange('price', '10,000원 이상 ~ 50,000원 미만')}></input>10,000원 이상 ~ 50,000원 미만</label></div>
+                                    <div><label><input type='radio' name='price' checked={selectedFilters.price['50,000원 이상 ~ 100,000원 미만']} onChange={() => handleCheckboxChange('price', '50,000원 이상 ~ 100,000원 미만')}></input>50,000원 이상 ~ 100,000원 미만</label></div>
+                                    <div><label><input type='radio' name='price' checked={selectedFilters.price['100,000원 이상']} onChange={() => handleCheckboxChange('price', '100,000원 이상')}></input>100,000원 이상</label></div>
+                                </div>
                             </div>
                             <div className='filter-section'>
                                 <h3 onClick={() => toggleSection('brand')}>
@@ -352,8 +347,7 @@ useEffect(() => {
                                         {selectedFilters.brand.visible ? '-' : '+'}
                                     </span>
                                 </h3>
-                                {selectedFilters.brand.visible && (
-                                    <div>
+                                <div className={`filter-section-content ${selectedFilters.brand.visible ? 'visible' : ''}`}>
                                         <div><label><input type='checkbox' checked={selectedFilters.brand['1/100']} onChange={() => handleCheckboxChange('brand', '1/100')}></input>1/100</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.brand['FG']} onChange={() => handleCheckboxChange('brand', 'FG')}></input>FG</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE MECHANICS']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE MECHANICS')}></input>FIGURE-RISE MECHANICS</label></div>
@@ -362,7 +356,6 @@ useEffect(() => {
                                         <div><label><input type='checkbox' checked={selectedFilters.brand['포켓프라']} onChange={() => handleCheckboxChange('brand', '포켓프라')}></input>포켓프라</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.brand['포켓몬프라']} onChange={() => handleCheckboxChange('brand', '포켓몬프라')}></input>포켓몬프라</label></div>
                                     </div>
-                                )}
                             </div>
                             <div className='filter-section'>
                                 <h3 onClick={() => toggleSection('item')}>
@@ -371,15 +364,13 @@ useEffect(() => {
                                         {selectedFilters.item.visible ? '-' : '+'}
                                     </span>
                                 </h3>
-                                {selectedFilters.item.visible && (
-                                    <div>
+                                <div className={`filter-section-content ${selectedFilters.item.visible ? 'visible' : ''}`}>
                                         <div><label><input type='checkbox' checked={selectedFilters.item['건담 무사']} onChange={() => handleCheckboxChange('item', '건담 무사')}></input>건담 무사</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.item['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('item', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.item['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('item', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.item['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('item', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
                                         <div><label><input type='checkbox' checked={selectedFilters.item['신기동전사 건담W']} onChange={() => handleCheckboxChange('item', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
                                     </div>
-                                )}
                             </div>
                         </div>
                     )}

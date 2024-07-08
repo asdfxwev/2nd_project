@@ -20,7 +20,7 @@ export default function MainTab() {
     }, []);
 
     return (
-        <section style={{ height: '919px' }}>
+        <section className="mainTab" >
             <div className="tabButtonContainer">
                 <ul className="tabButtonList">
                     <li className="tabButton" onMouseEnter={() => TabMenu('MainTabImage1')}>

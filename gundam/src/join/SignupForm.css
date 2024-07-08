@@ -60,3 +60,47 @@
 .submit-button:hover {
     background-color: #45a049;
 }
+@media (width < 86rem) {
+    .signup-form {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .signup-form {
+        width: 90%;
+        padding: 2%;
+        height: auto;
+    }
+
+    .logo2 img {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .submit-button {
+        width: 80%;
+        padding: 10px;
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-form {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .logo2 img {
+        margin-left: 10%;
+    }
+
+    .submit-button {
+        width: 90%;
+        margin-left: 5%;
+    }
+}

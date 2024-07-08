@@ -20,6 +20,11 @@ const checkEmailExists = async (email) => {
 const checkPhoneNumberExists = async (phoneNumber) => {
     try {
         const response = await axios.get(`http://localhost:3001/users?phoneNumber=${phoneNumber}`);
+        console.log('responsedataphonenumber',response.data.phoneNumber);
+        console.log('responsedata',response.data);
+        // console.log('responsedata',response.data);
+        console.log(phoneNumber);
+        if(phoneNumber !== response.data)
         return response.data.length > 0;
     } catch (error) {
         console.error('Error checking phone number:', error);
@@ -162,8 +167,12 @@ const SignupForm = () => {
                             const emailExists = await checkEmailExists(formik.values.email);
                             if (emailExists) {
                                 alert('이미 사용 중인 이메일입니다.');
+                                setIsEmailChecking(false);
+                                
                             } else {
                                 alert('사용 가능한 이메일입니다.');
+                                setIsEmailChecking(true);
+
                             }
                         }}
                     >
@@ -190,22 +199,28 @@ const SignupForm = () => {
                     />
                     <button
                         type="button"
+
                         onClick={async () => {
                             if (!formik.values.phoneNumber) {
                                 alert('핸드폰 번호를 입력하세요.');
                                 return;
+
                             }
                             if (formik.errors.phoneNumber) {
                                 alert(formik.errors.phoneNumber);
                                 return;
+
                             }
                             const phoneNumberExists = await checkPhoneNumberExists(formik.values.phoneNumber);
+                            console.log(phoneNumberExists);
                             if (phoneNumberExists) {
                                 alert('이미 사용 중인 핸드폰 번호입니다.');
                                 setIsPhoneNumberChecked(false);
                             } else {
                                 alert('사용 가능한 핸드폰 번호입니다.');
                                 setIsPhoneNumberChecked(true);
+                                
+
                             }
                         }}
                     >
@@ -213,6 +228,7 @@ const SignupForm = () => {
                     </button>
                     {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
                         <div className="error">{formik.errors.phoneNumber}</div>
+                        
                     ) : null}
                 </div>
 

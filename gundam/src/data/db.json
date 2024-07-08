@@ -268,22 +268,6 @@
       "phoneNumber": "01056564141"
     },
     {
-      "name": "qwerqwer",
-      "email": "qwer@qwer",
-      "phoneNumber": "9876543210",
-      "address": "asdf asdf",
-      "id": "87f3",
-      "cart": []
-    },
-    {
-      "id": "5acb",
-      "userid": "asdf@asdf",
-      "password": "asdfasdF!",
-      "email": "asdfasdf@asdf.com",
-      "name": "asdf",
-      "isAgreed": true
-    },
-    {
       "id": "2167",
       "email": "asdf@asdf333",
       "address": "대전 동구 판교1길 3 123123",
@@ -327,6 +311,15 @@
       "password": "12345678",
       "confirmPassword": "12345678",
       "phoneNumber": "01072815068"
+    },
+    {
+      "id": "8afc",
+      "email": "dydejr852@naver.cbb",
+      "address": "경기 성남시 분당구 금곡로 298 1234",
+      "name": "ㄱㅀㅀ",
+      "password": "12341234",
+      "confirmPassword": "12341234",
+      "phoneNumber": "01072815012"
     }
   ],
   "review": [

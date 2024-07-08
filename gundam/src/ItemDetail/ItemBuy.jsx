@@ -104,7 +104,7 @@ const ItemBuy = () => {
             // 중복 제거: buy 배열에 동일한 id의 항목이 없을 때만 추가
             const newBuyItems = allItemsToBuy.filter(item => !(userData.buy && userData.buy.some(buyItem => buyItem.id === item.id)));
             
-            if (deliveryUser == '' || deliveryPhone == '' || deliveryAddress == '') {
+            if (!showUser && (deliveryUser === '' || deliveryPhone === '' || deliveryAddress === '')) {
                 alert(`배송정보를 입력해주세요.`);
                 return false;
             }
@@ -126,7 +126,6 @@ const ItemBuy = () => {
                 ...deliveryInfo
             }));
 
-            // userData.buy = userData.buy ? [...userData.buy, ...newBuyItems] : newBuyItems;
             userData.buy = userData.buy ? [...userData.buy, ...updatedBuyItems] : updatedBuyItems;
 
             // isChecked가 true인 데이터는 cart에서 제거

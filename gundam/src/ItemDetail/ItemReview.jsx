@@ -12,6 +12,7 @@ const ItemReview = ({ item, setReviewCount }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 저장 변수
     const [modalIsOpen, setModalIsOpen] = useState(false); // 리뷰작성 모달팝업 호출 변수
     const [modalOpenPop, setModalOpenPop] = useState(false); // 비로그인 시 안내모달팝업 호출 변수
+    const [modalNoPurchase, setModalNoPurchase] = useState(false); // 구매 후 작성 가능 안내 모달팝업 호출 변수
     const [reviews, setReviews] = useState([]); // 리뷰 데이터를 저장할 상태 변수
     const navigate = useNavigate();
     const [title, setReviewTitle] = useState('');
@@ -25,22 +26,32 @@ const ItemReview = ({ item, setReviewCount }) => {
         const filteredReviews = reviews.filter(review => review.productId === item);
         setReviewCount(filteredReviews.length);
     }, [reviews, item, setReviewCount]);
-
+    
     // 브라우저의 localStorage에서 로그인 정보 확인
-    if (!isLoggedIn) {
+    useEffect(() => {
         const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
         if (loginCheck !== null) {
             setIsLoggedIn(true);
         }
-    }
+    }, []);
 
-    const reviewPop = () => {
-        if (isLoggedIn) {     // 로그인 상태가 true 일때 팝업 호출할것
-            setModalIsOpen(true);
+    const reviewPop = async () => {
+        if (isLoggedIn) {     // 로그인 상태가 true 일때
+            const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
+            const userResponse = await axios.get(`http://localhost:3001/users/${loginCheck.id}`);
+            const userData = userResponse.data;
+
+            const hasBoughtItem = userData.buy && userData.buy.some(buyItem => buyItem.id === item);
+
+            if (hasBoughtItem) {
+                setModalIsOpen(true);
+            } else {
+                setModalNoPurchase(true); // 구매 후 작성 가능 안내 모달팝업 호출
+            }
         } else {
-            setModalOpenPop(true);
+            setModalOpenPop(true); // 비로그인 시 안내모달팝업 호출
         }
-    }
+    };
 
     const closeModal = () => {
         setModalIsOpen(false);
@@ -48,6 +59,10 @@ const ItemReview = ({ item, setReviewCount }) => {
 
     const closePopModal = () => {
         setModalOpenPop(false);
+    };
+
+    const closeNoPurchaseModal = () => {
+        setModalNoPurchase(false);
     };
 
     // 선택된 상품의 리뷰만 필터링
@@ -126,6 +141,19 @@ const ItemReview = ({ item, setReviewCount }) => {
                             <div className="re_button_box">
                                 <button type="button" className="re_button" onClick={() => { navigate('/Login') }}>로그인</button>
                                 <button type="button" className="re_button" onClick={closePopModal}>닫기</button>
+                            </div>
+                        </div>
+                    </Modal>
+
+                    <Modal
+                        isOpen={modalNoPurchase}
+                        onRequestClose={closeNoPurchaseModal}
+                        contentLabel="Example Modal"
+                    >
+                        <div className="review_pop">
+                            <h2>상품을 구매 후 리뷰작성이 가능합니다.</h2>
+                            <div className="re_button_box">
+                                <button type="button" className="re_button" onClick={closeNoPurchaseModal}>닫기</button>
                             </div>
                         </div>
                     </Modal>

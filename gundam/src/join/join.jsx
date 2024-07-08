@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -29,8 +29,16 @@ const checkPhoneNumberExists = async (phoneNumber) => {
 
 const SignupForm = () => {
     const navigate = useNavigate();
+    const [isPhoneNumberChecked, setIsPhoneNumberChecked] = useState(false); // 핸드폰 번호 중복 확인 상태
+    const [isEmailChecking, setIsEmailChecking] = useState(false); // 이메일 중복 확인 상태
+    const [isPhoneNumberChecking, setIsPhoneNumberChecking] = useState(false); // 핸드폰 번호 중복 확인 상태
 
     const handleSubmit = async (values) => {
+        if (!isPhoneNumberChecked) {
+            alert('핸드폰 번호 중복 확인을 해주세요.');
+            return;
+        }
+
         const { email, address, dtl_address, ...otherValues } = values;
         const combinedAddress = `${address} ${dtl_address}`;
         const emailExists = await checkEmailExists(email);
@@ -111,7 +119,7 @@ const SignupForm = () => {
                 </h1>
 
                 <div className="form-group">
-                    <label htmlFor="name"></label>
+                    <label htmlFor="name">이름</label>
                     <input
                         id="name"
                         name="name"
@@ -127,12 +135,15 @@ const SignupForm = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="email"></label>
+                    <label htmlFor="email">이메일</label>
                     <input
                         id="email"
                         name="email"
                         type="email"
-                        onChange={formik.handleChange}
+                        onChange={(e) => {
+                            formik.handleChange(e);
+                            setIsPhoneNumberChecked(false);
+                        }}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
                         placeholder="이메일을 입력하세요"
@@ -164,12 +175,15 @@ const SignupForm = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="phoneNumber"></label>
+                    <label htmlFor="phoneNumber">핸드폰 번호</label>
                     <input
                         id="phoneNumber"
                         name="phoneNumber"
                         type="text"
-                        onChange={formik.handleChange}
+                        onChange={(e) => {
+                            formik.handleChange(e);
+                            setIsPhoneNumberChecked(false); // 핸드폰 번호 변경 시 중복 확인 상태 초기화
+                        }}
                         onBlur={formik.handleBlur}
                         value={formik.values.phoneNumber}
                         placeholder="핸드폰 번호를 입력하세요"
@@ -188,8 +202,10 @@ const SignupForm = () => {
                             const phoneNumberExists = await checkPhoneNumberExists(formik.values.phoneNumber);
                             if (phoneNumberExists) {
                                 alert('이미 사용 중인 핸드폰 번호입니다.');
+                                setIsPhoneNumberChecked(false);
                             } else {
                                 alert('사용 가능한 핸드폰 번호입니다.');
+                                setIsPhoneNumberChecked(true);
                             }
                         }}
                     >
@@ -201,7 +217,7 @@ const SignupForm = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="password"></label>
+                    <label htmlFor="password">비밀번호</label>
                     <input
                         id="password"
                         name="password"
@@ -217,7 +233,7 @@ const SignupForm = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="confirmPassword"></label>
+                    <label htmlFor="confirmPassword">비밀번호 확인</label>
                     <input
                         id="confirmPassword"
                         name="confirmPassword"
@@ -228,7 +244,8 @@ const SignupForm = () => {
                         placeholder="비밀번호를 다시 입력하세요"
                     />
                     {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                        <div className="error">{formik.errors.confirmPassword}</div>
+                        <div className="error
+">{formik.errors.confirmPassword}</div>
                     ) : null}
                 </div>
 

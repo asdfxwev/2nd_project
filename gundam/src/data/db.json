@@ -318,6 +318,15 @@
       "password": "123123123",
       "confirmPassword": "123123123",
       "phoneNumber": "01080334919"
+    },
+    {
+      "id": "5038",
+      "email": "dydejr852@naver.cos",
+      "address": "경기 성남시 분당구 금곡로 298 1234",
+      "name": "전용덕",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "phoneNumber": "01072815068"
     }
   ],
   "review": [

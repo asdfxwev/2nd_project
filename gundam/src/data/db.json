@@ -7,7 +7,7 @@
       "address": "부산 연제구 미남로 1 asdf",
       "id": "28d8",
       "cart": [],
-      "inquiryCounter": 127,
+      "inquiryCounter": 132,
       "buy": [
         {
           "id": 2,
@@ -49,6 +49,22 @@
           "isChecked": true,
           "quantity": 1,
           "date": "2024-07-05"
+        },
+        {
+          "id": 1,
+          "tag": "건프라",
+          "name": "RG 윙 건담",
+          "price": 38400,
+          "comment": "건담 무사",
+          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
+          "brand": "1/100",
+          "src": [
+            "/image/gundam01.jpg"
+          ],
+          "image": "/image/gundam01.jpg",
+          "isChecked": true,
+          "quantity": 1,
+          "date": "2024-07-08"
         }
       ],
       "inquries": [
@@ -87,6 +103,38 @@
           "inquiryType": "배송",
           "subject": "ㅁㄴㅇ",
           "message": "ㅁㄴㅇ"
+        },
+        {
+          "id": 127,
+          "inquiryType": "반품",
+          "subject": "a",
+          "message": "a"
+        },
+        {
+          "id": 128,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㄴㅇㄹ"
+        },
+        {
+          "id": 129,
+          "inquiryType": "배송",
+          "subject": "ㅁ",
+          "message": "ㅁㄴ",
+          "formData": {}
+        },
+        {
+          "id": 130,
+          "inquiryType": "배송",
+          "subject": "as",
+          "message": "as"
+        },
+        {
+          "id": 131,
+          "inquiryType": "배송",
+          "subject": "asd",
+          "message": "asd",
+          "formData": {}
         }
       ]
     },
@@ -374,6 +422,51 @@
       "title": "ㅁ",
       "comment": "ㅁ",
       "date": "2024. 7. 8."
+    },
+    {
+      "id": "0c21",
+      "reviewId": 11,
+      "productId": 1,
+      "userId": "28d8",
+      "title": "a",
+      "comment": "a",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "a7bb",
+      "reviewId": 12,
+      "productId": 1,
+      "userId": "28d8",
+      "title": "a",
+      "comment": "aa",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "af62",
+      "reviewId": 13,
+      "productId": 1,
+      "userId": "28d8",
+      "title": "a",
+      "comment": "aaa",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "6b2b",
+      "reviewId": 14,
+      "productId": 1,
+      "userId": "28d8",
+      "title": "as",
+      "comment": "as",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "c4c8",
+      "reviewId": 15,
+      "productId": 1,
+      "userId": "28d8",
+      "title": "asd",
+      "comment": "asd",
+      "date": "2024. 7. 9."
     }
   ],
   "qna": [

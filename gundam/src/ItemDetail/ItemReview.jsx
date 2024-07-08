@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import reviewData from '../data/db.json';
 import PagiNationNum from "../csc/PagiNationNum";
 
@@ -17,6 +17,8 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
     const navigate = useNavigate();
     const [title, setReviewTitle] = useState('');
     const [comment, setReviewMessage] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const location = useLocation();
 
     useEffect(() => {
         setReviews(reviewData.review);
@@ -92,6 +94,12 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
 
     const itemsPerPage = 5;
     const maxPagesToShow = 5;
+
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        setCurrentPage(page);
+    }, [location]);
 
     return (
         <>

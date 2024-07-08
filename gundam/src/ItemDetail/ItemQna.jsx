@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import qnaData from '../data/db.json';
 import axios from 'axios';
 import PagiNationNum from "../csc/PagiNationNum";
+import { useLocation } from 'react-router-dom';
+
 
 const ItemQna = ({item, pathName}) => {
 
@@ -16,6 +18,8 @@ const ItemQna = ({item, pathName}) => {
     const [qnas, setQnas] = useState([]); // 리뷰 데이터를 저장할 상태 변수
     const navigate = useNavigate();
     const [comment, setQnaValue] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const location = useLocation();
 
     useEffect(() => {
         setQnas(qnaData.qna);
@@ -85,6 +89,12 @@ const ItemQna = ({item, pathName}) => {
     const pathNames = pathName + '?QnaPage=';
     // console.log(pathNames);
     console.log(filteredQnas);
+
+    useEffect(() => {
+        const query = new URLSearchParams(location.search);
+        const page = parseInt(query.get('page')) || 1;
+        setCurrentPage(page);
+    }, [location]);
 
     return(
         <>

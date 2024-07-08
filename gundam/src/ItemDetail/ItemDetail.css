@@ -570,7 +570,8 @@
 .buy_right_subtitle{
     display: flex;
     justify-content: space-between;
-    background-color: rgb(240, 238, 238);
+    /* background-color: rgb(240, 238, 238); */
+    border-bottom: solid 1px rgb(240, 238, 238);;
     align-items: center;
 }
 
@@ -582,12 +583,16 @@
 
 .buy_right_subtitle button{
     width: 120px;
-    height: 40px;
-    font-size: 16px;
+    height: 30px;
     margin: 0 5px;
     border: none;
     border-radius: 10px;
-    background-color: aqua;
+    background-color: rgb(240, 238, 238);
+}
+
+.buy_right_subtitle button:hover{
+    color: white;
+    background-color: blue;
 }
 
 .buy_item_img{
@@ -685,6 +690,11 @@
     padding: 0 5px;
 }
 
+.buy_user_address_box{
+    height: 80px;
+    grid-area: 5/1/6/3;
+}
+
 .delivery_info{
     display: grid;
     grid-template: repeat(3, .5fr) / .5fr 1fr;
@@ -695,6 +705,12 @@
 
 .delivery_info p{
     padding: 0 5px;
+}
+
+.delivery_info input{
+    height: 30px;
+    padding: 0 5px;
+    border-radius: 10px;
 }
 
 .buy_address_search{
@@ -713,9 +729,9 @@
     background-color: blue;
 }
 
-.buy_left_address_box{
+.buy_deliyvery_address_box{
     height: 80px;
-    grid-area: 5/1/6/3;
+    grid-area: 4/1/5/3;
 }
 
 

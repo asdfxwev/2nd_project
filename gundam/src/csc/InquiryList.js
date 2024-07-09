@@ -14,6 +14,8 @@ export default function InquiryList({ inquiries, existingInquiries, setCurrentPa
         setInquiriesState(inquiries);
     }, [inquiries]);
 
+    console.log(inquiries);
+
     // 문의 제목을 클릭하면 해당 문의 내용을 토글합니다.
     const onInquiryTitle = (inquiryId) => {
         setVisibleInquiry(inquiryId === visibleInquiry ? null : inquiryId);

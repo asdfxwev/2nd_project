@@ -5,7 +5,7 @@
 .slide_container {
     position: relative;
     width: calc(100vw - 17px);
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .slide_list {
@@ -52,18 +52,32 @@
 
 @media (width < 81.25rem) {
     .backBtn {
-        right: 80%;
+        top: calc(40vh - 64px);
+        right: 85%;
+        width: 80px;
     }
     .forwardBtn {
-        left: 80%;
+        top: calc(40vh - 64px);
+        left: 85%;
+        width: 80px;
+    }
+    .slides img {
+        height: 80vh;
     }
 }
 
 @media (width < 40rem) {
     .backBtn {
         right: 75%;
+        top: calc(35vh - 64px);
+
     }
     .forwardBtn {
         left: 75%;
+        top: calc(35vh - 64px);
+
+    }
+    .slides img {
+        height: 60vh;
     }
 }

@@ -109,7 +109,7 @@ const ItemQna = ({ item, pathName }) => {
                         <div className="review_pop">
                             <h2>Qna작성</h2>
                             <div className="qnaBox">
-                                내용 : <textarea value={comment} onChange={onQnaMessage} type="text" id="comment" className="re_comment" />
+                                내용 <textarea value={comment} onChange={onQnaMessage} type="text" id="comment" className="re_comment" />
                             </div>
                             <div className="re_button_box">
                                 <button type="button" className="re_button" onClick={submitQna}>저장</button>

@@ -17,6 +17,7 @@ export default function Button() {
     const isMainPage = location.pathname !== '/';
     const isLoginPage = location.pathname.includes('/Login');
     const isDetailPage = location.pathname.includes('/ItemDetail');
+    const isListPage = location.pathname.includes('/ItemList');
 
     function scrollTop() {
         topRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -30,7 +31,7 @@ export default function Button() {
             if (!footer) return;
             const footerRect = footer.getBoundingClientRect();
 
-            if (footer && window.scrollY > window.innerHeight * 0.5) {
+            if (footer && window.scrollY > window.innerHeight * 0.5 && window.scrollX > window.innerWidth * .3) {
                 if (isDetailPage) {
                     setShowButton(false);
                 } else {

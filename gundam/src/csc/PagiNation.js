@@ -6,7 +6,7 @@ import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGla
 
 export default function PagiNation({itemsPerPage, maxPagesToShow, object, navigation}) {
     const [currentPage, setCurrentPage] = useState(1);
-    const [paginatedItems, setPaginatedItems] = useState([]);
+    // const [paginatedItems, setPaginatedItems] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -31,6 +31,8 @@ export default function PagiNation({itemsPerPage, maxPagesToShow, object, naviga
 
         return pageNumbers;
     };
+
+    console.log(object);
 
     return (
         <>

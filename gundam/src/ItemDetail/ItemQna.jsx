@@ -7,40 +7,38 @@ import { useNavigate } from 'react-router-dom';
 import qnaData from '../data/db.json';
 import axios from 'axios';
 import PagiNationNum from "../csc/PagiNationNum";
-import { useLocation } from 'react-router-dom';
 
-
-const ItemQna = ({item, pathName}) => {
-
-    const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 저장 변수
-    const [modalIsOpen, setModalIsOpen] = useState(false); // Qna작성 모달팝업 호출 변수
-    const [modalOpenPop, setModalOpenPop] = useState(false); // 비로그인 시 안내모달팝업 호출 변수
-    const [qnas, setQnas] = useState([]); // 리뷰 데이터를 저장할 상태 변수
-    const navigate = useNavigate();
+const ItemQna = ({ item, pathName }) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalOpenPop, setModalOpenPop] = useState(false);
+    const [qnas, setQnas] = useState([]);
     const [comment, setQnaValue] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const location = useLocation();
     const [paginatedItems, setPaginatedItems] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         setQnas(qnaData.qna);
     }, []);
 
-    // 브라우저의 localStorage에서 로그인 정보 확인
-    if (!isLoggedIn) {
-        const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
-        if (loginCheck !== null) {
-            setIsLoggedIn(true);
+    useEffect(() => {
+        if (!isLoggedIn) {
+            const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
+            if (loginCheck !== null) {
+                setIsLoggedIn(true);
+            }
         }
-    }
+    }, [isLoggedIn]);
 
     const qnaPop = () => {
-        if (isLoggedIn) {     // 로그인 상태가 true 일때 팝업 호출할것
+        if (isLoggedIn) {
             setModalIsOpen(true);
         } else {
             setModalOpenPop(true);
         }
-    }
+    };
 
     const closeModal = () => {
         setModalIsOpen(false);
@@ -50,12 +48,17 @@ const ItemQna = ({item, pathName}) => {
         setModalOpenPop(false);
     };
 
-    const filteredQna = qnas.filter(qna => qna.productId === item);
-    const filteredQnas = filteredQna.reverse();
+    const filteredQna = qnas.filter(qna => qna.productId === item).reverse();
 
-    function onQnaMessage (e) {
-        setQnaValue(e.target.value)
-    }
+    useEffect(() => {
+        const startIndex = (currentPage - 1) * 5;
+        const endIndex = startIndex + 5;
+        setPaginatedItems(filteredQna.slice(startIndex, endIndex));
+    }, [currentPage, filteredQna]);
+
+    const onQnaMessage = (e) => {
+        setQnaValue(e.target.value);
+    };
 
     const submitQna = async (e) => {
         e.preventDefault();
@@ -64,7 +67,6 @@ const ItemQna = ({item, pathName}) => {
             const qnaList = response.data;
             const date = new Date().toLocaleDateString();
 
-            // 리뷰 아이디 생성
             const qna_Id = qnaList.length ? qnaList[qnaList.length - 1].qna_Id + 1 : 1;
 
             const productId = item;
@@ -73,7 +75,6 @@ const ItemQna = ({item, pathName}) => {
 
             const newQna = { qna_Id, productId, userId, comment, date };
 
-            // 서버에 새로운 리뷰 추가
             await axios.post(`http://localhost:3001/qna`, newQna);
 
             setQnaValue('');
@@ -81,39 +82,15 @@ const ItemQna = ({item, pathName}) => {
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
-    }
+    };
 
-    const itemsPerPage = 5;
-    const maxPagesToShow = 5;
-    // console.log(item);
-    // console.log(pathName);
-    // const pathNames = pathName + '?QnaPage=';
-    // console.log(pathNames);
-    console.log(filteredQnas);
-
-    useEffect(() => {
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = Math.min(startIndex + itemsPerPage, filteredQnas.length);
-        setPaginatedItems(filteredQnas.slice(startIndex, endIndex));
-    }, [currentPage, filteredQnas]);
-
-    // useEffect(() => {
-    //     const query = new URLSearchParams(location.search);
-    //     const page = parseInt(query.get('page')) || 1;
-    //     setCurrentPage(page);
-    // }, [location]);
-
-    return(
+    return (
         <>
             <div className="info_top_box" id="QNA">
                 <div className="info_top_left">Q&A</div>
                 <div className="info_top_right">
                     <FontAwesomeIcon className="iconsize" icon={faPenToSquare} onClick={qnaPop} />
-                    <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        contentLabel="Example Modal"
-                    >
+                    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Qna 작성">
                         <div className="review_pop">
                             <h2>Qna작성</h2>
                             <div className="qnaBox">
@@ -125,12 +102,7 @@ const ItemQna = ({item, pathName}) => {
                             </div>
                         </div>
                     </Modal>
-
-                    <Modal
-                        isOpen={modalOpenPop}
-                        onRequestClose={closePopModal}
-                        contentLabel="Example Modal"
-                    >
+                    <Modal isOpen={modalOpenPop} onRequestClose={closePopModal} contentLabel="로그인 필요">
                         <div className="review_pop">
                             <h2>로그인 후 이용 가능합니다.</h2>
                             <div className="re_button_box">
@@ -139,30 +111,32 @@ const ItemQna = ({item, pathName}) => {
                             </div>
                         </div>
                     </Modal>
-                    
                 </div>
             </div>
             <div className="qna_list">
-                {filteredQnas.length > 0 ? (
-                    filteredQnas.map(qna => {
-                        const qnaStateText = qna.qna_State == '' ? "문의중" : "문의중";
-                        return (
-                            <div className="qna_list_row" key={qna.qna_Id}>
-                                <div className="qna_state">{qnaStateText}</div>
-                                <div>{qna.comment}</div>
-                                <div>{qna.qna_date}</div>
-                            </div>
-                        );
-                    })
+                {paginatedItems.length > 0 ? (
+                    paginatedItems.map(qna => (
+                        <div className="qna_list_row" key={qna.qna_Id}>
+                            <div className="qna_state">문의중</div>
+                            <div>{qna.comment}</div>
+                            <div>{qna.qna_date}</div>
+                        </div>
+                    ))
                 ) : (
                     <div className="no_qna">
                         <div>등록된 Q&A가 없습니다.</div>
                     </div>
                 )}
-                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredQnas} />
+                <PagiNationNum
+                    itemsPerPage={5}
+                    maxPagesToShow={5}
+                    totalItems={filteredQna.length}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </div>
         </>
     );
-}
+};
 
 export default ItemQna;

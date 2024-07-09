@@ -20,6 +20,7 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
     const [comment, setReviewMessage] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const location = useLocation();
+    const [paginatedItems, setPaginatedItems] = useState([]);
 
     useEffect(() => {
         setReviews(reviewData.review);
@@ -107,8 +108,12 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
         }
     }
 
-    const itemsPerPage = 5;
-    const maxPagesToShow = 5;
+    useEffect(() => {
+        const startIndex = (currentPage - 1) * 5;
+        const endIndex = startIndex + 5;
+        setPaginatedItems(filteredReviews.slice(startIndex, endIndex));
+    }, [currentPage, filteredReviews]);
+
 
     // useEffect(() => {
     //     const query = new URLSearchParams(location.search);
@@ -177,8 +182,8 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
                     <div>No.</div><div>Review</div>
                 </div>
                 <div className="re_list_data">
-                    {filteredReviews.length > 0 ? (
-                        filteredReviews.map(review => (
+                    {paginatedItems.length > 0 ? (
+                        paginatedItems.map(review => (
                             <div className="re_list_row" key={review.reviewId}>
                                 <div>{review.reviewId}</div>
                                 <div>
@@ -193,7 +198,13 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
                         </div>
                     )}
                 </div>
-                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredReviews} />
+                <PagiNationNum
+                    itemsPerPage={5}
+                    maxPagesToShow={5}
+                    totalItems={filteredReviews.length}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
                 {/* navigation = {} */}
             </div>
         </>

@@ -117,7 +117,7 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
         const startIndex = (currentPage - 1) * 5;
         const endIndex = startIndex + 5;
         setPaginatedItems(filteredReviews.slice(startIndex, endIndex));
-    }, [currentPage, filteredReviews]);
+    }, [currentPage]);
 
 
     // useEffect(() => {

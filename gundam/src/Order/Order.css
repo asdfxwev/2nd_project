@@ -126,5 +126,8 @@
         margin-right: 10px;
         font-family: 'LINESeedKR-Bd';
     }
+    .cart-header {
+        font-size: .7em;
+    }
 }
 

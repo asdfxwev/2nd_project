@@ -30,6 +30,9 @@ export default function Inquiry() {
                 const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
                 const userData = userResponse.data;
                 if (userData && userData.inquries) {
+                    console.log(userData.inquries);
+                    const inquries = userData.inquries.reverse();
+                    console.log(inquries);
                     setInquiries(userData.inquries);
                 } else {
                     setInquiries([]); // 안전하게 빈 배열로 초기화

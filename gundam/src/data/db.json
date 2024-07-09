@@ -87,23 +87,7 @@
       "password": "12345678",
       "confirmPassword": "12345678",
       "phoneNumber": "01072815063",
-      "cart": [
-        {
-          "id": 1,
-          "tag": "건프라",
-          "name": "RG 윙 건담",
-          "price": 38400,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam01.jpg"
-          ],
-          "image": "/image/gundam01.jpg",
-          "quantity": 1,
-          "isChecked": true
-        }
-      ],
+      "cart": [],
       "inquries": [],
       "inquiryCounter": 2,
       "buy": [
@@ -123,6 +107,22 @@
           "isChecked": true,
           "quantity": 1,
           "date": "2024-07-04"
+        },
+        {
+          "id": 1,
+          "tag": "건프라",
+          "name": "RG 윙 건담",
+          "price": 38400,
+          "comment": "건담 무사",
+          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
+          "brand": "1/100",
+          "src": [
+            "/image/gundam01.jpg"
+          ],
+          "image": "/image/gundam01.jpg",
+          "quantity": 1,
+          "isChecked": true,
+          "date": "2024-07-08"
         }
       ]
     },
@@ -179,13 +179,13 @@
       "phoneNumber": "01080334919"
     },
     {
-      "id": "5038",
-      "email": "dydejr852@naver.cos",
-      "address": "경기 성남시 분당구 금곡로 298 1234",
-      "name": "전용덕",
-      "password": "12345678",
-      "confirmPassword": "12345678",
-      "phoneNumber": "01072815068"
+      "id": "6b8e",
+      "email": "ghkdwlgh93@naver.com",
+      "address": "경기 성남시 분당구 성남대로 지하 163 ",
+      "name": "ho",
+      "password": "asdfasdf",
+      "confirmPassword": "asdfasdf",
+      "phoneNumber": "01022222222"
     },
     {
       "id": "23c3",
@@ -212,120 +212,6 @@
           "image": "/image/gundam03.jpg",
           "quantity": 1,
           "isChecked": true
-        }
-      ]
-    },
-    {
-      "name": "ho",
-      "email": "test@test.com",
-      "phoneNumber": "01012345678",
-      "address": "경기 성남시 분당구 판교역로 지하 160 ",
-      "id": "bb79",
-      "cart": [],
-      "buy": [
-        {
-          "id": 8,
-          "tag": "건프라",
-          "name": "SD 건담월드 히어로즈 조조 윙 건담 의성의 장",
-          "price": 9600,
-          "comment": "기동전사 건담 수성의 마녀",
-          "detail": "건담 시리즈의 기념비적인 첫 번째 작품. 스페이스 콜로니와 같이 최첨단 과학기술을 배경으로, 치밀하면서도 리얼한 세계관을 구축하여 인기를 얻었다",
-          "brand": "FIGURE-RISE MECHANICS",
-          "src": [
-            "/image/gundam08.jpg",
-            "/image/gundam9.jpg",
-            "/image/gundam10.jpg"
-          ],
-          "image": "/image/gundam08.jpg",
-          "isChecked": true,
-          "quantity": 1,
-          "date": "2024-07-08",
-          "deliveryuser": "황수령",
-          "deliveryphone": "01012345678",
-          "deliveryaddress": "경기 성남시 분당구 성남대로 지하 163"
-        },
-        {
-          "id": 4,
-          "tag": "건프라",
-          "name": "HGUC 크시 건담",
-          "price": 72000,
-          "comment": "기동전사 건담 복수의 레퀴엠",
-          "detail": "21세기의 첫 TV 시리즈 작품. 자프트와 지구 연합군의 전쟁에, 친구들을 구하기 위해 지구군으로서 참전한 코디네이터 키라의 고뇌와 성장을 그렸다.",
-          "brand": "FIGURE-RISE STANDARD",
-          "src": [
-            "/image/gundam03.jpg",
-            "/image/gundam05.jpg"
-          ],
-          "image": "/image/gundam04.jpg",
-          "isChecked": true,
-          "quantity": 1,
-          "date": "2024-07-08",
-          "deliveryuser": "ho",
-          "deliveryphone": "01012345678",
-          "deliveryaddress": "경기 성남시 분당구 판교역로 지하 160 "
-        },
-        {
-          "id": 11,
-          "tag": "건프라",
-          "name": "MG 유니콘 건담 스크린 이미지 Ver.",
-          "price": 60000,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam11.jpg",
-            "/image/gundam12.jpg",
-            "/image/gundam13.jpg"
-          ],
-          "image": "/image/gundam11.jpg",
-          "isChecked": true,
-          "quantity": 1,
-          "date": "2024-07-08",
-          "deliveryuser": "",
-          "deliveryphone": "",
-          "deliveryaddress": ""
-        },
-        {
-          "id": 12,
-          "tag": "건프라",
-          "name": "MG 프리덤 건담 Ver.2.0",
-          "price": 54000,
-          "comment": "건담 브레이커 배틀로그",
-          "detail": "영웅들로 인하여 균형이 유지되고 있는 세계. 그중 하나인 네오 월드에 갑자기 적열 운석이 날아온다. 낙하지점에 나타난 건 자칭 \"오공 임펄스 건담\"이라는 기억을 상실한 소년.",
-          "brand": "FG",
-          "src": [
-            "/image/gundam12.jpg",
-            "/image/gundam13.jpg",
-            "/image/gundam14.jpg"
-          ],
-          "image": "/image/gundam12.jpg",
-          "isChecked": true,
-          "quantity": 1,
-          "date": "2024-07-08",
-          "deliveryuser": "hhh",
-          "deliveryphone": "01011111111",
-          "deliveryaddress": "서울 강남구 강남대로 지하 396"
-        },
-        {
-          "id": 9,
-          "tag": "건프라",
-          "name": "RG 뉴 건담",
-          "price": 50400,
-          "comment": "기동전사 건담 복수의 레퀴엠",
-          "detail": "21세기의 첫 TV 시리즈 작품. 자프트와 지구 연합군의 전쟁에, 친구들을 구하기 위해 지구군으로서 참전한 코디네이터 키라의 고뇌와 성장을 그렸다.",
-          "brand": "FIGURE-RISE STANDARD",
-          "src": [
-            "/image/gundam09.jpg",
-            "/image/gundam10.jpg",
-            "/image/gundam11.jpg"
-          ],
-          "image": "/image/gundam09.jpg",
-          "isChecked": true,
-          "quantity": 1,
-          "date": "2024-07-08",
-          "deliveryuser": "ho",
-          "deliveryphone": "01012345678",
-          "deliveryaddress": "경기 성남시 분당구 판교역로 지하 160 "
         }
       ]
     }

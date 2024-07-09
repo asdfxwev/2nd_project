@@ -30,7 +30,7 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
         const filteredReviews = reviews.filter(review => review.productId === item);
         setReviewCount(filteredReviews.length);
     }, [reviews, item, setReviewCount]);
-    
+
     // 브라우저의 localStorage에서 로그인 정보 확인
     useEffect(() => {
         const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
@@ -138,7 +138,7 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
                                 <div>제목 :
                                     <input value={title} onChange={onreviewTitle} type="text" id="title" className="re_title" />
                                 </div>
-                                <div className="reviewBox">내용 : 
+                                <div className="reviewBox">내용 :
                                     <textarea value={comment} onChange={onreviewMessage} type="text" id="comment" className="re_comment" />
                                 </div>
                             </div>
@@ -198,15 +198,14 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
                         </div>
                     )}
                 </div>
-                <PagiNationNum
-                    itemsPerPage={5}
-                    maxPagesToShow={5}
-                    totalItems={filteredReviews.length}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                />
-                {/* navigation = {} */}
             </div>
+            <PagiNationNum
+                itemsPerPage={5}
+                maxPagesToShow={5}
+                totalItems={filteredReviews.length}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
         </>
     );
 }

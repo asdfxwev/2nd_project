@@ -127,6 +127,7 @@ const ItemQna = ({ item, pathName }) => {
                         <div>등록된 Q&A가 없습니다.</div>
                     </div>
                 )}
+            </div>
                 <PagiNationNum
                     itemsPerPage={5}
                     maxPagesToShow={5}
@@ -134,7 +135,6 @@ const ItemQna = ({ item, pathName }) => {
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                 />
-            </div>
         </>
     );
 };

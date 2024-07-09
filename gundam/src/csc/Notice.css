@@ -109,3 +109,22 @@
 .noticeForm button {
     height: 28px;
 }
+
+@media (width < 90rem) {
+    .cscNoticeContiner {
+        display: flex;
+        flex-direction: column;
+        margin: inherit;
+    }
+
+    .cscNoticeMain {
+        width: 100%;
+    }
+}
+
+@media (width < 41rem) {
+    .noticeDeliveryGrid {
+        font-size: .8rem;
+    }
+
+}

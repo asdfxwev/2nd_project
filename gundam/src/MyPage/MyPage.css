@@ -141,3 +141,36 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@media (max-width: 768px) {
+    .mypage_container {
+        flex-direction: column;
+        margin-top: 50px;
+        margin-left: 20px;
+        height: auto;
+    }
+
+    .mypage_menu {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .user_info {
+        margin-left: 20px;
+        width: 100%;
+    }
+
+    .user_info .row {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .name, .Value {
+        font-size: 1em;
+        margin-right: 0;
+    }
+
+    .name {
+        margin-bottom: 5px; /* 이름과 값 사이에 간격 추가 */
+    }
+}

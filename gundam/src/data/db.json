@@ -496,6 +496,38 @@
       "userId": "28d8",
       "comment": "ㅁㄴ",
       "date": "2024. 7. 9."
+    },
+    {
+      "id": "c7a9",
+      "qna_Id": 11,
+      "productId": 2,
+      "userId": "23c3",
+      "comment": "?",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "614b",
+      "qna_Id": 12,
+      "productId": 2,
+      "userId": "23c3",
+      "comment": "asdfasdf",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "843c",
+      "qna_Id": 13,
+      "productId": 2,
+      "userId": "23c3",
+      "comment": "asdf",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "38e4",
+      "qna_Id": 14,
+      "productId": 2,
+      "userId": "23c3",
+      "comment": "ad",
+      "date": "2024. 7. 9."
     }
   ]
 }

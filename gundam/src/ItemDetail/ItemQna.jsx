@@ -75,6 +75,11 @@ const ItemQna = ({ item, pathName }) => {
 
             const newQna = { qna_Id, productId, userId, comment, date };
 
+            if (comment === '') {
+                alert(`내용을 입력해주세요.`);
+                return false;
+            }
+
             await axios.post(`http://localhost:3001/qna`, newQna);
 
             setQnaValue('');

@@ -7,7 +7,7 @@ import HeaderSearch from './HeaderSearch';
 import { useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignInAlt, faUser, faShoppingCart, faSearch, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faUser, faShoppingCart, faSearch, faRightFromBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function Menu() {
     const [visibleMenu, setVisibleMenu] = useState(null);
@@ -115,6 +115,7 @@ export default function Menu() {
                             {/* <div className={`h_right h_search ${smallTopMenu ? 'blackText' : ''} `} onClick={() => Menu('headerSearch')} ><FontAwesomeIcon icon={faSearch} /> 검색</div> */}
                         </>) :
                         <>
+                            <div className={`h_right h_join ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login/Join' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faUserPlus} /> 회원가입</a></div>
                             <div className={`h_right h_login ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faSignInAlt} /> 로그인</a></div>
                             <div className={`h_right h_mypage ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faUser} /> 마이페이지</a></div>
                             <div className={`h_right h_shopping ${smallTopMenu ? 'blackText' : ''} `}><a href='/Login' className={`${isMainPage ? 'noPosition' : ''}`}><FontAwesomeIcon icon={faShoppingCart} /> 장바구니</a></div>

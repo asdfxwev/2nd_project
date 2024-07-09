@@ -19,3 +19,7 @@
     color: #b3ffff;
     background-color: aqua;
 }
+
+.inquiryListContainer {
+min-height: 260px;
+}

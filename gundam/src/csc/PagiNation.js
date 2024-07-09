@@ -32,7 +32,7 @@ export default function PagiNation({itemsPerPage, maxPagesToShow, object, naviga
         return pageNumbers;
     };
 
-    console.log(object);
+    // console.log(object);
 
     return (
         <>

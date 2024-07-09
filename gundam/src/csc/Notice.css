@@ -110,6 +110,10 @@
     height: 28px;
 }
 
+.noticeDeliveryContainer {
+    min-height: 518px;
+}
+
 @media (width < 90rem) {
     .cscNoticeContiner {
         display: flex;

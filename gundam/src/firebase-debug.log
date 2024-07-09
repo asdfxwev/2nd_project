@@ -1,0 +1,71 @@
+[debug] [2024-07-09T06:56:10.974Z] ----------------------------------------------------------------------
+[debug] [2024-07-09T06:56:10.979Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dydej\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-07-09T06:56:10.980Z] CLI Version:   13.13.0
+[debug] [2024-07-09T06:56:10.981Z] Platform:      win32
+[debug] [2024-07-09T06:56:10.981Z] Node Version:  v20.14.0
+[debug] [2024-07-09T06:56:10.981Z] Time:          Tue Jul 09 2024 15:56:10 GMT+0900 (대한민국 표준시)
+[debug] [2024-07-09T06:56:10.982Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-09T06:56:10.995Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-09T06:56:10.996Z] > authorizing via signed-in user (wjsdydejr889@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\gundam\2nd_project\gundam\src
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-07-09T06:57:03.661Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2024-07-09T06:57:04.461Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-07-09T06:57:04.461Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project gundam-cbf4d (gundam) 
+[info] 
+=== Hosting Setup
+[debug] [2024-07-09T06:57:07.977Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gundam-cbf4d [none]
+[debug] [2024-07-09T06:57:08.346Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gundam-cbf4d 200
+[debug] [2024-07-09T06:57:08.347Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gundam-cbf4d {"projectId":"gundam-cbf4d","projectNumber":"674239323899","displayName":"gundam","name":"projects/gundam-cbf4d","resources":{"hostingSite":"gundam-cbf4d","realtimeDatabaseInstance":"gundam-cbf4d-default-rtdb"},"state":"ACTIVE","etag":"1_a90811eb-5f3a-4ffe-9676-de0660f180c9"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2024-07-09T06:57:38.091Z] ----------------------------------------------------------------------
+[debug] [2024-07-09T06:57:38.097Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dydej\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-07-09T06:57:38.097Z] CLI Version:   13.13.0
+[debug] [2024-07-09T06:57:38.097Z] Platform:      win32
+[debug] [2024-07-09T06:57:38.097Z] Node Version:  v20.14.0
+[debug] [2024-07-09T06:57:38.097Z] Time:          Tue Jul 09 2024 15:57:38 GMT+0900 (대한민국 표준시)
+[debug] [2024-07-09T06:57:38.098Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-09T06:57:38.110Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-09T06:57:38.110Z] > authorizing via signed-in user (wjsdydejr889@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\gundam\2nd_project\gundam\src
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+

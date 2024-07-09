@@ -54,7 +54,7 @@ const ItemQna = ({ item, pathName }) => {
         const startIndex = (currentPage - 1) * 5;
         const endIndex = startIndex + 5;
         setPaginatedItems(filteredQna.slice(startIndex, endIndex));
-    }, [currentPage, filteredQna]);
+    }, [currentPage]);
 
     const onQnaMessage = (e) => {
         setQnaValue(e.target.value);
@@ -74,6 +74,11 @@ const ItemQna = ({ item, pathName }) => {
             const userId = existingInquiries.id;
 
             const newQna = { qna_Id, productId, userId, comment, date };
+
+            if (comment === '') {
+                alert(`내용을 입력해주세요.`);
+                return false;
+            }
 
             await axios.post(`http://localhost:3001/qna`, newQna);
 

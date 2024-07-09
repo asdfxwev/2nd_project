@@ -95,6 +95,11 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
             const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
             const userId = existingInquiries.id;
 
+            if (title === '' || comment === '') {
+                alert(`제목과 내용을 입력해주세요.`);
+                return false;
+            }
+
             const newReview = { reviewId, productId, userId, title, comment, date };
 
             // 서버에 새로운 리뷰 추가
@@ -112,7 +117,7 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
         const startIndex = (currentPage - 1) * 5;
         const endIndex = startIndex + 5;
         setPaginatedItems(filteredReviews.slice(startIndex, endIndex));
-    }, [currentPage, filteredReviews]);
+    }, [currentPage]);
 
 
     // useEffect(() => {
@@ -179,13 +184,13 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
             </div>
             <div className="review_list">
                 <div className="re_list_top">
-                    <div>No.</div><div>Review</div>
+                    <div>등록일</div><div>Review</div>
                 </div>
                 <div className="re_list_data">
                     {paginatedItems.length > 0 ? (
                         paginatedItems.map(review => (
                             <div className="re_list_row" key={review.reviewId}>
-                                <div>{review.reviewId}</div>
+                                <div>{review.date}</div>
                                 <div>
                                     <p>{review.title}</p>
                                     <p>{review.comment}</p>

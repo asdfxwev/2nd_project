@@ -140,8 +140,16 @@
         }
       ],
       "cart": [],
-      "inquries": [],
-      "inquiryCounter": 27
+      "inquries": [
+        {
+          "id": 27,
+          "inquiryType": "배송",
+          "subject": "d",
+          "message": "dfdf",
+          "formData": {}
+        }
+      ],
+      "inquiryCounter": 28
     },
     {
       "id": "f17b",

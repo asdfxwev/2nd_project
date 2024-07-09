@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "gundam-6eb3d"
-  }
+    "default": "gundamn-eebc1",
+    "fire": "gundamn-eebc1"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

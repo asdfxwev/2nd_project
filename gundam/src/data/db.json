@@ -225,7 +225,31 @@
       "name": "rlarudfo",
       "password": "123123123",
       "confirmPassword": "123123123",
-      "phoneNumber": "01080334919"
+      "phoneNumber": "01080334919",
+      "inquries": [
+        {
+          "id": 1,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a",
+          "formData": {}
+        },
+        {
+          "id": 3,
+          "inquiryType": "배송",
+          "subject": "aa",
+          "message": "aa",
+          "formData": {}
+        },
+        {
+          "id": 4,
+          "inquiryType": "배송",
+          "subject": "aaaaa",
+          "message": "aaa",
+          "formData": {}
+        }
+      ],
+      "inquiryCounter": 5
     },
     {
       "id": "6b8e",

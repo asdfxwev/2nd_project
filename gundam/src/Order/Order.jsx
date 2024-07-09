@@ -43,7 +43,7 @@ const Cart = () => {
                 if (!userData.buy) {
                     userData.buy = [];
                 }
-                setCartItems(userData.buy);
+                setCartItems(userData.buy.reverse());   // reverse(): 최신순으로 정렬 시켜주는 좋은 친구
                 setCheckedItems(userData.buy.map(item => item.id));
                 setIsAllChecked(true);
             } catch (error) {

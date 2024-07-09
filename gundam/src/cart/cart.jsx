@@ -46,7 +46,7 @@ const Cart = () => {
                 if (!userData.cart) {
                     userData.cart = [];
                 }
-                setCartItems(userData.cart);
+                setCartItems(userData.cart.reverse());
                 setCheckedItems(userData.cart.map(item => item.id));
                 setIsAllChecked(true);
             } catch (error) {

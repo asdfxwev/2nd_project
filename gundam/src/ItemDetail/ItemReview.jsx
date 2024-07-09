@@ -138,10 +138,10 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
                         <form className="review_pop">
                             <h2>리뷰작성</h2>
                             <div>
-                                <div>제목 :
+                                <div>제목 
                                     <input value={title} onChange={onreviewTitle} type="text" id="title" className="re_title" />
                                 </div>
-                                <div className="reviewBox">내용 :
+                                <div className="reviewBox">내용 
                                     <textarea value={comment} onChange={onreviewMessage} type="text" id="comment" className="re_comment" />
                                 </div>
                             </div>

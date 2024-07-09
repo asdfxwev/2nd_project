@@ -1,6 +1,22 @@
 {
   "users": [
     {
+      "hosting": {
+        "public": "build",
+        "ignore": [
+          "firebase.json",
+          "**/.*",
+          "**/node_modules/**"
+        ],
+        "rewrites": [
+          {
+            "source": "**",
+            "destination": "/index.html"
+          }
+        ]
+      }
+    },
+    {
       "name": "ㅁㄴㅇㄹ",
       "email": "asdf@asdf",
       "phoneNumber": "1234567891",
@@ -8,68 +24,20 @@
       "id": "28d8",
       "cart": [],
       "inquiryCounter": 126,
-      "buy": [
-        {
-          "id": 1,
-          "tag": "건프라",
-          "name": "RG 윙 건담",
-          "price": 38400,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam01.jpg"
-          ],
-          "image": "/image/gundam01.jpg",
-          "isChecked": true,
-          "quantity": 1,
-          "date": "2024-07-09",
-          "deliveryuser": "ㅁㄴㅇㄹ",
-          "deliveryphone": "1234567891",
-          "deliveryaddress": "부산 연제구 미남로 1 asdf"
-        }
-      ],
+      "buy": [],
       "inquries": [
-        {
-          "id": 120,
-          "inquiryType": "배송",
-          "subject": "ㅁ",
-          "message": "ㅁ",
-          "formData": {}
-        },
-        {
-          "id": 121,
-          "inquiryType": "배송",
-          "subject": "ㅁㄴ",
-          "message": "ㅁㄴ",
-          "formData": {}
-        },
-        {
-          "id": 122,
-          "inquiryType": "배송",
-          "subject": "ㅁㄴㅇ",
-          "message": "ㅁㄴㅇ",
-          "formData": {}
-        },
-        {
-          "id": 123,
-          "inquiryType": "배송",
-          "subject": "ㅁㄴㅇㄹ",
-          "message": "ㅁㄴㅇㄹ",
-          "formData": {}
-        },
         {
           "id": 124,
           "inquiryType": "배송",
-          "subject": "ㅂ",
+          "subject": "ㅂa",
           "message": "ㅂ",
           "formData": {}
         },
         {
           "id": 125,
           "inquiryType": "배송",
-          "subject": "ㅂㅈ",
-          "message": "ㅂㅈ",
+          "subject": "ㅁ",
+          "message": "ㅁ",
           "formData": {}
         }
       ]
@@ -92,56 +60,17 @@
       ],
       "inquiryCounter": 2,
       "cart": [],
-      "buy": [
-        {
-          "id": 1,
-          "tag": "건프라",
-          "name": "RG 윙 건담",
-          "price": 38400,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam01.jpg"
-          ],
-          "image": "/image/gundam01.jpg",
-          "isChecked": true,
-          "quantity": 8,
-          "date": "2024-07-08"
-        }
-      ]
+      "buy": []
     },
     {
       "name": "vaundy",
       "email": "vaundy@naver.com",
-      "password": "123456789",
       "phoneNumber": "01000000000",
+      "password": "123456789",
       "address": "dfasdf ",
       "id": "bd65",
-      "buy": [
-        {
-          "id": 1,
-          "tag": "건프라",
-          "name": "RG 윙 건담",
-          "price": 38400,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam01.jpg"
-          ],
-          "image": "/image/gundam01.jpg",
-          "isChecked": true,
-          "quantity": 1,
-          "date": "2024-07-09",
-          "deliveryuser": "vaundy",
-          "deliveryphone": "01000000000",
-          "deliveryaddress": "dfasdf "
-        }
-      ],
       "cart": [],
-      "inquries": [],
-      "inquiryCounter": 27
+      "buy": []
     },
     {
       "id": "f17b",
@@ -173,41 +102,7 @@
       "cart": [],
       "inquries": [],
       "inquiryCounter": 2,
-      "buy": [
-        {
-          "id": 6,
-          "tag": "건프라",
-          "name": "MG 건담 발바토스",
-          "price": 54000,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam05.jpg",
-            "/image/gundam11.jpg"
-          ],
-          "image": "/image/gundam06.jpg",
-          "isChecked": true,
-          "quantity": 1,
-          "date": "2024-07-04"
-        },
-        {
-          "id": 1,
-          "tag": "건프라",
-          "name": "RG 윙 건담",
-          "price": 38400,
-          "comment": "건담 무사",
-          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
-          "brand": "1/100",
-          "src": [
-            "/image/gundam01.jpg"
-          ],
-          "image": "/image/gundam01.jpg",
-          "quantity": 1,
-          "isChecked": true,
-          "date": "2024-07-08"
-        }
-      ]
+      "buy": []
     },
     {
       "name": "호",
@@ -300,6 +195,15 @@
           "deliveryaddress": "경기 성남시 분당구 성남대로 지하 163 "
         }
       ]
+    },
+    {
+      "id": "d199",
+      "email": "kdddddddt@naver.com",
+      "address": "경기 성남시 분당구 대왕판교로 477 asdfsdd",
+      "name": "케이디",
+      "password": "11111111",
+      "confirmPassword": "11111111",
+      "phoneNumber": "01000000002"
     }
   ],
   "review": [

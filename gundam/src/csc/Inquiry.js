@@ -45,7 +45,7 @@ export default function Inquiry() {
         };
         fetchData();
     }, [userId, inquiries]);
-    
+
 
     const itemsPerPage = 5;
     const maxPagesToShow = 5;
@@ -61,7 +61,7 @@ export default function Inquiry() {
         const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
         setPaginatedItems(inquiries.slice(startIndex, endIndex));
     }, [currentPage, inquiries]);
-    console.log(inquiries);
+    // console.log(inquiries);
 
     return (
         <section className="cscContainer">
@@ -74,10 +74,11 @@ export default function Inquiry() {
                     <div className="CscInquiryListTitle">
                         <div style={{ width: '100px' }}>유형</div>
                         <div style={{ width: '500px' }}>제목</div>
+                        {/* <div style={{ width: '100px' }}>수정여부</div>  */}
                         <div style={{ width: '100px' }}>삭제여부</div>
                     </div>
-                    <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} setCurrentPage={setCurrentPage} currentPage = {currentPage} />
-                    <PagiNation maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {inquiries} navigation='/Inquiry?page='/>
+                    <InquiryList inquiries={paginatedItems} existingInquiries={existingInquiries} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+                    <PagiNation maxPagesToShow={maxPagesToShow} itemsPerPage={itemsPerPage} object={inquiries} navigation='/Inquiry?page=' />
                     <div className='InquiryWriteBtn'>
                         <Link to='/Inquiry/InquiryWrite'>문의작성</Link>
                     </div>

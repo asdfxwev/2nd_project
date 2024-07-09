@@ -19,7 +19,7 @@ export default function NoticeDelivery({ paginatedItems }) {
     // console.log(noticeState);
 
     return (
-        <>
+        <div className="noticeDeliveryContainer">
             {noticeState.map((noticeNum) => (
             <>
                 <div className="noticeDeliveryGrid">
@@ -30,6 +30,6 @@ export default function NoticeDelivery({ paginatedItems }) {
                 <div className={`noticeData ${visibleNotice !== noticeNum.id ? '' : 'noticeBlockData'}`}>{noticeNum.data}</div>
             </>
         ))}
-        </>
+        </div>
     )
 }

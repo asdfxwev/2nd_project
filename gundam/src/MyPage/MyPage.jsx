@@ -48,7 +48,7 @@ const MyPage = () => {
                     <li>알림신청</li>
 
                 </ul>
-                <h2 className='MyPage_h2'>나의 혜택관리</h2>
+                <h2 className='MyPage_h3'>나의 혜택관리</h2>
                 <ul>
                     <li>회원등급</li>
                     <li>구매실적</li>
@@ -59,7 +59,7 @@ const MyPage = () => {
 
 
             <div className='user_info'>
-                <h3 className='MyPage_h3'>회원 정보</h3>
+                <h3 className='MyPage_h4'>회원 정보</h3>
                 <div className='row'>
                     <div className='name'>이름</div>
                     <div className="Value">{userInfo.name}</div>

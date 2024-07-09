@@ -26,6 +26,14 @@
 
     /* 폰트 설정 */
 }
+.mypage_menu .MyPage_h3 {
+
+    font-size: 1.5em;
+    font-style: normal;
+    margin-bottom: 15px;
+
+    /* 폰트 설정 */
+}
 
 
 
@@ -46,7 +54,7 @@
 
 }
 
-.MyPage_h3 {
+.MyPage_h4 {
     border-bottom: 4px solid black;
     /* 검은색 굵은 선 추가 */
     padding-bottom: 10px;
@@ -70,6 +78,7 @@
     margin-bottom: 10px;
     /* 각 행 사이의 간격 */
     margin-bottom: 50px;
+   
 
 }
 
@@ -78,6 +87,7 @@
     font-size: 1.5em;
     margin-right: 10px;
     /* 이름과 값 사이의 간격 */
+    
 }
 
 .name {
@@ -94,7 +104,7 @@
 
 }
 
-.user_info .MyPage_h3 {
+.user_info .MyPage_h4 {
     font-size: 2em;
     margin-bottom: 20px;
 
@@ -144,33 +154,34 @@
 
 @media (max-width: 768px) {
     .mypage_container {
-        flex-direction: column;
-        margin-top: 50px;
-        margin-left: 20px;
-        height: auto;
+        padding: 10px; /* 모바일 화면에서 컨테이너의 패딩 조정 */
+        margin-left: inherit;
     }
 
     .mypage_menu {
-        width: 100%;
-        margin-top: 0;
+        font-size: 14px; /* 모바일 화면에서 메뉴의 폰트 크기 조정 */
+        width: 30%;
+    }
+
+    .mypage_menu ul li {
+        margin-bottom: 10px; /* 모바일 화면에서 메뉴 항목 간격 조정 */
     }
 
     .user_info {
-        margin-left: 20px;
-        width: 100%;
+        font-size: 14px; /* 모바일 화면에서 사용자 정보의 폰트 크기 조정 */
     }
 
     .user_info .row {
-        flex-direction: column;
-        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column; /* 모바일 화면에서 행을 세로로 배열 */
+        margin-bottom: 10px; /* 모바일 화면에서 행 간격 조정 */
+        border-bottom: 2px solid black;
+    /* 검은색 굵은 선 추가 */
+    padding-bottom: 5px;
     }
 
-    .name, .Value {
-        font-size: 1em;
-        margin-right: 0;
-    }
-
-    .name {
-        margin-bottom: 5px; /* 이름과 값 사이에 간격 추가 */
+    .user_info .name, .user_info .Value {
+        width: 100%; /* 모바일 화면에서 이름과 값의 너비를 100%로 조정 */
+        text-align: left; /* 모바일 화면에서 텍스트를 왼쪽 정렬 */
     }
 }

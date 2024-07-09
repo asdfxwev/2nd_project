@@ -50,3 +50,20 @@
     font-weight: normal;
     font-style: normal;
 }
+@media (max-width: 768px) {
+    .ReactModal__Content {
+        width: 80%; /* 모바일 화면에서 모달의 너비를 늘림 */
+        height: auto; /* 모바일 화면에서 모달의 높이를 내용에 맞게 조정 */
+        grid-template-rows: repeat(7, auto); /* 모바일 화면에서 그리드 행의 높이를 내용에 맞게 조정 */
+    }
+
+    .ReactModal__Content>button {
+        width: 60%; /* 모바일 화면에서 버튼의 너비를 늘림 */
+        height: auto; /* 모바일 화면에서 버튼의 높이를 내용에 맞게 조정 */
+    }
+
+    .FindID {
+        left: 23%; /* 모바일 화면에서 버튼의 위치 조정 */
+        font-size: 18px; /* 모바일 화면에서 폰트 크기를 늘림 */
+    }
+}

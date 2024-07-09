@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import './ItemDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -48,12 +48,22 @@ const ItemQna = ({ item, pathName }) => {
         setModalOpenPop(false);
     };
 
-    const filteredQna = qnas.filter(qna => qna.productId === item).reverse();
+    // 선택된 상품의 Q&A만 필터링 및 메모이제이션
+    const filteredQna = useMemo(() => {
+        return qnas.filter(qna => qna.productId === item).reverse();
+    }, [qnas, item]);
 
     useEffect(() => {
         const startIndex = (currentPage - 1) * 5;
         const endIndex = startIndex + 5;
-        setPaginatedItems(filteredQna.slice(startIndex, endIndex));
+        const newPaginatedItems = filteredQna.slice(startIndex, endIndex);
+
+        setPaginatedItems(prevItems => {
+            if (JSON.stringify(prevItems) !== JSON.stringify(newPaginatedItems)) {
+                return newPaginatedItems;
+            }
+            return prevItems;
+        });
     }, [currentPage, filteredQna]);
 
     const onQnaMessage = (e) => {

@@ -110,7 +110,7 @@ const ItemBuy = () => {
             }
 
              // userinfo 값에 따라 배송 정보 설정
-             const deliveryInfo = showUser ? {
+            const deliveryInfo = showUser ? {
                 deliveryuser: userinfo.name,
                 deliveryphone: userinfo.phoneNumber,
                 deliveryaddress: userinfo.address
@@ -134,7 +134,7 @@ const ItemBuy = () => {
             await axios.put(`http://localhost:3001/users/${userinfo.id}`, userData);
 
             alert('결제가 완료되었습니다.');
-            navigate('../Order/Order'); // 결제 완료 페이지로 이동
+            navigate('../Order'); // 결제 완료 페이지로 이동
         } catch (error) {
             console.error('결제 처리 중 오류 발생:', error);
         }

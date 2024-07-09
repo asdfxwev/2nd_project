@@ -118,7 +118,27 @@
       "phoneNumber": "01000000000",
       "address": "dfasdf ",
       "id": "bd65",
-      "buy": [],
+      "buy": [
+        {
+          "id": 1,
+          "tag": "건프라",
+          "name": "RG 윙 건담",
+          "price": 38400,
+          "comment": "건담 무사",
+          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
+          "brand": "1/100",
+          "src": [
+            "/image/gundam01.jpg"
+          ],
+          "image": "/image/gundam01.jpg",
+          "isChecked": true,
+          "quantity": 1,
+          "date": "2024-07-09",
+          "deliveryuser": "vaundy",
+          "deliveryphone": "01000000000",
+          "deliveryaddress": "dfasdf "
+        }
+      ],
       "cart": [],
       "inquries": [],
       "inquiryCounter": 27
@@ -527,6 +547,38 @@
       "productId": 2,
       "userId": "23c3",
       "comment": "ad",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "a5c6",
+      "qna_Id": 15,
+      "productId": 1,
+      "userId": "bd65",
+      "comment": "ㄴㅇㅇㄹ",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "68a4",
+      "qna_Id": 16,
+      "productId": 1,
+      "userId": "bd65",
+      "comment": "ㅇㄹㅇㄹ",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "f8fd",
+      "qna_Id": 17,
+      "productId": 1,
+      "userId": "bd65",
+      "comment": "ㅇㅇㅇㄹ",
+      "date": "2024. 7. 9."
+    },
+    {
+      "id": "d129",
+      "qna_Id": 18,
+      "productId": 1,
+      "userId": "bd65",
+      "comment": "ㅇㄹㅇㄹ",
       "date": "2024. 7. 9."
     }
   ]

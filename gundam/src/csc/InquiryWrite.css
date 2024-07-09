@@ -43,6 +43,11 @@
 }
 
 .inquiryTypeBtn {
-    grid-area: 4 / 1 / 5 / 3;
+    grid-area: 5 / 1 / 6 / 3;
     text-align: center;
+}
+
+.inquiryFile {
+    display: grid;
+    place-content: center;
 }

@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import qnaData from '../data/db.json';
 import axios from 'axios';
 import PagiNationNum from "../csc/PagiNationNum";
+import { useLocation } from 'react-router-dom';
+
 
 const ItemQna = ({item, pathName}) => {
 
@@ -16,6 +18,9 @@ const ItemQna = ({item, pathName}) => {
     const [qnas, setQnas] = useState([]); // 리뷰 데이터를 저장할 상태 변수
     const navigate = useNavigate();
     const [comment, setQnaValue] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const location = useLocation();
+    const [paginatedItems, setPaginatedItems] = useState([]);
 
     useEffect(() => {
         setQnas(qnaData.qna);
@@ -45,7 +50,8 @@ const ItemQna = ({item, pathName}) => {
         setModalOpenPop(false);
     };
 
-    const filteredQnas = qnas.filter(qna => qna.productId === item);
+    const filteredQna = qnas.filter(qna => qna.productId === item);
+    const filteredQnas = filteredQna.reverse();
 
     function onQnaMessage (e) {
         setQnaValue(e.target.value)
@@ -79,7 +85,23 @@ const ItemQna = ({item, pathName}) => {
 
     const itemsPerPage = 5;
     const maxPagesToShow = 5;
-    console.log(item);
+    // console.log(item);
+    // console.log(pathName);
+    // const pathNames = pathName + '?QnaPage=';
+    // console.log(pathNames);
+    console.log(filteredQnas);
+
+    useEffect(() => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredQnas.length);
+        setPaginatedItems(filteredQnas.slice(startIndex, endIndex));
+    }, [currentPage, filteredQnas]);
+
+    // useEffect(() => {
+    //     const query = new URLSearchParams(location.search);
+    //     const page = parseInt(query.get('page')) || 1;
+    //     setCurrentPage(page);
+    // }, [location]);
 
     return(
         <>
@@ -137,7 +159,7 @@ const ItemQna = ({item, pathName}) => {
                         <div>등록된 Q&A가 없습니다.</div>
                     </div>
                 )}
-                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredQnas} navigation={pathName}/>
+                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredQnas} />
             </div>
         </>
     );

@@ -1,21 +1,19 @@
 import { useState, useEffect } from "react";
-import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
-
+import './PagiNationNum.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 
-export default function PagiNationNum({itemsPerPage, maxPagesToShow, object, navigation}) {
+export default function PagiNationNum({ itemsPerPage, maxPagesToShow, object }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [paginatedItems, setPaginatedItems] = useState([]);
-    const navigate = useNavigate();
-    const location = useLocation();
 
     const totalNumberOfPages = Math.ceil(object.length / itemsPerPage);
-    useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        const page = parseInt(query.get('page')) || 1;
-        setCurrentPage(page);
-    }, [location]);
+
+    // useEffect(() => {
+    //     const startIndex = (currentPage - 1) * itemsPerPage;
+    //     const endIndex = startIndex + itemsPerPage;
+    //     setPaginatedItems(object.slice(startIndex, endIndex));
+    // }, [currentPage, object, itemsPerPage]);
 
     const getPageNumbers = () => {
         const pageNumbers = [];
@@ -30,19 +28,51 @@ export default function PagiNationNum({itemsPerPage, maxPagesToShow, object, nav
         return pageNumbers;
     };
 
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
         <>
-            <ul className="noticeNumber">
+            <ul className="pagiNumber">
+                {currentPage > 1 && (
+                    <>
+                        <li>
+                            <button onClick={() => handlePageChange(1)}>
+                                <FontAwesomeIcon icon={faAnglesLeft} />
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => handlePageChange(currentPage - 1)}>
+                                <FontAwesomeIcon icon={faAngleLeft} />
+                            </button>
+                        </li>
+                    </>
+                )}
                 {getPageNumbers().map((pageNumber) => (
                     <li
                         key={pageNumber}
                         className={currentPage === pageNumber ? 'selected' : ''}
                     >
-                        <NavLink >
+                        <button onClick={() => handlePageChange(pageNumber)}>
                             {pageNumber}
-                        </NavLink>
+                        </button>
                     </li>
                 ))}
+                {currentPage < totalNumberOfPages && (
+                    <>
+                        <li>
+                            <button onClick={() => handlePageChange(currentPage + 1)}>
+                                <FontAwesomeIcon icon={faAngleRight} />
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => handlePageChange(totalNumberOfPages)}>
+                                <FontAwesomeIcon icon={faAnglesRight} />
+                            </button>
+                        </li>
+                    </>
+                )}
             </ul>
         </>
     )

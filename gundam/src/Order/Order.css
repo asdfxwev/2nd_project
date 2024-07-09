@@ -129,5 +129,10 @@
     .cart-header {
         font-size: .7em;
     }
+    .cart-header input[type="checkbox"] {
+        width: 10px;
+        height: 10px; 
+        margin-right: 10px;
+    }
 }
 

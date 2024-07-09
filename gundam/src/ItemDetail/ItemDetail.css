@@ -123,10 +123,6 @@
 }
 @media (max-width: 1160px) {
 
-    .detail_right_box{
-        /* width: 200px !important; */
-    }
-
     .detail_img{
         margin: 0;
     }
@@ -307,9 +303,13 @@
     /* line-height: 100px; */
 }
 
-.re_title,
+.re_title{
+    width: 70%;
+    height: 30px;
+    margin: 5px;
+}
 .re_comment{
-    width: 80%;
+    width: 70%;
     height: 30px;
     margin: 5px;
 }

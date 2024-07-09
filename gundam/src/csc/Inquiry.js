@@ -61,6 +61,7 @@ export default function Inquiry() {
         const endIndex = Math.min(startIndex + itemsPerPage, inquiries.length);
         setPaginatedItems(inquiries.slice(startIndex, endIndex));
     }, [currentPage, inquiries]);
+    console.log(inquiries);
 
     return (
         <section className="cscContainer">

@@ -95,11 +95,11 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
     const itemsPerPage = 5;
     const maxPagesToShow = 5;
 
-    useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        const page = parseInt(query.get('page')) || 1;
-        setCurrentPage(page);
-    }, [location]);
+    // useEffect(() => {
+    //     const query = new URLSearchParams(location.search);
+    //     const page = parseInt(query.get('page')) || 1;
+    //     setCurrentPage(page);
+    // }, [location]);
 
     return (
         <>

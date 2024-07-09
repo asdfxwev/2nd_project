@@ -136,7 +136,7 @@ export default function InquiryWrite() {
                             required
                         ></textarea>
                     </div>
-                    <div><label for='file'>파일첨부</label></div>
+                    <div className="inquiryFile"><label for='file'>파일첨부</label></div>
                     <div>
                         <input type="file" onChange={handleFileChange} />
                     </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './PagiNationNum.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft, faAngleLeft, faAngleRight, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,11 +9,11 @@ export default function PagiNationNum({ itemsPerPage, maxPagesToShow, object }) 
 
     const totalNumberOfPages = Math.ceil(object.length / itemsPerPage);
 
-    useEffect(() => {
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        setPaginatedItems(object.slice(startIndex, endIndex));
-    }, [currentPage, object, itemsPerPage]);
+    // useEffect(() => {
+    //     const startIndex = (currentPage - 1) * itemsPerPage;
+    //     const endIndex = startIndex + itemsPerPage;
+    //     setPaginatedItems(object.slice(startIndex, endIndex));
+    // }, [currentPage, object, itemsPerPage]);
 
     const getPageNumbers = () => {
         const pageNumbers = [];
@@ -33,7 +34,7 @@ export default function PagiNationNum({ itemsPerPage, maxPagesToShow, object }) 
 
     return (
         <>
-            <ul className="noticeNumber">
+            <ul className="pagiNumber">
                 {currentPage > 1 && (
                     <>
                         <li>

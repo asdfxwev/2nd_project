@@ -7,7 +7,7 @@
       "address": "부산 연제구 미남로 1 asdf",
       "id": "28d8",
       "cart": [],
-      "inquiryCounter": 132,
+      "inquiryCounter": 133,
       "buy": [
         {
           "id": 2,
@@ -134,6 +134,13 @@
           "inquiryType": "배송",
           "subject": "asd",
           "message": "asd",
+          "formData": {}
+        },
+        {
+          "id": 132,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a",
           "formData": {}
         }
       ]

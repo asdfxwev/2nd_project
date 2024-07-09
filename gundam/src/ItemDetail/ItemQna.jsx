@@ -20,6 +20,7 @@ const ItemQna = ({item, pathName}) => {
     const [comment, setQnaValue] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const location = useLocation();
+    const [paginatedItems, setPaginatedItems] = useState([]);
 
     useEffect(() => {
         setQnas(qnaData.qna);
@@ -86,15 +87,21 @@ const ItemQna = ({item, pathName}) => {
     const maxPagesToShow = 5;
     // console.log(item);
     // console.log(pathName);
-    const pathNames = pathName + '?QnaPage=';
+    // const pathNames = pathName + '?QnaPage=';
     // console.log(pathNames);
     console.log(filteredQnas);
 
     useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        const page = parseInt(query.get('page')) || 1;
-        setCurrentPage(page);
-    }, [location]);
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredQnas.length);
+        setPaginatedItems(filteredQnas.slice(startIndex, endIndex));
+    }, [currentPage, filteredQnas]);
+
+    // useEffect(() => {
+    //     const query = new URLSearchParams(location.search);
+    //     const page = parseInt(query.get('page')) || 1;
+    //     setCurrentPage(page);
+    // }, [location]);
 
     return(
         <>

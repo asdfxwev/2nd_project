@@ -91,7 +91,7 @@ export default function Slider() {
     // console.log(slideImages.length);
 
     return (
-        <section style={{ height: '100vh' }}>
+        <section >
             <div
                 className="main_container"
                 onMouseEnter={handleMouseEnter}

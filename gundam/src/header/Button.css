@@ -112,9 +112,11 @@
     .logo {
         width: 5rem;
         height: 4rem;
+        left: calc(50% - 40px)!important;
     }
     .smallThing .logo {
         width: 5rem;
         height: 4rem;
+        
     }
 }

@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import reviewData from '../data/db.json';
+import PagiNationNum from "../csc/PagiNationNum";
 
-const ItemReview = ({ item, setReviewCount }) => {
+const ItemReview = ({ item, setReviewCount, pathName }) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 저장 변수
     const [modalIsOpen, setModalIsOpen] = useState(false); // 리뷰작성 모달팝업 호출 변수
@@ -17,6 +18,8 @@ const ItemReview = ({ item, setReviewCount }) => {
     const navigate = useNavigate();
     const [title, setReviewTitle] = useState('');
     const [comment, setReviewMessage] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const location = useLocation();
 
     useEffect(() => {
         setReviews(reviewData.review);
@@ -66,7 +69,8 @@ const ItemReview = ({ item, setReviewCount }) => {
     };
 
     // 선택된 상품의 리뷰만 필터링
-    const filteredReviews = reviews.filter(review => review.productId === item);
+    const filteredReview = reviews.filter(review => review.productId === item);
+    const filteredReviews = filteredReview.reverse();
 
     function onreviewTitle(e) {
         setReviewTitle(e.target.value)
@@ -102,6 +106,15 @@ const ItemReview = ({ item, setReviewCount }) => {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
     }
+
+    const itemsPerPage = 5;
+    const maxPagesToShow = 5;
+
+    // useEffect(() => {
+    //     const query = new URLSearchParams(location.search);
+    //     const page = parseInt(query.get('page')) || 1;
+    //     setCurrentPage(page);
+    // }, [location]);
 
     return (
         <>
@@ -180,6 +193,8 @@ const ItemReview = ({ item, setReviewCount }) => {
                         </div>
                     )}
                 </div>
+                <PagiNationNum maxPagesToShow = {maxPagesToShow} itemsPerPage = {itemsPerPage} object = {filteredReviews} />
+                {/* navigation = {} */}
             </div>
         </>
     );

@@ -50,6 +50,9 @@ export default function InquiryList({ inquiries, existingInquiries, setCurrentPa
         }
     };
 
+
+    // console.log(inquiriesState);
+
     return (
         <>
             {inquiriesState.map((inquiry) => (

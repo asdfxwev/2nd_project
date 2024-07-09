@@ -6,6 +6,7 @@ import TuneIcon from '@mui/icons-material/Tune';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import PagiNation from '../csc/PagiNation'
 
 
 const ItemList = () => {
@@ -51,27 +52,29 @@ const ItemList = () => {
         }
     });
     //width에 따른 itemsPerPage 수량 변경 코드 
-    const updateItemsPerPage = () => {
+    // const updateItemsPerPage = () => {
+    useEffect(() => {
         const width = window.innerWidth;
         if (width < 560) {
             setItemsPerPage(4);
-        } else if (width < 880){
+        } else if (width < 880) {
             setItemsPerPage(8);
         } else if (width < 1360) {
             setItemsPerPage(12);
         } else {
             setItemsPerPage(20);
         }
-    };
-    
+    })
+    // };
+
     // updateItemsPerPage resize하는 코드
-    useEffect(() => {
-        updateItemsPerPage();
-        window.addEventListener('resize', updateItemsPerPage);
-        return () => {
-            window.removeEventListener('resize', updateItemsPerPage);
-        };
-    }, []);
+    // useEffect(() => {
+    //     updateItemsPerPage();
+    //     window.addEventListener('resize', updateItemsPerPage);
+    //     return () => {
+    //         window.removeEventListener('resize', updateItemsPerPage);
+    //     };
+    // }, []);
 
     // 현재 페이지의 URL을 가져옴
     console.log('location.pathname=' + location.pathname);  // 현재 페이지의 URL을 출력 location.pathname=/ItemList/ItemDetail/1
@@ -294,6 +297,8 @@ const ItemList = () => {
         setPaginatedItems(paginatedItems);
     }, [currentPage, searchResult, itemsPerPage, selectedFilters]);
 
+    const maxPagesToShow = 5;
+
     return (
         <div className='item-first'>
             <div className='item-size-200'><h1>{selectedOption}</h1></div>
@@ -370,14 +375,14 @@ const ItemList = () => {
                                     </span>
                                 </h3>
                                 <div className={`filter-section-content ${selectedFilters.brand.visible ? 'visible' : ''}`}>
-                                        <div><label><input type='checkbox' checked={selectedFilters.brand['1/100']} onChange={() => handleCheckboxChange('brand', '1/100')}></input>1/100</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.brand['FG']} onChange={() => handleCheckboxChange('brand', 'FG')}></input>FG</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE MECHANICS']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE MECHANICS')}></input>FIGURE-RISE MECHANICS</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE STANDARD']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE STANDARD')}></input>FIGURE-RISE STANDARD</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE')}></input>FIGURE-RISE</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.brand['포켓프라']} onChange={() => handleCheckboxChange('brand', '포켓프라')}></input>포켓프라</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.brand['포켓몬프라']} onChange={() => handleCheckboxChange('brand', '포켓몬프라')}></input>포켓몬프라</label></div>
-                                    </div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.brand['1/100']} onChange={() => handleCheckboxChange('brand', '1/100')}></input>1/100</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.brand['FG']} onChange={() => handleCheckboxChange('brand', 'FG')}></input>FG</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE MECHANICS']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE MECHANICS')}></input>FIGURE-RISE MECHANICS</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE STANDARD']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE STANDARD')}></input>FIGURE-RISE STANDARD</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.brand['FIGURE-RISE']} onChange={() => handleCheckboxChange('brand', 'FIGURE-RISE')}></input>FIGURE-RISE</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.brand['포켓프라']} onChange={() => handleCheckboxChange('brand', '포켓프라')}></input>포켓프라</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.brand['포켓몬프라']} onChange={() => handleCheckboxChange('brand', '포켓몬프라')}></input>포켓몬프라</label></div>
+                                </div>
                             </div>
                             <div className='filter-section'>
                                 <h3 onClick={() => toggleSection('item')}>
@@ -387,12 +392,12 @@ const ItemList = () => {
                                     </span>
                                 </h3>
                                 <div className={`filter-section-content ${selectedFilters.item.visible ? 'visible' : ''}`}>
-                                        <div><label><input type='checkbox' checked={selectedFilters.item['건담 무사']} onChange={() => handleCheckboxChange('item', '건담 무사')}></input>건담 무사</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.item['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('item', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.item['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('item', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.item['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('item', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
-                                        <div><label><input type='checkbox' checked={selectedFilters.item['신기동전사 건담W']} onChange={() => handleCheckboxChange('item', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
-                                    </div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.item['건담 무사']} onChange={() => handleCheckboxChange('item', '건담 무사')}></input>건담 무사</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.item['건담 브레이커 배틀로그']} onChange={() => handleCheckboxChange('item', '건담 브레이커 배틀로그')}></input>건담 브레이커 배틀로그</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.item['기동전사 건담 수성의 마녀']} onChange={() => handleCheckboxChange('item', '기동전사 건담 수성의 마녀')}></input>기동전사 건담 수성의 마녀</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.item['기동전사 건담 복수의 레퀴엠']} onChange={() => handleCheckboxChange('item', '기동전사 건담 복수의 레퀴엠')}></input>기동전사 건담 복수의 레퀴엠</label></div>
+                                    <div><label><input type='checkbox' checked={selectedFilters.item['신기동전사 건담W']} onChange={() => handleCheckboxChange('item', '신기동전사 건담W')}></input>신기동전사 건담W</label></div>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -405,7 +410,7 @@ const ItemList = () => {
             {/* 페이지 네이션 */}
             <div className='pagination-container'>
                 <div className='pagination'>
-                    {Array.from({ length: totalNumberOfPages }).map((_, index) => (
+                    {/* {Array.from({ length: totalNumberOfPages }).map((_, index) => (
                         <Link
                             key={index}
                             to={`/ItemList?page=${index + 1}`}
@@ -414,7 +419,8 @@ const ItemList = () => {
                         >
                             {index + 1}
                         </Link>
-                    ))}
+                    ))} */}
+                    <PagiNation maxPagesToShow={maxPagesToShow} itemsPerPage={itemsPerPage} object={searchResult} navigation='/ItemList?page=' />
                 </div>
             </div>
         </div>

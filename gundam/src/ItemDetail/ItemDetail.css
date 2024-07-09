@@ -118,6 +118,48 @@
     /* padding: 10px; */
     margin: 10px 0;
 }
+@media (max-width: 768px) {
+    .item_detail_main {
+        flex-direction: column; /* 아이템을 세로로 정렬 */
+        margin: 10px; /* 마진 축소 */
+    }
+
+    .detail_left_box {
+        float: none; /* 플로팅 제거 */
+        width: 100%; /* 너비를 100%로 조정 */
+        margin: 0; /* 마진 제거 */
+    }
+
+    .item_detail_img {
+        height: auto; /* 이미지 높이를 자동으로 조정 */
+    }
+
+    .detail_img_list {
+        flex-wrap: wrap; /* 이미지 리스트를 여러 줄로 표시 */
+        justify-content: center; /* 중앙 정렬 */
+    }
+
+    .detail_slide_img {
+        width: 80px; /* 슬라이드 이미지 너비 축소 */
+        height: 80px; /* 슬라이드 이미지 높이 축소 */
+    }
+
+    .tab_inner a {
+        font-size: 16px; /* 탭 내부 링크 폰트 크기 축소 */
+        width: 100px; /* 탭 내부 링크 너비 축소 */
+        height: 50px; /* 탭 내부 링크 높이 축소 */
+    }
+
+    .detail_item_name {
+        font-size: 30px; /* 제품 이름 폰트 크기 축소 */
+        margin-top: 50px; /* 상단 마진 축소 */
+    }
+
+    .detail_item_subname {
+        font-size: 16px; /* 부제목 폰트 크기 축소 */
+        margin: 10px 10px; /* 마진 조정 */
+    }
+}
 
 /* ============= section img End ============== */
 /* ================== review ================== */

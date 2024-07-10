@@ -20,11 +20,7 @@ const checkEmailExists = async (email) => {
 const checkPhoneNumberExists = async (phoneNumber) => {
     try {
         const response = await axios.get(`http://localhost:3001/users?phoneNumber=${phoneNumber}`);
-        console.log('responsedataphonenumber',response.data.phoneNumber);
-        console.log('responsedata',response.data);
-        // console.log('responsedata',response.data);
-        console.log(phoneNumber);
-        if(phoneNumber !== response.data)
+        // phoneNumber와 response.data를 직접 비교하는 대신, response.data.length를 확인합니다.
         return response.data.length > 0;
     } catch (error) {
         console.error('Error checking phone number:', error);
@@ -147,7 +143,7 @@ const SignupForm = () => {
                         type="email"
                         onChange={(e) => {
                             formik.handleChange(e);
-                            setIsPhoneNumberChecked(false);
+                            setIsEmailChecking(false);
                         }}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}

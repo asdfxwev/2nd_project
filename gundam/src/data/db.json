@@ -73,13 +73,47 @@
       "buy": []
     },
     {
-      "id": "f17b",
-      "email": "asdf@asdfg",
-      "address": "asdf asdf",
       "name": "tmdqja",
-      "password": "asdfasdf",
+      "email": "asdf@asdfg",
       "phoneNumber": "1234567890",
-      "inquries": []
+      "address": "asdf asdf",
+      "id": "f17b",
+      "cart": [
+        {
+          "id": 3,
+          "tag": "건프라",
+          "name": "SD 건담월드 히어로즈 오공 임펄스 건담",
+          "price": 7200,
+          "comment": "기동전사 건담 수성의 마녀",
+          "detail": "건담 시리즈의 기념비적인 첫 번째 작품. 스페이스 콜로니와 같이 최첨단 과학기술을 배경으로, 치밀하면서도 리얼한 세계관을 구축하여 인기를 얻었다",
+          "brand": "FIGURE-RISE MECHANICS",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam08.jpg",
+            "/image/gundam09.jpg"
+          ],
+          "image": "/image/gundam03.jpg",
+          "isChecked": false,
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "tag": "건프라",
+          "name": "SD 건담월드 히어로즈 오공 임펄스 건담",
+          "price": 7200,
+          "comment": "기동전사 건담 수성의 마녀",
+          "detail": "건담 시리즈의 기념비적인 첫 번째 작품. 스페이스 콜로니와 같이 최첨단 과학기술을 배경으로, 치밀하면서도 리얼한 세계관을 구축하여 인기를 얻었다",
+          "brand": "FIGURE-RISE MECHANICS",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam08.jpg",
+            "/image/gundam09.jpg"
+          ],
+          "image": "/image/gundam03.jpg",
+          "isChecked": false,
+          "quantity": 1
+        }
+      ]
     },
     {
       "id": "79c7",
@@ -154,7 +188,31 @@
       "name": "rlarudfo",
       "password": "123123123",
       "confirmPassword": "123123123",
-      "phoneNumber": "01080334919"
+      "phoneNumber": "01080334919",
+      "inquries": [
+        {
+          "id": 1,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a",
+          "formData": {}
+        },
+        {
+          "id": 3,
+          "inquiryType": "배송",
+          "subject": "aa",
+          "message": "aa",
+          "formData": {}
+        },
+        {
+          "id": 4,
+          "inquiryType": "배송",
+          "subject": "aaaaa",
+          "message": "aaa",
+          "formData": {}
+        }
+      ],
+      "inquiryCounter": 5
     },
     {
       "id": "6b8e",

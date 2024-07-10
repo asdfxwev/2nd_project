@@ -40,48 +40,33 @@ export default function InquiryEdit() {
             // Fetch the current user data
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data
-            // .inquries.find(inquiry => inquiry.id);;
-            console.log(inquiry.id);
-            console.log(event);
             console.log(userData);
+            console.log(userData.inquries);
+            const id = inquiryData.id
+            const inquiryType = inquiryData.inquiryType
+            const subject = inquiryData.subject
+            const message = inquiryData.message
 
-            // const id = userData.inquiryCounter || 1;
-            // const updatedInquiries = userData.inquries.remove(inquiry => inquiry.id === event);
+            const updatedInquiries = userData.inquries.filter(inquiry => inquiry.id !== id);
+            // console.log(updatedInquiries);
+            await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, { ...userData, inquries: updatedInquiries });
 
             const formData = new FormData();
             files.map((file) => {
                 formData.append("files", file);
             });
             console.log(formData);
-
-            const id = inquiryData.id
-            const inquiryType = inquiryData.inquiryType
-            const subject = inquiryData.subject
-            const message = inquiryData.message
-            // const formData = inquiryData.formData
-            userData.inquries = userData.inquries.map((inquiry) => {
-                if (inquiry.id === id) {
-                    return {id, inquiryType, subject, message, formData}
-                }
-            })
+            const userResponses = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userDatas = userResponses.data
 
             const newInquiry = { id, inquiryType, subject, message, formData };
 
-            // Add the new inquiry to the user's inquiries list
-            userData.inquries = userData.inquries ? [...userData.inquries, newInquiry] : [newInquiry];
-            userData.inquiryCounter = id + 1;
-            // Update the user data on the server
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
-
+            userDatas.inquries = userDatas.inquries ? [...userDatas.inquries, newInquiry] : [newInquiry];
+            await axios.put(`http://localhost:3001/users/${userId}`, userDatas);
             navigate('/Inquiry?page=1');
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
-
-        // setSubject(inquiries.subject);
-        // setMessage(inquiries.message);
-        // setInquiryType(inquiries.inquiryType);
-        // setFiles('')
     };
 
     const handleInputChange = (e) => {
@@ -92,10 +77,10 @@ export default function InquiryEdit() {
         }));
     };
 
-    function onSubjectChange(e) {
-        setInquiryData(e.target.value)
-        // setInquiryNum(e => e + 1)
-    }
+    // function onSubjectChange(e) {
+    //     setInquiryData(e.target.value)
+    //     // setInquiryNum(e => e + 1)
+    // }
 
     return (
         <section className="cscContainer">
@@ -178,3 +163,13 @@ export default function InquiryEdit() {
         </section>
     );
 }
+
+
+
+// cartItemsfilter = userBasket.filter((item) => {
+//     return checkedCartItems.some(checkedItem => checkedItem.productId !== item.productId);
+// });
+
+// cartItemsfilter = userBasket.filter((item) => {
+//     return !checkedCartItems.some(checkedItem => checkedItem.productId === item.productId);
+// });

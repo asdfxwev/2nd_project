@@ -146,15 +146,15 @@ export default function InquiryList({ inquiries, existingInquiries, setCurrentPa
                     <div className="CscInquiryList">
                         <div style={{ width: '100px' }}>{inquiry.inquiryType}</div>
                         <div onClick={() => onInquiryTitle(inquiry.id)} style={{ width: '500px', cursor: 'pointer' }}>{inquiry.subject}</div>
-                        <div onClick={() => InquiryEdit(inquiry)}>
+                        {/* <div onClick={() => InquiryEdit(inquiry)}>
                                 수정하기
-                        </div>
+                        </div> */}
                         <div onClick={() => inquiryDelete(inquiry.id)} className="inquiryDelete" style={{ width: '100px' }}>삭제</div>
                     </div>
                     <div className={`inquiryDataContainer ${visibleInquiry === inquiry.id ? 'active' : ''}`}>
                         <div style={{ width: '100px', justifyContent: 'center', display: 'flex' }}>내용:</div>
                         <div className="inquiryData">{inquiry.message}</div>
-                        <div style={{ width: '100px' }}></div>
+                        <div className="inquiryEdit" onClick={() => InquiryEdit(inquiry)} style={{ width: '100px' }}>수정하기</div>
                     </div>
                 </React.Fragment>
             ))}

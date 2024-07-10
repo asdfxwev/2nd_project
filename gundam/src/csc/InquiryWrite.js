@@ -40,7 +40,7 @@ export default function InquiryWrite() {
             files.map((file) => {
                 formData.append("files", file);
             });
-            console.log(formData);
+            // console.log(formData);
 
             const newInquiry = { id, inquiryType, subject, message, formData };
 

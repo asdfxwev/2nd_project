@@ -40,48 +40,33 @@ export default function InquiryEdit() {
             // Fetch the current user data
             const userResponse = await axios.get(`http://localhost:3001/users/${userId}`);
             const userData = userResponse.data
-            // .inquries.find(inquiry => inquiry.id);;
-            console.log(inquiry.id);
-            console.log(event);
             console.log(userData);
+            console.log(userData.inquries);
+            const id = inquiryData.id
+            const inquiryType = inquiryData.inquiryType
+            const subject = inquiryData.subject
+            const message = inquiryData.message
 
-            // const id = userData.inquiryCounter || 1;
-            // const updatedInquiries = userData.inquries.remove(inquiry => inquiry.id === event);
+            const updatedInquiries = userData.inquries.filter(inquiry => inquiry.id !== id);
+            // console.log(updatedInquiries);
+            await axios.put(`http://localhost:3001/users/${existingInquiries.id}`, { ...userData, inquries: updatedInquiries });
 
             const formData = new FormData();
             files.map((file) => {
                 formData.append("files", file);
             });
             console.log(formData);
-
-            const id = inquiryData.id
-            const inquiryType = inquiryData.inquiryType
-            const subject = inquiryData.subject
-            const message = inquiryData.message
-            // const formData = inquiryData.formData
-            userData.inquries = userData.inquries.map((inquiry) => {
-                if (inquiry.id === id) {
-                    return {id, inquiryType, subject, message, formData}
-                }
-            })
+            const userResponses = await axios.get(`http://localhost:3001/users/${userId}`);
+            const userDatas = userResponses.data
 
             const newInquiry = { id, inquiryType, subject, message, formData };
 
-            // Add the new inquiry to the user's inquiries list
-            userData.inquries = userData.inquries ? [...userData.inquries, newInquiry] : [newInquiry];
-            userData.inquiryCounter = id + 1;
-            // Update the user data on the server
-            await axios.put(`http://localhost:3001/users/${userId}`, userData);
-
+            userDatas.inquries = userDatas.inquries ? [...userDatas.inquries, newInquiry] : [newInquiry];
+            await axios.put(`http://localhost:3001/users/${userId}`, userDatas);
             navigate('/Inquiry?page=1');
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
-
-        // setSubject(inquiries.subject);
-        // setMessage(inquiries.message);
-        // setInquiryType(inquiries.inquiryType);
-        // setFiles('')
     };
 
     const handleInputChange = (e) => {
@@ -92,10 +77,10 @@ export default function InquiryEdit() {
         }));
     };
 
-    function onSubjectChange(e) {
-        setInquiryData(e.target.value)
-        // setInquiryNum(e => e + 1)
-    }
+    // function onSubjectChange(e) {
+    //     setInquiryData(e.target.value)
+    //     // setInquiryNum(e => e + 1)
+    // }
 
     return (
         <section className="cscContainer">
@@ -106,43 +91,43 @@ export default function InquiryEdit() {
                     <div className="inquiryType">문의유형</div>
                     <div className="inquiryTypeList">
                         <div >
-                            <input name="inquirySelect" id="inquiryNum1" type="radio" onChange={handleInquiryChange} defaultChecked />
+                            <input name="inquirySelect" id="inquiryNum1" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "배송"} />
                             <label For="inquiryNum1">배송</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum2" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum2" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "상품"} />
                             <label For="inquiryNum2">상품</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum3" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum3" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "반품"} />
                             <label For="inquiryNum3">반품</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum4" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum4" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "교환"} />
                             <label For="inquiryNum4">교환</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum5" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum5" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "완구A/S"} />
                             <label For="inquiryNum5">완구A/S</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum6" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum6" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "주문/결제"} />
                             <label For="inquiryNum6">주문/결제</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum7" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum7" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "이벤트"} />
                             <label For="inquiryNum7">이벤트</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum8" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum8" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "회원"} />
                             <label For="inquiryNum8">회원</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum9" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum9" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "시스템장애"} />
                             <label For="inquiryNum9">시스템장애</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum10" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum10" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "기타"} />
                             <label For="inquiryNum10">기타</label>
                         </div>
                     </div>
@@ -178,3 +163,13 @@ export default function InquiryEdit() {
         </section>
     );
 }
+
+
+
+// cartItemsfilter = userBasket.filter((item) => {
+//     return checkedCartItems.some(checkedItem => checkedItem.productId !== item.productId);
+// });
+
+// cartItemsfilter = userBasket.filter((item) => {
+//     return !checkedCartItems.some(checkedItem => checkedItem.productId === item.productId);
+// });

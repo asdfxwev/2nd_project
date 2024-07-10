@@ -13,7 +13,7 @@ import NoticeDelivery from '../csc/NoticeDelivery';
 import Inquiry from '../csc/Inquiry';
 import InquiryWrite from '../csc/InquiryWrite';
 import MyPage from '../MyPage/MyPage';
-import Cart from '../cart/Cart';
+import Cart from '../Cart/Cart';
 import ItemBuy from '../ItemDetail/ItemBuy';
 import Order from '../Order/Order';
 import InquiryList from '../csc/InquiryList';

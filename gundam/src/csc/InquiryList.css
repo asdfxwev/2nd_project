@@ -8,8 +8,11 @@
 }
 
 .inquiryDelete {
-    border: 1px solid;
     cursor: pointer;
+    border: 1px solid white;
+    border-radius: 100px;
+    padding: 10px 0px;
+    background-color: aqua;
 }
 
 .inquiryDataContainer {
@@ -48,11 +51,6 @@
     border-bottom: 1px solid gray;
 }
 
-.inquiryDelete {
-    border: 1px solid;
-    cursor: pointer;
-}
-
 .inquiryDataContainer {
     display: flex;
     justify-content: center;
@@ -72,4 +70,13 @@
     max-height: 200px;
     height: 200px;
     opacity: 1;
+}
+
+.inquiryEdit {
+    border: 1px solid white;
+    border-radius: 100px;
+    padding: 10px 0px;
+    background-color: aqua;
+    cursor: pointer;
+    text-align: center;
 }

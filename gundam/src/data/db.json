@@ -113,7 +113,24 @@
           "isChecked": false,
           "quantity": 1
         }
-      ]
+      ],
+      "inquries": [
+        {
+          "id": 1,
+          "inquiryType": "배송",
+          "subject": "a",
+          "message": "a",
+          "formData": {}
+        },
+        {
+          "id": 2,
+          "inquiryType": "완구A/S",
+          "subject": "aa",
+          "message": "aa",
+          "formData": {}
+        }
+      ],
+      "inquiryCounter": 3
     },
     {
       "id": "79c7",

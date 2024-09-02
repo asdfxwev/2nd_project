@@ -208,28 +208,49 @@
       "phoneNumber": "01080334919",
       "inquries": [
         {
-          "id": 1,
+          "id": 6,
           "inquiryType": "배송",
-          "subject": "a",
-          "message": "a",
+          "subject": "배송이 안와요",
+          "message": "배송이 안와요",
           "formData": {}
         },
         {
-          "id": 3,
-          "inquiryType": "배송",
-          "subject": "aa",
-          "message": "aa",
+          "id": 7,
+          "inquiryType": "상품",
+          "subject": "상품이 이상해요",
+          "message": "상품이 이상해요",
           "formData": {}
         },
         {
-          "id": 4,
-          "inquiryType": "배송",
-          "subject": "aaaaa",
-          "message": "aaa",
+          "id": 8,
+          "inquiryType": "반품",
+          "subject": "반품시켜주세요",
+          "message": "반품시켜주세요",
+          "formData": {}
+        },
+        {
+          "id": 9,
+          "inquiryType": "이벤트",
+          "subject": "이벤트 당첨 발표는 언제하나요?",
+          "message": "빨리 나왔으면 좋겠어요",
+          "formData": {}
+        },
+        {
+          "id": 10,
+          "inquiryType": "시스템장애",
+          "subject": "시스템이 이상해요",
+          "message": "시스템이 이상해요",
+          "formData": {}
+        },
+        {
+          "id": 11,
+          "inquiryType": "완구A/S",
+          "subject": "a/s가 되나요?",
+          "message": "a/s가 되나요?",
           "formData": {}
         }
       ],
-      "inquiryCounter": 5
+      "inquiryCounter": 12
     },
     {
       "id": "6b8e",

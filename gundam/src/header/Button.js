@@ -31,7 +31,7 @@ export default function Button() {
             if (!footer) return;
             const footerRect = footer.getBoundingClientRect();
 
-            if (footer && window.scrollY > window.innerHeight * 0.5 && window.scrollX > window.innerWidth * .3) {
+            if (footer && window.scrollY > window.innerHeight * 0.5 /*&& window.scrollX > window.innerWidth * .3*/) {
                 if (isDetailPage) {
                     setShowButton(false);
                 } else {

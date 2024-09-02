@@ -7,9 +7,7 @@ import ItemQna from './ItemQna';
 import ItemService from './ItemService';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import TopBtn from '../header/topBtn.js';
-
-
+import TopBtn from '../header/TopBtn.js';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -173,15 +171,26 @@ export default function ItemDetail() {
                         <a href="#SERVICE" >배송/교환/반품</a>
                     </div>
                 </div>
+                <div className='media_show_hide'>
+                    <div className='detail_item_subname'>{selectedItem.name}</div>
+                    {/* <div>{formatNumber(selectedItem.price)} 원</div> */}
+                    <div className='count_right_box'>
+                        <button onClick={minus}>-</button>
+                        <div className='count_num'>{count}</div>
+                        <button onClick={plus}>+</button>
+                    </div>
+                    <div className='total_price'>총금액 : {formatNumber(totalprice)} 원</div>
+                    <button type='button' style={{ cursor: 'pointer' }} className='submit_btn' onClick={handleBuyClick}>구매하기</button>
+                </div>
                 {/* // tab */}
 
                 <div className="section_img">
-                    <div className='detail_item_name'>MG WING GUNDAM<br />ZERO EW Ver.Ka</div>
-                    <div className='detail_item_subname'>MG 윙 건담 제로 (EW) Ver.Ka</div>
+                    {/* <div className='detail_item_name'>MG WING GUNDAM<br />ZERO EW Ver.Ka</div> */}
+                    <div className='detail_item_name'>{selectedItem.name}</div>
 
                     <SectionImg key={selectedItem.id} item={selectedItem} /> {/* 상세보기 tab */}
-                    <ItemReview key={selectedItem.id} item={selectedItem.id} setReviewCount={setReviewCount} pathName = {location.pathname} /> {/* 리뷰 tab */}
-                    <ItemQna key={selectedItem.id} item={selectedItem.id} pathName = {location.pathname} /> {/* Q&A tab */}
+                    <ItemReview key={selectedItem.id} item={selectedItem.id} setReviewCount={setReviewCount} /> {/* 리뷰 tab */}
+                    <ItemQna key={selectedItem.id} item={selectedItem.id} /> {/* Q&A tab */}
                     <ItemService /> {/* 배송/교환/반품 tab */}
 
                 </div>

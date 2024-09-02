@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import './ItemDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -48,12 +48,22 @@ const ItemQna = ({ item, pathName }) => {
         setModalOpenPop(false);
     };
 
-    const filteredQna = qnas.filter(qna => qna.productId === item).reverse();
+    // 선택된 상품의 Q&A만 필터링 및 메모이제이션
+    const filteredQna = useMemo(() => {
+        return qnas.filter(qna => qna.productId === item).reverse();
+    }, [qnas, item]);
 
     useEffect(() => {
         const startIndex = (currentPage - 1) * 5;
         const endIndex = startIndex + 5;
-        setPaginatedItems(filteredQna.slice(startIndex, endIndex));
+        const newPaginatedItems = filteredQna.slice(startIndex, endIndex);
+
+        setPaginatedItems(prevItems => {
+            if (JSON.stringify(prevItems) !== JSON.stringify(newPaginatedItems)) {
+                return newPaginatedItems;
+            }
+            return prevItems;
+        });
     }, [currentPage, filteredQna]);
 
     const onQnaMessage = (e) => {
@@ -75,6 +85,11 @@ const ItemQna = ({ item, pathName }) => {
 
             const newQna = { qna_Id, productId, userId, comment, date };
 
+            if (comment === '') {
+                alert(`내용을 입력해주세요.`);
+                return false;
+            }
+
             await axios.post(`http://localhost:3001/qna`, newQna);
 
             setQnaValue('');
@@ -94,7 +109,7 @@ const ItemQna = ({ item, pathName }) => {
                         <div className="review_pop">
                             <h2>Qna작성</h2>
                             <div className="qnaBox">
-                                내용 : <textarea value={comment} onChange={onQnaMessage} type="text" id="comment" className="re_comment" />
+                                내용 <textarea value={comment} onChange={onQnaMessage} type="text" id="comment" className="re_comment" />
                             </div>
                             <div className="re_button_box">
                                 <button type="button" className="re_button" onClick={submitQna}>저장</button>

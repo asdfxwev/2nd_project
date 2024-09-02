@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import './ItemDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -69,9 +69,11 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
         setModalNoPurchase(false);
     };
 
-    // 선택된 상품의 리뷰만 필터링
-    const filteredReview = reviews.filter(review => review.productId === item);
-    const filteredReviews = filteredReview.reverse();
+    // 선택된 상품의 리뷰만 필터링 및 메모이제이션
+    const filteredReviews = useMemo(() => {
+        const filteredReview = reviews.filter(review => review.productId === item);
+        return filteredReview.reverse();
+    }, [reviews, item]);
 
     function onreviewTitle(e) {
         setReviewTitle(e.target.value)
@@ -95,6 +97,11 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
             const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
             const userId = existingInquiries.id;
 
+            if (title === '' || comment === '') {
+                alert(`제목과 내용을 입력해주세요.`);
+                return false;
+            }
+
             const newReview = { reviewId, productId, userId, title, comment, date };
 
             // 서버에 새로운 리뷰 추가
@@ -111,15 +118,16 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
     useEffect(() => {
         const startIndex = (currentPage - 1) * 5;
         const endIndex = startIndex + 5;
-        setPaginatedItems(filteredReviews.slice(startIndex, endIndex));
+        const newPaginatedItems = filteredReviews.slice(startIndex, endIndex);
+
+        setPaginatedItems(prevItems => {
+            // 상태가 실제로 변경되었는지 확인하여 불필요한 상태 변경 방지
+            if (JSON.stringify(prevItems) !== JSON.stringify(newPaginatedItems)) {
+                return newPaginatedItems;
+            }
+            return prevItems;
+        });
     }, [currentPage, filteredReviews]);
-
-
-    // useEffect(() => {
-    //     const query = new URLSearchParams(location.search);
-    //     const page = parseInt(query.get('page')) || 1;
-    //     setCurrentPage(page);
-    // }, [location]);
 
     return (
         <>
@@ -135,10 +143,10 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
                         <form className="review_pop">
                             <h2>리뷰작성</h2>
                             <div>
-                                <div>제목 :
+                                <div>제목 
                                     <input value={title} onChange={onreviewTitle} type="text" id="title" className="re_title" />
                                 </div>
-                                <div className="reviewBox">내용 :
+                                <div className="reviewBox">내용 
                                     <textarea value={comment} onChange={onreviewMessage} type="text" id="comment" className="re_comment" />
                                 </div>
                             </div>
@@ -179,16 +187,16 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
             </div>
             <div className="review_list">
                 <div className="re_list_top">
-                    <div>No.</div><div>Review</div>
+                    <div>등록일</div><div>Review</div>
                 </div>
                 <div className="re_list_data">
                     {paginatedItems.length > 0 ? (
                         paginatedItems.map(review => (
                             <div className="re_list_row" key={review.reviewId}>
-                                <div>{review.reviewId}</div>
+                                <div>{review.date}</div>
                                 <div>
                                     <p>{review.title}</p>
-                                    <p>{review.comment}</p>
+                                    <p>- {review.comment}</p>
                                 </div>
                             </div>
                         ))

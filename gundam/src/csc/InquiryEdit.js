@@ -91,43 +91,43 @@ export default function InquiryEdit() {
                     <div className="inquiryType">문의유형</div>
                     <div className="inquiryTypeList">
                         <div >
-                            <input name="inquirySelect" id="inquiryNum1" type="radio" onChange={handleInquiryChange} defaultChecked />
+                            <input name="inquirySelect" id="inquiryNum1" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "배송"} />
                             <label For="inquiryNum1">배송</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum2" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum2" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "상품"} />
                             <label For="inquiryNum2">상품</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum3" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum3" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "반품"} />
                             <label For="inquiryNum3">반품</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum4" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum4" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "교환"} />
                             <label For="inquiryNum4">교환</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum5" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum5" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "완구A/S"} />
                             <label For="inquiryNum5">완구A/S</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum6" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum6" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "주문/결제"} />
                             <label For="inquiryNum6">주문/결제</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum7" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum7" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "이벤트"} />
                             <label For="inquiryNum7">이벤트</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum8" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum8" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "회원"} />
                             <label For="inquiryNum8">회원</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum9" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum9" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "시스템장애"} />
                             <label For="inquiryNum9">시스템장애</label>
                         </div>
                         <div>
-                            <input name="inquirySelect" id="inquiryNum10" type="radio" onChange={handleInquiryChange} />
+                            <input name="inquirySelect" id="inquiryNum10" type="radio" onChange={handleInquiryChange} checked={inquiryData.inquiryType === "기타"} />
                             <label For="inquiryNum10">기타</label>
                         </div>
                     </div>

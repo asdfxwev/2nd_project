@@ -7,12 +7,6 @@ export default function CscLeft() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // if (!isLoggedIn) {
-    //     const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
-    //     if (loginCheck !== null) {
-    //         setIsLoggedIn(true);
-    //     }
-    // }
 
     useEffect(() => {
         const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));

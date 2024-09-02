@@ -54,18 +54,16 @@ export default function Notice() {
         setPaginatedItems(filteredItems.slice(startIndex, endIndex));
     }, [currentPage, filteredItems]);
 
-        useEffect(() => {
+    useEffect(() => {
         const query = new URLSearchParams(location.search);
         const page = parseInt(query.get('page')) || 1;
         setCurrentPage(page);
     }, [location]);
 
-    console.log(filteredItems);
-    console.log(paginatedItems);
 
     return (
         <section className="cscNoticeContiner">
-            <CscLeft /> {/* 왼쪽 메뉴 컴포넌트 */}
+            <CscLeft />
             <div className="cscNoticeMain">
                 <h2 className="h2Notice">공지사항</h2>
                 <form className="noticeForm" onSubmit={onNoticeSubmit}>

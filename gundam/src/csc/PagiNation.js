@@ -31,6 +31,8 @@ export default function PagiNation({itemsPerPage, maxPagesToShow, object, naviga
 
         return pageNumbers;
     };
+    // startPage - 1 // Math.floor((currentPage - 1) / maxPagesToShow) * maxPagesToShow
+    // startPage + maxPagesToShow // Math.floor((currentPage - 1) / maxPagesToShow) * maxPagesToShow + 1 + maxPagesToShow
 
     // console.log(object);
 

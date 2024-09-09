@@ -1,13 +1,13 @@
-.h1-name{
-    width: 80%;
+.h1-names{
+    /* width: 80%; */
     font-size: 3em;
-    margin: auto;
-    padding-top: 112px;
+    /* margin: auto; */
+    /* padding-top: 112px; */
     font-family: 'LINESeedKR-Bd';
 }
 
-.cart-container {
-    width: 80%;
+.cart-containers {
+    /* width: 80%; */
     margin: auto;
     background-color: white;
     padding: 20px;

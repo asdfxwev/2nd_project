@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Order.css';
 import axios from 'axios';
+import MypageLeft from '../MyPage/MypageLeft';
 
 const CartItem = ({ item, onQuantityChange, onCheckboxChange, isChecked }) => {
     const handleQuantityChange = (newQuantity) => {
@@ -84,9 +85,11 @@ const Cart = () => {
     };
 
     return (
-        <div>
-            <h1 className='h1-name'>구매내역</h1>
-            <div className="cart-container">
+        <div className="mypageContainer">
+            <MypageLeft />
+        <div className="cartWrapper">
+            <h1 className='h1-names'>구매내역</h1>
+            <div className="cart-containers">
                 <div className="cart-header">
                     <div>구매일</div>
                     <div>상품 이미지</div>
@@ -105,6 +108,7 @@ const Cart = () => {
                     />
                 ))}
             </div>
+        </div>
         </div>
     );
 };

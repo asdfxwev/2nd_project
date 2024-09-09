@@ -143,7 +143,8 @@ const SignupForm = () => {
                         type="email"
                         onChange={(e) => {
                             formik.handleChange(e);
-                            setIsEmailChecking(false);
+                            setIsEmailChecking(false); // 이메일 변경 시 중복 확인 상태 초기화
+                            
                         }}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
@@ -152,24 +153,26 @@ const SignupForm = () => {
                     <button
                         type="button"
                         onClick={async () => {
-                            if (!formik.values.email) {
+                            if (!formik.values.email ) {
                                 alert('이메일을 입력하세요.');
                                 return;
                             }
                             if (formik.errors.email) {
                                 alert(formik.errors.email);
                                 return;
-                            }
+
+                            }  
                             const emailExists = await checkEmailExists(formik.values.email);
-                            if (emailExists) {
+                            if (emailExists ) {    
                                 alert('이미 사용 중인 이메일입니다.');
                                 setIsEmailChecking(false);
-                                
                             } else {
                                 alert('사용 가능한 이메일입니다.');
-                                setIsEmailChecking(true);
-
+                                setIsEmailChecking(true );
+    
+                            
                             }
+                                
                         }}
                     >
                         중복 확인
@@ -212,6 +215,7 @@ const SignupForm = () => {
                             if (phoneNumberExists) {
                                 alert('이미 사용 중인 핸드폰 번호입니다.');
                                 setIsPhoneNumberChecked(false);
+                                
                             } else {
                                 alert('사용 가능한 핸드폰 번호입니다.');
                                 setIsPhoneNumberChecked(true);

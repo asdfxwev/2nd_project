@@ -5,10 +5,21 @@ import axios from 'axios';
 import './SignupForm.css';
 import { useNavigate } from 'react-router-dom';
 
-// 이메일 중복 확인 함수
+// 중복 확인 함수들
+const checkIdExists = async (id) => {
+    try {
+        const response = await axios.get(`http://localhost:3001/users?id=${id}`);
+        return response.data.length > 0;
+    } catch (error) {
+        console.error('Error checking ID:', error);
+        return false;
+    }
+};
+
 const checkEmailExists = async (email) => {
     try {
-        const response = await axios.get(`http://localhost:3001/users?email=${email}`);
+        const encodedEmail = encodeURIComponent(email);
+        const response = await axios.get(`http://localhost:3001/users?email=${encodedEmail}`);
         return response.data.length > 0;
     } catch (error) {
         console.error('Error checking email:', error);
@@ -16,11 +27,9 @@ const checkEmailExists = async (email) => {
     }
 };
 
-// 핸드폰 번호 중복 확인 함수
 const checkPhoneNumberExists = async (phoneNumber) => {
     try {
         const response = await axios.get(`http://localhost:3001/users?phoneNumber=${phoneNumber}`);
-        // phoneNumber와 response.data를 직접 비교하는 대신, response.data.length를 확인합니다.
         return response.data.length > 0;
     } catch (error) {
         console.error('Error checking phone number:', error);
@@ -30,27 +39,29 @@ const checkPhoneNumberExists = async (phoneNumber) => {
 
 const SignupForm = () => {
     const navigate = useNavigate();
-    const [isPhoneNumberChecked, setIsPhoneNumberChecked] = useState(false); // 핸드폰 번호 중복 확인 상태
-    const [isEmailChecking, setIsEmailChecking] = useState(false); // 이메일 중복 확인 상태
-    const [isPhoneNumberChecking, setIsPhoneNumberChecking] = useState(false); // 핸드폰 번호 중복 확인 상태
+    const [isIdChecked, setIsIdChecked] = useState(false); 
+    const [isEmailChecked, setIsEmailChecked] = useState(false);
+    const [isPhoneNumberChecked, setIsPhoneNumberChecked] = useState(false);
 
     const handleSubmit = async (values) => {
+        if (!isIdChecked) {
+            alert('아이디 중복 확인을 해주세요.');
+            return;
+        }
+        if (!isEmailChecked) {
+            alert('이메일 중복 확인을 해주세요.');
+            return;
+        }
         if (!isPhoneNumberChecked) {
             alert('핸드폰 번호 중복 확인을 해주세요.');
             return;
         }
 
-        const { email, address, dtl_address, ...otherValues } = values;
+        const { id, email, phoneNumber, address, dtl_address, ...otherValues } = values;
         const combinedAddress = `${address} ${dtl_address}`;
-        const emailExists = await checkEmailExists(email);
-
-        if (emailExists) {
-            alert('이미 사용 중인 이메일입니다.');
-            return;
-        }
 
         try {
-            const response = await axios.post('http://localhost:3001/users', { email, address: combinedAddress, ...otherValues });
+            const response = await axios.post('http://localhost:3001/users', { id, email, phoneNumber, address: combinedAddress, ...otherValues });
             console.log(response.data);
             navigate('/Login');
         } catch (error) {
@@ -74,7 +85,6 @@ const SignupForm = () => {
                 });
             }
         };
-
         document.body.appendChild(script);
 
         return () => {
@@ -84,18 +94,22 @@ const SignupForm = () => {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
+            id: '',
             email: '',
             password: '',
             confirmPassword: '',
             address: '',
             dtl_address: '',
             phoneNumber: '',
+            birthdate: '',
+            gender: ''
         },
         validationSchema: Yup.object({
-            name: Yup.string().required('이름을 입력해주세요.'),
-            email: Yup.string().email('올바른 이메일 주소를 입력하세요.')
-                .matches(/^.+@.+\..+$/, '올바른 이메일 주소를 입력하세요.')
+            id: Yup.string()
+                .required('아이디를 입력해주세요.')
+                .min(4, '아이디는 최소 4자 이상이어야 합니다.'),
+            email: Yup.string()
+                .email('올바른 이메일 주소를 입력하세요.')
                 .required('이메일 주소는 필수 항목입니다.'),
             password: Yup.string()
                 .min(8, '비밀번호는 최소 8자 이상이어야 합니다.')
@@ -108,6 +122,10 @@ const SignupForm = () => {
             phoneNumber: Yup.string()
                 .matches(/^010[0-9]{8}$/, '유효한 핸드폰 번호를 입력하세요.')
                 .required('핸드폰 번호는 필수 항목입니다.'),
+            birthdate: Yup.date()
+                .required('생년월일을 입력해주세요.'),
+            gender: Yup.string()
+                .required('성별을 선택하세요.')
         }),
         onSubmit: handleSubmit,
     });
@@ -120,18 +138,44 @@ const SignupForm = () => {
                 </h1>
 
                 <div className="form-group">
-                    <label htmlFor="name">이름</label>
+                    <label htmlFor="id">아이디</label>
                     <input
-                        id="name"
-                        name="name"
+                        id="id"
+                        name="id"
                         type="text"
-                        onChange={formik.handleChange}
+                        onChange={(e) => {
+                            formik.handleChange(e);
+                            setIsIdChecked(false);
+                        }}
                         onBlur={formik.handleBlur}
-                        value={formik.values.name}
-                        placeholder="이름을 입력하세요"
+                        value={formik.values.id}
+                        placeholder="아이디를 입력하세요"
                     />
-                    {formik.touched.name && formik.errors.name ? (
-                        <div className="error">{formik.errors.name}</div>
+                    <button
+                        type="button"
+                        onClick={async () => {
+                            if (!formik.values.id) {
+                                alert('아이디를 입력하세요.');
+                                return;
+                            }
+                            if (formik.errors.id) {
+                                alert(formik.errors.id);
+                                return;
+                            }
+                            const idExists = await checkIdExists(formik.values.id);
+                            if (idExists) {
+                                alert('이미 사용 중인 아이디입니다.');
+                                setIsIdChecked(false);
+                            } else {
+                                alert('사용 가능한 아이디입니다.');
+                                setIsIdChecked(true);
+                            }
+                        }}
+                    >
+                        중복 확인
+                    </button>
+                    {formik.touched.id && formik.errors.id ? (
+                        <div className="error">{formik.errors.id}</div>
                     ) : null}
                 </div>
 
@@ -143,8 +187,7 @@ const SignupForm = () => {
                         type="email"
                         onChange={(e) => {
                             formik.handleChange(e);
-                            setIsEmailChecking(false); // 이메일 변경 시 중복 확인 상태 초기화
-                            
+                            setIsEmailChecked(false);
                         }}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
@@ -153,26 +196,22 @@ const SignupForm = () => {
                     <button
                         type="button"
                         onClick={async () => {
-                            if (!formik.values.email ) {
+                            if (!formik.values.email) {
                                 alert('이메일을 입력하세요.');
                                 return;
                             }
                             if (formik.errors.email) {
                                 alert(formik.errors.email);
                                 return;
-
-                            }  
+                            }
                             const emailExists = await checkEmailExists(formik.values.email);
-                            if (emailExists ) {    
+                            if (emailExists) {
                                 alert('이미 사용 중인 이메일입니다.');
-                                setIsEmailChecking(false);
+                                setIsEmailChecked(false);
                             } else {
                                 alert('사용 가능한 이메일입니다.');
-                                setIsEmailChecking(true );
-    
-                            
-                            }
-                                
+                                setIsEmailChecked(true);
+                            }   
                         }}
                     >
                         중복 확인
@@ -190,7 +229,7 @@ const SignupForm = () => {
                         type="text"
                         onChange={(e) => {
                             formik.handleChange(e);
-                            setIsPhoneNumberChecked(false); // 핸드폰 번호 변경 시 중복 확인 상태 초기화
+                            setIsPhoneNumberChecked(false);
                         }}
                         onBlur={formik.handleBlur}
                         value={formik.values.phoneNumber}
@@ -198,29 +237,22 @@ const SignupForm = () => {
                     />
                     <button
                         type="button"
-
                         onClick={async () => {
                             if (!formik.values.phoneNumber) {
                                 alert('핸드폰 번호를 입력하세요.');
                                 return;
-
                             }
                             if (formik.errors.phoneNumber) {
                                 alert(formik.errors.phoneNumber);
                                 return;
-
                             }
                             const phoneNumberExists = await checkPhoneNumberExists(formik.values.phoneNumber);
-                            console.log(phoneNumberExists);
                             if (phoneNumberExists) {
                                 alert('이미 사용 중인 핸드폰 번호입니다.');
                                 setIsPhoneNumberChecked(false);
-                                
                             } else {
                                 alert('사용 가능한 핸드폰 번호입니다.');
                                 setIsPhoneNumberChecked(true);
-                                
-
                             }
                         }}
                     >
@@ -228,7 +260,6 @@ const SignupForm = () => {
                     </button>
                     {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
                         <div className="error">{formik.errors.phoneNumber}</div>
-                        
                     ) : null}
                 </div>
 
@@ -260,46 +291,80 @@ const SignupForm = () => {
                         placeholder="비밀번호를 다시 입력하세요"
                     />
                     {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                        <div className="error
-">{formik.errors.confirmPassword}</div>
+                        <div className="error">{formik.errors.confirmPassword}</div>
                     ) : null}
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="address"></label>
+                    <label htmlFor="address">주소</label>
                     <input
-                        id="address_kakao"
+                        id="address"
                         name="address"
+                        type="text"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                       
-
                         value={formik.values.address}
                         placeholder="주소를 입력하세요"
+                        readOnly
                     />
+                    <button type="button" id="address_kakao">
+                        주소 검색
+                    </button>
+                    {formik.touched.address && formik.errors.address ? (
+                        <div className="error">{formik.errors.address}</div>
+                    ) : null}
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="dtl_address">상세 주소</label>
                     <input
-                        id="del_address_kakao"
+                        id="dtl_address"
                         name="dtl_address"
                         type="text"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.dtl_address}
+                        placeholder="상세 주소를 입력하세요"
                     />
-
-
-                    {formik.touched.address && formik.errors.address ? (
-                        <div className="error">{formik.errors.address}</div>
+                    {formik.touched.dtl_address && formik.errors.dtl_address ? (
+                        <div className="error">{formik.errors.dtl_address}</div>
                     ) : null}
-
                 </div>
 
+                <div className="form-group">
+                    <label htmlFor="birthdate">생년월일</label>
+                    <input
+                        id="birthdate"
+                        name="birthdate"
+                        type="date"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.birthdate}
+                    />
+                    {formik.touched.birthdate && formik.errors.birthdate ? (
+                        <div className="error">{formik.errors.birthdate}</div>
+                    ) : null}
+                </div>
 
+                <div className="form-group">
+                    <label htmlFor="gender">성별</label>
+                    <select
+                        id="gender"
+                        name="gender"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.gender}
+                    >
+                        <option value="" label="선택하세요" />
+                        <option value="male" label="남성" />
+                        <option value="female" label="여성" />
+                    </select>
+                    {formik.touched.gender && formik.errors.gender ? (
+                        <div className="error">{formik.errors.gender}</div>
+                    ) : null}
+                </div>
 
-
-
-
-
-                <button type="submit" className="submit-button">회원가입</button>
+                <button type="submit">회원가입</button>
             </form>
         </div>
     );

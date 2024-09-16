@@ -17,7 +17,7 @@ export default function PagiNation({itemsPerPage, maxPagesToShow, object, naviga
         const page = parseInt(query.get('page')) || 1;
         setCurrentPage(page);
     }, [location]);
-    
+
 
     const getPageNumbers = () => {
         const pageNumbers = [];

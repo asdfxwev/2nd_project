@@ -65,9 +65,9 @@ export default function Inquiry() {
 
     return (
         <section className="cscContainer">
-            <div className="cscSection">
+            {/* <div className="cscSection"> */}
                 <CscLeft />
-            </div>
+            {/* </div> */}
             <div className="cscMain">
                 <h2 className="cscTitle h2Notice">1:1문의</h2>
                 <div>

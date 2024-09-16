@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 import './MyPage.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import MyPageLeft from './MypageLeft';
 
 const MyPage = () => {
     const navigate = useNavigate();
@@ -38,24 +40,8 @@ const MyPage = () => {
 
     return (
         <div className='mypage_container'>
-            <div className='mypage_menu'>
-                <h2 className='MyPage_h2'>마이페이지</h2>
-                <ul>
-                    <li><a href="/Cart">장바구니</a></li>
-                    <li><a href="/Order">구매내역</a></li>
-                    <li>리뷰관리</li>
-                    <li>회원정보변경</li>
-                    <li>알림신청</li>
+            <MyPageLeft />
 
-                </ul>
-                <h2 className='MyPage_h3'>나의 혜택관리</h2>
-                <ul>
-                    <li>회원등급</li>
-                    <li>구매실적</li>
-                    <li>포인트내역</li>
-                    <li>쿠폰내역</li>
-                </ul>
-            </div>
 
 
             <div className='user_info'>

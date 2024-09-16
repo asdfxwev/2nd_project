@@ -102,3 +102,13 @@
     height: 16px; 
     margin-right: 10px;
 }
+
+.mypageContainer{
+    display: flex;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.cartWrapper {
+    width: 70%;
+}

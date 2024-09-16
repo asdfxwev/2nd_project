@@ -61,7 +61,27 @@
       ],
       "inquiryCounter": 2,
       "cart": [],
-      "buy": []
+      "buy": [
+        {
+          "id": 1,
+          "tag": "건프라",
+          "name": "RG 윙 건담",
+          "price": 38400,
+          "comment": "건담 무사",
+          "detail": "건담 최초로 오리지널 스토리 극장판으로써 제작된 작품. 아무로와 샤아 두 캐릭터에 초점을 두어 기동전사 건담에서 이어지는 스토리의 완결을 그린 작품이다.",
+          "brand": "1/100",
+          "src": [
+            "/image/gundam01.jpg"
+          ],
+          "image": "/image/gundam01.jpg",
+          "isChecked": true,
+          "quantity": 1,
+          "date": "2024-09-12",
+          "deliveryuser": "전용덕",
+          "deliveryphone": "1234567890",
+          "deliveryaddress": "부산 해운대구 APEC로 30 asdf"
+        }
+      ]
     },
     {
       "name": "vaundy",

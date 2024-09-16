@@ -9,7 +9,7 @@
 }
 
 .cscSection {
-    width: 300px;
+    width: 15%;
     text-align: left;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .cscMain {
-    width: 1100px;
+    width: 70%;
 }
 
 .CscBtnMenu {
@@ -40,10 +40,12 @@
     margin: 30px 0px;
     font-size: 1.5rem;
     height: 50px;
+    width: 100%;
 }
 
 .CscMenu li {
-    margin: 0px 30px;
+    margin: 0px 10px;
+    width: 100%;
 }
 
 .CscListTitle,
@@ -72,7 +74,7 @@
 
 .CscList {
     /* display: flex; */
-    width: 1100px;
+    width: 100%;
     /* max-height: 1100px; */
     /* height: 50px; */
     justify-content: center;

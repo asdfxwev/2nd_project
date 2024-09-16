@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Cart.css';
+import './cart.css';
 import axios from 'axios';
 import MypageLeft from '../MyPage/MypageLeft';
 
@@ -82,7 +82,7 @@ const Cart = () => {
         const newCheckedItems = checkedItems.includes(id)
             ? checkedItems.filter(itemId => itemId !== id)
             : [...checkedItems, id];
-        
+
         setCheckedItems(newCheckedItems);
         setIsAllChecked(newCheckedItems.length === cartItems.length);
     };
@@ -144,44 +144,44 @@ const Cart = () => {
 
     return (
         <div className="mypageContainer">
-        <MypageLeft />
-        <div className="cartWrapper">
-            <h1 className='h1-names'>장바구니</h1>
-            <div className="cart-containers">
-                <div className="cart-header">
-                    <div>
-                        <input 
-                            type="checkbox" 
-                            checked={isAllChecked} 
-                            onChange={handleAllCheckboxChange} 
-                        />
-                        전체선택
+            <MypageLeft />
+            <div className="cartWrapper">
+                <h1 className='h1-names'>장바구니</h1>
+                <div className="cart-containers">
+                    <div className="cart-header">
+                        <div>
+                            <input
+                                type="checkbox"
+                                checked={isAllChecked}
+                                onChange={handleAllCheckboxChange}
+                            />
+                            전체선택
+                        </div>
+                        <div>상품 이미지</div>
+                        <div>상품 이름</div>
+                        <div>수량</div>
+                        <div>가격</div>
+                        <div>총 가격</div>
                     </div>
-                    <div>상품 이미지</div>
-                    <div>상품 이름</div>
-                    <div>수량</div>
-                    <div>가격</div>
-                    <div>총 가격</div>
-                </div>
-                {cartItems.map((item) => (
-                    <CartItem
-                        key={item.id}
-                        item={item}
-                        onQuantityChange={handleQuantityChange}
-                        onCheckboxChange={handleCheckboxChange}
-                        isChecked={checkedItems.includes(item.id)}
-                    />
-                ))}
-                <button className='button-size' onClick={handleRemoveCheckedItems}>선택한 상품 삭제</button>
-                <button className='button-size' onClick={handleRemoveAllItems}>전체 상품 삭제</button>
-                <div className="cart-total">
-                    총 합계: {total.toLocaleString()}원
-                </div>
-                <div className="cart-actions">
-                    <button onClick={handleCheckout}>결제하기</button>
+                    {cartItems.map((item) => (
+                        <CartItem
+                            key={item.id}
+                            item={item}
+                            onQuantityChange={handleQuantityChange}
+                            onCheckboxChange={handleCheckboxChange}
+                            isChecked={checkedItems.includes(item.id)}
+                        />
+                    ))}
+                    <button className='button-size' onClick={handleRemoveCheckedItems}>선택한 상품 삭제</button>
+                    <button className='button-size' onClick={handleRemoveAllItems}>전체 상품 삭제</button>
+                    <div className="cart-total">
+                        총 합계: {total.toLocaleString()}원
+                    </div>
+                    <div className="cart-actions">
+                        <button onClick={handleCheckout}>결제하기</button>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     );
 };

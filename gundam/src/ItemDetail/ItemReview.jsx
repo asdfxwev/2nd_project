@@ -7,20 +7,39 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import reviewData from '../data/db.json';
 import PagiNationNum from "../csc/PagiNationNum";
+import { faStar as faStarEmpty, faStar } from '@fortawesome/free-solid-svg-icons';
 
+// 별점 UI 컴포넌트
+const StarRating = ({ rating, setRating }) => {
+    const stars = [1, 2, 3, 4, 5];
+    return (
+        <div className="star-rating">
+            {stars.map((star) => (
+                <FontAwesomeIcon
+                    key={star}
+                    icon={faStar}
+                    onClick={() => setRating(star)}
+                    className={`star-icon ${rating >= star ? 'filled' : ''}`}
+                />
+            ))}
+        </div>
+    );
+};
+
+// ItemReview 컴포넌트
 const ItemReview = ({ item, setReviewCount, pathName }) => {
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);  // 로그인 상태 저장 변수
     const [modalIsOpen, setModalIsOpen] = useState(false); // 리뷰작성 모달팝업 호출 변수
     const [modalOpenPop, setModalOpenPop] = useState(false); // 비로그인 시 안내모달팝업 호출 변수
     const [modalNoPurchase, setModalNoPurchase] = useState(false); // 구매 후 작성 가능 안내 모달팝업 호출 변수
     const [reviews, setReviews] = useState([]); // 리뷰 데이터를 저장할 상태 변수
-    const navigate = useNavigate();
     const [title, setReviewTitle] = useState('');
     const [comment, setReviewMessage] = useState('');
+    const [rating, setRating] = useState(0); // 별점 상태
     const [currentPage, setCurrentPage] = useState(1);
-    const location = useLocation();
     const [paginatedItems, setPaginatedItems] = useState([]);
+    const [expandedReviewId, setExpandedReviewId] = useState(null); // 클릭된 리뷰 ID
+    const navigate = useNavigate();
 
     useEffect(() => {
         setReviews(reviewData.review);
@@ -31,7 +50,6 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
         setReviewCount(filteredReviews.length);
     }, [reviews, item, setReviewCount]);
 
-    // 브라우저의 localStorage에서 로그인 정보 확인
     useEffect(() => {
         const loginCheck = JSON.parse(localStorage.getItem("loginInfo"));
         if (loginCheck !== null) {
@@ -69,7 +87,6 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
         setModalNoPurchase(false);
     };
 
-    // 선택된 상품의 리뷰만 필터링 및 메모이제이션
     const filteredReviews = useMemo(() => {
         const filteredReview = reviews.filter(review => review.productId === item);
         return filteredReview.reverse();
@@ -97,18 +114,19 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
             const existingInquiries = JSON.parse(localStorage.getItem('loginInfo'));
             const userId = existingInquiries.id;
 
-            if (title === '' || comment === '') {
-                alert(`제목과 내용을 입력해주세요.`);
+            if (title === '' || comment === '' || rating === 0) {
+                alert(`제목, 내용, 별점을 모두 입력해주세요.`);
                 return false;
             }
 
-            const newReview = { reviewId, productId, userId, title, comment, date };
+            const newReview = { reviewId, productId, userId, title, comment, date, rating };
 
             // 서버에 새로운 리뷰 추가
             await axios.post(`http://localhost:3001/review`, newReview);
 
             setReviewTitle('');
             setReviewMessage('');
+            setRating(0); // 별점 초기화
             closeModal();
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
@@ -129,6 +147,10 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
         });
     }, [currentPage, filteredReviews]);
 
+    const handleReviewClick = (reviewId) => {
+        setExpandedReviewId(prevId => (prevId === reviewId ? null : reviewId));
+    };
+
     return (
         <>
             <div className="info_top_box" id="REVIEW_TAB">
@@ -143,10 +165,13 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
                         <form className="review_pop">
                             <h2>리뷰작성</h2>
                             <div>
-                                <div>제목 
+                                <div>제목
                                     <input value={title} onChange={onreviewTitle} type="text" id="title" className="re_title" />
                                 </div>
-                                <div className="reviewBox">내용 
+                                <div>별점
+                                    <StarRating rating={rating} setRating={setRating} />
+                                </div>
+                                <div className="reviewBox">내용
                                     <textarea value={comment} onChange={onreviewMessage} type="text" id="comment" className="re_comment" />
                                 </div>
                             </div>
@@ -192,13 +217,21 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
                 <div className="re_list_data">
                     {paginatedItems.length > 0 ? (
                         paginatedItems.map(review => (
-                            <div className="re_list_row" key={review.reviewId}>
+                            <div
+                                key={review.reviewId}
+                                className={`re_list_row ${expandedReviewId === review.reviewId ? 'expanded' : ''}`}
+                                onClick={() => handleReviewClick(review.reviewId)}
+                            >
                                 <div>{review.date}</div>
                                 <div>
                                     <p>{review.title}</p>
-                                    <p>- {review.comment}</p>
+                                    <div className={`review-details ${expandedReviewId === review.reviewId ? 'show' : ''}`}>
+                                        <p>{review.comment}</p>
+                                        <p>별점: {review.rating} <FontAwesomeIcon icon={faStar} className="star-icon" /></p>
+                                    </div>
                                 </div>
                             </div>
+
                         ))
                     ) : (
                         <div className="re_list_row">
@@ -216,6 +249,7 @@ const ItemReview = ({ item, setReviewCount, pathName }) => {
             />
         </>
     );
+
 }
 
 export default ItemReview;

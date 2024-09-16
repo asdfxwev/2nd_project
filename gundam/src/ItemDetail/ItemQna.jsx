@@ -16,6 +16,7 @@ const ItemQna = ({ item, pathName }) => {
     const [comment, setQnaValue] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [paginatedItems, setPaginatedItems] = useState([]);
+    const [expandedQnaId, setExpandedQnaId] = useState(null); // 클릭된 Q&A ID
 
     const navigate = useNavigate();
 
@@ -99,6 +100,10 @@ const ItemQna = ({ item, pathName }) => {
         }
     };
 
+    const handleQnaClick = (qnaId) => {
+        setExpandedQnaId(prevId => (prevId === qnaId ? null : qnaId));
+    };
+
     return (
         <>
             <div className="info_top_box" id="QNA">
@@ -131,10 +136,18 @@ const ItemQna = ({ item, pathName }) => {
             <div className="qna_list">
                 {paginatedItems.length > 0 ? (
                     paginatedItems.map(qna => (
-                        <div className="qna_list_row" key={qna.qna_Id}>
+                        <div 
+                            key={qna.qna_Id}
+                            className="qna_list_row"
+                            onClick={() => handleQnaClick(qna.qna_Id)}
+                        >
                             <div className="qna_state">문의중</div>
-                            <div>{qna.comment}</div>
-                            <div>{qna.qna_date}</div>
+                            <div>
+                                <div>{qna.comment}</div>
+                                <div className={`qna_details ${expandedQnaId === qna.qna_Id ? 'show' : ''}`}>
+                                    <p>등록일: {qna.qna_date}</p>
+                                </div>
+                            </div>
                         </div>
                     ))
                 ) : (
@@ -143,13 +156,13 @@ const ItemQna = ({ item, pathName }) => {
                     </div>
                 )}
             </div>
-                <PagiNationNum
-                    itemsPerPage={5}
-                    maxPagesToShow={5}
-                    totalItems={filteredQna.length}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                />
+            <PagiNationNum
+                itemsPerPage={5}
+                maxPagesToShow={5}
+                totalItems={filteredQna.length}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
         </>
     );
 };

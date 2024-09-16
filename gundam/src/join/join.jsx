@@ -15,17 +15,35 @@ const checkIdExists = async (id) => {
         return false;
     }
 };
-
 const checkEmailExists = async (email) => {
     try {
-        const encodedEmail = encodeURIComponent(email);
-        const response = await axios.get(`http://localhost:3001/users?email=${encodedEmail}`);
-        return response.data.length > 0;
-    } catch (error) {
+        // 서버로부터 모든 사용자 데이터를 가져오는 용도
+        const response = await axios.get('http://localhost:3001/users');
+
+        // 응답 데이터를 확인하여 구조가 올바른지 콘솔에 출력(에러 확인용)
+        console.log('Response data:', response.data);
+
+        // 가져온 데이터에서 이메일이 있는지 확인하는 코드
+        const emailExists = response.data.some(user => {
+            // user.email이 존재하는지 확인하는 코드
+            if (user.email) {
+                const normalizedEmail = user.email.trim().toLowerCase();
+                const normalizedInputEmail = email.trim().toLowerCase();
+                console.log(`Comparing ${normalizedEmail} with ${normalizedInputEmail}`); // 로그 추가
+                return normalizedEmail === normalizedInputEmail;
+            }
+            return false;
+        });
+
+        return emailExists;
+    } // 에러날 경우 코드
+    catch (error) {
         console.error('Error checking email:', error);
         return false;
     }
 };
+
+
 
 const checkPhoneNumberExists = async (phoneNumber) => {
     try {
@@ -39,7 +57,7 @@ const checkPhoneNumberExists = async (phoneNumber) => {
 
 const SignupForm = () => {
     const navigate = useNavigate();
-    const [isIdChecked, setIsIdChecked] = useState(false); 
+    const [isIdChecked, setIsIdChecked] = useState(false);
     const [isEmailChecked, setIsEmailChecked] = useState(false);
     const [isPhoneNumberChecked, setIsPhoneNumberChecked] = useState(false);
 
@@ -211,7 +229,7 @@ const SignupForm = () => {
                             } else {
                                 alert('사용 가능한 이메일입니다.');
                                 setIsEmailChecked(true);
-                            }   
+                            }
                         }}
                     >
                         중복 확인

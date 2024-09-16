@@ -80,6 +80,27 @@
           "deliveryuser": "전용덕",
           "deliveryphone": "1234567890",
           "deliveryaddress": "부산 해운대구 APEC로 30 asdf"
+        },
+        {
+          "id": 3,
+          "tag": "건프라",
+          "name": "SD 건담월드 히어로즈 오공 임펄스 건담",
+          "price": 7200,
+          "comment": "기동전사 건담 수성의 마녀",
+          "detail": "건담 시리즈의 기념비적인 첫 번째 작품. 스페이스 콜로니와 같이 최첨단 과학기술을 배경으로, 치밀하면서도 리얼한 세계관을 구축하여 인기를 얻었다",
+          "brand": "FIGURE-RISE MECHANICS",
+          "src": [
+            "/image/gundam02.jpg",
+            "/image/gundam08.jpg",
+            "/image/gundam09.jpg"
+          ],
+          "image": "/image/gundam03.jpg",
+          "isChecked": true,
+          "quantity": 1,
+          "date": "2024-09-16",
+          "deliveryuser": "전용덕",
+          "deliveryphone": "1234567890",
+          "deliveryaddress": "부산 해운대구 APEC로 30 asdf"
         }
       ]
     },
@@ -805,6 +826,14 @@
       "userId": "afbd",
       "comment": "ㅗㄹ하ㅗ",
       "date": "2024. 7. 10."
+    },
+    {
+      "id": "ea37",
+      "qna_Id": 24,
+      "productId": 3,
+      "userId": "070c",
+      "comment": "가나다라ㅏ망라ㅣ먼ㅇ리ㅏ;멍ㄴ라ㅓㄴㅇ리마널;ㅣㅁ넝라;민얼;ㅏㅣ멀;먼ㅇㄹ;ㅣㅁ넝라ㅣㅁ;넝ㄹ;ㅏㅣㅁ널미;ㄴ얼;",
+      "date": "2024. 9. 16."
     }
   ]
 }

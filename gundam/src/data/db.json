@@ -485,6 +485,16 @@
       "password": "11111111",
       "confirmPassword": "11111111",
       "phoneNumber": "01000000002"
+    },
+    {
+      "id": "vaundy",
+      "email": "tlatjddyd08@naver.com",
+      "phoneNumber": "01026404914",
+      "address": "경기 성남시 분당구 장미로 198 아델파크324호",
+      "password": "qaz13524",
+      "confirmPassword": "qaz13524",
+      "birthdate": "1992-08-24",
+      "gender": "male"
     }
   ],
   "review": [
@@ -640,6 +650,16 @@
       "title": "제목",
       "comment": "내용리뷰",
       "date": "2024. 7. 9."
+    },
+    {
+      "id": "7f74",
+      "reviewId": 19,
+      "productId": 1,
+      "userId": "070c",
+      "title": "djfldkfjdk",
+      "comment": "dfasfasdfasdfsdf",
+      "date": "2024. 9. 19.",
+      "rating": 5
     }
   ],
   "qna": [

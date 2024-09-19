@@ -45,12 +45,40 @@ const checkEmailExists = async (email) => {
 
 
 
+// const checkPhoneNumberExists = async (phoneNumber) => {
+//     try {
+//         const response = await axios.get(`http://localhost:3001/users?phoneNumber=${phoneNumber}`);
+//         return response.data.length > 0;
+//     } catch (error) {
+//         console.error('Error checking phone number:', error);
+//         return false;
+//     }
+// };
+
 const checkPhoneNumberExists = async (phoneNumber) => {
     try {
-        const response = await axios.get(`http://localhost:3001/users?phoneNumber=${phoneNumber}`);
-        return response.data.length > 0;
-    } catch (error) {
-        console.error('Error checking phone number:', error);
+        // 서버로부터 모든 사용자 데이터를 가져오는 용도
+        const response = await axios.get('http://localhost:3001/users');
+
+        // 응답 데이터를 확인하여 구조가 올바른지 콘솔에 출력(에러 확인용)
+        console.log('Response data:', response.data);
+
+        // 가져온 데이터에서 이메일이 있는지 확인하는 코드
+        const phoneNumberExists = response.data.some(user => {
+            // user.email이 존재하는지 확인하는 코드
+            if (user.phoneNumber) {
+                const normalizedPhone = user.phoneNumber.trim().toLowerCase();
+                const normalizedInputPhone = phoneNumber.trim().toLowerCase();
+                console.log(`Comparing ${normalizedPhone} with ${normalizedInputPhone}`); // 로그 추가
+                return normalizedPhone === normalizedInputPhone;
+            }
+            return false;
+        });
+
+        return phoneNumberExists;
+    } // 에러날 경우 코드
+    catch (error) {
+        console.error('Error checking phoneNumber:', error);
         return false;
     }
 };

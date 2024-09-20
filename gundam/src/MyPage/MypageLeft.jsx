@@ -14,13 +14,13 @@ export default function MypageLeft() {
                 <li>회원정보변경</li>
                 <li>알림신청</li>
             </ul>
-            <h2 className='MyPage_h3'>나의 혜택관리</h2>
+            {/* <h2 className='MyPage_h3'>나의 혜택관리</h2>
             <ul>
                 <li>회원등급</li>
                 <li>구매실적</li>
                 <li>포인트내역</li>
                 <li>쿠폰내역</li>
-            </ul>
+            </ul> */}
         </div>
     )
 }

@@ -51,14 +51,7 @@
       "password": "123456789",
       "confirmPassword": "123456789",
       "phoneNumber": "1234567890",
-      "inquries": [
-        {
-          "id": 1,
-          "inquiryType": "배송",
-          "subject": "a",
-          "message": "a"
-        }
-      ],
+      "inquries": [],
       "inquiryCounter": 2,
       "cart": [],
       "buy": [
